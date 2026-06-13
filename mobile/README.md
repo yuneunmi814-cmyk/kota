@@ -53,8 +53,12 @@ npx expo export -p android -o /tmp/x    # Metro 번들 생성 확인
 - **관광사진 갤러리**(관광지 상세), **오디오 가이드**(expo-audio), 홈 **인기 지역 배지**
 - **크리에이터 마켓플레이스**(설계서 7장): 마켓 탐색(`MarketplaceScreen`, 홈·탐색 진입), 코스 상세 **페이월**(잠금 1일차 미리보기 + 구매 CTA·청약철회 고지), **코스 작성기**(`CourseEditorScreen` — 지역·기간·가격·테마·일자별 스팟 선택, 임시저장/검수요청/회수/삭제), **내 여행팩**(`MyCoursesScreen`)·**구매함**(`MyPurchasesScreen`). MY 탭에서 진입
 
+## 추가 완료
+- **통합 검색**(`SearchScreen`, 탐색 탭 헤더 검색 → 코스·관광지·지역, 디바운스)
+- **영문 토글**(`SpotDetailScreen` KO/EN → `?lang=en`)
+- **카카오맵 번호 마커·경로선**: `EXPO_PUBLIC_KAKAO_JS_KEY` 설정 시 WebView+Kakao JS SDK로 렌더(Expo Go 동작). 카카오 콘솔에 웹 도메인(`EXPO_PUBLIC_KAKAO_MAP_DOMAIN`) 등록 필요. 키 없으면 네이티브 POI/플레이스홀더 폴백
+
 ## 남은 작업
 
-- 카카오맵 **커스텀 번호 마커·경로선**: `@react-native-kakao/map` 2.x 미지원 → 현재 내장 POI 라벨(poiEnabled)만. 완전 구현은 **Kakao JS Maps SDK(WebView + JS키)** 필요
-- 모바일 영문 토글 UI(백엔드 `?lang=en` 준비됨), 통합 검색 화면
-- 마켓플레이스 **결제 실연동**(PG): 현재 무료 코스는 즉시 구매, 유료는 백엔드 PG 어댑터 연동 시 동작
+- 카카오맵 WebView: 실기기 렌더 검증(typecheck·번들만 통과)
+- 마켓플레이스 **결제 실연동**(PG): 현재 무료/데모(mock)는 즉시 구매, 실유료는 PortOne 키 + RN SDK 연결 필요

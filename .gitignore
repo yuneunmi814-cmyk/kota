@@ -7,6 +7,10 @@ node_modules/
 .env.*.local
 *.pem
 
+# 사업자/개인 PII — 공개 레포에 커밋 금지 (앱 내 표시는 별도 설정으로)
+*.local.md
+**/사업자정보.local.*
+
 # 빌드 산출물
 dist/
 build/
