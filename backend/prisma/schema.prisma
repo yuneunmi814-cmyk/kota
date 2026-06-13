@@ -162,6 +162,8 @@ model Region {
   thumbnailUrl String? @map("thumbnail_url")
   sortOrder    Int     @default(0) @map("sort_order")
   isActive     Boolean @default(true) @map("is_active")
+  /// 관광 빅데이터(지역별 방문자수) 기반 인기 점수 — 최근 외지인+외국인 합. 인기 정렬·배지용
+  visitorScore Int     @default(0) @map("visitor_score")
 
   spots   Spot[]
   courses Course[]
@@ -204,12 +206,57 @@ model Spot {
   createdAt       DateTime   @default(now()) @map("created_at")
   updatedAt       DateTime   @updatedAt @map("updated_at")
 
-  region      Region       @relation(fields: [regionId], references: [id])
-  images      SpotImage[]
-  courseItems CourseItem[]
+  region       Region            @relation(fields: [regionId], references: [id])
+  images       SpotImage[]
+  courseItems  CourseItem[]
+  audioGuides  AudioGuide[]
+  translations SpotTranslation[]
 
   @@index([regionId, status])
   @@map("spots")
+}
+
+// 다국어 번역(영문 등) — EngService2의 동일 contentId로 적재
+model SpotTranslation {
+  id          BigInt   @id @default(autoincrement())
+  spotId      BigInt   @map("spot_id")
+  langCode    String   @map("lang_code")
+  name        String
+  summary     String?
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  spot Spot @relation(fields: [spotId], references: [id], onDelete: Cascade)
+
+  @@unique([spotId, langCode])
+  @@map("spot_translations")
+}
+
+// 한국관광공사 관광지 오디오 가이드(오디·Odii). 스팟에 좌표 근접 매칭으로 연결.
+model AudioGuide {
+  id           BigInt   @id @default(autoincrement())
+  spotId       BigInt   @map("spot_id")
+  source       String   @default("ODII")
+  odiiThemeId  String   @map("odii_theme_id")  // tid
+  odiiStoryId  String   @map("odii_story_id")  // stid
+  langCode     String   @map("lang_code")
+  title        String
+  audioTitle   String?  @map("audio_title")
+  script       String?
+  audioUrl     String?  @map("audio_url")
+  imageUrl     String?  @map("image_url")
+  playTime     Int?     @map("play_time")
+  lat          Float?
+  lng          Float?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  spot Spot @relation(fields: [spotId], references: [id], onDelete: Cascade)
+
+  @@unique([spotId, odiiStoryId, langCode])
+  @@index([spotId, langCode])
+  @@map("audio_guides")
 }
 
 model SpotImage {
@@ -217,10 +264,13 @@ model SpotImage {
   spotId    BigInt @map("spot_id")
   url       String
   sourceCredit String? @map("source_credit")
+  source    String  @default("EDITOR")          // EDITOR / TOURAPI / PHOTO(관광사진)
+  sourceId  String? @map("source_id")            // 외부 식별자(galContentId 등) — 멱등 dedupe
   sortOrder Int    @default(0) @map("sort_order")
 
   spot Spot @relation(fields: [spotId], references: [id], onDelete: Cascade)
 
+  @@unique([spotId, sourceId])
   @@map("spot_images")
 }
 

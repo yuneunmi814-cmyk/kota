@@ -1,8 +1,9 @@
-import { Pressable, ScrollView, Text, View, Image, StyleSheet } from 'react-native'
+import { Dimensions, Pressable, ScrollView, Text, View, Image, StyleSheet } from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useResource } from '../api/useResource'
 import { Card, ImagePlaceholder, Loading, EmptyState, Badge } from '../components/ui'
 import { BookmarkButton } from '../components/BookmarkButton'
+import { AudioGuideList } from '../components/AudioGuideList'
 import { colors, space } from '../theme'
 import type { ExploreStackParams } from '../navigation/types'
 import type { SpotDetail } from '../api/types'
@@ -16,7 +17,18 @@ export function SpotDetailScreen({ navigation, route }: Props) {
 
   return (
     <ScrollView style={{ backgroundColor: colors.bg }} contentContainerStyle={{ paddingBottom: space(8) }}>
-      {data.images[0] ? <Image source={{ uri: data.images[0].url }} style={{ height: 200, width: '100%' }} /> : <ImagePlaceholder height={160} />}
+      {data.images.length > 0 ? (
+        <View>
+          <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
+            {data.images.map((img, i) => (
+              <Image key={i} source={{ uri: img.url }} style={{ height: 220, width: SCREEN_W }} />
+            ))}
+          </ScrollView>
+          {data.images.length > 1 && (
+            <View style={styles.countBadge}><Text style={styles.countText}>1+ / {data.images.length}</Text></View>
+          )}
+        </View>
+      ) : <ImagePlaceholder height={160} />}
       <View style={{ padding: space(5), gap: space(3) }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Text style={styles.title}>{data.name}</Text>
@@ -41,6 +53,8 @@ export function SpotDetailScreen({ navigation, route }: Props) {
             <Text style={{ color: colors.primaryDeep, lineHeight: 20 }}>{data.tips}</Text>
           </View>
         )}
+
+        <AudioGuideList guides={data.audioGuides} />
 
         {data.description && <Text style={{ color: colors.textSub, lineHeight: 22 }}>{data.description}</Text>}
 
@@ -84,4 +98,8 @@ const styles = StyleSheet.create({
   title: { fontSize: 18, fontWeight: '700', color: colors.text },
   section: { fontSize: 15, fontWeight: '600', color: colors.text, marginTop: 8 },
   tip: { backgroundColor: colors.primaryWeak, borderRadius: 10, padding: space(4) },
+  countBadge: { position: 'absolute', right: 10, bottom: 10, backgroundColor: 'rgba(0,0,0,0.45)', borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3 },
+  countText: { color: '#fff', fontSize: 11 },
 })
+
+const SCREEN_W = Dimensions.get('window').width

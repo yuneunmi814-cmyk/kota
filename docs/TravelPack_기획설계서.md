@@ -697,6 +697,7 @@ sequenceDiagram
   - **여행코스(course)**: `areaBasedList2`(contentTypeId 25) → `detailInfo2`(경유지 목록의 `subcontentid`) → `detailCommon2`(경유지의 **실제 좌표 POI**) 3단 체인. 경유지를 좌표 보유 spot으로 upsert하고 그 FK로 `course_items`를 구성해 **가이드 모드(체크인)까지 동작하는 구조의 코스**를 `status=DRAFT`로 생성.
   - ③ **내부 에디터가 꿀팁·체류시간·이동수단·일자 가공 후 발행**(2.2절 4-eyes). 재동기화는 **기존 코스를 보존**(에디터 가공 보호)하고, 스팟은 원본 필드만 갱신(tips·체류시간·반경 등 가공 필드 보존). 큐레이션 품질이 생명선이므로 원본 그대로 발행 금지.
   - 운영: `npm run sync:tourapi -- --region=<slug> [--courses] [--types=12,39] [--max=N] [--dry-run]`.
+- **오디오 가이드 (한국관광공사 오디·Odii, data.go.kr 15101971)**: 구현·라이브 검증 완료(`backend/src/modules/audioguide/`). `storyLocationBasedList`로 **스팟 좌표 반경 내 오디오 스토리(대본·mp3·재생시간·다국어)를 좌표 근접 매칭**해 `audio_guides` 테이블에 적재(멱등). TourAPI와 **동일 serviceKey 재사용**(15101971 활용신청 필요). 스팟 상세 응답에 `audioGuides[]`(언어별·오디오 우선) 포함, 앱은 `expo-audio`로 재생 + 대본 표시. 운영: `npm run sync:audioguide -- --region=<slug>`. (제주 라이브: 8곳 중 5곳 매칭, 오디오 mp3 재생 확인. audioUrl은 스토리의 약 절반만 채워져 나머지는 대본 텍스트 제공)
 - **공공 코스가 여행사 패키지보다 적합 (검증 결과)**: 하나투어·모두투어 등 대형 여행사는 **공개 OpenAPI 미제공**(B2B 제휴 채널만, 상품도 해외 중심), 일정표 무단 크롤링은 약관·데이터베이스권·부정경쟁방지법 리스크로 **금지**. 반면 **TourAPI 여행코스(type 25)는 한국관광공사가 큐레이션한 공신력 있는 코스**이고, 경유지가 `subcontentid`로 좌표 POI에 연결돼 우리 데이터 모델(spot FK + 체크인)에 그대로 매핑됨이 실측 확인됨. → **MVP 코스는 TourAPI 여행코스 import + 에디터 가공/발행**, 지자체 관광 가이드북·추천코스는 보조 소스로 에디터가 수기 보강, 여행사 제휴는 차기 BD 과제로 이관.
 
 #### 결정 2 — 지도 SDK: Kakao Maps SDK 확정

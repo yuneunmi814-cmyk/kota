@@ -112,6 +112,19 @@ npm run sync:tourapi -- --all --courses --max=10
 
 지역 slug: `jeju busan gyeongju yeosu gangneung jeonju` · 멱등(재실행 시 기존 코스 보존, 스팟 가공 필드 보존) · `--dry-run`으로 호출만 미리 확인.
 
+```bash
+# 오디오 가이드(한국관광공사 오디·Odii) — 스팟 좌표 반경으로 오디오 스토리 매칭 (동일 키, 15101971 활용신청 필요)
+npm run sync:audioguide -- --region=jeju [--langs=ko,en] [--radius=1000] [--dry-run]
+```
+스팟 상세 응답에 `audioGuides[]`(언어별·오디오 우선)가 포함되고, 앱 관광지 상세에서 `expo-audio`로 재생 + 대본 표시됩니다.
+
+```bash
+# 부가 공공데이터 (동일 키, 각 데이터셋 활용신청 필요)
+npm run sync:photos -- --region=jeju      # 관광사진 → 스팟 갤러리(spot_images)
+npm run sync:i18n -- --region=jeju        # 영문 관광정보 → 스팟 번역(spot 상세 ?lang=en)
+npm run sync:visitors                     # 지역별 방문자수 → 인기 정렬·배지(region.visitorScore)
+```
+
 ## 5) 운영 배치
 
 ```bash
@@ -166,6 +179,8 @@ PostgreSQL 16 + PostGIS · Redis 7 · JWT(RS256)+RTR · Kakao Maps · FCM · AWS
 - [x] TourAPI 동기화(관광지 + 여행코스 import) — 전 6개 지역 코스 53개 라이브 적재
 - [x] S3 업로드·FCM 푸시·데이터 파기 배치
 - [x] 모바일 앱 핵심 — 탐색→코스→가이드 모드, 카카오맵·카카오 로그인·온보딩/약관·리뷰/북마크
+- [x] **오디오 가이드(한국관광공사 오디)** — 스팟 좌표 매칭 동기화 + 앱 오디오 플레이어(대본·다국어). 제주 라이브 검증
+- [x] **부가 공공데이터 연동** — 관광사진(스팟 갤러리)·영문 i18n(스팟 상세 ?lang=en)·지역 방문자수(인기 정렬/배지). 제주 라이브 검증, 백엔드 테스트 59개
 - [ ] M3 잔여: 구글 로그인, 관심 테마(ON-02), FCM 토큰 등록, 카카오맵 마커/폴리라인 → M4 통합 QA·보안·스토어 심사
 
 ## 출시 전 필수 체크 (법무)

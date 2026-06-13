@@ -53,8 +53,9 @@ export function HomeScreen({ navigation }: Props) {
       <Section title="어디로 떠날까요">
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space(3) }}>
           {data.popularRegions.map((r) => (
-            <Pressable key={r.id} onPress={() => openRegion(r)}>
-              <Pill label={`${r.name}${r.courseCount ? ` ${r.courseCount}` : ''}`} />
+            <Pressable key={r.id} onPress={() => openRegion(r)} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+              <Pill label={`${r.name}${r.courseCount ? ` ${r.courseCount}` : ''}`} active={r.trending} />
+              {r.trending && <Text style={{ fontSize: 10, color: colors.primary, fontWeight: '700' }}>인기</Text>}
             </Pressable>
           ))}
         </View>

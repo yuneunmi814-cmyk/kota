@@ -8,6 +8,7 @@ import { RootNavigator } from './src/navigation/RootNavigator'
 import { OnboardingScreen } from './src/screens/OnboardingScreen'
 import { Loading } from './src/components/ui'
 import { isOnboarded, setOnboarded } from './src/lib/storage'
+import { logAndroidKeyHash } from './src/lib/devKeyHash'
 import { colors } from './src/theme'
 
 function Root() {
@@ -26,6 +27,7 @@ function Root() {
 }
 
 export default function App() {
+  useEffect(() => { logAndroidKeyHash() }, [])
   return (
     <SafeAreaProvider>
       <StatusBar style="dark" />

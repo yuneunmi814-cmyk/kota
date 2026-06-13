@@ -17,6 +17,10 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:studio": "prisma studio",
     "sync:tourapi": "tsx scripts/sync-tourapi.ts",
+    "sync:audioguide": "tsx scripts/sync-audioguide.ts",
+    "sync:photos": "tsx scripts/sync-enrich.ts photos",
+    "sync:i18n": "tsx scripts/sync-enrich.ts i18n",
+    "sync:visitors": "tsx scripts/sync-enrich.ts visitors",
     "purge": "tsx scripts/purge.ts"
   },
   "prisma": {

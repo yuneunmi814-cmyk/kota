@@ -55,7 +55,7 @@ exploreRouter.get(
         prisma.region.findMany({
           where: { isActive: true },
           orderBy: { sortOrder: 'asc' },
-          select: { id: true, name: true, thumbnailUrl: true, _count: { select: { courses: { where: { status: 'PUBLISHED' } } } } },
+          select: { id: true, name: true, thumbnailUrl: true, visitorScore: true, _count: { select: { courses: { where: { status: 'PUBLISHED' } } } } },
         }),
       ])
 
@@ -86,9 +86,10 @@ exploreRouter.get(
         banners,
         recommendedCourses: recommended.map(toCourseCard),
         popularRegions: regions
-          .sort((a, b) => b._count.courses - a._count.courses)
+          // 인기 정렬: 방문자 빅데이터 점수 우선, 동률이면 코스 보유 수
+          .sort((a, b) => b.visitorScore - a.visitorScore || b._count.courses - a._count.courses)
           .slice(0, 8)
-          .map((r) => ({ id: r.id, name: r.name, thumbnail: r.thumbnailUrl, courseCount: r._count.courses })),
+          .map((r, i) => ({ id: r.id, name: r.name, thumbnail: r.thumbnailUrl, courseCount: r._count.courses, visitorScore: r.visitorScore, trending: i < 3 && r.visitorScore > 0 })),
         themeSections,
       }
     }
@@ -247,22 +248,32 @@ exploreRouter.get(
     })
     if (!spot) throw Errors.notFound('관광지')
 
-    const [agg, nearby, bookmark] = await Promise.all([
+    const lang = typeof req.query.lang === 'string' ? req.query.lang : 'ko'
+    const [agg, nearby, bookmark, audioGuides, translation] = await Promise.all([
       prisma.review.aggregate({ where: { targetType: 'SPOT', targetId: id, status: 'VISIBLE' }, _avg: { rating: true }, _count: true }),
       nearbySpots(id),
       req.userId
         ? prisma.bookmark.findUnique({ where: { userId_targetType_targetId: { userId: req.userId, targetType: 'SPOT', targetId: id } } })
         : null,
+      // 오디오 가이드(오디) — 해당 언어, 오디오 보유 우선
+      prisma.audioGuide.findMany({
+        where: { spotId: id, langCode: lang },
+        orderBy: [{ audioUrl: { sort: 'desc', nulls: 'last' } }, { id: 'asc' }],
+        take: 10,
+      }),
+      // 다국어 번역(영문 등) — lang이 ko가 아니면 적용
+      lang !== 'ko' ? prisma.spotTranslation.findUnique({ where: { spotId_langCode: { spotId: id, langCode: lang } } }) : null,
     ])
     const { open, today } = todayOpenStatus(spot.openHours)
 
     ok(res, {
       id: spot.id,
-      name: spot.name,
+      name: translation?.name ?? spot.name,
       category: spot.category,
       region: spot.region,
-      summary: spot.summary,
-      description: spot.description,
+      summary: translation?.summary ?? spot.summary,
+      description: translation?.description ?? spot.description,
+      lang: translation ? lang : 'ko',
       tips: spot.tips,
       address: spot.address,
       lat: spot.lat,
@@ -277,6 +288,10 @@ exploreRouter.get(
       reviewSummary: { avg: agg._avg.rating ? Number(agg._avg.rating.toFixed(1)) : null, count: agg._count },
       nearbySpots: nearby.map((n) => ({ id: n.id, name: n.name, category: n.category, distanceM: Math.round(n.distance_m) })),
       isBookmarked: req.userId ? Boolean(bookmark) : null,
+      audioGuides: audioGuides.map((a) => ({
+        id: a.id, title: a.title, audioTitle: a.audioTitle, script: a.script,
+        audioUrl: a.audioUrl, playTime: a.playTime, langCode: a.langCode, source: a.source,
+      })),
     })
   }),
 )

@@ -21,6 +21,10 @@ npm run db:migrate   # prisma migrate dev
 npm run db:seed      # 제주 시드 (관리자 3계정 + 코스 2개 + 스팟 8곳)
 npm run sync:tourapi -- --region=jeju [--types=12,39] [--max=100] [--overview] [--dry-run]   # 관광지
 npm run sync:tourapi -- --region=jeju --courses [--max=10] [--dry-run]                        # 여행코스(경유지→좌표 연결)
+npm run sync:audioguide -- --region=jeju [--langs=ko,en] [--radius=1000] [--dry-run]          # 오디오 가이드(오디·좌표 매칭)
+npm run sync:photos -- --region=jeju [--all] [--dry-run]    # 관광사진(스팟명 키워드 매칭→spot_images)
+npm run sync:i18n -- --region=jeju [--all] [--dry-run]      # 영문(EngService2, title 괄호 한글명 매칭→spot_translations)
+npm run sync:visitors [-- --dry-run]                        # 지역 방문자수(전국 시도)→region.visitorScore
 ```
 
 ## backend 핵심 규약
@@ -38,12 +42,17 @@ npm run sync:tourapi -- --region=jeju --courses [--max=10] [--dry-run]          
 
 - 관리자 웹(CMS): 코어 완료(인증·대시보드·스팟/코스 CRUD·발행 워크플로·회원/신고/배너), 브라우저 E2E 검증 완료. 잔여 — 푸시 캠페인 UI(백엔드 API는 완료), 코스 미리보기, 감사 로그 뷰어
 - TourAPI 동기화 배치: 구현·테스트·라이브 검증 완료(`src/modules/tourapi/`). 관광지 동기화 + **여행코스 import**(areaBasedList2→detailInfo2→detailCommon2로 경유지를 좌표 POI에 연결, DRAFT 코스 생성→에디터 4-eyes 발행). 멱등(코스 보존·스팟 가공필드 보존). 운영 실행은 `TOURAPI_SERVICE_KEY` 필요
+- 오디오 가이드(오디·Odii) 동기화: 구현·테스트·라이브 검증 완료(`src/modules/audioguide/`, `npm run sync:audioguide`). 스팟 좌표 반경으로 오디오 스토리 매칭→`audio_guides` 적재, 스팟 상세 응답 `audioGuides[]`, 앱 expo-audio 재생. 동일 `TOURAPI_SERVICE_KEY` 사용(data.go.kr 15101971 활용신청)
+- 부가 공공데이터(동일 키, 각 데이터셋 활용신청 필요) — 모두 구현·테스트·라이브 검증:
+  - **관광사진**(`src/modules/photos/`, PhotoGalleryService1/gallerySearchList1, 스팟명 키워드 매칭)→`spot_images`(source=PHOTO), 앱 갤러리
+  - **영문**(`src/modules/i18n/`, EngService2/areaBasedList2 lDongRegnCd, **영문 title 괄호 속 한글명으로 매칭**—contentId는 한글과 비공유)→`spot_translations`, 스팟 상세 `?lang=en`
+  - **지역 방문자수**(`src/modules/visitors/`, DataLabService/metcoRegnVisitrDDList, 외지인+외국인 합)→`region.visitorScore`, 홈 인기지역 정렬·인기 배지. 시도명 부분일치(REGION_AREA.sidoKey, 전북/강원 특별자치도 주의)
 - S3 presigned 업로드: 구현 완료(`src/modules/uploads/`, `S3_BUCKET` 없으면 503). FCM 푸시 캠페인: 구현 완료(`src/modules/push/`, 야간 차단·마케팅 미동의 제외, `FCM_PROJECT_ID` 없으면 집계만). 실제 발송은 FCM HTTP v1 자격증명 연결 필요
 - 데이터 파기 배치: 구현 완료(`src/modules/retention/`, `npm run purge`, 탈퇴 30일/체크인 좌표 6개월)
 
 ## mobile (M3) 현황 (cd mobile)
 
-- 핵심 흐름 완료: 홈·탐색(지역→코스목록→코스상세→관광지)·여행시작→가이드 모드(체크인)·저장·MY. typecheck·Android 번들 통과
+- 핵심 흐름 완료: 홈·탐색(지역→코스목록→코스상세→관광지)·여행시작→가이드 모드(체크인)·저장·MY. 관광지 상세에 **오디오 가이드 플레이어(expo-audio)**. typecheck·Android 번들 통과
 - **카카오맵**(`MapView` 추상화, `EXPO_PUBLIC_KAKAO_NATIVE_KEY` 없으면 플레이스홀더), **카카오 소셜 로그인**(`@react-native-kakao/user`→`/auth/social`), **온보딩+약관 동의**(AU-02), **리뷰 작성·북마크 토글** 완료
 - 지도·소셜은 카카오 네이티브 키 + dev build(`npx expo run:android`) 필요. 키 없이도 앱은 정상 실행(폴백). app.config.ts가 키를 env에서 주입
 - 잔여: 구글 로그인, 관심테마(ON-02), FCM 토큰 등록, 카카오맵 마커/폴리라인

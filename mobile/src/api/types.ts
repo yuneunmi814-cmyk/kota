@@ -2,7 +2,7 @@ export type Transport = 'WALK' | 'BUS' | 'TAXI' | 'CAR'
 export type TripStatus = 'UPCOMING' | 'ONGOING' | 'COMPLETED' | 'CANCELED'
 export type VisitStatus = 'PENDING' | 'DONE' | 'SKIPPED'
 
-export interface Region { id: string; name: string; slug: string; thumbnailUrl?: string | null; courseCount?: number }
+export interface Region { id: string; name: string; slug: string; thumbnailUrl?: string | null; courseCount?: number; visitorScore?: number; trending?: boolean }
 export interface Theme { id: string; name: string; icon?: string | null }
 
 export interface CourseCard {
@@ -65,6 +65,17 @@ export interface CourseDetail {
   isBookmarked: boolean | null
 }
 
+export interface AudioGuide {
+  id: string
+  title: string
+  audioTitle: string | null
+  script: string | null
+  audioUrl: string | null
+  playTime: number | null
+  langCode: string
+  source: string
+}
+
 export interface SpotDetail {
   id: string
   name: string
@@ -85,6 +96,7 @@ export interface SpotDetail {
   reviewSummary: { avg: number | null; count: number }
   nearbySpots: { id: string; name: string; category: string; distanceM: number }[]
   isBookmarked: boolean | null
+  audioGuides: AudioGuide[]
 }
 
 export interface TripVisit {
