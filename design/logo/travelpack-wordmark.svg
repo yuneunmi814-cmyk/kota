@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" role="img" aria-label="TravelPack 워드마크">
+  <title>TravelPack Wordmark</title>
+  <desc>마크 + Travel(네이비) + 카트리지 태그 속 Pack(흰색)의 가로형 조합. 앱바·스플래시·스토어 목록용</desc>
+  <!-- 마크 (원본 0.6배) -->
+  <g transform="translate(4,12) scale(0.6)">
+    <rect x="18" y="10" width="84" height="120" rx="16" fill="#FF6B35"/>
+    <line x1="34" y1="29" x2="86" y2="29" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+    <line x1="34" y1="40" x2="86" y2="40" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+    <rect x="32" y="54" width="56" height="62" rx="8" fill="#FFFFFF"/>
+    <path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557"/>
+    <circle cx="60" cy="78" r="5" fill="#FFFFFF"/>
+  </g>
+  <!-- 워드마크 -->
+  <text x="82" y="67" font-family="Pretendard, -apple-system, 'Apple SD Gothic Neo', sans-serif" font-size="38" font-weight="600" fill="#1D3557">Travel</text>
+  <rect x="226" y="31" width="116" height="46" rx="11" fill="#FF6B35"/>
+  <text x="284" y="65" text-anchor="middle" font-family="Pretendard, -apple-system, 'Apple SD Gothic Neo', sans-serif" font-size="34" font-weight="600" fill="#FFFFFF">Pack</text>
+</svg>

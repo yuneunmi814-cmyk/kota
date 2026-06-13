@@ -1,0 +1,163 @@
+import type { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcryptjs'
+
+export interface SeedResult {
+  regionId: bigint
+  themeIds: Record<string, bigint>
+  spotIds: Record<string, bigint>
+  publishedCourseId: bigint
+  draftCourseId: bigint
+  admins: { super: bigint; editor: bigint; reviewer: bigint }
+}
+
+const SPOTS = [
+  { name: '성산일출봉', category: '자연', lat: 33.4587, lng: 126.9425, stay: 90, fee: '성인 5,000원', tips: '오후 4시 이후 방문하면 줄이 짧고, 광치기 해변 노을과 이어 보기 좋아요', summary: '유네스코 세계자연유산, 분화구 일출 명소', open: { mon: { open: '07:00', close: '19:00' }, tue: { open: '07:00', close: '19:00' }, wed: { open: '07:00', close: '19:00' }, thu: { open: '07:00', close: '19:00' }, fri: { open: '07:00', close: '19:00' }, sat: { open: '07:00', close: '19:00' }, sun: { open: '07:00', close: '19:00' } } },
+  { name: '광치기 해변', category: '해변', lat: 33.4503, lng: 126.9197, stay: 40, fee: '무료', tips: '물때를 맞춰 가면 이끼 낀 용암 지대를 볼 수 있어요', summary: '성산일출봉을 배경으로 한 인생샷 명소' },
+  { name: '섭지코지', category: '자연', lat: 33.4239, lng: 126.9296, stay: 60, fee: '무료(주차 유료)', tips: '유채꽃 시즌(3~4월)이 가장 아름다워요', summary: '해안 절벽 산책로와 등대' },
+  { name: '함덕해수욕장', category: '해변', lat: 33.5434, lng: 126.6692, stay: 80, fee: '무료', tips: '에메랄드빛 물색은 오전이 제일 선명해요', summary: '서우봉과 맞닿은 에메랄드 해변' },
+  { name: '비자림', category: '숲', lat: 33.4894, lng: 126.8085, stay: 80, fee: '성인 3,000원', tips: '돌멩이 길이라 운동화 필수, 우천 시 더 운치 있어요', summary: '천년 비자나무 숲 치유 산책로' },
+  { name: '만장굴', category: '동굴', lat: 33.5283, lng: 126.7706, stay: 60, fee: '성인 4,000원', tips: '내부는 한여름에도 서늘하니 겉옷을 챙기세요', summary: '세계 최장급 용암동굴' },
+  { name: '월정리 해변', category: '해변', lat: 33.556, lng: 126.7958, stay: 90, fee: '무료', tips: '카페거리와 함께 묶어 반나절 코스로 좋아요', summary: '카페거리로 유명한 백사장 해변' },
+  { name: '동문재래시장', category: '시장', lat: 33.5121, lng: 126.5281, stay: 90, fee: '무료', tips: '야시장은 18시 이후! 딱새우회·흑돼지 꼬치 추천', summary: '제주 최대 전통시장, 야시장 먹거리' },
+] as const
+
+export async function runSeed(prisma: PrismaClient, adminPassword: string, rounds = 10): Promise<SeedResult> {
+  // 의존 역순 전체 삭제 (개발·테스트 시드 전용)
+  await prisma.$transaction([
+    prisma.auditLog.deleteMany(),
+    prisma.reviewReport.deleteMany(),
+    prisma.reviewImage.deleteMany(),
+    prisma.review.deleteMany(),
+    prisma.tripVisit.deleteMany(),
+    prisma.trip.deleteMany(),
+    prisma.bookmark.deleteMany(),
+    prisma.courseItem.deleteMany(),
+    prisma.courseTheme.deleteMany(),
+    prisma.course.deleteMany(),
+    prisma.spotImage.deleteMany(),
+    prisma.spot.deleteMany(),
+    prisma.banner.deleteMany(),
+    prisma.userPushToken.deleteMany(),
+    prisma.userInterest.deleteMany(),
+    prisma.userConsent.deleteMany(),
+    prisma.user.deleteMany(),
+    prisma.adminUser.deleteMany(),
+    prisma.theme.deleteMany(),
+    prisma.region.deleteMany(),
+  ])
+
+  const passwordHash = await bcrypt.hash(adminPassword, rounds)
+  const [superAdmin, editor, reviewer] = await Promise.all([
+    prisma.adminUser.create({ data: { email: 'super@travelpack.app', passwordHash, name: '총괄 관리자', role: 'SUPER_ADMIN' } }),
+    prisma.adminUser.create({ data: { email: 'editor@travelpack.app', passwordHash, name: '콘텐츠 에디터', role: 'CONTENT_MANAGER' } }),
+    prisma.adminUser.create({ data: { email: 'reviewer@travelpack.app', passwordHash, name: '콘텐츠 검수자', role: 'CONTENT_MANAGER' } }),
+  ])
+
+  const jeju = await prisma.region.create({ data: { name: '제주', slug: 'jeju', sortOrder: 1 } })
+  await prisma.region.createMany({
+    data: [
+      { name: '부산', slug: 'busan', sortOrder: 2 },
+      { name: '경주', slug: 'gyeongju', sortOrder: 3 },
+      { name: '여수', slug: 'yeosu', sortOrder: 4 },
+      { name: '강릉', slug: 'gangneung', sortOrder: 5 },
+      { name: '전주', slug: 'jeonju', sortOrder: 6 },
+    ],
+  })
+
+  const themeNames = ['힐링', '미식', '역사', '인생샷', '자연', '액티비티', '카페', '야경']
+  const themes: Record<string, bigint> = {}
+  for (const name of themeNames) {
+    themes[name] = (await prisma.theme.create({ data: { name } })).id
+  }
+
+  const spotIds: Record<string, bigint> = {}
+  for (const s of SPOTS) {
+    spotIds[s.name] = (
+      await prisma.spot.create({
+        data: {
+          regionId: jeju.id,
+          name: s.name,
+          category: s.category,
+          summary: s.summary,
+          tips: s.tips,
+          lat: s.lat,
+          lng: s.lng,
+          address: `제주특별자치도 ${s.name} 일대`,
+          admissionFee: s.fee,
+          avgStayMinutes: s.stay,
+          openHours: 'open' in s ? (s.open as object) : undefined,
+        },
+      })
+    ).id
+  }
+
+  // 와이어프레임(CO-01)과 동일한 "제주 동부 힐링 2일" — 명소 8곳
+  const published = await prisma.course.create({
+    data: {
+      regionId: jeju.id,
+      title: '제주 동부 힐링 2일',
+      summary: '바다·오름·카페를 잇는 2일',
+      durationDays: 2,
+      estCost: 120000,
+      status: 'PUBLISHED',
+      publishedAt: new Date(),
+      createdBy: editor.id,
+      saveCount: 1200,
+      themes: { create: [{ themeId: themes['힐링']! }, { themeId: themes['인생샷']! }] },
+      items: {
+        create: [
+          { dayNo: 1, sortOrder: 1, spotId: spotIds['성산일출봉']!, stayMinutes: 90, transportToNext: 'WALK', transportMinutes: 15 },
+          { dayNo: 1, sortOrder: 2, spotId: spotIds['광치기 해변']!, stayMinutes: 40, transportToNext: 'BUS', transportMinutes: 30 },
+          { dayNo: 1, sortOrder: 3, spotId: spotIds['섭지코지']!, stayMinutes: 60, transportToNext: 'BUS', transportMinutes: 40 },
+          { dayNo: 1, sortOrder: 4, spotId: spotIds['함덕해수욕장']!, stayMinutes: 80 },
+          { dayNo: 2, sortOrder: 1, spotId: spotIds['비자림']!, stayMinutes: 80, transportToNext: 'BUS', transportMinutes: 35 },
+          { dayNo: 2, sortOrder: 2, spotId: spotIds['만장굴']!, stayMinutes: 60, transportToNext: 'BUS', transportMinutes: 25 },
+          { dayNo: 2, sortOrder: 3, spotId: spotIds['월정리 해변']!, stayMinutes: 90, transportToNext: 'BUS', transportMinutes: 45 },
+          { dayNo: 2, sortOrder: 4, spotId: spotIds['동문재래시장']!, stayMinutes: 90 },
+        ],
+      },
+    },
+  })
+
+  const draft = await prisma.course.create({
+    data: {
+      regionId: jeju.id,
+      title: '서쪽 노을 미식 코스',
+      summary: '노을 맛집과 미식 스팟을 잇는 1박2일',
+      durationDays: 2,
+      estCost: 150000,
+      status: 'DRAFT',
+      createdBy: editor.id,
+      themes: { create: [{ themeId: themes['미식']! }] },
+      items: {
+        create: [
+          { dayNo: 1, sortOrder: 1, spotId: spotIds['동문재래시장']!, stayMinutes: 90, transportToNext: 'BUS', transportMinutes: 40 },
+          { dayNo: 1, sortOrder: 2, spotId: spotIds['함덕해수욕장']!, stayMinutes: 60 },
+          { dayNo: 2, sortOrder: 1, spotId: spotIds['월정리 해변']!, stayMinutes: 90 },
+        ],
+      },
+    },
+  })
+
+  const now = Date.now()
+  await prisma.banner.create({
+    data: {
+      title: '여름 제주 특집',
+      imageUrl: 'https://placehold.co/720x360',
+      linkType: 'COURSE',
+      linkTarget: published.id.toString(),
+      startAt: new Date(now - 86400_000),
+      endAt: new Date(now + 30 * 86400_000),
+      sortOrder: 1,
+    },
+  })
+
+  return {
+    regionId: jeju.id,
+    themeIds: themes,
+    spotIds,
+    publishedCourseId: published.id,
+    draftCourseId: draft.id,
+    admins: { super: superAdmin.id, editor: editor.id, reviewer: reviewer.id },
+  }
+}

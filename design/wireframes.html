@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TravelPack 안드로이드 와이어프레임 — 전체 20개 화면</title>
+<style>
+/* ============ 디자인 토큰 (기획설계서 1.1절) ============ */
+:root{
+  --primary:#FF6B35;        /* 선셋 오렌지 — CTA, 활성 탭, 체크인 강조 */
+  --primary-weak:#FFF0E9;   /* primary 연한 배경 — 꿀팁 박스, 활성 칩 */
+  --primary-deep:#C24818;
+  --secondary:#1D3557;      /* 딥 네이비 — 헤더, 타이틀 */
+  --bg:#FFFFFF; --bg2:#F7F7F9;
+  --t1:#191F28; --t2:#6B7684; --t3:#8B95A1;
+  --success:#12B76A; --error:#F04438;
+  --line:#E7EAEE;
+  --kakao:#FEE500;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  background:#F1F2F4;color:var(--t1);padding-bottom:60px;
+}
+/* ============ 페이지 레이아웃 ============ */
+.head{background:var(--secondary);color:#fff;padding:36px 32px 30px}
+.head h1{font-size:24px;font-weight:600}
+.head h1 b{color:var(--primary)}
+.head p{font-size:13px;color:#B9C4D6;margin-top:8px;line-height:1.6}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:18px;font-size:12px;align-items:center}
+.sw{display:inline-flex;align-items:center;gap:6px;color:#DDE4EE}
+.sw i{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid rgba(255,255,255,.25)}
+.section{max-width:1340px;margin:34px auto 0;padding:0 24px}
+.section h2{font-size:17px;font-weight:600;color:var(--secondary);margin-bottom:4px}
+.section .desc{font-size:12.5px;color:var(--t2);margin-bottom:18px}
+.grid{display:flex;flex-wrap:wrap;gap:26px}
+.cell{display:flex;flex-direction:column;align-items:center}
+.cap{font-size:12px;color:var(--t2);margin-top:10px;text-align:center;max-width:270px;line-height:1.5}
+.cap b{color:var(--t1)}
+.note{max-width:1340px;margin:40px auto 0;padding:0 24px;font-size:12px;color:var(--t3);line-height:1.7}
+
+/* ============ 폰 프레임 (360×800dp의 75%) ============ */
+.ph{
+  width:270px;height:600px;background:var(--bg);
+  border:1px solid #DADDE2;border-radius:22px;overflow:hidden;
+  display:flex;flex-direction:column;font-size:11px;line-height:1.45;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);position:relative;flex:none;
+}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:7px 14px 3px;font-size:10px;color:var(--t2)}
+.ab{display:flex;align-items:center;gap:8px;padding:9px 14px;min-height:38px}
+.ab .ttl{font-weight:600;font-size:13px}
+.bd{flex:1;padding:2px 14px 10px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+/* 공통 요소 */
+.row{display:flex;align-items:center;gap:7px}
+.t2{color:var(--t2)}.t3{color:var(--t3)}
+.tt{font-weight:600;font-size:12px}
+.ic{width:1.3em;height:1.3em;flex:none;vertical-align:-.22em}
+.imgph{background:var(--bg2);color:var(--t3);display:flex;align-items:center;justify-content:center;gap:4px}
+.search{background:var(--bg2);border-radius:999px;padding:8px 12px;display:flex;align-items:center;gap:7px;color:var(--t3)}
+.card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg);flex:none}
+.chip{font-size:10.5px;padding:4px 10px;border-radius:999px;background:var(--bg2);color:var(--t2);white-space:nowrap;flex:none}
+.chip.on{background:var(--primary-weak);color:var(--primary-deep);font-weight:600}
+.chip.sel{background:var(--primary);color:#fff;font-weight:600}
+.cta{background:var(--primary);color:#fff;border-radius:9px;text-align:center;padding:10px 0;font-weight:600;font-size:12px}
+.cta.dis{background:#E5E8EB;color:var(--t3)}
+.ghost{border:1px solid var(--line);border-radius:9px;text-align:center;padding:10px 0;color:var(--t2);font-weight:500}
+.tip{background:var(--primary-weak);color:var(--primary-deep);border-radius:9px;padding:9px 10px;line-height:1.5}
+.tabs{display:flex;border-top:1px solid var(--line);padding:7px 4px 9px;margin-top:auto;background:var(--bg)}
+.tb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--t3);font-size:9.5px}
+.tb.on{color:var(--primary);font-weight:600}
+.prog{height:4px;border-radius:2px;background:var(--bg2);overflow:hidden}
+.prog>i{display:block;height:100%;background:var(--primary)}
+.seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;text-align:center}
+.seg span{flex:1;padding:7px 0;color:var(--t2)}
+.seg .on{background:var(--primary-weak);color:var(--primary-deep);font-weight:600}
+.stepn{width:17px;height:17px;border-radius:50%;background:var(--primary);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex:none}
+.field{border:1px solid var(--line);border-radius:9px;padding:9px 11px;color:var(--t1);display:flex;align-items:center;gap:6px}
+.field .hint{color:var(--t3)}
+.lab{font-size:10px;color:var(--t2);margin-bottom:-5px}
+.toggle{width:30px;height:18px;border-radius:999px;background:#D8DCE1;position:relative;flex:none}
+.toggle::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.toggle.on{background:var(--primary)}
+.toggle.on::after{left:auto;right:2px}
+.lirow{display:flex;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid var(--bg2)}
+.star{color:var(--primary);letter-spacing:1px}
+.star .off{color:#D8DCE1}
+.dotnav{display:flex;gap:5px;justify-content:center}
+.dotnav i{width:6px;height:6px;border-radius:50%;background:#D8DCE1}
+.dotnav i.on{width:16px;border-radius:3px;background:var(--primary)}
+.checkc{width:16px;height:16px;border-radius:50%;border:1.5px solid #CDD3DA;color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.checkc.on{background:var(--primary);border-color:var(--primary)}
+</style>
+</head>
+<body>
+
+<!-- ============ 아이콘 심볼 ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="_stroke" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></g>
+    <symbol id="i-logo" viewBox="0 0 120 140"><rect x="18" y="10" width="84" height="120" rx="16" fill="#FF6B35"/><line x1="34" y1="29" x2="86" y2="29" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".85"/><line x1="34" y1="40" x2="86" y2="40" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".85"/><rect x="32" y="54" width="56" height="62" rx="8" fill="#fff"/><path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557"/><circle cx="60" cy="78" r="5" fill="#fff"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 10.5V20h13v-9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15.5 8.5-2.2 5-4.8 2 2.2-5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6.5 4h11v16.5l-5.5-3.8-5.5 3.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 20.5c1.4-3.6 4.5-5 7.5-5s6.1 1.4 7.5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16.5 16.5 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9.5a6 6 0 1 1 12 0c0 4.8 1.8 5.8 1.8 5.8H4.2S6 14.3 6 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10.3 19.5a1.8 1.8 0 0 0 3.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-fwd" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8.6" cy="10" r="1.6" fill="currentColor"/><path d="m3.5 16.5 5-4.5 4 3.5 3-2.5 5 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8h3l1.8-2.5h6.4L17 8h3a1.5 1.5 0 0 1 1.5 1.5V18A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V9.5A1.5 1.5 0 0 1 4 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13.4" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 14.5H4.5A1.5 1.5 0 0 1 3 13V4.5A1.5 1.5 0 0 1 4.5 3H13a1.5 1.5 0 0 1 1.5 1.5V5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-nav" viewBox="0 0 24 24"><path d="M21 3 3.6 10.4l7 2.9 2.9 7z" fill="currentColor"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5C6 16 3 12.6 3 8.9 3 6.2 5.1 4 7.8 4c1.7 0 3.3.9 4.2 2.3A5 5 0 0 1 16.2 4C18.9 4 21 6.2 21 8.9c0 3.7-3 7.1-9 11.6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heartf" viewBox="0 0 24 24"><path d="M12 20.5C6 16 3 12.6 3 8.9 3 6.2 5.1 4 7.8 4c1.7 0 3.3.9 4.2 2.3A5 5 0 0 1 16.2 4C18.9 4 21 6.2 21 8.9c0 3.7-3 7.1-9 11.6z" fill="currentColor"/></symbol>
+    <symbol id="i-starf" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.4 1.1 6.3L12 17.2l-5.7 3 1.1-6.3L2.8 9.5l6.4-.9z" fill="currentColor"/></symbol>
+    <symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="2" fill="currentColor"/><path d="M10 21l2.2-6M14.5 21l-1.7-5 .5-5.5M9 11l2.5-2.5 3.3-.5 2.7 2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 11h16" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="19.2" r="1.4" fill="currentColor"/><circle cx="16" cy="19.2" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-status" viewBox="0 0 44 14"><path d="M2 11.5V8M6 11.5V6M10 11.5V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 9a7 7 0 0 1 9 0M19.5 11.2a3.6 3.6 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="31" y="4" width="10" height="7" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="32.5" y="5.5" width="5.5" height="4" rx=".8" fill="currentColor"/><path d="M42.5 6.5v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ 표지 ============ -->
+<div class="head">
+  <h1><b>TravelPack</b> 안드로이드 와이어프레임 <span style="font-weight:400;font-size:15px;opacity:.85">— 전체 20개 화면 · v1.1</span></h1>
+  <p>기준 해상도 360×800dp(75% 축소 표시) · 4pt 그리드 · 최소 터치 영역 48dp · 좌우 마진 20dp · 폰트 Pretendard<br>
+  화면별 상세 스펙·인터랙션·엣지 케이스는 <b>docs/TravelPack_기획설계서.md 1장</b>, Figma 페이지 구조는 1.5절 참조</p>
+  <div class="legend">
+    <span class="sw"><i style="background:#FF6B35"></i>primary #FF6B35</span>
+    <span class="sw"><i style="background:#1D3557"></i>secondary #1D3557</span>
+    <span class="sw"><i style="background:#F7F7F9"></i>bg #F7F7F9</span>
+    <span class="sw"><i style="background:#191F28"></i>text #191F28</span>
+    <span class="sw"><i style="background:#12B76A"></i>success #12B76A</span>
+    <span class="sw"><i style="background:#F04438"></i>error #F04438</span>
+  </div>
+</div>
+
+<!-- ════════════════ FLOW 1 — 온보딩 · 가입 ════════════════ -->
+<div class="section">
+  <h2>Flow 1 — 온보딩 · 가입 <span style="color:var(--t3);font-weight:400;font-size:13px">(Figma 03_Flow_Onboarding)</span></h2>
+  <div class="desc">SP-01 → ON-01 → AU-01 → (신규) AU-02 약관 → ON-02 관심 테마 → 홈. 위치 약관은 [선택] — 미동의 시 가이드 모드 진입 시점에 재요청.</div>
+  <div class="grid">
+
+  <!-- SP-01 스플래시 -->
+  <div class="cell"><div class="ph" style="background:var(--secondary);color:#fff">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+      <svg style="width:64px;height:75px" aria-label="TravelPack 로고"><use href="#i-logo"/></svg>
+      <div style="font-size:22px;font-weight:700">TravelPack</div>
+      <div style="font-size:11.5px;color:#B9C4D6">패키지여행의 편안함을 앱으로</div>
+    </div>
+    <div style="padding:0 0 36px;text-align:center;color:#8FA0BB;font-size:10px">자동 로그인 확인 중…</div>
+  </div><div class="cap"><b>SP-01</b> 스플래시 — Refresh Token 검사 → 자동 로그인/온보딩 분기</div></div>
+
+  <!-- ON-01 온보딩 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab" style="justify-content:flex-end"><span class="t3">건너뛰기</span></div>
+    <div class="bd" style="align-items:center;justify-content:center;text-align:center;gap:14px">
+      <div class="imgph" style="width:170px;height:170px;border-radius:50%"><svg class="ic" style="width:30px;height:30px"><use href="#i-photo"/></svg></div>
+      <div style="font-size:16px;font-weight:700;line-height:1.4">3시간 걸리던 여행 준비,<br>3분이면 끝나요</div>
+      <div class="t2">지역만 고르면 검증된 코스가 도착해요</div>
+      <div class="dotnav"><i class="on"></i><i></i><i></i></div>
+    </div>
+    <div style="padding:0 14px 16px"><div class="cta">다음</div></div>
+  </div><div class="cap"><b>ON-01</b> 온보딩 3스텝 — 서비스 가치 소개 슬라이드</div></div>
+
+  <!-- AU-01 로그인 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="bd" style="justify-content:center;gap:11px;text-align:center">
+      <svg style="width:52px;height:61px;margin:0 auto" aria-label="TravelPack 로고"><use href="#i-logo"/></svg>
+      <div style="font-size:18px;font-weight:700;color:var(--secondary)">TravelPack</div>
+      <div class="t2" style="margin-bottom:10px">고민 없이 떠나는 가장 쉬운 방법</div>
+      <div class="cta" style="background:var(--kakao);color:#191919">카카오로 3초 만에 시작</div>
+      <div class="ghost" style="color:var(--t1)">Google로 시작하기</div>
+      <div class="t3" style="margin-top:6px">이메일로 로그인</div>
+    </div>
+    <div style="padding:0 14px 18px;text-align:center" class="t3">로그인 없이 둘러보기</div>
+  </div><div class="cap"><b>AU-01</b> 로그인 — 카카오/구글 OAuth · 이메일 · 둘러보기</div></div>
+
+  <!-- AU-02 약관 동의 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><svg class="ic"><use href="#i-back"/></svg></div>
+    <div class="bd" style="gap:0">
+      <div style="font-size:15px;font-weight:700;margin-bottom:12px">서비스 이용을 위해<br>동의해 주세요</div>
+      <div class="row" style="border:1.5px solid var(--primary);border-radius:10px;padding:10px 11px;margin-bottom:6px">
+        <span class="checkc on"><svg class="ic" style="width:11px;height:11px"><use href="#i-check"/></svg></span><b>전체 동의</b>
+      </div>
+      <div class="lirow"><span class="checkc on"><svg class="ic" style="width:11px;height:11px"><use href="#i-check"/></svg></span><span><b class="t2">[필수]</b> 서비스 이용약관</span><svg class="ic t3" style="margin-left:auto"><use href="#i-fwd"/></svg></div>
+      <div class="lirow"><span class="checkc on"><svg class="ic" style="width:11px;height:11px"><use href="#i-check"/></svg></span><span><b class="t2">[필수]</b> 개인정보 수집·이용 동의</span><svg class="ic t3" style="margin-left:auto"><use href="#i-fwd"/></svg></div>
+      <div class="lirow"><span class="checkc on"><svg class="ic" style="width:11px;height:11px"><use href="#i-check"/></svg></span><span><b class="t2">[필수]</b> 만 14세 이상입니다</span></div>
+      <div class="lirow"><span class="checkc"></span><span><b class="t3">[선택]</b> 위치기반서비스 이용약관</span><svg class="ic t3" style="margin-left:auto"><use href="#i-fwd"/></svg></div>
+      <div class="lirow" style="border:none"><span class="checkc"></span><span><b class="t3">[선택]</b> 마케팅 정보 수신(푸시)</span></div>
+    </div>
+    <div style="padding:0 14px 16px"><div class="cta">동의하고 시작하기</div></div>
+  </div><div class="cap"><b>AU-02</b> 약관 동의 — 동의 이력(항목·버전·시각) 서버 저장</div></div>
+
+  <!-- AU-03 이메일 가입 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><svg class="ic"><use href="#i-back"/></svg><span class="ttl">이메일로 가입</span></div>
+    <div class="bd" style="gap:11px;padding-top:8px">
+      <div class="lab">이메일</div>
+      <div class="field">traveler@gmail.com<svg class="ic" style="margin-left:auto;color:var(--success)"><use href="#i-check"/></svg></div>
+      <div class="lab">비밀번호</div>
+      <div class="field">••••••••••</div>
+      <div class="t3" style="margin-top:-6px;font-size:10px">8자 이상, 영문+숫자 조합</div>
+      <div class="lab">닉네임</div>
+      <div class="field">여행하는곰<span style="margin-left:auto;color:var(--success);font-size:10px">사용 가능</span></div>
+    </div>
+    <div style="padding:0 14px 16px"><div class="cta">가입하기</div></div>
+  </div><div class="cap"><b>AU-03</b> 이메일 가입 — bcrypt(cost 12) 해시 저장</div></div>
+
+  <!-- ON-02 관심 테마 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="bd" style="padding-top:18px;gap:13px">
+      <div style="font-size:15px;font-weight:700">어떤 여행을 좋아하세요?</div>
+      <div class="t2">관심 테마를 골라주세요 <b style="color:var(--primary)">2/3</b></div>
+      <div class="row" style="flex-wrap:wrap;gap:8px;margin-top:6px">
+        <span class="chip sel" style="padding:7px 13px">🌿 힐링</span><span class="chip sel" style="padding:7px 13px">🍜 미식</span><span class="chip" style="padding:7px 13px">🏛 역사</span>
+        <span class="chip" style="padding:7px 13px">📸 인생샷</span><span class="chip" style="padding:7px 13px">⛰ 자연</span><span class="chip" style="padding:7px 13px">🏄 액티비티</span>
+        <span class="chip" style="padding:7px 13px">☕ 카페</span><span class="chip" style="padding:7px 13px">🌃 야경</span>
+      </div>
+      <div class="t3" style="font-size:10px">선택한 테마는 홈 추천 큐레이션에 반영돼요</div>
+    </div>
+    <div style="padding:0 14px 16px;display:flex;flex-direction:column;gap:8px"><div class="cta">시작하기</div><div style="text-align:center" class="t3">나중에 할게요</div></div>
+  </div><div class="cap"><b>ON-02</b> 관심 테마 선택 — user_interests → 홈 큐레이션 가중치</div></div>
+
+  </div>
+</div>
+
+<!-- ════════════════ FLOW 2 — 탐색 ════════════════ -->
+<div class="section">
+  <h2>Flow 2 — 탐색 · 큐레이션 <span style="color:var(--t3);font-weight:400;font-size:13px">(Figma 04_Flow_Explore)</span></h2>
+  <div class="desc">HM-01 → EX-01 지역 → EX-02 목록(필터) → CO-01 코스 상세 → SPOT-01/CO-02. 발행(PUBLISHED) 코스만 노출, Redis 5분 캐시.</div>
+  <div class="grid">
+
+  <!-- HM-01 홈 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab" style="justify-content:space-between"><span style="display:flex;align-items:center;gap:5px"><svg style="width:15px;height:18px"><use href="#i-logo"/></svg><span style="font-weight:700;font-size:14px;color:var(--primary)">TravelPack</span></span><svg class="ic t2" style="width:17px;height:17px"><use href="#i-bell"/></svg></div>
+    <div class="bd">
+      <div class="search"><svg class="ic"><use href="#i-search"/></svg>어디로 떠날까요?</div>
+      <div class="imgph" style="height:62px;border-radius:10px;background:linear-gradient(100deg,#1D3557 0%,#3A5A86 100%);color:#fff;flex-direction:column;gap:2px">
+        <b style="font-size:12px">여름 제주 특집 🍊</b><span style="font-size:9.5px;opacity:.8">에디터가 다녀온 코스 모음</span>
+      </div>
+      <div class="row" style="justify-content:space-between"><span class="tt">이번 주 추천 코스</span><span class="t3" style="font-size:10px">전체보기</span></div>
+      <div class="row" style="align-items:stretch">
+        <div class="card" style="flex:1"><div class="imgph" style="height:46px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>제주 동부 힐링 2일</b><div class="t3" style="font-size:10px">1박2일 · 명소 8곳</div><div class="row" style="gap:3px;font-size:10px;color:var(--t3);margin-top:2px"><svg class="ic" style="width:11px;height:11px;color:var(--primary)"><use href="#i-heartf"/></svg>1.2k</div></div></div>
+        <div class="card" style="flex:1"><div class="imgph" style="height:46px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>부산 미식 여행</b><div class="t3" style="font-size:10px">1박2일 · 명소 7곳</div><div class="row" style="gap:3px;font-size:10px;color:var(--t3);margin-top:2px"><svg class="ic" style="width:11px;height:11px;color:var(--primary)"><use href="#i-heartf"/></svg>876</div></div></div>
+      </div>
+      <div class="tt">어디로 떠날까요</div>
+      <div class="row" style="justify-content:space-between;text-align:center">
+        <span><span class="imgph" style="width:40px;height:40px;border-radius:50%;display:flex"><svg class="ic" style="width:13px;height:13px"><use href="#i-photo"/></svg></span><span class="t2" style="font-size:10px">제주</span></span>
+        <span><span class="imgph" style="width:40px;height:40px;border-radius:50%;display:flex"><svg class="ic" style="width:13px;height:13px"><use href="#i-photo"/></svg></span><span class="t2" style="font-size:10px">부산</span></span>
+        <span><span class="imgph" style="width:40px;height:40px;border-radius:50%;display:flex"><svg class="ic" style="width:13px;height:13px"><use href="#i-photo"/></svg></span><span class="t2" style="font-size:10px">경주</span></span>
+        <span><span class="imgph" style="width:40px;height:40px;border-radius:50%;display:flex"><svg class="ic" style="width:13px;height:13px"><use href="#i-photo"/></svg></span><span class="t2" style="font-size:10px">여수</span></span>
+        <span><span class="imgph" style="width:40px;height:40px;border-radius:50%;display:flex"><svg class="ic" style="width:13px;height:13px"><use href="#i-photo"/></svg></span><span class="t2" style="font-size:10px">강릉</span></span>
+      </div>
+      <div class="tt">🌿 힐링이 필요할 때 <span class="t3" style="font-weight:400;font-size:10px">— 관심 테마 기반</span></div>
+      <div class="card"><div class="imgph" style="height:38px"><svg class="ic"><use href="#i-photo"/></svg></div></div>
+    </div>
+    <div class="tabs">
+      <span class="tb on"><svg class="ic" style="width:16px;height:16px"><use href="#i-home"/></svg>홈</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-compass"/></svg>탐색</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-pin"/></svg>내 여행</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-bookmark"/></svg>저장</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-user"/></svg>MY</span>
+    </div>
+  </div><div class="cap"><b>HM-01</b> 홈 — 검색·배너·추천 캐러셀·지역·테마 큐레이션</div></div>
+
+  <!-- EX-01 지역 선택 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><span class="ttl">탐색</span></div>
+    <div class="bd">
+      <div class="search"><svg class="ic"><use href="#i-search"/></svg>지역·코스·관광지 검색</div>
+      <div class="row" style="align-items:stretch">
+        <div class="card" style="flex:1;position:relative"><div class="imgph" style="height:64px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>제주</b> <span class="t3" style="font-size:10px">코스 12</span></div></div>
+        <div class="card" style="flex:1"><div class="imgph" style="height:64px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>부산</b> <span class="t3" style="font-size:10px">코스 9</span></div></div>
+      </div>
+      <div class="row" style="align-items:stretch">
+        <div class="card" style="flex:1"><div class="imgph" style="height:64px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>경주</b> <span class="t3" style="font-size:10px">코스 7</span></div></div>
+        <div class="card" style="flex:1"><div class="imgph" style="height:64px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>여수</b> <span class="t3" style="font-size:10px">코스 6</span></div></div>
+      </div>
+      <div class="row" style="align-items:stretch">
+        <div class="card" style="flex:1"><div class="imgph" style="height:64px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>강릉</b> <span class="t3" style="font-size:10px">코스 6</span></div></div>
+        <div class="card" style="flex:1"><div class="imgph" style="height:64px"><svg class="ic"><use href="#i-photo"/></svg></div><div style="padding:7px"><b>전주</b> <span class="t3" style="font-size:10px">코스 5</span></div></div>
+      </div>
+    </div>
+    <div class="tabs">
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-home"/></svg>홈</span>
+      <span class="tb on"><svg class="ic" style="width:16px;height:16px"><use href="#i-compass"/></svg>탐색</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-pin"/></svg>내 여행</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-bookmark"/></svg>저장</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-user"/></svg>MY</span>
+    </div>
+  </div><div class="cap"><b>EX-01</b> 지역 선택 — 지역 그리드(코스 보유 수 표시)</div></div>
+
+  <!-- EX-02 코스 목록 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><svg class="ic"><use href="#i-back"/></svg><span class="ttl">제주</span><span class="t3" style="font-size:10px">변경</span><span class="t2" style="margin-left:auto;font-size:10.5px">추천순 <svg class="ic" style="width:11px;height:11px"><use href="#i-down"/></svg></span></div>
+    <div class="bd">
+      <div class="row"><span class="chip on">1박2일</span><span class="chip">테마</span><span class="chip">동행</span><span class="chip">당일</span></div>
+      <div class="card"><div class="imgph" style="height:58px"><svg class="ic"><use href="#i-photo"/></svg></div>
+        <div style="padding:8px"><div class="row" style="justify-content:space-between"><b style="font-size:12px">제주 동부 힐링 2일</b><svg class="ic" style="color:var(--t3)"><use href="#i-heart"/></svg></div>
+        <div class="t3" style="font-size:10px">명소 8곳 · 약 12만원 · 도보+대중교통</div>
+        <div class="row" style="margin-top:5px"><span class="chip">힐링</span><span class="chip">인생샷</span></div></div></div>
+      <div class="card"><div class="imgph" style="height:58px"><svg class="ic"><use href="#i-photo"/></svg></div>
+        <div style="padding:8px"><div class="row" style="justify-content:space-between"><b style="font-size:12px">서쪽 노을 미식 코스</b><svg class="ic" style="color:var(--primary)"><use href="#i-heartf"/></svg></div>
+        <div class="t3" style="font-size:10px">명소 7곳 · 약 15만원 · 렌터카</div>
+        <div class="row" style="margin-top:5px"><span class="chip">미식</span><span class="chip">노을</span></div></div></div>
+      <div class="card"><div class="imgph" style="height:44px"><svg class="ic"><use href="#i-photo"/></svg></div>
+        <div style="padding:8px"><b style="font-size:12px">중문 가족 나들이</b></div></div>
+    </div>
+  </div><div class="cap"><b>EX-02</b> 코스 목록 — 필터 칩(기간·테마·동행) · 0건 시 빈 상태+초기화</div></div>
+
+  <!-- CO-01 코스 상세 -->
+  <div class="cell"><div class="ph">
+    <div class="imgph" style="height:78px;position:relative;flex:none">
+      <svg class="ic" style="width:18px;height:18px"><use href="#i-photo"/></svg>
+      <svg class="ic" style="position:absolute;left:10px;top:10px;color:var(--t1)"><use href="#i-back"/></svg>
+      <svg class="ic" style="position:absolute;right:32px;top:10px;color:var(--t1)"><use href="#i-heart"/></svg>
+      <span style="position:absolute;right:8px;bottom:6px;font-size:9px;background:rgba(0,0,0,.45);color:#fff;border-radius:999px;padding:2px 7px">1/8</span>
+    </div>
+    <div class="bd" style="padding-top:9px">
+      <b style="font-size:14px">제주 동부 힐링 코스</b>
+      <div class="t2" style="margin-top:-5px;font-size:10.5px">바다·오름·카페를 잇는 2일</div>
+      <div class="row"><span class="chip">2일</span><span class="chip">명소 8곳</span><span class="chip">약 12만원</span><span class="chip">도보+버스</span></div>
+      <div class="row" style="gap:14px;border-bottom:1px solid var(--line);padding-bottom:5px">
+        <span style="font-weight:700;color:var(--primary);border-bottom:2px solid var(--primary);padding-bottom:4px">Day 1</span><span class="t2">Day 2</span>
+      </div>
+      <div class="row"><span class="stepn">1</span><b>성산일출봉</b><span class="t3" style="margin-left:auto;font-size:10px">90분</span></div>
+      <div class="t3" style="padding-left:24px;font-size:10px"><svg class="ic" style="width:11px;height:11px"><use href="#i-walk"/></svg> 도보 15분</div>
+      <div class="row"><span class="stepn">2</span><b>광치기 해변</b><span class="t3" style="margin-left:auto;font-size:10px">40분</span></div>
+      <div class="t3" style="padding-left:24px;font-size:10px"><svg class="ic" style="width:11px;height:11px"><use href="#i-bus"/></svg> 버스 30분</div>
+      <div class="row"><span class="stepn">3</span><b>섭지코지</b><span class="t3" style="margin-left:auto;font-size:10px">60분</span></div>
+      <div class="imgph" style="height:34px;border-radius:9px;font-size:10px"><svg class="ic" style="width:12px;height:12px"><use href="#i-pin"/></svg> 전체 경로 지도 보기</div>
+      <div class="row" style="font-size:10.5px"><svg class="ic" style="width:12px;height:12px;color:var(--primary)"><use href="#i-starf"/></svg><b>4.8</b><span class="t3">리뷰 128</span><span class="t3" style="margin-left:auto">전체보기</span></div>
+    </div>
+    <div class="row" style="padding:9px 14px;border-top:1px solid var(--line)">
+      <span class="ghost" style="width:44px;padding:9px 0"><svg class="ic"><use href="#i-heart"/></svg></span>
+      <span class="cta" style="flex:1">이 코스로 여행 시작</span>
+    </div>
+  </div><div class="cap"><b>CO-01</b> 코스 상세 — Day 탭·타임라인·하단 고정 CTA (핵심 화면)</div></div>
+
+  <!-- CO-02 코스 전체 지도 -->
+  <div class="cell"><div class="ph">
+    <div style="flex:1;background:var(--bg2);position:relative">
+      <svg viewBox="0 0 270 470" style="width:100%;height:100%" role="img" aria-label="코스 전체 경로 지도">
+        <path d="M0 90 H270 M0 210 H270 M0 330 H270 M70 0 V470 M170 0 V470" stroke="#E3E6EA" stroke-width="6"/>
+        <path d="M40 380 C 90 350, 80 260, 130 230 S 210 160, 225 90" fill="none" stroke="#FF6B35" stroke-width="3" stroke-dasharray="7 5"/>
+        <g font-size="12" font-weight="700" text-anchor="middle">
+          <circle cx="40" cy="380" r="11" fill="#1D3557"/><text x="40" y="384" fill="#fff">1</text>
+          <circle cx="105" cy="285" r="11" fill="#1D3557"/><text x="105" y="289" fill="#fff">2</text>
+          <circle cx="130" cy="230" r="11" fill="#1D3557"/><text x="130" y="234" fill="#fff">3</text>
+          <circle cx="185" cy="155" r="11" fill="#1D3557"/><text x="185" y="159" fill="#fff">4</text>
+          <circle cx="225" cy="90" r="11" fill="#1D3557"/><text x="225" y="94" fill="#fff">5</text>
+        </g>
+      </svg>
+      <span style="position:absolute;left:10px;top:10px;width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center"><svg class="ic"><use href="#i-back"/></svg></span>
+      <span class="chip on" style="position:absolute;right:10px;top:13px">Day 1</span>
+    </div>
+    <div style="padding:10px 14px;display:flex;gap:8px;overflow:hidden;border-top:1px solid var(--line)">
+      <div class="card row" style="padding:7px;gap:6px;flex:none;width:150px"><span class="stepn">1</span><div><b style="font-size:10.5px">성산일출봉</b><div class="t3" style="font-size:9.5px">체류 90분</div></div></div>
+      <div class="card row" style="padding:7px;gap:6px;flex:none;width:150px"><span class="stepn" style="background:var(--t3)">2</span><div><b style="font-size:10.5px">광치기 해변</b><div class="t3" style="font-size:9.5px">체류 40분</div></div></div>
+    </div>
+  </div><div class="cap"><b>CO-02</b> 코스 전체 지도 — 경로 폴리라인 + 번호 마커, 스팟 카드 스와이프</div></div>
+
+  <!-- SPOT-01 관광지 상세 -->
+  <div class="cell"><div class="ph">
+    <div class="imgph" style="height:72px;position:relative;flex:none"><svg class="ic" style="width:18px;height:18px"><use href="#i-photo"/></svg><svg class="ic" style="position:absolute;left:10px;top:10px;color:var(--t1)"><use href="#i-back"/></svg></div>
+    <div class="bd" style="padding-top:9px">
+      <div class="row"><b style="font-size:14px">성산일출봉</b><span class="chip" style="font-size:9.5px">자연</span><span style="margin-left:auto;color:var(--primary);font-weight:700;font-size:11.5px"><svg class="ic" style="width:12px;height:12px"><use href="#i-starf"/></svg> 4.8</span></div>
+      <div class="row" style="font-size:10.5px"><span class="t2" style="width:48px;flex:none">운영시간</span><span>07:00~19:00</span><b style="color:var(--success);font-size:10px">영업 중</b></div>
+      <div class="row" style="font-size:10.5px"><span class="t2" style="width:48px;flex:none">입장료</span><span>성인 5,000원</span></div>
+      <div class="row" style="font-size:10.5px"><span class="t2" style="width:48px;flex:none">체류</span><span>평균 90분</span></div>
+      <div class="row" style="font-size:10.5px"><span class="t2" style="width:48px;flex:none">주소</span><span>서귀포시 성산읍 성산리 1</span><svg class="ic t3" style="width:11px;height:11px"><use href="#i-copy"/></svg></div>
+      <div class="tip" style="font-size:10.5px"><b>💡 에디터 꿀팁</b><br>오후 4시 이후 방문하면 줄이 짧고, 광치기 해변 노을과 이어 보기 좋아요</div>
+      <div class="t2" style="font-size:10.5px;line-height:1.55">유네스코 세계자연유산. 분화구 둘레의 일출 명소로, 정상까지 도보 25분…</div>
+      <div class="tt">주변 추천</div>
+      <div class="row" style="align-items:stretch">
+        <div class="card" style="flex:1"><div class="imgph" style="height:32px"><svg class="ic" style="width:11px;height:11px"><use href="#i-photo"/></svg></div><div style="padding:6px;font-size:10px">광치기 해변</div></div>
+        <div class="card" style="flex:1"><div class="imgph" style="height:32px"><svg class="ic" style="width:11px;height:11px"><use href="#i-photo"/></svg></div><div style="padding:6px;font-size:10px">우뭇개 해안</div></div>
+      </div>
+    </div>
+  </div><div class="cap"><b>SPOT-01</b> 관광지 상세 — 핵심 정보 표 + 꿀팁 박스, 휴무 시 빨간 배지</div></div>
+
+  <!-- SR-01 통합 검색 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab" style="gap:7px"><svg class="ic"><use href="#i-back"/></svg>
+      <span class="search" style="flex:1;border:1.5px solid var(--primary);background:#fff;color:var(--t1)"><svg class="ic t3"><use href="#i-search"/></svg>성산<i style="display:inline-block;width:1.5px;height:12px;background:var(--primary)"></i></span>
+    </div>
+    <div class="bd">
+      <div class="row" style="justify-content:space-between"><span class="tt" style="font-size:11px">최근 검색어</span><span class="t3" style="font-size:10px">전체 삭제</span></div>
+      <div class="row"><span class="chip">광안리 <svg class="ic" style="width:10px;height:10px"><use href="#i-x"/></svg></span><span class="chip">경주 야경 <svg class="ic" style="width:10px;height:10px"><use href="#i-x"/></svg></span></div>
+      <div class="seg" style="margin-top:4px"><span class="on">코스</span><span>관광지</span><span>지역</span></div>
+      <div class="lirow"><svg class="ic t3"><use href="#i-pin"/></svg><div><b>성산</b>일출봉<div class="t3" style="font-size:10px">관광지 · 제주</div></div><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="lirow"><svg class="ic t3"><use href="#i-compass"/></svg><div><b>성산</b>·우도 해돋이 1박2일<div class="t3" style="font-size:10px">코스 · 명소 7곳</div></div><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="lirow" style="border:none"><svg class="ic t3"><use href="#i-search"/></svg><div><b>성산</b> 포함 코스 전체 보기</div></div>
+    </div>
+  </div><div class="cap"><b>SR-01</b> 통합 검색 — 최근 검색어·자동완성·결과 탭(코스/관광지/지역)</div></div>
+
+  </div>
+</div>
+
+<!-- ════════════════ FLOW 3 — 여행 · 마이 ════════════════ -->
+<div class="section">
+  <h2>Flow 3 — 여행 · 마이 <span style="color:var(--t3);font-weight:400;font-size:13px">(Figma 05_Flow_Trip)</span></h2>
+  <div class="desc">CO-01 → TR-01 날짜 선택 → TR-02 가이드 모드(체크인 반경 300m PostGIS 검증) → 완료 → RV-01 리뷰. 위치 권한 거부 시 수동 체크인 폴백.</div>
+  <div class="grid">
+
+  <!-- TR-01 여행 시작 (날짜 선택 바텀시트) -->
+  <div class="cell"><div class="ph" style="background:#9aa0a8">
+    <div style="height:170px;opacity:.45;background:#fff;padding:10px 14px;font-size:11px">
+      <b style="font-size:14px">제주 동부 힐링 코스</b>
+      <div class="row" style="margin-top:6px"><span class="chip">2일</span><span class="chip">명소 8곳</span></div>
+    </div>
+    <div style="margin-top:auto;background:#fff;border-radius:18px 18px 0 0;padding:12px 14px 16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 -4px 16px rgba(0,0,0,.12)">
+      <div style="width:34px;height:4px;border-radius:2px;background:var(--line);margin:0 auto"></div>
+      <b style="font-size:13px">언제 떠나세요?</b>
+      <div class="row" style="justify-content:space-between"><svg class="ic t3" style="width:12px;height:12px"><use href="#i-back"/></svg><b>2026년 6월</b><svg class="ic t3" style="width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:10px">
+        <span class="t3">일</span><span class="t3">월</span><span class="t3">화</span><span class="t3">수</span><span class="t3">목</span><span class="t3">금</span><span class="t3">토</span>
+        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+        <span style="background:var(--primary);color:#fff;border-radius:50%;width:20px;height:20px;line-height:20px;margin:0 auto;font-weight:700">13</span>
+        <span style="background:var(--primary-weak);color:var(--primary-deep);border-radius:50%;width:20px;height:20px;line-height:20px;margin:0 auto;font-weight:700">14</span>
+        <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+      </div>
+      <div class="t2" style="text-align:center;font-size:10.5px">1박2일 · <b>6.13(토) ~ 6.14(일)</b></div>
+      <div class="cta">여행 만들기</div>
+    </div>
+  </div><div class="cap"><b>TR-01</b> 여행 시작 — 시작일 선택 → trips + trip_visits 자동 생성</div></div>
+
+  <!-- TR-02 가이드 모드 -->
+  <div class="cell"><div class="ph">
+    <div style="height:295px;background:var(--bg2);position:relative;flex:none">
+      <svg viewBox="0 0 270 295" style="width:100%;height:100%" role="img" aria-label="가이드 모드 지도: 2개 완료, 3번째 목적지 이동 중">
+        <path d="M0 70 H270 M0 170 H270 M0 250 H270 M80 0 V295 M190 0 V295" stroke="#E3E6EA" stroke-width="6"/>
+        <path d="M42 240 C 85 215, 95 140, 145 118 S 215 75, 232 45" fill="none" stroke="#8B95A1" stroke-width="2.5" stroke-dasharray="6 5"/>
+        <g text-anchor="middle">
+          <circle cx="42" cy="240" r="10" fill="#8B95A1"/><path d="m37.5 240 3.2 3.2 6-6.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="145" cy="118" r="10" fill="#8B95A1"/><path d="m140.5 118 3.2 3.2 6-6.5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="232" cy="45" r="14" fill="none" stroke="#FF6B35" stroke-width="2" opacity=".5"/>
+          <circle cx="232" cy="45" r="10" fill="#FF6B35"/><text x="232" y="49" font-size="11" font-weight="700" fill="#fff">3</text>
+          <circle cx="86" cy="200" r="5" fill="#1D3557"/><circle cx="86" cy="200" r="9" fill="none" stroke="#1D3557" stroke-width="1.5" opacity=".4"/>
+        </g>
+      </svg>
+      <span class="chip on" style="position:absolute;left:10px;top:10px">Day 1</span>
+    </div>
+    <div style="flex:1;border-radius:18px 18px 0 0;margin-top:-14px;background:#fff;box-shadow:0 -4px 16px rgba(0,0,0,.1);padding:9px 14px 12px;display:flex;flex-direction:column;gap:8px;position:relative">
+      <div style="width:34px;height:4px;border-radius:2px;background:var(--line);margin:0 auto"></div>
+      <div class="row" style="justify-content:space-between"><b style="font-size:12px">3/8 완료</b><span class="t3" style="font-size:10px">Day 1</span></div>
+      <div class="prog"><i style="width:37%"></i></div>
+      <div class="card" style="padding:8px 10px">
+        <div class="t3" style="font-size:9.5px">다음 목적지</div>
+        <b style="font-size:12.5px">광치기 해변</b>
+        <div class="t2" style="font-size:10.5px">550m · 도보 8분</div>
+      </div>
+      <div class="row"><span class="ghost" style="flex:1;padding:9px 0"><svg class="ic" style="width:12px;height:12px"><use href="#i-nav"/></svg> 길찾기</span><span class="cta" style="flex:1.5">도착했어요</span></div>
+      <div class="t3" style="text-align:center;font-size:10px">이번 장소 건너뛰기</div>
+    </div>
+  </div><div class="cap"><b>TR-02</b> 가이드 모드 — 반경 300m 검증, 밖이면 "그래도 체크인" 옵션</div></div>
+
+  <!-- MY-01 내 여행 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><span class="ttl">내 여행</span></div>
+    <div class="bd">
+      <div class="seg"><span>예정</span><span class="on">진행 중</span><span>완료</span></div>
+      <div class="card" style="padding:9px;display:flex;flex-direction:column;gap:7px">
+        <div class="row"><div class="imgph" style="width:44px;height:44px;border-radius:9px;flex:none"><svg class="ic" style="width:13px;height:13px"><use href="#i-photo"/></svg></div>
+          <div><b style="font-size:12px">제주 동부 힐링 2일</b><div class="t3" style="font-size:10px">6.13(토) ~ 6.14(일)</div></div></div>
+        <div class="prog"><i style="width:37%"></i></div>
+        <div class="t3" style="font-size:10px">3/8 체크인 완료 · Day 1</div>
+        <div class="cta" style="padding:8px 0">가이드 모드 이어하기</div>
+      </div>
+      <div class="card" style="padding:9px">
+        <div class="row"><div class="imgph" style="width:44px;height:44px;border-radius:9px;flex:none"><svg class="ic" style="width:13px;height:13px"><use href="#i-photo"/></svg></div>
+          <div><b style="font-size:12px">부산 미식 1박2일</b><div class="t3" style="font-size:10px">6.20(토) 출발</div></div>
+          <span class="chip on" style="margin-left:auto">D-7</span></div>
+      </div>
+    </div>
+    <div class="tabs">
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-home"/></svg>홈</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-compass"/></svg>탐색</span>
+      <span class="tb on"><svg class="ic" style="width:16px;height:16px"><use href="#i-pin"/></svg>내 여행</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-bookmark"/></svg>저장</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-user"/></svg>MY</span>
+    </div>
+  </div><div class="cap"><b>MY-01</b> 내 여행 — 상태 머신: UPCOMING→ONGOING→COMPLETED</div></div>
+
+  <!-- MY-02 저장함 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><span class="ttl">저장함</span></div>
+    <div class="bd">
+      <div class="seg"><span class="on">코스 5</span><span>관광지 3</span></div>
+      <div class="card"><div class="imgph" style="height:54px"><svg class="ic"><use href="#i-photo"/></svg></div>
+        <div style="padding:8px"><div class="row" style="justify-content:space-between"><b style="font-size:12px">제주 동부 힐링 2일</b><svg class="ic" style="color:var(--primary)"><use href="#i-heartf"/></svg></div>
+        <div class="t3" style="font-size:10px">1박2일 · 명소 8곳 · 약 12만원</div></div></div>
+      <div class="card"><div class="imgph" style="height:54px"><svg class="ic"><use href="#i-photo"/></svg></div>
+        <div style="padding:8px"><div class="row" style="justify-content:space-between"><b style="font-size:12px">경주 야경 산책 코스</b><svg class="ic" style="color:var(--primary)"><use href="#i-heartf"/></svg></div>
+        <div class="t3" style="font-size:10px">당일 · 명소 5곳 · 약 3만원</div></div></div>
+      <div class="card"><div class="imgph" style="height:40px"><svg class="ic"><use href="#i-photo"/></svg></div>
+        <div style="padding:8px"><b style="font-size:12px">전주 한옥 1박2일</b></div></div>
+    </div>
+    <div class="tabs">
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-home"/></svg>홈</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-compass"/></svg>탐색</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-pin"/></svg>내 여행</span>
+      <span class="tb on"><svg class="ic" style="width:16px;height:16px"><use href="#i-bookmark"/></svg>저장</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-user"/></svg>MY</span>
+    </div>
+  </div><div class="cap"><b>MY-02</b> 저장함 — 코스/관광지 북마크, 해제는 hard delete</div></div>
+
+  <!-- MY-03 마이페이지 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><span class="ttl">MY</span></div>
+    <div class="bd">
+      <div class="row" style="gap:10px;padding:6px 0 2px">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center"><svg class="ic t3" style="width:22px;height:22px"><use href="#i-user"/></svg></div>
+        <div><b style="font-size:13px">여행하는곰</b><div class="t3" style="font-size:10px">traveler@gmail.com · 카카오 연동</div></div>
+      </div>
+      <div class="row" style="background:var(--bg2);border-radius:10px;padding:9px 0;text-align:center">
+        <span style="flex:1"><b>2</b><div class="t3" style="font-size:9.5px">여행</div></span>
+        <span style="flex:1;border-left:1px solid var(--line);border-right:1px solid var(--line)"><b>1</b><div class="t3" style="font-size:9.5px">리뷰</div></span>
+        <span style="flex:1"><b>8</b><div class="t3" style="font-size:9.5px">저장</div></span>
+      </div>
+      <div class="lirow"><span>내 리뷰</span><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="lirow"><span>설정</span><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="lirow"><span>공지사항</span><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="lirow" style="border:none"><span>1:1 문의</span><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="t3" style="font-size:9.5px;margin-top:auto;text-align:center">버전 1.0.0</div>
+    </div>
+    <div class="tabs">
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-home"/></svg>홈</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-compass"/></svg>탐색</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-pin"/></svg>내 여행</span>
+      <span class="tb"><svg class="ic" style="width:16px;height:16px"><use href="#i-bookmark"/></svg>저장</span>
+      <span class="tb on"><svg class="ic" style="width:16px;height:16px"><use href="#i-user"/></svg>MY</span>
+    </div>
+  </div><div class="cap"><b>MY-03</b> 마이페이지 — 프로필·내 리뷰·설정 진입</div></div>
+
+  <!-- MY-04 설정 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><svg class="ic"><use href="#i-back"/></svg><span class="ttl">설정</span></div>
+    <div class="bd" style="gap:0">
+      <div class="t3" style="font-size:10px;padding:4px 0">알림</div>
+      <div class="lirow"><div>마케팅 푸시 알림<div class="t3" style="font-size:9.5px">2026.6.13 동의 · 변경 시 일시 안내</div></div><span class="toggle on" style="margin-left:auto"></span></div>
+      <div class="lirow"><span>야간(21~08시) 수신</span><span class="toggle" style="margin-left:auto"></span></div>
+      <div class="t3" style="font-size:10px;padding:8px 0 4px">개인정보</div>
+      <div class="lirow"><span>위치 정보 동의 관리</span><span class="t3" style="margin-left:auto;font-size:10px">동의함</span><svg class="ic t3" style="width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="lirow"><span>개인정보 처리방침</span><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="lirow"><span>이용약관</span><svg class="ic t3" style="margin-left:auto;width:12px;height:12px"><use href="#i-fwd"/></svg></div>
+      <div class="t3" style="font-size:10px;padding:8px 0 4px">기타</div>
+      <div class="lirow"><span>캐시 삭제</span><span class="t3" style="margin-left:auto;font-size:10px">128MB</span></div>
+      <div class="lirow"><span>로그아웃</span></div>
+      <div class="lirow" style="border:none"><span style="color:var(--error)">회원탈퇴</span><span class="t3" style="margin-left:auto;font-size:9.5px">2단계 확인 · 30일 후 완전 파기</span></div>
+    </div>
+  </div><div class="cap"><b>MY-04</b> 설정 — 동의 변경은 이력 append, 탈퇴는 soft delete</div></div>
+
+  <!-- RV-01 리뷰 작성 -->
+  <div class="cell"><div class="ph">
+    <div class="sb"><span>9:41</span><svg class="ic" style="width:30px"><use href="#i-status"/></svg></div>
+    <div class="ab"><svg class="ic"><use href="#i-x"/></svg><span class="ttl">리뷰 작성</span></div>
+    <div class="bd" style="gap:11px">
+      <div class="card row" style="padding:8px;gap:8px"><div class="imgph" style="width:38px;height:38px;border-radius:8px;flex:none"><svg class="ic" style="width:12px;height:12px"><use href="#i-photo"/></svg></div>
+        <div><b style="font-size:11.5px">제주 동부 힐링 2일</b><div class="t3" style="font-size:10px">6.13 ~ 6.14 · 8곳 체크인</div></div></div>
+      <div style="text-align:center">
+        <div class="t2" style="font-size:10.5px;margin-bottom:4px">여행은 어떠셨나요?</div>
+        <span class="star" style="font-size:22px">★★★★<span class="off">★</span></span>
+      </div>
+      <div style="border:1px solid var(--line);border-radius:10px;padding:10px;height:110px;display:flex;flex-direction:column">
+        <span class="t3">코스 동선, 스팟 정보가 도움이 됐는지 알려주세요 (최대 1,000자)</span>
+        <span class="t3" style="margin-top:auto;margin-left:auto;font-size:9.5px">0 / 1,000</span>
+      </div>
+      <div class="row">
+        <div style="width:52px;height:52px;border:1px dashed #CDD3DA;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--t3);gap:2px"><svg class="ic"><use href="#i-cam"/></svg><span style="font-size:9px">0/5</span></div>
+      </div>
+      <div class="t3" style="font-size:9.5px">사진의 위치 정보(EXIF GPS)는 업로드 시 자동 제거돼요</div>
+    </div>
+    <div style="padding:0 14px 16px"><div class="cta">등록하기</div></div>
+  </div><div class="cap"><b>RV-01</b> 리뷰 작성 — 별점·텍스트 1,000자·사진 5장, EXIF GPS 제거</div></div>
+
+  </div>
+</div>
+
+<div class="note">
+  <b>표기 규칙</b> — 회색 박스(<span style="display:inline-block;width:10px;height:10px;background:#F7F7F9;border:1px solid #E7EAEE;border-radius:2px"></span>)는 이미지 영역, 주황 채움 버튼은 Primary CTA(화면당 1개 원칙), 칩의 주황 연한 배경은 활성 상태.
+  모든 수치는 360dp 기준 dp 값을 75%로 축소해 표시. 실제 구현 시 기획설계서 1.1절 토큰 원값을 사용할 것.<br>
+  <b>다음 단계</b> — 본 와이어프레임을 Figma로 옮길 때 1.5절 페이지 구조(00_Cover ~ 99_Archive)를 따르고, 컴포넌트는 variants(default/pressed/disabled)로 정의.
+  관리자 웹(06_Admin_Web) 화면은 기획설계서 2.2절 기능 맵 확정 후 별도 작업.
+</div>
+
+</body>
+</html>

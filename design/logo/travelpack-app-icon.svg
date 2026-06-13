@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="TravelPack 앱 아이콘">
+  <title>TravelPack App Icon</title>
+  <desc>네이비 배경에 오렌지 카트리지 마크를 중앙 배치한 스토어용 앱 아이콘. 마크는 안드로이드 어댑티브 아이콘 안전 영역(66%) 안에 위치</desc>
+  <!-- 배경 (딥 네이비) -->
+  <rect width="1024" height="1024" rx="230" fill="#1D3557"/>
+  <!-- 마크: 120x140 원본을 5배 확대, 1024 캔버스 중앙 정렬 -->
+  <g transform="translate(212,162) scale(5)">
+    <rect x="18" y="10" width="84" height="120" rx="16" fill="#FF6B35"/>
+    <line x1="34" y1="29" x2="86" y2="29" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+    <line x1="34" y1="40" x2="86" y2="40" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+    <rect x="32" y="54" width="56" height="62" rx="8" fill="#FFFFFF"/>
+    <path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557"/>
+    <circle cx="60" cy="78" r="5" fill="#FFFFFF"/>
+  </g>
+</svg>

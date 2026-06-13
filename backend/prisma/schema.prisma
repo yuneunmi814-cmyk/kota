@@ -1,0 +1,430 @@
+// TravelPack DB 스키마 — docs/TravelPack_기획설계서.md 2.3절 기준 (20개 테이블)
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  WITHDRAWN
+}
+
+enum AuthProvider {
+  local
+  kakao
+  google
+}
+
+enum ConsentType {
+  TERMS
+  PRIVACY
+  AGE14
+  LOCATION
+  MARKETING
+  NIGHT_PUSH
+}
+
+enum ContentStatus {
+  DRAFT
+  IN_REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+enum SpotStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum BookmarkTarget {
+  COURSE
+  SPOT
+}
+
+enum TransportType {
+  WALK
+  BUS
+  TAXI
+  CAR
+}
+
+enum TripStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELED
+}
+
+enum VisitStatus {
+  PENDING
+  DONE
+  SKIPPED
+}
+
+enum CheckinType {
+  VERIFIED
+  MANUAL
+}
+
+enum ReviewStatus {
+  VISIBLE
+  HIDDEN
+  DELETED
+}
+
+enum ReportStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  CONTENT_MANAGER
+  OPERATION_MANAGER
+  MARKETER
+  READ_ONLY
+}
+
+model User {
+  id           BigInt       @id @default(autoincrement())
+  email        String?      @unique
+  passwordHash String?      @map("password_hash")
+  nickname     String       @unique
+  provider     AuthProvider @default(local)
+  providerId   String?      @map("provider_id")
+  profileImageUrl String?   @map("profile_image_url")
+  status       UserStatus   @default(ACTIVE)
+  lastLoginAt  DateTime?    @map("last_login_at")
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+  deletedAt    DateTime?    @map("deleted_at")
+
+  consents   UserConsent[]
+  interests  UserInterest[]
+  pushTokens UserPushToken[]
+  bookmarks  Bookmark[]
+  trips      Trip[]
+  reviews    Review[]
+  reports    ReviewReport[]
+
+  @@unique([provider, providerId])
+  @@map("users")
+}
+
+model UserConsent {
+  id          BigInt      @id @default(autoincrement())
+  userId      BigInt      @map("user_id")
+  consentType ConsentType @map("consent_type")
+  agreed      Boolean
+  version     String
+  createdAt   DateTime    @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, consentType, createdAt])
+  @@map("user_consents")
+}
+
+model UserInterest {
+  userId  BigInt @map("user_id")
+  themeId BigInt @map("theme_id")
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  theme Theme @relation(fields: [themeId], references: [id], onDelete: Cascade)
+
+  @@id([userId, themeId])
+  @@map("user_interests")
+}
+
+model UserPushToken {
+  id          BigInt   @id @default(autoincrement())
+  userId      BigInt   @map("user_id")
+  fcmToken    String   @unique @map("fcm_token")
+  deviceModel String?  @map("device_model")
+  osVersion   String?  @map("os_version")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_push_tokens")
+}
+
+model Region {
+  id           BigInt  @id @default(autoincrement())
+  name         String  @unique
+  slug         String  @unique
+  thumbnailUrl String? @map("thumbnail_url")
+  sortOrder    Int     @default(0) @map("sort_order")
+  isActive     Boolean @default(true) @map("is_active")
+
+  spots   Spot[]
+  courses Course[]
+
+  @@map("regions")
+}
+
+model Theme {
+  id   BigInt @id @default(autoincrement())
+  name String @unique
+  icon String?
+
+  courseThemes CourseTheme[]
+  interests    UserInterest[]
+
+  @@map("themes")
+}
+
+model Spot {
+  id              BigInt     @id @default(autoincrement())
+  regionId        BigInt     @map("region_id")
+  name            String
+  category        String
+  summary         String?
+  description     String?
+  tips            String?
+  address         String?
+  lat             Float
+  lng             Float
+  /// PostGIS — 반경 검색용. lat/lng 변경 시 트리거가 자동 동기화
+  location        Unsupported("geography(Point, 4326)")?
+  openHours       Json?      @map("open_hours")
+  admissionFee    String?    @map("admission_fee")
+  avgStayMinutes  Int?       @map("avg_stay_minutes")
+  phone           String?
+  status          SpotStatus @default(ACTIVE)
+  checkinRadiusM  Int?       @map("checkin_radius_m")
+  source          String     @default("EDITOR")
+  tourapiContentId String?   @unique @map("tourapi_content_id")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+
+  region      Region       @relation(fields: [regionId], references: [id])
+  images      SpotImage[]
+  courseItems CourseItem[]
+
+  @@index([regionId, status])
+  @@map("spots")
+}
+
+model SpotImage {
+  id        BigInt @id @default(autoincrement())
+  spotId    BigInt @map("spot_id")
+  url       String
+  sourceCredit String? @map("source_credit")
+  sortOrder Int    @default(0) @map("sort_order")
+
+  spot Spot @relation(fields: [spotId], references: [id], onDelete: Cascade)
+
+  @@map("spot_images")
+}
+
+model Course {
+  id            BigInt        @id @default(autoincrement())
+  regionId      BigInt        @map("region_id")
+  title         String
+  summary       String?
+  durationDays  Int           @map("duration_days")
+  estCost       Int?          @map("est_cost")
+  coverImageUrl String?       @map("cover_image_url")
+  status        ContentStatus @default(DRAFT)
+  publishedAt   DateTime?     @map("published_at")
+  viewCount     Int           @default(0) @map("view_count")
+  saveCount     Int           @default(0) @map("save_count")
+  createdBy     BigInt        @map("created_by")
+  source        String        @default("EDITOR")
+  tourapiContentId String?    @unique @map("tourapi_content_id")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  region  Region        @relation(fields: [regionId], references: [id])
+  creator AdminUser     @relation(fields: [createdBy], references: [id])
+  themes  CourseTheme[]
+  items   CourseItem[]
+  trips   Trip[]
+
+  @@index([status, regionId])
+  @@index([status, saveCount, id])
+  @@map("courses")
+}
+
+model CourseTheme {
+  courseId BigInt @map("course_id")
+  themeId  BigInt @map("theme_id")
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  theme  Theme  @relation(fields: [themeId], references: [id], onDelete: Cascade)
+
+  @@id([courseId, themeId])
+  @@map("course_themes")
+}
+
+model CourseItem {
+  id               BigInt         @id @default(autoincrement())
+  courseId         BigInt         @map("course_id")
+  dayNo            Int            @map("day_no")
+  sortOrder        Int            @map("sort_order")
+  spotId           BigInt         @map("spot_id")
+  stayMinutes      Int?           @map("stay_minutes")
+  transportToNext  TransportType? @map("transport_to_next")
+  transportMinutes Int?           @map("transport_minutes")
+  note             String?
+
+  course Course      @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  spot   Spot        @relation(fields: [spotId], references: [id])
+  visits TripVisit[]
+
+  @@unique([courseId, dayNo, sortOrder])
+  @@map("course_items")
+}
+
+model Bookmark {
+  id         BigInt         @id @default(autoincrement())
+  userId     BigInt         @map("user_id")
+  targetType BookmarkTarget @map("target_type")
+  targetId   BigInt         @map("target_id")
+  createdAt  DateTime       @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, targetType, targetId])
+  @@map("bookmarks")
+}
+
+model Trip {
+  id        BigInt     @id @default(autoincrement())
+  userId    BigInt     @map("user_id")
+  courseId  BigInt     @map("course_id")
+  startDate DateTime   @map("start_date") @db.Date
+  endDate   DateTime   @map("end_date") @db.Date
+  status    TripStatus @default(UPCOMING)
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+
+  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course      @relation(fields: [courseId], references: [id])
+  visits TripVisit[]
+
+  @@index([userId, status])
+  @@map("trips")
+}
+
+model TripVisit {
+  id              BigInt       @id @default(autoincrement())
+  tripId          BigInt       @map("trip_id")
+  courseItemId    BigInt       @map("course_item_id")
+  status          VisitStatus  @default(PENDING)
+  checkedInAt     DateTime?    @map("checked_in_at")
+  /// 체크인 좌표 — 6개월 후 배치 NULL 처리 (위치정보 최소 보관)
+  checkinLocation Unsupported("geography(Point, 4326)")? @map("checkin_location")
+  checkinType     CheckinType? @map("checkin_type")
+
+  trip       Trip       @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  courseItem CourseItem @relation(fields: [courseItemId], references: [id])
+
+  @@unique([tripId, courseItemId])
+  @@map("trip_visits")
+}
+
+model Review {
+  id         BigInt         @id @default(autoincrement())
+  userId     BigInt         @map("user_id")
+  targetType BookmarkTarget @map("target_type")
+  targetId   BigInt         @map("target_id")
+  tripId     BigInt?        @map("trip_id")
+  rating     Int
+  content    String
+  status     ReviewStatus   @default(VISIBLE)
+  createdAt  DateTime       @default(now()) @map("created_at")
+  updatedAt  DateTime       @updatedAt @map("updated_at")
+
+  user    User           @relation(fields: [userId], references: [id])
+  images  ReviewImage[]
+  reports ReviewReport[]
+
+  @@index([targetType, targetId, status])
+  @@map("reviews")
+}
+
+model ReviewImage {
+  id       BigInt @id @default(autoincrement())
+  reviewId BigInt @map("review_id")
+  url      String
+
+  review Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@map("review_images")
+}
+
+model ReviewReport {
+  id          BigInt       @id @default(autoincrement())
+  reviewId    BigInt       @map("review_id")
+  reporterId  BigInt       @map("reporter_id")
+  reasonCode  String       @map("reason_code")
+  detail      String?
+  status      ReportStatus @default(PENDING)
+  processedBy BigInt?      @map("processed_by")
+  processedAt DateTime?    @map("processed_at")
+  createdAt   DateTime     @default(now()) @map("created_at")
+
+  review   Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  reporter User   @relation(fields: [reporterId], references: [id])
+
+  @@unique([reviewId, reporterId])
+  @@map("review_reports")
+}
+
+model Banner {
+  id         BigInt   @id @default(autoincrement())
+  title      String
+  imageUrl   String   @map("image_url")
+  linkType   String   @map("link_type")
+  linkTarget String?  @map("link_target")
+  startAt    DateTime @map("start_at")
+  endAt      DateTime @map("end_at")
+  sortOrder  Int      @default(0) @map("sort_order")
+  isActive   Boolean  @default(true) @map("is_active")
+
+  @@map("banners")
+}
+
+model AdminUser {
+  id           BigInt    @id @default(autoincrement())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  name         String
+  role         AdminRole
+  totpSecret   String?   @map("totp_secret")
+  isActive     Boolean   @default(true) @map("is_active")
+  lastLoginAt  DateTime? @map("last_login_at")
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  courses   Course[]
+  auditLogs AuditLog[]
+
+  @@map("admin_users")
+}
+
+model AuditLog {
+  id         BigInt   @id @default(autoincrement())
+  adminId    BigInt   @map("admin_id")
+  action     String
+  entityType String   @map("entity_type")
+  entityId   String?  @map("entity_id")
+  before     Json?
+  after      Json?
+  ip         String?
+  userAgent  String?  @map("user_agent")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  admin AdminUser @relation(fields: [adminId], references: [id])
+
+  @@index([adminId, createdAt])
+  @@index([entityType, entityId])
+  @@map("audit_logs")
+}

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TravelPack 브랜드 마크</title>
+<style>
+:root{
+  --primary:#FF6B35; --primary-deep:#C24818; --navy:#1D3557;
+  --green:#5E9457; --sea:#3D9BD9;
+  --t1:#191F28; --t2:#6B7684; --t3:#8B95A1; --line:#E7EAEE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif;background:#F1F2F4;color:var(--t1);padding-bottom:64px}
+.head{background:var(--navy);color:#fff;padding:40px 32px 34px}
+.head h1{font-size:25px;font-weight:600}
+.head h1 b{color:var(--primary)}
+.head p{font-size:13px;color:#B9C4D6;margin-top:8px;line-height:1.6;max-width:680px}
+.sec{max-width:1100px;margin:36px auto 0;padding:0 24px}
+.sec h2{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sec h2::before{content:"";width:4px;height:15px;background:var(--primary);border-radius:2px}
+.grid{display:flex;flex-wrap:wrap;gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.cap{font-size:12.5px;color:var(--t2);text-align:center;line-height:1.5}
+.cap b{color:var(--t1);font-weight:600}
+.plate{display:flex;align-items:center;justify-content:center}
+.hero{display:flex;flex-wrap:wrap;gap:18px;align-items:stretch}
+.hero .card{flex:1;min-width:280px}
+.swrow{display:flex;flex-wrap:wrap;gap:12px}
+.sw{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t2);min-width:150px}
+.dot{width:26px;height:26px;border-radius:7px;flex:none;border:1px solid rgba(0,0,0,.06)}
+.dot.s{width:16px;height:16px;border-radius:5px}
+.mono code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--t1)}
+.dd{display:flex;flex-wrap:wrap;gap:18px}
+.dd .card{flex:1;min-width:240px;align-items:stretch}
+.tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;align-self:flex-start}
+.tag.do{background:#E7F7EF;color:#0E7A4B}
+.tag.no{background:#FDE8E6;color:#C0392B}
+.note{max-width:1100px;margin:30px auto 0;padding:0 24px;font-size:12px;color:var(--t3);line-height:1.7}
+.homescreen{width:230px;height:150px;border-radius:18px;background:linear-gradient(150deg,#8FB7D9,#C9D9C5);display:flex;align-items:center;justify-content:center;gap:18px;padding:0 8px}
+.appicon{width:62px;height:62px;border-radius:15px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.18)}
+.appicon svg{display:block;width:100%;height:100%}
+.iconlabel{font-size:10px;color:#fff;text-align:center;margin-top:5px;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.darkplate{background:var(--navy)}
+.minirow{display:flex;align-items:flex-end;gap:20px}
+.minicell{display:flex;flex-direction:column;align-items:center;gap:6px}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1><b>TravelPack</b> 브랜드 마크 <span style="font-weight:400;font-size:15px;opacity:.85">— 게임팩 × 소풍</span></h1>
+  <p>"코스 팩을 꽂으면 가이드가 시작된다." 카트리지 실루엣 + 그립 라인 + 라벨 창 속 여행 핀.
+  메인은 선셋 오렌지(#FF6B35) + 딥 네이비(#1D3557), 그린·바다는 시즌 한정 서브 팔레트.
+  원본 SVG는 <code style="font-family:ui-monospace,monospace;font-size:12px">design/logo/</code>.</p>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="mark" viewBox="0 0 120 140">
+    <rect x="18" y="10" width="84" height="120" rx="16" fill="#FF6B35"/>
+    <line x1="34" y1="29" x2="86" y2="29" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+    <line x1="34" y1="40" x2="86" y2="40" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+    <rect x="32" y="54" width="56" height="62" rx="8" fill="#fff"/>
+    <path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557"/>
+    <circle cx="60" cy="78" r="5" fill="#fff"/>
+  </symbol>
+</defs></svg>
+
+<div class="sec">
+  <h2>기본 시그니처</h2>
+  <div class="hero">
+    <div class="card">
+      <div class="plate"><svg width="120" height="140"><use href="#mark"/></svg></div>
+      <div class="cap"><b>메인 마크</b> · travelpack-mark.svg<br>밝은 배경 기본</div>
+    </div>
+    <div class="card" style="justify-content:center">
+      <div class="plate">
+        <svg width="320" height="89" viewBox="0 0 360 100">
+          <g transform="translate(4,12) scale(0.6)"><use href="#mark" width="120" height="140"/></g>
+          <text x="82" y="67" font-family="Pretendard,sans-serif" font-size="38" font-weight="600" fill="#1D3557">Travel</text>
+          <rect x="226" y="31" width="116" height="46" rx="11" fill="#FF6B35"/>
+          <text x="284" y="65" text-anchor="middle" font-family="Pretendard,sans-serif" font-size="34" font-weight="600" fill="#fff">Pack</text>
+        </svg>
+      </div>
+      <div class="cap"><b>워드마크 락업</b> · travelpack-wordmark.svg<br>앱바·스플래시·스토어 목록</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>앱 아이콘 · 런처</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="plate"><svg width="120" height="120" viewBox="0 0 1024 1024"><rect width="1024" height="1024" rx="230" fill="#1D3557"/><g transform="translate(212,162) scale(5)"><use href="#mark" width="120" height="140"/></g></svg></div>
+      <div class="cap"><b>앱 아이콘</b> · 1024 네이비 배경<br>어댑티브 안전영역(66%) 준수</div>
+    </div>
+    <div class="card">
+      <div class="homescreen">
+        <div>
+          <div class="appicon"><svg viewBox="0 0 1024 1024"><rect width="1024" height="1024" rx="230" fill="#1D3557"/><g transform="translate(212,162) scale(5)"><use href="#mark" width="120" height="140"/></g></svg></div>
+          <div class="iconlabel">TravelPack</div>
+        </div>
+        <div style="opacity:.5">
+          <div class="appicon" style="background:#fff;display:flex;align-items:center;justify-content:center"><svg width="44" height="51"><use href="#mark"/></svg></div>
+          <div class="iconlabel" style="color:#33415a;text-shadow:none">밝은 변형</div>
+        </div>
+      </div>
+      <div class="cap">홈 화면 미리보기 — 컬러 배경에서 또렷하게 분리</div>
+    </div>
+    <div class="card">
+      <div class="minirow">
+        <div class="minicell"><svg width="48" height="56"><use href="#mark"/></svg><span class="cap">48px</span></div>
+        <div class="minicell"><svg width="32" height="37"><use href="#mark"/></svg><span class="cap">32px</span></div>
+        <div class="minicell"><svg width="24" height="28"><use href="#mark"/></svg><span class="cap">24px 최소</span></div>
+      </div>
+      <div class="cap">축소 한계 — 24px까지 형태 유지</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>컬러 변형</h2>
+  <div class="grid">
+    <div class="card"><div class="plate"><svg width="96" height="112"><use href="#mark"/></svg></div><div class="cap"><b>A. 선셋 오렌지</b><br>메인</div></div>
+    <div class="card"><div class="plate"><svg width="96" height="112" viewBox="0 0 120 140"><rect x="18" y="10" width="84" height="120" rx="16" fill="#1D3557"/><line x1="34" y1="29" x2="86" y2="29" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".45"/><line x1="34" y1="40" x2="86" y2="40" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".45"/><rect x="32" y="54" width="56" height="62" rx="8" fill="#fff"/><path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#FF6B35"/><circle cx="60" cy="78" r="5" fill="#fff"/></svg></div><div class="cap"><b>B. 네이비 반전</b><br>문서·포멀</div></div>
+    <div class="card"><div class="plate"><svg width="96" height="112" viewBox="0 0 120 140"><rect x="18" y="10" width="84" height="120" rx="16" fill="#5E9457"/><line x1="34" y1="29" x2="86" y2="29" stroke="#FFF6E8" stroke-width="5" stroke-linecap="round" opacity=".8"/><line x1="34" y1="40" x2="86" y2="40" stroke="#FFF6E8" stroke-width="5" stroke-linecap="round" opacity=".8"/><rect x="32" y="54" width="56" height="62" rx="8" fill="#FFF6E8"/><path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#D9532C"/><circle cx="60" cy="78" r="5" fill="#FFF6E8"/></svg></div><div class="cap"><b>C. 피크닉 그린</b><br>봄·가을 시즌</div></div>
+    <div class="card"><div class="plate"><svg width="96" height="112" viewBox="0 0 120 140"><rect x="18" y="10" width="84" height="120" rx="16" fill="#3D9BD9"/><line x1="34" y1="29" x2="86" y2="29" stroke="#FFF9F0" stroke-width="5" stroke-linecap="round" opacity=".8"/><line x1="34" y1="40" x2="86" y2="40" stroke="#FFF9F0" stroke-width="5" stroke-linecap="round" opacity=".8"/><rect x="32" y="54" width="56" height="62" rx="8" fill="#FFF9F0"/><path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#FF6B35"/><circle cx="60" cy="78" r="5" fill="#FFF9F0"/></svg></div><div class="cap"><b>F. 바다 소풍</b><br>여름 시즌</div></div>
+    <div class="card darkplate"><div class="plate" style="color:#fff"><svg width="96" height="112" viewBox="0 0 120 140"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"><rect x="18" y="10" width="84" height="120" rx="16"/><rect x="32" y="54" width="56" height="62" rx="8" stroke-width="5"/></g><line x1="34" y1="29" x2="86" y2="29" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><line x1="34" y1="40" x2="86" y2="40" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="currentColor"/><circle cx="60" cy="78" r="4.5" fill="#1D3557"/></svg></div><div class="cap" style="color:#cfd8e6"><b style="color:#fff">단색 (흰색)</b><br>어두운·사진 배경</div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>컬러 토큰</h2>
+  <div class="swrow">
+    <div class="sw"><span class="dot" style="background:#FF6B35"></span><div><b style="color:var(--t1)">Sunset Orange</b><div class="mono"><code>#FF6B35</code></div></div></div>
+    <div class="sw"><span class="dot" style="background:#1D3557"></span><div><b style="color:var(--t1)">Deep Navy</b><div class="mono"><code>#1D3557</code></div></div></div>
+    <div class="sw"><span class="dot" style="background:#C24818"></span><div><b style="color:var(--t1)">Orange Deep</b><div class="mono"><code>#C24818</code></div></div></div>
+    <div class="sw"><span class="dot" style="background:#5E9457"></span><div><b style="color:var(--t1)">Picnic Green</b><div class="mono"><code>#5E9457</code></div></div></div>
+    <div class="sw"><span class="dot" style="background:#3D9BD9"></span><div><b style="color:var(--t1)">Sea Blue</b><div class="mono"><code>#3D9BD9</code></div></div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>여백 · Do / Don't</h2>
+  <div class="dd">
+    <div class="card">
+      <span class="tag do">권장 여백</span>
+      <div class="plate" style="margin:8px 0">
+        <svg width="170" height="150" viewBox="0 0 170 150">
+          <rect x="1" y="1" width="168" height="148" rx="10" fill="none" stroke="#E7EAEE" stroke-dasharray="4 4"/>
+          <rect x="25" y="20" width="120" height="110" rx="8" fill="none" stroke="#D8DEE6" stroke-dasharray="3 3"/>
+          <g transform="translate(55,25) scale(0.43)"><use href="#mark" width="120" height="140"/></g>
+        </svg>
+      </div>
+      <div class="cap">마크 둘레로 그립 라인 1칸 이상(≈높이 12%) 비우기</div>
+    </div>
+    <div class="card">
+      <span class="tag no">하지 말 것</span>
+      <div class="plate" style="margin:8px 0;gap:14px;display:flex">
+        <svg width="70" height="70" viewBox="0 0 120 140" style="transform:scaleX(1.4)"><use href="#mark"/></svg>
+        <svg width="60" height="70" viewBox="0 0 120 140"><rect x="18" y="10" width="84" height="120" rx="16" fill="#9B59B6"/><rect x="32" y="54" width="56" height="62" rx="8" fill="#fff"/><path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557"/><circle cx="60" cy="78" r="5" fill="#fff"/></svg>
+      </div>
+      <div class="cap">비율 왜곡 · 브랜드 외 색상 · 그림자 추가 금지</div>
+    </div>
+  </div>
+</div>
+
+<div class="note">
+  모든 마크는 동일한 카트리지 지오메트리(원본 viewBox 120×140)를 공유하며 배색만 다릅니다.
+  앱 디자인 토큰(<code style="font-family:ui-monospace,monospace">docs/TravelPack_기획설계서.md</code> 1.1절)과 같은 색 체계라 화면·버튼과 그대로 호환됩니다.
+  PNG 내보내기 방법은 <code style="font-family:ui-monospace,monospace">design/logo/README.md</code> 참고.
+</div>
+
+</body>
+</html>
