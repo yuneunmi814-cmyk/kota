@@ -17,6 +17,7 @@ import { LoginScreen } from '../screens/LoginScreen'
 import { ConsentScreen } from '../screens/ConsentScreen'
 import { InterestsScreen } from '../screens/InterestsScreen'
 import { MarketplaceScreen } from '../screens/MarketplaceScreen'
+import { SearchScreen } from '../screens/SearchScreen'
 import { MyCoursesScreen } from '../screens/MyCoursesScreen'
 import { CourseEditorScreen } from '../screens/CourseEditorScreen'
 import { MyPurchasesScreen } from '../screens/MyPurchasesScreen'
@@ -29,12 +30,28 @@ const MyStack = createNativeStackNavigator<MyStackParams>()
 function ExploreNavigator() {
   return (
     <ExploreStack.Navigator>
-      <ExploreStack.Screen name="Regions" component={RegionsScreen} options={{ title: '탐색' }} />
+      <ExploreStack.Screen
+        name="Regions"
+        component={RegionsScreen}
+        options={({ navigation }) => ({
+          title: '탐색',
+          headerRight: () => (
+            <Ionicons
+              name="search-outline"
+              size={22}
+              color={colors.text}
+              onPress={() => navigation.navigate('Search')}
+              style={{ paddingHorizontal: 4 }}
+            />
+          ),
+        })}
+      />
       <ExploreStack.Screen name="CourseList" component={CourseListScreen} options={{ title: '코스' }} />
       <ExploreStack.Screen name="CourseDetail" component={CourseDetailScreen} options={{ title: '코스 상세' }} />
       <ExploreStack.Screen name="SpotDetail" component={SpotDetailScreen} options={{ title: '관광지' }} />
       <ExploreStack.Screen name="ReviewWrite" component={ReviewWriteScreen} options={{ title: '리뷰 작성' }} />
       <ExploreStack.Screen name="Marketplace" component={MarketplaceScreen} options={{ title: '크리에이터 마켓' }} />
+      <ExploreStack.Screen name="Search" component={SearchScreen} options={{ title: '검색' }} />
     </ExploreStack.Navigator>
   )
 }

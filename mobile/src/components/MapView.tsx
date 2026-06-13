@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import { StyleSheet, Text, View, type ViewStyle } from 'react-native'
+import { WebView } from 'react-native-webview'
 import KakaoMapView, { KakaoMap } from '@react-native-kakao/map'
 import { colors } from '../theme'
 
-// 카카오 네이티브 키가 있을 때만 실제 지도를 렌더(네이티브 dev build 필요).
-// 키가 없으면(Expo Go·미설정) 플레이스홀더로 폴백 → 앱은 정상 동작.
-const KAKAO_KEY = process.env.EXPO_PUBLIC_KAKAO_NATIVE_KEY ?? ''
-export const MAP_ENABLED = Boolean(KAKAO_KEY)
+// 지도 렌더 우선순위:
+//  1) EXPO_PUBLIC_KAKAO_JS_KEY 있으면 → Kakao JS SDK(WebView): 번호 마커 + 경로선 (Expo Go에서도 동작)
+//  2) EXPO_PUBLIC_KAKAO_NATIVE_KEY 있으면 → 네이티브 지도(내장 POI만, 마커/선 미지원, dev build 필요)
+//  3) 둘 다 없으면 → 플레이스홀더(앱은 정상 동작)
+const KAKAO_NATIVE_KEY = process.env.EXPO_PUBLIC_KAKAO_NATIVE_KEY ?? ''
+const KAKAO_JS_KEY = process.env.EXPO_PUBLIC_KAKAO_JS_KEY ?? ''
+// Kakao JS SDK는 등록된 웹 플랫폼 도메인에서만 동작 → WebView baseUrl을 등록 도메인으로 맞춘다.
+const MAP_DOMAIN = process.env.EXPO_PUBLIC_KAKAO_MAP_DOMAIN ?? 'https://travelpack.app'
+export const MAP_ENABLED = Boolean(KAKAO_JS_KEY || KAKAO_NATIVE_KEY)
 
 let initPromise: Promise<void> | null = null
 function ensureInit(): Promise<void> {
-  if (!initPromise) initPromise = KakaoMap.initializeKakaoMapSDK(KAKAO_KEY)
+  if (!initPromise) initPromise = KakaoMap.initializeKakaoMapSDK(KAKAO_NATIVE_KEY)
   return initPromise
 }
 
@@ -25,27 +31,87 @@ interface Props {
   style?: ViewStyle
 }
 
-export function MapView({ lat, lng, markers, zoomLevel = 13, height = 200, style }: Props) {
+export function MapView({ lat, lng, markers, zoomLevel = 5, height = 200, style }: Props) {
+  if (KAKAO_JS_KEY) {
+    return (
+      <View style={[{ height, borderRadius: 12, overflow: 'hidden' }, style]}>
+        <WebMap lat={lat} lng={lng} markers={markers} level={zoomLevel} height={height} />
+      </View>
+    )
+  }
+  return <NativeMap lat={lat} lng={lng} markers={markers} zoomLevel={zoomLevel <= 8 ? 13 : zoomLevel} height={height} style={style} />
+}
+
+// ── Kakao JS SDK (WebView): 번호 마커 + 경로선 ─────────────────────
+function WebMap({ lat, lng, markers, level, height }: { lat: number; lng: number; markers?: MapMarker[]; level: number; height: number }) {
+  const [failed, setFailed] = useState(false)
+  const pts = markers && markers.length > 0 ? markers : [{ lat, lng }]
+  const html = buildHtml(lat, lng, level, pts)
+
+  if (failed) return <Placeholder height={height} markers={markers} />
+  return (
+    <WebView
+      originWhitelist={['*']}
+      source={{ html, baseUrl: MAP_DOMAIN }}
+      style={{ flex: 1, backgroundColor: colors.bg2 }}
+      scrollEnabled={false}
+      javaScriptEnabled
+      domStorageEnabled
+      onError={() => setFailed(true)}
+      onHttpError={() => setFailed(true)}
+    />
+  )
+}
+
+function buildHtml(lat: number, lng: number, level: number, pts: MapMarker[]): string {
+  const data = JSON.stringify(pts.map((p) => ({ lat: p.lat, lng: p.lng, done: Boolean(p.done) })))
+  return `<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  html,body,#map{margin:0;padding:0;width:100%;height:100%;background:#F7F7F9}
+  .num{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;
+       background:#FF6B35;color:#fff;font:700 12px/1 -apple-system,sans-serif;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+  .num.done{background:#12B76A}
+</style></head><body><div id="map"></div>
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_JS_KEY}&autoload=false"></script>
+<script>
+  try{
+    kakao.maps.load(function(){
+      var pts=${data};
+      var map=new kakao.maps.Map(document.getElementById('map'),{center:new kakao.maps.LatLng(${lat},${lng}),level:${level}});
+      var path=[],bounds=new kakao.maps.LatLngBounds();
+      pts.forEach(function(p,i){
+        var pos=new kakao.maps.LatLng(p.lat,p.lng);path.push(pos);bounds.extend(pos);
+        var el=document.createElement('div');el.className='num'+(p.done?' done':'');el.textContent=(i+1);
+        new kakao.maps.CustomOverlay({position:pos,content:el,yAnchor:0.5}).setMap(map);
+      });
+      if(pts.length>1){
+        new kakao.maps.Polyline({path:path,strokeWeight:4,strokeColor:'#FF6B35',strokeOpacity:0.9,strokeStyle:'solid'}).setMap(map);
+        map.setBounds(bounds);
+      }
+    });
+  }catch(e){document.body.innerHTML='<div style="display:flex;height:100%;align-items:center;justify-content:center;color:#8B95A1">지도를 불러올 수 없어요</div>';}
+</script></body></html>`
+}
+
+// ── 네이티브 지도(내장 POI) ─────────────────────────────────────
+function NativeMap({ lat, lng, markers, zoomLevel, height, style }: Props) {
   const [ready, setReady] = useState(false)
   const failed = useRef(false)
 
   useEffect(() => {
-    if (!MAP_ENABLED) return
+    if (!KAKAO_NATIVE_KEY) return
     ensureInit().then(() => setReady(true)).catch(() => { failed.current = true; setReady(false) })
   }, [])
 
-  if (!MAP_ENABLED || failed.current) {
-    return <Placeholder height={height} markers={markers} style={style} />
-  }
+  if (!KAKAO_NATIVE_KEY || failed.current) return <Placeholder height={height ?? 200} markers={markers} style={style} />
 
   return (
     <View style={[{ height, borderRadius: 12, overflow: 'hidden' }, style]}>
       {ready ? (
-        // 커스텀 마커/폴리라인은 @react-native-kakao/map(2.x) 미지원 →
-        // 내장 POI 라벨(poiEnabled)로 주변 장소 표시, 카메라는 대상 좌표 중심
         <KakaoMapView style={{ flex: 1 }} initialCamera={{ lat, lng, zoomLevel }} poiEnabled poiClickable />
       ) : (
-        <Placeholder height={height} markers={markers} />
+        <Placeholder height={height ?? 200} markers={markers} />
       )}
     </View>
   )

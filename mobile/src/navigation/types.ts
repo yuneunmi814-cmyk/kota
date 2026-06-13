@@ -7,6 +7,7 @@ export type ExploreStackParams = {
   SpotDetail: { spotId: string }
   ReviewWrite: { targetType: 'COURSE' | 'SPOT'; targetId: string; targetName: string }
   Marketplace: undefined
+  Search: undefined
 }
 
 export type TripsStackParams = {

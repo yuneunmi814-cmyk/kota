@@ -125,6 +125,14 @@ export interface MyCourseDetail {
 
 export interface Purchase { purchaseId: string; price: number; purchasedAt: string | null; course: MarketCard }
 
+// 통합 검색 (/search)
+export interface SearchSpotResult { id: string; name: string; category: string; address: string | null; region: string }
+export interface SearchResult {
+  courses: CourseCard[]
+  spots: SearchSpotResult[]
+  regions: { id: string; name: string; slug: string }[]
+}
+
 // 스팟 선택기용 경량 항목
 export interface SpotPick { id: string; name: string; category: string; lat: number; lng: number; thumbnail: string | null }
 
