@@ -40,7 +40,7 @@ export function ConsentScreen({ navigation, route }: Props) {
     try {
       const consents: Consent[] = ITEMS.map((i) => ({ type: i.type, agreed: Boolean(checked[i.type]), version: '1.0' }))
       await signup(email, password, nickname, consents)
-      navigation.navigate('MyPage')
+      navigation.navigate('Interests') // 가입 직후 관심 테마 선택 (ON-02)
     } catch (e) {
       Alert.alert('가입 실패', e instanceof ApiError ? e.message : '처리 실패')
     } finally {

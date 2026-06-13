@@ -17,6 +17,7 @@ export type MyStackParams = {
   MyPage: undefined
   Login: undefined
   Consent: { email: string; password: string; nickname: string }
+  Interests: undefined
 }
 
 export type TabParams = {

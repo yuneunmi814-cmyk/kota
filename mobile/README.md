@@ -49,8 +49,10 @@ npx expo export -p android -o /tmp/x    # Metro 번들 생성 확인
 - **카카오 소셜 로그인**(`@react-native-kakao/user` → `/auth/social`), 이메일 로그인/가입
 - **온보딩**(첫 실행 3스텝) + **약관 동의**(AU-02, 가입 플로우 연계)
 - **리뷰 작성**(별점·1,000자) + **북마크 토글**(코스/관광지 상세, 저장함 연동)
+- **관심 테마(ON-02)**(가입 직후/마이페이지), **구글 로그인**(expo-auth-session, `EXPO_PUBLIC_GOOGLE_CLIENT_ID` 게이트), **FCM 토큰 등록**(expo-notifications, 로그인 시)
+- **관광사진 갤러리**(관광지 상세), **오디오 가이드**(expo-audio), 홈 **인기 지역 배지**
 
 ## 남은 작업
 
-- 구글 소셜 로그인(자격증명·설정 필요), 관심 테마 선택(ON-02), FCM 푸시 토큰 등록
-- 카카오맵 마커·폴리라인 오버레이(현재 카메라 센터만), 통합 검색·온보딩 화면 디테일 고도화
+- 카카오맵 **커스텀 번호 마커·경로선**: `@react-native-kakao/map` 2.x 미지원 → 현재 내장 POI 라벨(poiEnabled)만. 완전 구현은 **Kakao JS Maps SDK(WebView + JS키)** 필요
+- 모바일 영문 토글 UI(백엔드 `?lang=en` 준비됨), 통합 검색 화면

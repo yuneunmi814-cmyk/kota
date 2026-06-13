@@ -10,6 +10,7 @@ interface AuthState {
   login: (email: string, password: string) => Promise<void>
   signup: (email: string, password: string, nickname: string, consents?: Consent[]) => Promise<void>
   socialLogin: (provider: 'kakao' | 'google') => Promise<void>
+  socialLoginWithToken: (provider: 'kakao' | 'google', providerAccessToken: string) => Promise<void>
   logout: () => Promise<void>
   refreshMe: () => Promise<void>
 }
@@ -23,6 +24,15 @@ const BASE_CONSENTS: Consent[] = [
   { type: 'PRIVACY', agreed: true, version: '1.0' },
   { type: 'AGE14', agreed: true, version: '1.0' },
 ]
+
+// 소셜 로그인 공통 — providerAccessToken을 백엔드로 전달(신규 가입 대비 필수 약관 동봉)
+async function postSocial(provider: 'kakao' | 'google', providerAccessToken: string, refreshMe: () => Promise<void>) {
+  const d = await api<{ accessToken: string; refreshToken: string; isNewUser: boolean }>('/auth/social', {
+    method: 'POST', body: { provider, providerAccessToken, consents: BASE_CONSENTS },
+  })
+  await setTokens(d.accessToken, d.refreshToken)
+  await refreshMe()
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false)
@@ -62,14 +72,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await refreshMe()
     },
     async socialLogin(provider) {
-      if (provider !== 'kakao') throw new Error('구글 로그인은 준비 중입니다')
-      const providerAccessToken = await getKakaoAccessToken()
-      // 신규 가입 대비 필수 약관 동의 동봉(서버는 기존 회원이면 무시)
-      const d = await api<{ accessToken: string; refreshToken: string; isNewUser: boolean }>('/auth/social', {
-        method: 'POST', body: { provider, providerAccessToken, consents: BASE_CONSENTS },
-      })
-      await setTokens(d.accessToken, d.refreshToken)
-      await refreshMe()
+      if (provider !== 'kakao') throw new Error('구글 로그인은 화면에서 처리됩니다')
+      await postSocial('kakao', await getKakaoAccessToken(), refreshMe)
+    },
+    async socialLoginWithToken(provider, providerAccessToken) {
+      await postSocial(provider, providerAccessToken, refreshMe)
     },
     async logout() {
       await clearTokens()

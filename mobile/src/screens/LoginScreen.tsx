@@ -1,22 +1,43 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Alert, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
+import * as WebBrowser from 'expo-web-browser'
+import * as Google from 'expo-auth-session/providers/google'
 import { useAuth } from '../auth/AuthContext'
 import { ApiError } from '../api/client'
-import { GOOGLE_ENABLED, KAKAO_ENABLED } from '../auth/social'
+import { GOOGLE_ANDROID_CLIENT_ID, GOOGLE_CLIENT_ID, GOOGLE_ENABLED, GOOGLE_IOS_CLIENT_ID, KAKAO_ENABLED } from '../auth/social'
 import { Button } from '../components/ui'
 import { colors, radius, space } from '../theme'
 import type { MyStackParams } from '../navigation/types'
 
+WebBrowser.maybeCompleteAuthSession()
+
 type Props = NativeStackScreenProps<MyStackParams, 'Login'>
 
 export function LoginScreen({ navigation }: Props) {
-  const { login, signup, socialLogin } = useAuth()
+  const { login, signup, socialLogin, socialLoginWithToken } = useAuth()
   const [mode, setMode] = useState<'login' | 'signup'>('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [nickname, setNickname] = useState('')
   const [busy, setBusy] = useState(false)
+
+  // 구글 로그인 (id_token) — 키 설정 시 활성
+  const [googleReq, googleRes, googlePrompt] = Google.useIdTokenAuthRequest({
+    clientId: GOOGLE_CLIENT_ID || undefined,
+    iosClientId: GOOGLE_IOS_CLIENT_ID || undefined,
+    androidClientId: GOOGLE_ANDROID_CLIENT_ID || undefined,
+  })
+  useEffect(() => {
+    if (googleRes?.type !== 'success') return
+    const idToken = googleRes.params?.id_token
+    if (!idToken) return
+    setBusy(true)
+    socialLoginWithToken('google', idToken)
+      .then(() => navigation.goBack())
+      .catch((e) => Alert.alert('구글 로그인', e instanceof ApiError ? e.message : '실패'))
+      .finally(() => setBusy(false))
+  }, [googleRes])
 
   async function submit() {
     if (mode === 'signup') {
@@ -79,7 +100,10 @@ export function LoginScreen({ navigation }: Props) {
           title={KAKAO_ENABLED ? '카카오로 시작' : '카카오 로그인 (키 설정 필요)'}
           kind="navy" onPress={() => social('kakao')} disabled={busy || !KAKAO_ENABLED}
         />
-        <Button title="Google로 시작 (준비 중)" kind="ghost" onPress={() => social('google')} disabled={busy || !GOOGLE_ENABLED} />
+        <Button
+          title={GOOGLE_ENABLED ? 'Google로 시작' : 'Google 로그인 (키 설정 필요)'}
+          kind="ghost" onPress={() => googlePrompt()} disabled={busy || !GOOGLE_ENABLED || !googleReq}
+        />
       </View>
     </KeyboardAvoidingView>
   )

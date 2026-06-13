@@ -41,7 +41,9 @@ export function MapView({ lat, lng, markers, zoomLevel = 13, height = 200, style
   return (
     <View style={[{ height, borderRadius: 12, overflow: 'hidden' }, style]}>
       {ready ? (
-        <KakaoMapView style={{ flex: 1 }} initialCamera={{ lat, lng, zoomLevel }} />
+        // 커스텀 마커/폴리라인은 @react-native-kakao/map(2.x) 미지원 →
+        // 내장 POI 라벨(poiEnabled)로 주변 장소 표시, 카메라는 대상 좌표 중심
+        <KakaoMapView style={{ flex: 1 }} initialCamera={{ lat, lng, zoomLevel }} poiEnabled poiClickable />
       ) : (
         <Placeholder height={height} markers={markers} />
       )}

@@ -15,6 +15,7 @@ import { SavedScreen } from '../screens/SavedScreen'
 import { MyScreen } from '../screens/MyScreen'
 import { LoginScreen } from '../screens/LoginScreen'
 import { ConsentScreen } from '../screens/ConsentScreen'
+import { InterestsScreen } from '../screens/InterestsScreen'
 
 const Tab = createBottomTabNavigator<TabParams>()
 const ExploreStack = createNativeStackNavigator<ExploreStackParams>()
@@ -48,6 +49,7 @@ function MyNavigator() {
       <MyStack.Screen name="MyPage" component={MyScreen} options={{ title: 'MY' }} />
       <MyStack.Screen name="Login" component={LoginScreen} options={{ title: '로그인', presentation: 'modal' }} />
       <MyStack.Screen name="Consent" component={ConsentScreen} options={{ title: '약관 동의' }} />
+      <MyStack.Screen name="Interests" component={InterestsScreen} options={{ title: '관심 테마' }} />
     </MyStack.Navigator>
   )
 }

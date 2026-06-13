@@ -9,13 +9,16 @@ import { OnboardingScreen } from './src/screens/OnboardingScreen'
 import { Loading } from './src/components/ui'
 import { isOnboarded, setOnboarded } from './src/lib/storage'
 import { logAndroidKeyHash } from './src/lib/devKeyHash'
+import { registerPushToken } from './src/lib/push'
 import { colors } from './src/theme'
 
 function Root() {
-  const { ready } = useAuth()
+  const { ready, isAuthed } = useAuth()
   const [onboarded, setOnboardedState] = useState<boolean | null>(null)
 
   useEffect(() => { isOnboarded().then(setOnboardedState) }, [])
+  // 로그인 상태가 되면 FCM 푸시 토큰 등록
+  useEffect(() => { if (isAuthed) registerPushToken() }, [isAuthed])
 
   if (!ready || onboarded === null) return <View style={{ flex: 1, backgroundColor: colors.bg }}><Loading /></View>
   if (!onboarded) return <OnboardingScreen onDone={() => { setOnboarded(); setOnboardedState(true) }} />

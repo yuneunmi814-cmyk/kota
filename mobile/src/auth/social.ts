@@ -5,7 +5,13 @@ import { login as kakaoNativeLogin } from '@react-native-kakao/user'
 // 카카오 네이티브 키(dev build) 필요. 키 없으면 KAKAO_ENABLED=false → 버튼 비활성.
 const KAKAO_KEY = process.env.EXPO_PUBLIC_KAKAO_NATIVE_KEY ?? ''
 export const KAKAO_ENABLED = Boolean(KAKAO_KEY)
-export const GOOGLE_ENABLED = false // 구글 로그인은 별도 자격증명·설정 필요(추후)
+
+// 구글 로그인 — expo-auth-session으로 id_token 획득 → 백엔드 /auth/social.
+// 웹 클라이언트 ID(EXPO_PUBLIC_GOOGLE_CLIENT_ID)는 백엔드 GOOGLE_CLIENT_ID(aud 검증)와 동일해야 함.
+export const GOOGLE_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID ?? ''
+export const GOOGLE_IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? ''
+export const GOOGLE_ANDROID_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? ''
+export const GOOGLE_ENABLED = Boolean(GOOGLE_CLIENT_ID)
 
 let kakaoInit: Promise<void> | null = null
 function ensureKakao(): Promise<void> {

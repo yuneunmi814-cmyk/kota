@@ -21,6 +21,7 @@ export function MyScreen({ navigation }: Props) {
               <Text style={{ color: colors.textSub, fontSize: 12, marginTop: 4 }}>관심: {user.interests.map((i) => i.name).join(', ')}</Text>
             )}
           </Card>
+          <Button title="관심 테마 설정" kind="ghost" onPress={() => navigation.navigate('Interests')} />
           <Button title="로그아웃" kind="ghost" onPress={logout} />
         </>
       ) : (
