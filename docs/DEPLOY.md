@@ -40,8 +40,10 @@ cd admin-web && npm install && npm run dev   # http://localhost:5173 (/api → :
 
 ## B. 정식 배포
 
+> 🚀 **가장 쉬운 길 — Render 블루프린트(1클릭)**: 루트 [`render.yaml`](../render.yaml)에 백엔드(Docker)+PostgreSQL(PostGIS)+Redis+관리자웹이 정의돼 있습니다. Render → New → Blueprint → 레포 선택 → Apply. 상세·양대 스토어 제출까지는 [출시 체크리스트](launch-checklist.md) 참고.
+
 ### 백엔드
-- **DB**: PostGIS 지원 매니지드 Postgres 필요 — Supabase·Neon·AWS RDS(+PostGIS 확장). `DATABASE_URL` 설정.
+- **DB**: PostGIS 지원 매니지드 Postgres 필요 — Render Postgres/Supabase·Neon·AWS RDS(+PostGIS 확장). `DATABASE_URL` 설정.
 - **Redis**: 운영은 필수(`REDIS_URL`). 미설정 시 인메모리 폴백(단일 인스턴스 개발용).
 - **앱 호스팅**: `backend/Dockerfile`로 어디서나 — Render·Railway·Fly.io·ECS 등.
   - 기동 시 `prisma migrate deploy` 자동 실행.

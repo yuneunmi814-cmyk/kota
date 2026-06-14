@@ -19,7 +19,12 @@ const config: ExpoConfig = {
   icon: './assets/icon.png',
   userInterfaceStyle: 'light',
   scheme: 'travelpack',
-  ios: { supportsTablet: true, bundleIdentifier: 'app.travelpack.mobile' },
+  ios: {
+    supportsTablet: true,
+    bundleIdentifier: 'app.travelpack.mobile',
+    // 표준 암호화(HTTPS)만 사용 → App Store 수출규정 자진신고 면제
+    infoPlist: { ITSAppUsesNonExemptEncryption: false },
+  },
   android: {
     package: 'app.travelpack.mobile',
     adaptiveIcon: {

@@ -1,0 +1,57 @@
+# Render.com 배포 블루프린트 — 백엔드(Docker) + PostgreSQL(PostGIS) + Redis + 관리자 웹(static)
+# 사용: Render 대시보드 → New → Blueprint → 이 레포 선택 → Apply.
+#   적용 후 대시보드에서 sync:false 값(TOURAPI_SERVICE_KEY 등)을 채우고,
+#   백엔드 URL이 나오면 admin-web의 VITE_API_BASE에 그 주소(.../api/v1)를 넣어 재배포.
+# 무료 플랜은 체험용(웹 슬립·DB 90일). 운영은 plan을 starter 이상으로 올리세요.
+databases:
+  - name: travelpack-db
+    databaseName: travelpack
+    plan: free # 운영: basic-256mb 이상
+    postgresMajorVersion: "16" # PostGIS 확장은 마이그레이션이 CREATE EXTENSION으로 활성화
+
+services:
+  # Redis 호환 (RTR 토큰·캐시). 미연결 시 백엔드는 인메모리 폴백(단일 인스턴스 전용)
+  - type: keyvalue
+    name: travelpack-redis
+    plan: free
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # 내부(렌더 네트워크)에서만 접근
+
+  # 백엔드 API (backend/Dockerfile — 기동 시 prisma migrate deploy 자동)
+  - type: web
+    name: travelpack-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free # 운영: starter 이상(무료는 비활성 시 슬립)
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "4000"
+      - key: DATABASE_URL
+        fromDatabase: { name: travelpack-db, property: connectionString }
+      - key: REDIS_URL
+        fromService: { name: travelpack-redis, type: keyvalue, property: connectionString }
+      - key: SEED_ADMIN_PASSWORD
+        sync: false # 대시보드에서 강한 값으로 설정
+      - key: TOURAPI_SERVICE_KEY
+        sync: false # 콘텐츠 동기화용(선택)
+      # 유료화 시점에만: PG_PROVIDER / PG_API_SECRET / PORTONE_WEBHOOK_SECRET
+      # 이미지 업로드 시: S3_BUCKET / AWS_REGION (+ AWS 자격증명)
+      # 푸시 발송 시: FCM_PROJECT_ID (+ 자격증명)
+
+  # 관리자 웹(CMS) — 정적 사이트. VITE_API_BASE로 위 API를 가리킴(백엔드 CORS 허용)
+  - type: web
+    name: travelpack-admin
+    runtime: static
+    buildCommand: cd admin-web && npm ci && npm run build
+    staticPublishPath: admin-web/dist
+    envVars:
+      - key: VITE_API_BASE
+        sync: false # 예: https://travelpack-api.onrender.com/api/v1 (백엔드 배포 후 입력)
+    routes:
+      - type: rewrite # SPA — 모든 경로를 index.html로
+        source: /*
+        destination: /index.html

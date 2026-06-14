@@ -1,4 +1,5 @@
-const BASE = '/api/v1'
+// 개발은 상대경로(/api → Vite 프록시), 배포는 VITE_API_BASE로 API 절대주소 주입(백엔드 CORS 허용됨)
+const BASE = (import.meta.env.VITE_API_BASE as string | undefined) || '/api/v1'
 
 const ACCESS = 'tp_admin_access'
 const REFRESH = 'tp_admin_refresh'
