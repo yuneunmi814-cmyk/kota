@@ -23,6 +23,7 @@ export type MyStackParams = {
   MyCourses: undefined
   CourseEditor: { courseId?: string }
   MyPurchases: undefined
+  About: undefined
 }
 
 export type TabParams = {

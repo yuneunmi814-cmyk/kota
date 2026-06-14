@@ -21,6 +21,7 @@ import { SearchScreen } from '../screens/SearchScreen'
 import { MyCoursesScreen } from '../screens/MyCoursesScreen'
 import { CourseEditorScreen } from '../screens/CourseEditorScreen'
 import { MyPurchasesScreen } from '../screens/MyPurchasesScreen'
+import { AboutScreen } from '../screens/AboutScreen'
 
 const Tab = createBottomTabNavigator<TabParams>()
 const ExploreStack = createNativeStackNavigator<ExploreStackParams>()
@@ -75,6 +76,7 @@ function MyNavigator() {
       <MyStack.Screen name="MyCourses" component={MyCoursesScreen} options={{ title: '내 여행팩' }} />
       <MyStack.Screen name="CourseEditor" component={CourseEditorScreen} options={{ title: '여행팩 만들기' }} />
       <MyStack.Screen name="MyPurchases" component={MyPurchasesScreen} options={{ title: '구매한 여행팩' }} />
+      <MyStack.Screen name="About" component={AboutScreen} options={{ title: '사업자 정보 · 약관' }} />
     </MyStack.Navigator>
   )
 }

@@ -36,6 +36,8 @@ export function MyScreen({ navigation }: Props) {
             <Row label="🛒 구매한 여행팩" onPress={() => navigation.navigate('MyPurchases')} />
             <View style={styles.div} />
             <Row label="⭐ 관심 테마 설정" onPress={() => navigation.navigate('Interests')} />
+            <View style={styles.div} />
+            <Row label="ℹ️ 사업자 정보 · 약관" onPress={() => navigation.navigate('About')} />
           </Card>
           <Button title="로그아웃" kind="ghost" onPress={logout} />
         </>
@@ -46,6 +48,7 @@ export function MyScreen({ navigation }: Props) {
           <Button title="로그인 / 가입" onPress={() => navigation.navigate('Login')} style={{ alignSelf: 'stretch' }} />
         </Card>
       )}
+      {!isAuthed && <Button title="사업자 정보 · 약관" kind="ghost" onPress={() => navigation.navigate('About')} />}
       <Text style={styles.ver}>TravelPack v0.1.0</Text>
     </ScrollView>
   )
