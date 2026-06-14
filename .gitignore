@@ -11,6 +11,9 @@ node_modules/
 *.local.md
 **/사업자정보.local.*
 
+# TourAPI 원본 사진 — 저작권(한국관광공사). 미리보기 PNG에는 출처표기와 함께 임베드, 원본은 비커밋
+design/screens/photos/
+
 # 빌드 산출물
 dist/
 build/

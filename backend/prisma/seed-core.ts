@@ -21,6 +21,15 @@ const SPOTS = [
   { name: '동문재래시장', category: '시장', lat: 33.5121, lng: 126.5281, stay: 90, fee: '무료', tips: '야시장은 18시 이후! 딱새우회·흑돼지 꼬치 추천', summary: '제주 최대 전통시장, 야시장 먹거리' },
 ] as const
 
+// 대표 관광사진 (한국관광공사 TourAPI firstimage/detailImage2). 출처 표기 필수 → sourceCredit
+const SPOT_IMAGES: Record<string, string> = {
+  '성산일출봉': 'https://tong.visitkorea.or.kr/cms/resource/93/1876193_image2_1.jpg',
+  '광치기 해변': 'https://tong.visitkorea.or.kr/cms/resource/75/3400775_image2_1.jpg',
+  '함덕해수욕장': 'https://tong.visitkorea.or.kr/cms/resource/00/3354600_image2_1.jpg',
+  '월정리 해변': 'https://tong.visitkorea.or.kr/cms/resource/36/3011836_image2_1.jpg',
+  '동문재래시장': 'https://tong.visitkorea.or.kr/cms/resource/38/2678438_image2_1.jpg',
+}
+
 export async function runSeed(prisma: PrismaClient, adminPassword: string, rounds = 10): Promise<SeedResult> {
   // 의존 역순 전체 삭제 (개발·테스트 시드 전용)
   await prisma.$transaction([
@@ -86,6 +95,9 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
           admissionFee: s.fee,
           avgStayMinutes: s.stay,
           openHours: 'open' in s ? (s.open as object) : undefined,
+          ...(SPOT_IMAGES[s.name]
+            ? { images: { create: [{ url: SPOT_IMAGES[s.name]!, sourceCredit: '한국관광공사', source: 'TOURAPI', sourceId: 'seed', sortOrder: 0 }] } }
+            : {}),
         },
       })
     ).id
@@ -97,6 +109,7 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
       regionId: jeju.id,
       title: '제주 동부 힐링 2일',
       summary: '바다·오름·카페를 잇는 2일',
+      coverImageUrl: SPOT_IMAGES['성산일출봉'],
       durationDays: 2,
       estCost: 120000,
       status: 'PUBLISHED',
@@ -124,6 +137,7 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
       regionId: jeju.id,
       title: '서쪽 노을 미식 코스',
       summary: '노을 맛집과 미식 스팟을 잇는 1박2일',
+      coverImageUrl: SPOT_IMAGES['동문재래시장'],
       durationDays: 2,
       estCost: 150000,
       status: 'DRAFT',
