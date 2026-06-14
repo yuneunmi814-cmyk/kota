@@ -51,7 +51,7 @@ function ExploreNavigator() {
       <ExploreStack.Screen name="CourseDetail" component={CourseDetailScreen} options={{ title: '코스 상세' }} />
       <ExploreStack.Screen name="SpotDetail" component={SpotDetailScreen} options={{ title: '관광지' }} />
       <ExploreStack.Screen name="ReviewWrite" component={ReviewWriteScreen} options={{ title: '리뷰 작성' }} />
-      <ExploreStack.Screen name="Marketplace" component={MarketplaceScreen} options={{ title: '크리에이터 마켓' }} />
+      <ExploreStack.Screen name="Marketplace" component={MarketplaceScreen} options={{ title: '여행팩 둘러보기' }} />
       <ExploreStack.Screen name="Search" component={SearchScreen} options={{ title: '검색' }} />
     </ExploreStack.Navigator>
   )

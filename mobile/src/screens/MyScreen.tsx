@@ -31,9 +31,7 @@ export function MyScreen({ navigation }: Props) {
             )}
           </Card>
           <Card style={{ padding: 0, overflow: 'hidden' }}>
-            <Row label="🧳 내 여행팩 (만들기·판매)" onPress={() => navigation.navigate('MyCourses')} />
-            <View style={styles.div} />
-            <Row label="🛒 구매한 여행팩" onPress={() => navigation.navigate('MyPurchases')} />
+            <Row label="🧳 내 여행팩 (만들기·공유)" onPress={() => navigation.navigate('MyCourses')} />
             <View style={styles.div} />
             <Row label="⭐ 관심 테마 설정" onPress={() => navigation.navigate('Interests')} />
             <View style={styles.div} />

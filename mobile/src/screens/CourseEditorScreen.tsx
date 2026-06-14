@@ -5,7 +5,6 @@ import { useResource } from '../api/useResource'
 import { api, ApiError } from '../api/client'
 import { Button, Card, ImagePlaceholder, Loading, EmptyState, Pill } from '../components/ui'
 import { colors, radius, space } from '../theme'
-import { priceLabel } from '../lib/format'
 import type { MyStackParams } from '../navigation/types'
 import type { ContentStatus, MyCourseDetail, Paged, Region, SpotPick, Theme } from '../api/types'
 
@@ -31,7 +30,6 @@ export function CourseEditorScreen({ navigation, route }: Props) {
   const [summary, setSummary] = useState('')
   const [regionId, setRegionId] = useState<string | null>(null)
   const [duration, setDuration] = useState(1)
-  const [price, setPrice] = useState('0')
   const [themeIds, setThemeIds] = useState<string[]>([])
   const [items, setItems] = useState<EditorItem[]>([])
   const [status, setStatus] = useState<ContentStatus | 'NEW'>('NEW')
@@ -48,7 +46,6 @@ export function CourseEditorScreen({ navigation, route }: Props) {
     setSummary(d.summary ?? '')
     setRegionId(d.region.id)
     setDuration(d.durationDays)
-    setPrice(String(d.price))
     setThemeIds(d.themes.map((t) => t.id))
     setStatus(d.status)
     setItems(
@@ -106,7 +103,7 @@ export function CourseEditorScreen({ navigation, route }: Props) {
       regionId,
       summary: summary.trim() || undefined,
       durationDays: duration,
-      price: Number(price) || 0,
+      price: 0, // 무료 공유 모델 (유료화 시 가격 입력 복원)
       themeIds,
       items: payloadItems,
     }
@@ -216,23 +213,17 @@ export function CourseEditorScreen({ navigation, route }: Props) {
           </View>
         </Field>
 
-        <View style={{ flexDirection: 'row', gap: space(4) }}>
-          <Field label="기간(일)" style={{ flex: 1 }}>
-            <View style={styles.stepper}>
-              <Pressable disabled={readOnly || duration <= Math.max(1, maxItemDay)} onPress={() => setDuration((d) => Math.max(1, d - 1))} style={styles.stepBtn}>
-                <Text style={styles.stepBtnText}>−</Text>
-              </Pressable>
-              <Text style={{ fontWeight: '700', color: colors.text, minWidth: 24, textAlign: 'center' }}>{duration}</Text>
-              <Pressable disabled={readOnly || duration >= 10} onPress={() => setDuration((d) => Math.min(10, d + 1))} style={styles.stepBtn}>
-                <Text style={styles.stepBtnText}>＋</Text>
-              </Pressable>
-            </View>
-          </Field>
-          <Field label="가격(원, 0=무료)" style={{ flex: 1 }}>
-            <TextInput style={styles.input} value={price} onChangeText={(t) => setPrice(t.replace(/[^0-9]/g, ''))} editable={!readOnly} keyboardType="number-pad" placeholder="0" placeholderTextColor={colors.textHint} />
-            <Text style={{ color: colors.textHint, fontSize: 12, marginTop: 4 }}>{priceLabel(Number(price) || 0)}</Text>
-          </Field>
-        </View>
+        <Field label="기간(일)">
+          <View style={[styles.stepper, { alignSelf: 'flex-start', paddingHorizontal: space(2) }]}>
+            <Pressable disabled={readOnly || duration <= Math.max(1, maxItemDay)} onPress={() => setDuration((d) => Math.max(1, d - 1))} style={styles.stepBtn}>
+              <Text style={styles.stepBtnText}>−</Text>
+            </Pressable>
+            <Text style={{ fontWeight: '700', color: colors.text, minWidth: 24, textAlign: 'center' }}>{duration}</Text>
+            <Pressable disabled={readOnly || duration >= 10} onPress={() => setDuration((d) => Math.min(10, d + 1))} style={styles.stepBtn}>
+              <Text style={styles.stepBtnText}>＋</Text>
+            </Pressable>
+          </View>
+        </Field>
 
         <Field label="테마 (최대 10)">
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>

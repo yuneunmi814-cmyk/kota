@@ -4,7 +4,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useResource } from '../api/useResource'
 import { Button, Card, ImagePlaceholder, Loading, EmptyState, Badge } from '../components/ui'
 import { colors, space } from '../theme'
-import { priceLabel, durationLabel } from '../lib/format'
+import { durationLabel } from '../lib/format'
 import type { MyStackParams } from '../navigation/types'
 import type { MyCourse, ContentStatus, Paged } from '../api/types'
 
@@ -45,14 +45,10 @@ export function MyCoursesScreen({ navigation }: Props) {
               <Card style={{ flexDirection: 'row' }}>
                 {c.cover ? <Image source={{ uri: c.cover }} style={{ width: 88, height: 88 }} /> : <ImagePlaceholder height={88} />}
                 <View style={{ flex: 1, padding: space(3), gap: 4, justifyContent: 'center' }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                    <Badge label={STATUS[c.status].label} tone={STATUS[c.status].tone} />
-                    <Text style={{ fontWeight: '800', color: c.price > 0 ? colors.primary : colors.success, fontSize: 13 }}>{priceLabel(c.price)}</Text>
-                  </View>
+                  <Badge label={STATUS[c.status].label} tone={STATUS[c.status].tone} />
                   <Text style={{ fontWeight: '700', color: colors.text }} numberOfLines={1}>{c.title}</Text>
                   <Text style={{ fontSize: 12, color: colors.textHint }}>
                     {c.region} · {durationLabel(c.durationDays)} · 명소 {c.spotCount}곳
-                    {c.status === 'PUBLISHED' && c.salesCount > 0 ? ` · ${c.salesCount}명 구매` : ''}
                   </Text>
                 </View>
               </Card>

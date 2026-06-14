@@ -59,20 +59,21 @@ marketplaceRouter.get(
       ...(themeIds?.length ? { themes: { some: { themeId: { in: themeIds } } } } : {}),
     }
 
+    // 무료 공유 모델: 인기순은 저장수(saveCount) 기준 (판매수는 유료화 시 사용)
     const rawCursor = typeof req.query.cursor === 'string' ? req.query.cursor : null
     let cursorWhere: Prisma.CourseWhereInput = {}
     if (rawCursor) {
-      if ((sort === 'latest' || sort === 'free') && /^\d+$/.test(rawCursor)) {
+      if (sort === 'popular' && /^\d+_\d+$/.test(rawCursor)) {
+        const [saveStr, idStr] = rawCursor.split('_') as [string, string]
+        const save = Number(saveStr)
+        cursorWhere = { OR: [{ saveCount: { lt: save } }, { saveCount: save, id: { lt: BigInt(idStr) } }] }
+      } else if (/^\d+$/.test(rawCursor)) {
         cursorWhere = { id: { lt: BigInt(rawCursor) } }
-      } else if (/^\d+_\d+$/.test(rawCursor)) {
-        const [salesStr, idStr] = rawCursor.split('_') as [string, string]
-        const sales = Number(salesStr)
-        cursorWhere = { OR: [{ salesCount: { lt: sales } }, { salesCount: sales, id: { lt: BigInt(idStr) } }] }
       }
     }
 
     const orderBy: Prisma.CourseOrderByWithRelationInput[] =
-      sort === 'popular' ? [{ salesCount: 'desc' }, { id: 'desc' }] : [{ id: 'desc' }]
+      sort === 'popular' ? [{ saveCount: 'desc' }, { id: 'desc' }] : [{ id: 'desc' }]
 
     const items = await prisma.course.findMany({
       where: { AND: [where, cursorWhere] },
@@ -82,7 +83,7 @@ marketplaceRouter.get(
     })
     const last = items[items.length - 1]
     const nextCursor =
-      items.length === limit && last ? (sort === 'popular' ? `${last.salesCount}_${last.id}` : last.id.toString()) : null
+      items.length === limit && last ? (sort === 'popular' ? `${last.saveCount}_${last.id}` : last.id.toString()) : null
     ok(res, { items: items.map(toMarketCard), nextCursor })
   }),
 )

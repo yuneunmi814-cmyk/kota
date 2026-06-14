@@ -1,15 +1,17 @@
 import { ScrollView, Text, View, Pressable, StyleSheet, Image } from 'react-native'
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { useResource } from '../api/useResource'
-import { Card, ImagePlaceholder, Loading, EmptyState, Pill } from '../components/ui'
+import { Card, ImagePlaceholder, Loading, EmptyState, Pill, Badge } from '../components/ui'
 import { colors, space } from '../theme'
 import type { TabParams } from '../navigation/types'
-import type { CourseCard, HomeFeed, Region } from '../api/types'
+import type { CourseCard, HomeFeed, MarketCard, Paged, Region } from '../api/types'
 
 type Props = BottomTabScreenProps<TabParams, 'HomeTab'>
 
 export function HomeScreen({ navigation }: Props) {
   const { data, loading, error } = useResource<HomeFeed>('/home')
+  // 커뮤니티 인기 여행팩(사용자 공유) — 비어 있으면 섹션 숨김
+  const community = useResource<Paged<MarketCard>>('/marketplace/courses?sort=popular&limit=10')
 
   function openCourse(courseId: string) {
     navigation.navigate('ExploreTab', { screen: 'CourseDetail', params: { courseId } })
@@ -24,6 +26,8 @@ export function HomeScreen({ navigation }: Props) {
   if (loading) return <Loading />
   if (error || !data) return <EmptyState text={error ?? '불러오기 실패'} />
 
+  const communityPacks = community.data?.items ?? []
+
   return (
     <ScrollView style={{ backgroundColor: colors.bg }} contentContainerStyle={{ padding: space(5), gap: space(5) }}>
       <Text style={styles.brand}>TravelPack</Text>
@@ -37,18 +41,7 @@ export function HomeScreen({ navigation }: Props) {
         </Card>
       )}
 
-      <Pressable onPress={openMarketplace}>
-        <Card style={{ backgroundColor: colors.primaryWeak, borderColor: colors.primaryWeak }}>
-          <View style={{ padding: space(5), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <View style={{ flex: 1 }}>
-              <Text style={{ color: colors.primaryDeep, fontWeight: '800', fontSize: 15 }}>🧳 크리에이터 마켓플레이스</Text>
-              <Text style={{ color: colors.primaryDeep, fontSize: 12, marginTop: 4 }}>여행 고수의 코스를 사고, 내 코스를 팔아보세요</Text>
-            </View>
-            <Text style={{ color: colors.primaryDeep, fontSize: 22, fontWeight: '700' }}>›</Text>
-          </View>
-        </Card>
-      </Pressable>
-
+      {/* 메인 히어로: 검증된 큐레이션 코스 */}
       <Section title="이번 주 추천 코스">
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space(3) }}>
           {data.recommendedCourses.map((c) => (
@@ -76,6 +69,28 @@ export function HomeScreen({ navigation }: Props) {
         </View>
       </Section>
 
+      {/* 커뮤니티: 사용자가 공유한 여행팩(자랑) */}
+      {communityPacks.length > 0 && (
+        <Section title="커뮤니티 인기 여행팩" action={{ label: '더보기', onPress: openMarketplace }}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space(3) }}>
+            {communityPacks.map((c) => (
+              <Pressable key={c.id} onPress={() => openCourse(c.id)} style={{ width: 180 }}>
+                <Card>
+                  {c.cover ? <Image source={{ uri: c.cover }} style={{ height: 96, width: '100%' }} /> : <ImagePlaceholder height={96} />}
+                  <View style={{ padding: space(3), gap: 3 }}>
+                    <Text style={styles.cardTitle} numberOfLines={1}>{c.title}</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                      <Badge label={`by ${c.author?.nickname ?? '여행자'}`} tone="navy" />
+                      {c.saveCount > 0 && <Text style={styles.meta}>♡ {c.saveCount.toLocaleString()}</Text>}
+                    </View>
+                  </View>
+                </Card>
+              </Pressable>
+            ))}
+          </ScrollView>
+        </Section>
+      )}
+
       {data.themeSections.map((s) => (
         <Section key={s.theme.id} title={s.theme.name}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space(3) }}>
@@ -94,10 +109,13 @@ export function HomeScreen({ navigation }: Props) {
   )
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, action, children }: { title: string; action?: { label: string; onPress: () => void }; children: React.ReactNode }) {
   return (
     <View style={{ gap: space(3) }}>
-      <Text style={styles.section}>{title}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Text style={styles.section}>{title}</Text>
+        {action && <Text style={styles.more} onPress={action.onPress}>{action.label} ›</Text>}
+      </View>
       {children}
     </View>
   )
@@ -106,6 +124,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 const styles = StyleSheet.create({
   brand: { fontSize: 18, fontWeight: '700', color: colors.primary },
   section: { fontSize: 16, fontWeight: '600', color: colors.text },
+  more: { fontSize: 13, color: colors.primary, fontWeight: '600' },
   cardTitle: { fontSize: 13, fontWeight: '600', color: colors.text },
   meta: { fontSize: 11, color: colors.textHint, marginTop: 2 },
 })
