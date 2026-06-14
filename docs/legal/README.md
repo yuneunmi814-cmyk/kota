@@ -15,6 +15,13 @@
 
 > 사업자 신원정보(상호·번호·주소)는 비공개 파일 `사업자정보.local.md`(gitignore)에 정리됨.
 
+### 약관 호스팅 (Google Play 개인정보처리방침 URL + 앱 약관 링크)
+`site/` 에 위 4개 문서를 정적 HTML로 변환해 둠(`terms/ privacy/ location/ refund/` + `index.html`).
+- **재생성**: `node /tmp/build_legal_site.js` (마크다운 수정 후 다시 실행 — `marked` 사용)
+- **호스팅**: GitHub Pages(예: `docs/` 또는 별도 레포) / Netlify에 `site/` 업로드 → 공개 URL 확보
+- 앱 연결: `mobile/.env`의 `EXPO_PUBLIC_LEGAL_BASE_URL`을 그 베이스로 설정하면 `AboutScreen`의 약관 링크가 `/terms /privacy /location /refund`로 연결됨
+- ⚠️ 게시 전 `[ ]` 빈칸(상호·CPO·연락처 등)을 채우고 변호사 검토 필수
+
 ## 출시 전 법적 절차 체크 (사업자 본인 수행) — 상세는 [출시_인허가_가이드.md](출시_인허가_가이드.md)
 
 1. ✅ **사업자등록 완료** (프로젝트윤 / 간이과세자)
