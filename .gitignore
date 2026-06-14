@@ -24,3 +24,6 @@ build/
 .claude/
 .DS_Store
 *.log
+
+# 채워진(PII 포함) 약관 최종본 — 호스팅용, 공개 레포 비커밋
+docs/legal/published/
