@@ -112,11 +112,11 @@ marketplaceRouter.post(
     // portone 모드: 클라이언트가 결제 후 받은 paymentId를 받아 서버가 검증
     const paymentId = typeof (req.body as { paymentId?: unknown })?.paymentId === 'string' ? (req.body as { paymentId: string }).paymentId : undefined
 
-    // PENDING 행 확보(재시도 멱등)
+    // PENDING 행 확보(재시도 멱등). paymentId를 보관해 웹훅이 동일 거래를 매칭·재검증할 수 있게 함
     await prisma.coursePurchase.upsert({
       where: { courseId_userId: { courseId: id, userId } },
-      update: {},
-      create: { courseId: id, userId, price: course.price, status: 'PENDING' },
+      update: paymentId ? { paymentId } : {},
+      create: { courseId: id, userId, price: course.price, status: 'PENDING', ...(paymentId ? { paymentId } : {}) },
     })
 
     const result = await charge({
@@ -195,10 +195,20 @@ marketplaceRouter.post(
     if (paymentId) {
       const purchase = await prisma.coursePurchase.findFirst({ where: { paymentId } })
       if (purchase && purchase.status === 'PENDING') {
-        await prisma.$transaction([
-          prisma.coursePurchase.update({ where: { id: purchase.id }, data: { status: 'PAID', purchasedAt: new Date() } }),
-          prisma.course.update({ where: { id: purchase.courseId }, data: { salesCount: { increment: 1 } } }),
-        ])
+        // 웹훅은 알림일 뿐 — 서버가 PortOne에 단건 조회해 금액·상태를 재검증한 뒤에만 이용권 부여
+        const result = await charge({
+          amount: purchase.price, // 서버 보관 금액으로 대조
+          courseId: purchase.courseId.toString(),
+          userId: purchase.userId.toString(),
+          description: '웹훅 결제 확인',
+          paymentId,
+        })
+        if (result.ok) {
+          await prisma.$transaction([
+            prisma.coursePurchase.update({ where: { id: purchase.id }, data: { status: 'PAID', provider: result.provider, purchasedAt: new Date() } }),
+            prisma.course.update({ where: { id: purchase.courseId }, data: { salesCount: { increment: 1 } } }),
+          ])
+        }
       }
     }
     ok(res, { received: true })

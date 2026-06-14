@@ -332,7 +332,7 @@ model CoursePurchase {
   price       Int            // 구매 시점 가격(원)
   status      PurchaseStatus @default(PENDING)
   provider    String?        // PG사(portone/toss…) — 무료는 null
-  paymentId   String?        @map("payment_id")  // PG 거래 식별자
+  paymentId   String?        @unique @map("payment_id")  // PG 거래 식별자(유니크 — 동일 거래 중복/오매칭 방지)
   purchasedAt DateTime?      @map("purchased_at")
   createdAt   DateTime       @default(now()) @map("created_at")
 

@@ -1,5 +1,6 @@
+import { createHmac } from 'node:crypto'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
-import { api, seedAll, signupUser, adminToken } from './helpers.js'
+import { api, seedAll, signupUser, adminToken, prisma } from './helpers.js'
 import type { SeedResult } from '../prisma/seed-core.js'
 import { setPaymentTransportForTest, mockApproveTransport, paymentMode, isPaymentEnabled, settlement } from '../src/modules/marketplace/payment.js'
 
@@ -287,5 +288,58 @@ describe('결제 모드 판정(게이팅)', () => {
   it('정산 분배는 수수료율대로 내림 계산', () => {
     expect(settlement(10000)).toMatchObject({ platformFee: 2000, creatorPayout: 8000, feePercent: 20 })
     expect(settlement(9999).platformFee).toBe(1999) // floor
+  })
+})
+
+describe('결제 웹훅 (서명 + PortOne 재검증)', () => {
+  const SECRET = 'whsec-test'
+  let courseId: string
+  const PAY_ID = 'pay_wh_test_1'
+
+  beforeAll(async () => {
+    seed = await seedAll()
+    const author = (await signupUser()).accessToken
+    courseId = await publishCreatorCourse(author, { price: 5000 })
+    const buyer = await signupUser()
+    // PENDING 구매행(paymentId 포함) 직접 생성
+    await prisma.coursePurchase.create({
+      data: { courseId: BigInt(courseId), userId: BigInt(buyer.userId), price: 5000, status: 'PENDING', paymentId: PAY_ID },
+    })
+    process.env.PORTONE_WEBHOOK_SECRET = SECRET
+  })
+  afterAll(() => { delete process.env.PORTONE_WEBHOOK_SECRET })
+
+  const sign = (raw: string) => createHmac('sha256', SECRET).update(raw).digest('base64')
+  const post = (raw: string, signature?: string) => {
+    const r = api.post('/api/v1/marketplace/payments/webhook').set('content-type', 'application/json')
+    if (signature !== undefined) r.set('webhook-signature', signature)
+    return r.send(raw)
+  }
+  const statusOf = async () => (await prisma.coursePurchase.findFirst({ where: { paymentId: PAY_ID } }))?.status
+
+  it('서명 헤더 없으면 400', async () => {
+    const res = await post(JSON.stringify({ data: { paymentId: PAY_ID } }))
+    expect(res.status).toBe(400)
+  })
+
+  it('서명 틀리면 403', async () => {
+    const res = await post(JSON.stringify({ data: { paymentId: PAY_ID } }), 'wrong-signature')
+    expect(res.status).toBe(403)
+  })
+
+  it('서명 유효하지만 PortOne 재검증 실패 → 이용권 미부여(PENDING 유지)', async () => {
+    setPaymentTransportForTest(async () => ({ ok: false, paymentId: PAY_ID, provider: 'portone', failureReason: 'STATUS_FAILED' }))
+    const raw = JSON.stringify({ type: 'Transaction.Paid', data: { paymentId: PAY_ID } })
+    const res = await post(raw, sign(raw))
+    expect(res.status).toBe(200)
+    expect(await statusOf()).toBe('PENDING')
+  })
+
+  it('서명 유효 + 재검증 성공 → PAID 부여', async () => {
+    setPaymentTransportForTest(mockApproveTransport())
+    const raw = JSON.stringify({ type: 'Transaction.Paid', data: { paymentId: PAY_ID } })
+    const res = await post(raw, sign(raw))
+    expect(res.status).toBe(200)
+    expect(await statusOf()).toBe('PAID')
   })
 })

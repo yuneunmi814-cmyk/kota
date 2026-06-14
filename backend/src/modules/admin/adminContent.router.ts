@@ -376,33 +376,34 @@ adminContentRouter.get(
       },
     })
 
-    const byCreator = new Map<string, { authorId: string; nickname: string; salesCount: number; gross: number }>()
+    // 수수료는 거래(구매)별로 내림 계산 후 합산 — 합계에 한 번 내림하면 거래별 실제 정산액과 어긋남
+    const byCreator = new Map<string, { authorId: string; nickname: string; salesCount: number; gross: number; platformFee: number }>()
     let gross = 0
+    let platformFeeTotal = 0
     for (const p of purchases) {
       gross += p.price
+      const fee = settlement(p.price).platformFee
+      platformFeeTotal += fee
       const authorId = p.course.authorUserId?.toString()
       if (!authorId) continue // 에디터(공식) 유료 코스 등 — 작성자 없음
-      const cur = byCreator.get(authorId) ?? { authorId, nickname: p.course.author?.nickname ?? '(탈퇴)', salesCount: 0, gross: 0 }
+      const cur = byCreator.get(authorId) ?? { authorId, nickname: p.course.author?.nickname ?? '(탈퇴)', salesCount: 0, gross: 0, platformFee: 0 }
       cur.salesCount += 1
       cur.gross += p.price
+      cur.platformFee += fee
       byCreator.set(authorId, cur)
     }
 
     const creators = [...byCreator.values()]
-      .map((c) => {
-        const s = settlement(c.gross)
-        return { ...c, platformFee: s.platformFee, payout: s.creatorPayout }
-      })
+      .map((c) => ({ ...c, payout: c.gross - c.platformFee }))
       .sort((a, b) => b.gross - a.gross)
 
-    const total = settlement(gross)
     ok(res, {
       summary: {
         paidCount: purchases.length,
         grossRevenue: gross,
-        platformFee: total.platformFee,
-        creatorPayout: total.creatorPayout,
-        feePercent: total.feePercent,
+        platformFee: platformFeeTotal,
+        creatorPayout: gross - platformFeeTotal,
+        feePercent: settlement(100).feePercent,
       },
       creators,
     })
