@@ -1,24 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { StyleSheet, Text, View, type ViewStyle } from 'react-native'
 import { WebView } from 'react-native-webview'
-import KakaoMapView, { KakaoMap } from '@react-native-kakao/map'
 import { colors } from '../theme'
 
-// 지도 렌더 우선순위:
-//  1) EXPO_PUBLIC_KAKAO_JS_KEY 있으면 → Kakao JS SDK(WebView): 번호 마커 + 경로선 (Expo Go에서도 동작)
-//  2) EXPO_PUBLIC_KAKAO_NATIVE_KEY 있으면 → 네이티브 지도(내장 POI만, 마커/선 미지원, dev build 필요)
-//  3) 둘 다 없으면 → 플레이스홀더(앱은 정상 동작)
-const KAKAO_NATIVE_KEY = process.env.EXPO_PUBLIC_KAKAO_NATIVE_KEY ?? ''
+// 지도 렌더:
+//  1) EXPO_PUBLIC_KAKAO_JS_KEY 있으면 → Kakao JS SDK(WebView): 번호 마커 + 경로선 (Expo Go에서도 동작, 웹 도메인 등록 필요)
+//  2) 없으면 → 플레이스홀더(앱은 정상 동작; 경유지 수 표시)
+// 네이티브 지도(@react-native-kakao/map)는 RN 0.85(Expo SDK 56) 미지원/미유지보수로 제거 → WebView 방식으로 일원화.
 const KAKAO_JS_KEY = process.env.EXPO_PUBLIC_KAKAO_JS_KEY ?? ''
 // Kakao JS SDK는 등록된 웹 플랫폼 도메인에서만 동작 → WebView baseUrl을 등록 도메인으로 맞춘다.
 const MAP_DOMAIN = process.env.EXPO_PUBLIC_KAKAO_MAP_DOMAIN ?? 'https://travelpack.app'
-export const MAP_ENABLED = Boolean(KAKAO_JS_KEY || KAKAO_NATIVE_KEY)
-
-let initPromise: Promise<void> | null = null
-function ensureInit(): Promise<void> {
-  if (!initPromise) initPromise = KakaoMap.initializeKakaoMapSDK(KAKAO_NATIVE_KEY)
-  return initPromise
-}
+export const MAP_ENABLED = Boolean(KAKAO_JS_KEY)
 
 export interface MapMarker { lat: number; lng: number; label?: string; done?: boolean }
 
@@ -39,7 +31,7 @@ export function MapView({ lat, lng, markers, zoomLevel = 5, height = 200, style 
       </View>
     )
   }
-  return <NativeMap lat={lat} lng={lng} markers={markers} zoomLevel={zoomLevel <= 8 ? 13 : zoomLevel} height={height} style={style} />
+  return <Placeholder height={height} markers={markers} style={style} />
 }
 
 // ── Kakao JS SDK (WebView): 번호 마커 + 경로선 ─────────────────────
@@ -94,29 +86,6 @@ function buildHtml(lat: number, lng: number, level: number, pts: MapMarker[]): s
 </script></body></html>`
 }
 
-// ── 네이티브 지도(내장 POI) ─────────────────────────────────────
-function NativeMap({ lat, lng, markers, zoomLevel, height, style }: Props) {
-  const [ready, setReady] = useState(false)
-  const failed = useRef(false)
-
-  useEffect(() => {
-    if (!KAKAO_NATIVE_KEY) return
-    ensureInit().then(() => setReady(true)).catch(() => { failed.current = true; setReady(false) })
-  }, [])
-
-  if (!KAKAO_NATIVE_KEY || failed.current) return <Placeholder height={height ?? 200} markers={markers} style={style} />
-
-  return (
-    <View style={[{ height, borderRadius: 12, overflow: 'hidden' }, style]}>
-      {ready ? (
-        <KakaoMapView style={{ flex: 1 }} initialCamera={{ lat, lng, zoomLevel }} poiEnabled poiClickable />
-      ) : (
-        <Placeholder height={height ?? 200} markers={markers} />
-      )}
-    </View>
-  )
-}
-
 function Placeholder({ height, markers, style }: { height: number; markers?: MapMarker[]; style?: ViewStyle }) {
   const done = markers?.filter((m) => m.done).length ?? 0
   return (
@@ -125,7 +94,7 @@ function Placeholder({ height, markers, style }: { height: number; markers?: Map
       {markers && markers.length > 0 && (
         <Text style={styles.phSub}>경유지 {markers.length}곳{done ? ` · ${done} 완료` : ''}</Text>
       )}
-      {!MAP_ENABLED && <Text style={styles.phHint}>카카오 키 설정 시 지도 표시</Text>}
+      {!MAP_ENABLED && <Text style={styles.phHint}>카카오 지도 키 설정 시 지도 표시</Text>}
     </View>
   )
 }
