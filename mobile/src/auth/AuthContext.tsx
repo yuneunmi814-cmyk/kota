@@ -48,9 +48,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setAuthLostHandler(() => setUser(null))
     warmup() // Render 슬립 깨우기(파이어앤포겟) — 첫 화면/로그인 cold start 완화
     ;(async () => {
-      await loadTokens()
-      await refreshMe()
-      setReady(true)
+      try {
+        await loadTokens()
+        await refreshMe()
+      } catch (e) {
+        console.error('[bootstrap]', e) // 부트스트랩 실패해도 앱은 계속(로딩에서 멈추지 않게)
+      } finally {
+        setReady(true)
+      }
     })()
   }, [refreshMe])
 
