@@ -7,6 +7,14 @@ interface TourismSeed { tourapiContentId: string | null; petInfo: unknown; barri
 const TOURISM_SEED: Record<string, TourismSeed> =
   JSON.parse(readFileSync(new URL('./seed-tourism.json', import.meta.url), 'utf8'))
 
+// 한국관광공사 TourAPI 여행코스 import 결과(sync:tourapi --courses) — 경유지 스팟 + 실제 추천코스를 시드에 구워둠
+interface KtoCourseItem { dayNo: number | null; sortOrder: number | null; spotCid: string; stayMinutes: number | null; transportToNext: string | null; transportMinutes: number | null }
+interface KtoSeed {
+  spots: { cid: string; name: string; category: string | null; lat: number; lng: number; regionSlug: string; image: string | null }[]
+  courses: { cid: string; regionSlug: string; title: string; summary: string | null; durationDays: number | null; estCost: number | null; cover: string | null; items: KtoCourseItem[] | null }[]
+}
+const KTO_SEED: KtoSeed = JSON.parse(readFileSync(new URL('./seed-courses.json', import.meta.url), 'utf8'))
+
 // 전국 지역 대표 관광지(한국관광공사 TourAPI) — npm run db:seed 시 옵션으로 적재
 interface RegionSpot { name: string; category: string; lat: number; lng: number; image: string }
 const REGION_SEED: { jejuExtraImages: Record<string, string | null>; regions: Record<string, RegionSpot[]> } =
@@ -253,6 +261,48 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
     if (t.barrierFree) data.barrierFree = t.barrierFree as Prisma.InputJsonValue
     if (t.relatedSpots) data.relatedSpots = t.relatedSpots as Prisma.InputJsonValue
     await prisma.spot.updateMany({ where: { name }, data })
+  }
+
+  // KTO 여행코스 + 경유지(seed-courses.json) — 전국 실제 추천코스. 전체 시드(opts.regions)에서만 적재.
+  // 관광 3종 적용(위) 이후에 생성해 이름매칭 updateMany와 cid 충돌을 피한다.
+  if (opts.regions) {
+    const allRegions = await prisma.region.findMany({ select: { id: true, slug: true } })
+    const ridBySlug = new Map(allRegions.map((r) => [r.slug, r.id]))
+    for (const sp of KTO_SEED.spots) {
+      const rid = ridBySlug.get(sp.regionSlug)
+      if (!rid) continue
+      const ko = REGION_KO[sp.regionSlug] ?? sp.regionSlug
+      await prisma.spot.create({
+        data: {
+          regionId: rid, name: sp.name, category: sp.category ?? '관광지', lat: sp.lat, lng: sp.lng,
+          summary: `${ko} 관광지`, address: `${ko} 일대`, avgStayMinutes: 60, source: 'TOURAPI', tourapiContentId: sp.cid,
+          ...(sp.image ? { images: { create: [{ url: sp.image, sourceCredit: '한국관광공사', source: 'TOURAPI', sourceId: 'kto', sortOrder: 0 }] } } : {}),
+        },
+      })
+    }
+    const cidToId = new Map(
+      (await prisma.spot.findMany({ where: { tourapiContentId: { not: null } }, select: { id: true, tourapiContentId: true } }))
+        .map((s) => [s.tourapiContentId as string, s.id]),
+    )
+    for (const c of KTO_SEED.courses) {
+      const rid = ridBySlug.get(c.regionSlug)
+      if (!rid) continue
+      const items = (c.items ?? [])
+        .filter((it) => cidToId.has(it.spotCid))
+        .map((it) => ({
+          dayNo: it.dayNo ?? 1, sortOrder: it.sortOrder ?? 1, spotId: cidToId.get(it.spotCid)!,
+          stayMinutes: it.stayMinutes ?? undefined, transportToNext: (it.transportToNext as never) ?? undefined, transportMinutes: it.transportMinutes ?? undefined,
+        }))
+      if (items.length === 0) continue
+      await prisma.course.create({
+        data: {
+          regionId: rid, title: c.title, summary: c.summary ?? undefined, durationDays: c.durationDays ?? 1, estCost: c.estCost ?? undefined,
+          status: 'PUBLISHED', publishedAt: new Date(), createdBy: editor.id, source: 'TOURAPI', tourapiContentId: c.cid,
+          coverImageUrl: c.cover ?? undefined, saveCount: 0,
+          items: { create: items },
+        },
+      })
+    }
   }
 
   return {
