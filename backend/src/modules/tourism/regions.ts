@@ -15,6 +15,17 @@ export const TOURISM_REGIONS: Record<string, TourismRegion> = {
   daejeon: { korAreaCode: 3, areaCd: '30', signguCds: ['30110', '30170', '30200'] },     // 중·서·유성
   gwangju: { korAreaCode: 5, areaCd: '29', signguCds: ['29110', '29155', '29170', '29200'] }, // 동·남·북·광산
   sokcho: { korAreaCode: 32, areaCd: '51', signguCds: ['51210'] },                       // 속초시
+  ulsan: { korAreaCode: 7, areaCd: '31', signguCds: ['31110', '31170', '31200', '31710'] }, // 중·동·북·울주
+  sejong: { korAreaCode: 8, areaCd: '36', signguCds: ['36110'] },                        // 세종
+  suwon: { korAreaCode: 31, areaCd: '41', signguCds: ['41111', '41113', '41115', '41117'] }, // 장안·권선·팔달·영통
+  chuncheon: { korAreaCode: 32, areaCd: '51', signguCds: ['51110'] },                    // 춘천시
+  cheongju: { korAreaCode: 33, areaCd: '43', signguCds: ['43111', '43112', '43113', '43114'] }, // 상당·서원·흥덕·청원
+  tongyeong: { korAreaCode: 36, areaCd: '48', signguCds: ['48220'] },                    // 통영시
+  andong: { korAreaCode: 35, areaCd: '47', signguCds: ['47170'] },                       // 안동시
+  suncheon: { korAreaCode: 38, areaCd: '46', signguCds: ['46150'] },                     // 순천시
+  gunsan: { korAreaCode: 37, areaCd: '52', signguCds: ['52130'] },                       // 군산시
+  pohang: { korAreaCode: 35, areaCd: '47', signguCds: ['47111', '47113'] },              // 남·북구
+  gongju: { korAreaCode: 34, areaCd: '44', signguCds: ['44150'] },                       // 공주시
 }
 
 // 연관관광지 데이터는 약 1년 지연 — 데이터 있는 최신 기준연월부터 시도.

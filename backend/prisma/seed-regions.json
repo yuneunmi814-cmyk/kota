@@ -397,6 +397,343 @@
         "lng": 128.590522986422,
         "image": "https://tong.visitkorea.or.kr/cms/resource/67/4041467_image2_1.jpg"
       }
+    ],
+    "ulsan": [
+      {
+        "name": "대왕암공원",
+        "category": "자연",
+        "lat": 35.4904590082,
+        "lng": 129.4352747432,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/16/3583516_image2_1.jpg"
+      },
+      {
+        "name": "간절곶",
+        "category": "자연",
+        "lat": 35.3589668021,
+        "lng": 129.3605738299,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/50/3583350_image2_1.jpg"
+      },
+      {
+        "name": "태화강국가정원",
+        "category": "자연",
+        "lat": 35.5487747405,
+        "lng": 129.2911995498,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/43/3422843_image2_1.png"
+      },
+      {
+        "name": "장생포 고래마을",
+        "category": "문화",
+        "lat": 35.5029704748,
+        "lng": 129.3813402009,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/52/3549052_image2_1.jpg"
+      },
+      {
+        "name": "태화강 십리대숲",
+        "category": "자연",
+        "lat": 35.5487747405,
+        "lng": 129.2911995498,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/01/3565101_image2_1.jpg"
+      }
+    ],
+    "sejong": [
+      {
+        "name": "세종호수공원",
+        "category": "자연",
+        "lat": 36.4989993515,
+        "lng": 127.2701992755,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/76/3353976_image2_1.jpg"
+      },
+      {
+        "name": "국립세종수목원",
+        "category": "자연",
+        "lat": 36.49861085602118,
+        "lng": 127.28569163132947,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/89/4065589_image2_1.jpg"
+      },
+      {
+        "name": "베어트리파크",
+        "category": "테마파크",
+        "lat": 36.6727747299,
+        "lng": 127.2101387847,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/36/4058636_image2_1.jpg"
+      },
+      {
+        "name": "밀마루전망대",
+        "category": "전망",
+        "lat": 36.5054483572,
+        "lng": 127.2558420543,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/09/3008609_image2_1.jpg"
+      }
+    ],
+    "suwon": [
+      {
+        "name": "수원화성",
+        "category": "역사",
+        "lat": 37.2821351915,
+        "lng": 127.0190947768,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/77/3020677_image2_1.jpeg"
+      },
+      {
+        "name": "화성행궁",
+        "category": "역사",
+        "lat": 37.2818685077,
+        "lng": 127.0163894742,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/71/3448371_image2_1.jpg"
+      },
+      {
+        "name": "광교호수공원",
+        "category": "자연",
+        "lat": 37.2835610668,
+        "lng": 127.0772644577,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/57/3400857_image2_1.JPG"
+      },
+      {
+        "name": "행궁동벽화마을",
+        "category": "문화",
+        "lat": 37.2857125098,
+        "lng": 127.0165476856,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/67/3407967_image2_1.png"
+      },
+      {
+        "name": "수원화성박물관",
+        "category": "문화",
+        "lat": 37.2821351915,
+        "lng": 127.0190947768,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/77/3020677_image2_1.jpeg"
+      }
+    ],
+    "chuncheon": [
+      {
+        "name": "남이섬",
+        "category": "자연",
+        "lat": 37.7958524789,
+        "lng": 127.5822871919,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/29/2907729_image2_1.jpg"
+      },
+      {
+        "name": "소양강스카이워크",
+        "category": "전망",
+        "lat": 37.8933326556,
+        "lng": 127.7236825518,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/89/3549689_image2_1.jpg"
+      },
+      {
+        "name": "김유정문학촌",
+        "category": "문화",
+        "lat": 37.8183631741085,
+        "lng": 127.717678147131,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/96/4067696_image2_1.jpg"
+      },
+      {
+        "name": "청평사",
+        "category": "사찰",
+        "lat": 37.9810241346,
+        "lng": 127.813780065,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/45/3494045_image2_1.jpg"
+      }
+    ],
+    "cheongju": [
+      {
+        "name": "상당산성",
+        "category": "역사",
+        "lat": 36.6640352704,
+        "lng": 127.5416870608,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/74/2793374_image2_1.jpg"
+      },
+      {
+        "name": "수암골",
+        "category": "문화",
+        "lat": 36.6456615476,
+        "lng": 127.4954667156,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/31/3504331_image2_1.jpg"
+      },
+      {
+        "name": "청남대",
+        "category": "역사",
+        "lat": 36.4667931119,
+        "lng": 127.492591341,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/56/3552356_image2_1.JPG"
+      },
+      {
+        "name": "청주동물원",
+        "category": "테마파크",
+        "lat": 36.6524556651,
+        "lng": 127.5206781546,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/77/3357777_image2_1.jpg"
+      }
+    ],
+    "tongyeong": [
+      {
+        "name": "강구안",
+        "category": "관광지",
+        "lat": 34.8436462512,
+        "lng": 128.4242054351,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/80/3533680_image2_1.jpg"
+      },
+      {
+        "name": "궁항어촌체험마을",
+        "category": "관광지",
+        "lat": 34.810938041,
+        "lng": 128.3817849882,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/70/3570570_image2_1.jpg"
+      },
+      {
+        "name": "남망산 조각공원",
+        "category": "관광지",
+        "lat": 34.841296608,
+        "lng": 128.42945504,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/27/3349727_image2_1.jpg"
+      },
+      {
+        "name": "달아공원",
+        "category": "관광지",
+        "lat": 34.7682375702,
+        "lng": 128.3993123574,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/84/3072984_image2_1.jpg"
+      },
+      {
+        "name": "달아항",
+        "category": "관광지",
+        "lat": 34.7682876903,
+        "lng": 128.4063617423,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/08/3348608_image2_1.jpg"
+      }
+    ],
+    "andong": [
+      {
+        "name": "월영교",
+        "category": "자연",
+        "lat": 36.5768149396,
+        "lng": 128.7601169125,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/92/3422992_image2_1.png"
+      },
+      {
+        "name": "도산서원",
+        "category": "역사",
+        "lat": 35.1033531396,
+        "lng": 128.334551662991,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/50/3521850_image2_1.jpg"
+      },
+      {
+        "name": "부용대",
+        "category": "자연",
+        "lat": 36.5446001818,
+        "lng": 128.5179949085,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/83/3422983_image2_1.png"
+      },
+      {
+        "name": "안동하회마을",
+        "category": "문화",
+        "lat": 36.5427419723,
+        "lng": 128.5132759373,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/67/3585467_image2_1.jpg"
+      }
+    ],
+    "suncheon": [
+      {
+        "name": "순천만습지",
+        "category": "자연",
+        "lat": 34.88537532192124,
+        "lng": 127.50913602700146,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/96/3573796_image2_1.jpg"
+      },
+      {
+        "name": "순천만국가정원",
+        "category": "자연",
+        "lat": 34.92860320639828,
+        "lng": 127.4996986297289,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/68/3479268_image2_1.jpg"
+      },
+      {
+        "name": "낙안읍성",
+        "category": "역사",
+        "lat": 34.9060980993,
+        "lng": 127.3417429744,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/13/3368013_image2_1.jpeg"
+      }
+    ],
+    "gunsan": [
+      {
+        "name": "군산근대역사박물관",
+        "category": "문화",
+        "lat": 35.9908644357,
+        "lng": 126.7119655377,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/14/3304814_image2_1.jpg"
+      },
+      {
+        "name": "선유도",
+        "category": "해변",
+        "lat": 35.8102049733,
+        "lng": 126.4124052922,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/11/3362711_image2_1.JPG"
+      },
+      {
+        "name": "은파호수공원",
+        "category": "자연",
+        "lat": 35.9553560827142,
+        "lng": 126.689054418032,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/62/3078662_image2_1.jpg"
+      },
+      {
+        "name": "경암동철길마을",
+        "category": "문화",
+        "lat": 35.9813520474,
+        "lng": 126.7362330582,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/50/3080250_image2_1.JPG"
+      }
+    ],
+    "pohang": [
+      {
+        "name": "호미곶",
+        "category": "자연",
+        "lat": 36.0773121073,
+        "lng": 129.569432281,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/98/3410998_image2_1.jpg"
+      },
+      {
+        "name": "영일대해수욕장",
+        "category": "해변",
+        "lat": 36.055,
+        "lng": 129.3779,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/46/3584546_image2_1.jpg"
+      },
+      {
+        "name": "구룡포",
+        "category": "시장",
+        "lat": 35.9893051205,
+        "lng": 129.555641609,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/42/3528342_image2_1.jpg"
+      },
+      {
+        "name": "포항스페이스워크",
+        "category": "전망",
+        "lat": 36.0652,
+        "lng": 129.3903,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/63/3586563_image2_1.jpg"
+      }
+    ],
+    "gongju": [
+      {
+        "name": "공산성",
+        "category": "역사",
+        "lat": 36.4639480871,
+        "lng": 127.1284157218,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/15/2916015_image2_1.jpg"
+      },
+      {
+        "name": "마곡사",
+        "category": "사찰",
+        "lat": 36.559043468,
+        "lng": 127.0123513592,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/40/3390240_image2_1.JPG"
+      },
+      {
+        "name": "갑사",
+        "category": "사찰",
+        "lat": 36.3650187978,
+        "lng": 127.1875769727,
+        "image": "https://tong.visitkorea.or.kr/cms/resource/19/3533519_image2_1.jpg"
+      }
     ]
   }
 }

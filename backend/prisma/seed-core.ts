@@ -11,7 +11,7 @@ const TOURISM_SEED: Record<string, TourismSeed> =
 interface RegionSpot { name: string; category: string; lat: number; lng: number; image: string }
 const REGION_SEED: { jejuExtraImages: Record<string, string | null>; regions: Record<string, RegionSpot[]> } =
   JSON.parse(readFileSync(new URL('./seed-regions.json', import.meta.url), 'utf8'))
-const REGION_KO: Record<string, string> = { busan: '부산', gyeongju: '경주', yeosu: '여수', gangneung: '강릉', jeonju: '전주', seoul: '서울', incheon: '인천', daegu: '대구', daejeon: '대전', gwangju: '광주', sokcho: '속초' }
+const REGION_KO: Record<string, string> = { busan: '부산', gyeongju: '경주', yeosu: '여수', gangneung: '강릉', jeonju: '전주', seoul: '서울', incheon: '인천', daegu: '대구', daejeon: '대전', gwangju: '광주', sokcho: '속초', ulsan: '울산', sejong: '세종', suwon: '수원', chuncheon: '춘천', cheongju: '청주', tongyeong: '통영', andong: '안동', suncheon: '순천', gunsan: '군산', pohang: '포항', gongju: '공주' }
 
 export interface SeedResult {
   regionId: bigint
@@ -90,6 +90,17 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
       { name: '대전', slug: 'daejeon', sortOrder: 10 },
       { name: '광주', slug: 'gwangju', sortOrder: 11 },
       { name: '속초', slug: 'sokcho', sortOrder: 12 },
+      { name: '울산', slug: 'ulsan', sortOrder: 13 },
+      { name: '세종', slug: 'sejong', sortOrder: 14 },
+      { name: '수원', slug: 'suwon', sortOrder: 15 },
+      { name: '춘천', slug: 'chuncheon', sortOrder: 16 },
+      { name: '청주', slug: 'cheongju', sortOrder: 17 },
+      { name: '통영', slug: 'tongyeong', sortOrder: 18 },
+      { name: '안동', slug: 'andong', sortOrder: 19 },
+      { name: '순천', slug: 'suncheon', sortOrder: 20 },
+      { name: '군산', slug: 'gunsan', sortOrder: 21 },
+      { name: '포항', slug: 'pohang', sortOrder: 22 },
+      { name: '공주', slug: 'gongju', sortOrder: 23 },
     ],
   })
 
