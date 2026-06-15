@@ -7,6 +7,8 @@ const KAKAO_NATIVE_KEY = process.env.EXPO_PUBLIC_KAKAO_NATIVE_KEY ?? ''
 const plugins: NonNullable<ExpoConfig['plugins']> = [
   ['expo-splash-screen', { backgroundColor: '#1D3557', image: './assets/splash-icon.png', imageWidth: 180 }],
   ['expo-location', { locationWhenInUsePermission: '가이드 모드에서 다음 목적지 안내와 체크인을 위해 위치를 사용합니다.' }],
+  // 카카오 SDK(com.kakao.sdk:* — 로그인용)는 mavenCentral이 아닌 카카오 전용 저장소에만 있어 추가 필수
+  ['expo-build-properties', { android: { extraMavenRepos: ['https://devrepo.kakao.com/nexus/content/groups/public/'] } }],
 ]
 // 카카오 SDK(지도·로그인) — 키가 있을 때만 네이티브 설정 주입
 if (KAKAO_NATIVE_KEY) plugins.push(['@react-native-kakao/core', { nativeAppKey: KAKAO_NATIVE_KEY }])
