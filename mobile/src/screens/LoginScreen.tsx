@@ -15,29 +15,12 @@ WebBrowser.maybeCompleteAuthSession()
 type Props = NativeStackScreenProps<MyStackParams, 'Login'>
 
 export function LoginScreen({ navigation }: Props) {
-  const { login, signup, socialLogin, socialLoginWithToken } = useAuth()
+  const { login, signup, socialLogin } = useAuth()
   const [mode, setMode] = useState<'login' | 'signup'>('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [nickname, setNickname] = useState('')
   const [busy, setBusy] = useState(false)
-
-  // 구글 로그인 (id_token) — 키 설정 시 활성
-  const [googleReq, googleRes, googlePrompt] = Google.useIdTokenAuthRequest({
-    clientId: GOOGLE_CLIENT_ID || undefined,
-    iosClientId: GOOGLE_IOS_CLIENT_ID || undefined,
-    androidClientId: GOOGLE_ANDROID_CLIENT_ID || undefined,
-  })
-  useEffect(() => {
-    if (googleRes?.type !== 'success') return
-    const idToken = googleRes.params?.id_token
-    if (!idToken) return
-    setBusy(true)
-    socialLoginWithToken('google', idToken)
-      .then(() => navigation.goBack())
-      .catch((e) => Alert.alert('구글 로그인', e instanceof ApiError ? e.message : '실패'))
-      .finally(() => setBusy(false))
-  }, [googleRes])
 
   async function submit() {
     if (mode === 'signup') {
@@ -100,13 +83,32 @@ export function LoginScreen({ navigation }: Props) {
           title={KAKAO_ENABLED ? '카카오로 시작' : '카카오 로그인 (키 설정 필요)'}
           kind="navy" onPress={() => social('kakao')} disabled={busy || !KAKAO_ENABLED}
         />
-        <Button
-          title={GOOGLE_ENABLED ? 'Google로 시작' : 'Google 로그인 (키 설정 필요)'}
-          kind="ghost" onPress={() => googlePrompt()} disabled={busy || !GOOGLE_ENABLED || !googleReq}
-        />
+        {GOOGLE_ENABLED
+          ? <GoogleButton busy={busy} setBusy={setBusy} onDone={() => navigation.goBack()} />
+          : <Button title="Google 로그인 (키 설정 필요)" kind="ghost" disabled onPress={() => {}} />}
       </View>
     </KeyboardAvoidingView>
   )
+}
+
+// 구글 로그인 — useIdTokenAuthRequest는 플랫폼 클라이언트ID가 없으면 렌더 시 throw하므로
+// GOOGLE_ENABLED일 때만 이 컴포넌트를 렌더한다(훅은 조건부 호출 불가 → 컴포넌트 단위로 게이트).
+function GoogleButton({ busy, setBusy, onDone }: { busy: boolean; setBusy: (b: boolean) => void; onDone: () => void }) {
+  const { socialLoginWithToken } = useAuth()
+  const [req, res, prompt] = Google.useIdTokenAuthRequest({
+    clientId: GOOGLE_CLIENT_ID || undefined,
+    iosClientId: GOOGLE_IOS_CLIENT_ID || undefined,
+    androidClientId: GOOGLE_ANDROID_CLIENT_ID || undefined,
+  })
+  useEffect(() => {
+    if (res?.type !== 'success' || !res.params?.id_token) return
+    setBusy(true)
+    socialLoginWithToken('google', res.params.id_token)
+      .then(onDone)
+      .catch((e) => Alert.alert('구글 로그인', e instanceof ApiError ? e.message : '실패'))
+      .finally(() => setBusy(false))
+  }, [res])
+  return <Button title="Google로 시작" kind="ghost" onPress={() => prompt()} disabled={busy || !req} />
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {

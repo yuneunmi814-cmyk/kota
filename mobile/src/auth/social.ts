@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import { initializeKakaoSDK } from '@react-native-kakao/core'
 import { login as kakaoNativeLogin } from '@react-native-kakao/user'
 
@@ -11,7 +12,12 @@ export const KAKAO_ENABLED = Boolean(KAKAO_KEY)
 export const GOOGLE_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID ?? ''
 export const GOOGLE_IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? ''
 export const GOOGLE_ANDROID_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? ''
-export const GOOGLE_ENABLED = Boolean(GOOGLE_CLIENT_ID)
+// useIdTokenAuthRequest는 네이티브에서 플랫폼별 클라이언트ID가 반드시 필요(없으면 렌더 시 throw).
+// 해당 플랫폼 ID가 있을 때만 구글 버튼/훅을 활성화한다.
+export const GOOGLE_ENABLED =
+  Platform.OS === 'android' ? Boolean(GOOGLE_ANDROID_CLIENT_ID)
+  : Platform.OS === 'ios' ? Boolean(GOOGLE_IOS_CLIENT_ID)
+  : Boolean(GOOGLE_CLIENT_ID)
 
 let kakaoInit: Promise<void> | null = null
 function ensureKakao(): Promise<void> {
