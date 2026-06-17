@@ -11,9 +11,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-cert
 COPY package*.json ./
 RUN npm ci
 
-# 소스 + Prisma 클라이언트 생성
+# 소스 + Prisma 클라이언트 생성. ERD 생성기는 docs/(빌드 컨텍스트 밖)에 쓰므로 배포에선 DISABLE_ERD로 건너뜀.
 COPY . .
-RUN npx prisma generate
+RUN DISABLE_ERD=true npx prisma generate
 
 EXPOSE 4000
 

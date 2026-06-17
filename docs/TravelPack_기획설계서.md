@@ -279,6 +279,8 @@ stateDiagram-v2
 
 #### ERD
 
+> 📌 아래는 **초기 코어** 다이어그램입니다. **현재 전체 ERD**(23개 엔티티·14 enum — 마켓플레이스·공공데이터 관광 3종·오디오/사진/번역 포함)는 **[erd.md](erd.md)** 참조 — Prisma 스키마에서 `prisma generate` 시 자동 생성·갱신됩니다(`prisma-erd-generator`).
+
 ```mermaid
 erDiagram
     USERS ||--o{ USER_CONSENTS : "동의 이력"

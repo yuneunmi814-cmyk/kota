@@ -3,6 +3,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// 스키마에서 ERD 자동 생성(Mermaid 마크다운) — `prisma generate` 시 docs/erd.md 갱신.
+// md 출력이라 mermaid-cli/Chromium 불필요. 배포(Docker)에서는 DISABLE_ERD=true로 건너뜀.
+generator erd {
+  provider                  = "prisma-erd-generator"
+  output                    = "../../docs/erd.md"
+  includeRelationFromFields = true
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
