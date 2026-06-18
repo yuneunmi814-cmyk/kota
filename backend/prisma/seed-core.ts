@@ -15,6 +15,19 @@ interface KtoSeed {
 }
 const KTO_SEED: KtoSeed = JSON.parse(readFileSync(new URL('./seed-courses.json', import.meta.url), 'utf8'))
 
+// KTO 코스 제목/요약 키워드로 테마(8종 중 1~2개) 추론 — 홈 테마섹션·추천 노출용
+function inferKtoThemes(text: string): string[] {
+  const picks: string[] = []
+  if (/역사|유적|한옥|궁궐?|능|서원|사찰|사찰|절|향교|전통|문화재|박물관|미술|신라|백제|종묘|사직|읍성|왕릉|고분|이성계|조선|고풍|유산/.test(text)) picks.push('역사')
+  if (/시장|맛집|먹거리|미식|음식|밥상|빵|먹는|별미|이열치열|먹방/.test(text)) picks.push('미식')
+  if (/카페|커피|디저트/.test(text)) picks.push('카페')
+  if (/야경|야시장|불빛|전망|포토|핫플|인생샷/.test(text)) picks.push('야경')
+  if (/바다|해변|해수욕|섬|항|포구|등대|해안|산\b|숲|공원|계곡|호수|호반|폭포|오름|수목원|정원|둘레길|올레|해파랑|남파랑|마실길|국도|풀밭|자연/.test(text)) picks.push('자연')
+  if (/체험|레저|액티비티|놀이|짚라인|서핑|배타고|영화|축제|레일바이크|드라이브/.test(text)) picks.push('액티비티')
+  if (picks.length === 0) picks.push('힐링')
+  return [...new Set(picks)].slice(0, 2)
+}
+
 // 전국 지역 대표 관광지(한국관광공사 TourAPI) — npm run db:seed 시 옵션으로 적재
 interface RegionSpot { name: string; category: string; lat: number; lng: number; image: string }
 const REGION_SEED: { jejuExtraImages: Record<string, string | null>; regions: Record<string, RegionSpot[]> } =
@@ -112,7 +125,8 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
     ],
   })
 
-  const themeNames = ['힐링', '미식', '역사', '인생샷', '자연', '액티비티', '카페', '야경']
+  // 잘 채워지는 테마(자연·힐링·역사·액티비티)를 앞에 둬 비로그인 홈 테마섹션이 풍성하게 보이도록 정렬
+  const themeNames = ['자연', '힐링', '역사', '액티비티', '미식', '인생샷', '카페', '야경']
   const themes: Record<string, bigint> = {}
   for (const name of themeNames) {
     themes[name] = (await prisma.theme.create({ data: { name } })).id
@@ -245,7 +259,8 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
         data: {
           regionId, title: `${ko} 핵심 코스`, summary: `${ko} 대표 명소를 하루에 둘러보는 코스`,
           coverImageUrl: spots[0]!.image, durationDays: 1, estCost: 50000,
-          status: 'PUBLISHED', publishedAt: new Date(), createdBy: editor.id, saveCount: 300,
+          // 자동생성 '핵심 코스'는 보조용 — 실제 KTO 추천코스보다 낮은 점수로 둔다
+          status: 'PUBLISHED', publishedAt: new Date(), createdBy: editor.id, saveCount: 150,
           themes: { create: [{ themeId: themes['자연']! }] },
           items: { create: ids.map((spotId, i) => ({ dayNo: 1, sortOrder: i + 1, spotId, stayMinutes: 60 })) },
         },
@@ -284,6 +299,8 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
       (await prisma.spot.findMany({ where: { tourapiContentId: { not: null } }, select: { id: true, tourapiContentId: true } }))
         .map((s) => [s.tourapiContentId as string, s.id]),
     )
+    // 커버 폴백용: 경유지 cid → 이미지
+    const cidToImage = new Map(KTO_SEED.spots.map((s) => [s.cid, s.image]))
     for (const c of KTO_SEED.courses) {
       const rid = ridBySlug.get(c.regionSlug)
       if (!rid) continue
@@ -294,11 +311,15 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
           stayMinutes: it.stayMinutes ?? undefined, transportToNext: (it.transportToNext as never) ?? undefined, transportMinutes: it.transportMinutes ?? undefined,
         }))
       if (items.length === 0) continue
+      // 테마 추론(제목+요약) + 커버 폴백(없으면 경유지 사진) + 실제 추천코스라 핵심코스보다 높은 점수
+      const themePicks = inferKtoThemes(`${c.title} ${c.summary ?? ''}`).map((n) => themes[n]).filter(Boolean) as bigint[]
+      const cover = c.cover ?? (c.items ?? []).map((it) => cidToImage.get(it.spotCid)).find(Boolean) ?? undefined
       await prisma.course.create({
         data: {
           regionId: rid, title: c.title, summary: c.summary ?? undefined, durationDays: c.durationDays ?? 1, estCost: c.estCost ?? undefined,
           status: 'PUBLISHED', publishedAt: new Date(), createdBy: editor.id, source: 'TOURAPI', tourapiContentId: c.cid,
-          coverImageUrl: c.cover ?? undefined, saveCount: 0,
+          coverImageUrl: cover, saveCount: 250 + items.length * 30,
+          ...(themePicks.length ? { themes: { create: themePicks.map((themeId) => ({ themeId })) } } : {}),
           items: { create: items },
         },
       })

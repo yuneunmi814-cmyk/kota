@@ -50,7 +50,7 @@ exploreRouter.get(
         prisma.course.findMany({
           where: { status: 'PUBLISHED' },
           orderBy: [{ saveCount: 'desc' }, { id: 'desc' }],
-          take: 10,
+          take: 24,
           include: courseListInclude,
         }),
         prisma.region.findMany({
@@ -64,8 +64,8 @@ exploreRouter.get(
         ? (await prisma.userInterest.findMany({ where: { userId }, select: { themeId: true } })).map((i) => i.themeId)
         : []
       const themeArgs: Prisma.ThemeFindManyArgs = interestThemeIds.length
-        ? { where: { id: { in: interestThemeIds } }, take: 3 }
-        : { take: 3 }
+        ? { where: { id: { in: interestThemeIds } }, take: 4 }
+        : { take: 5, orderBy: { id: 'asc' } }
       const themes = await prisma.theme.findMany(themeArgs)
       const themeSections = (
         await Promise.all(
@@ -75,7 +75,7 @@ exploreRouter.get(
               await prisma.course.findMany({
                 where: { status: 'PUBLISHED', themes: { some: { themeId: theme.id } } },
                 orderBy: { saveCount: 'desc' },
-                take: 4,
+                take: 8,
                 include: courseListInclude,
               })
             ).map(toCourseCard),
