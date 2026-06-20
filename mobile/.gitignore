@@ -39,3 +39,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Google Play 서비스 계정 키(자동 업로드 eas submit) — 절대 커밋 금지
+google-play-sa.json
+*.aab
