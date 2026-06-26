@@ -6,6 +6,7 @@ import { useResource } from '../api/useResource'
 import { api, ApiError } from '../api/client'
 import { Button, Card, Loading, EmptyState, Badge } from '../components/ui'
 import { MapView } from '../components/MapView'
+import { StonePlacementAnimation } from '../components/StonePlacementAnimation'
 import { colors, space } from '../theme'
 import type { TripsStackParams } from '../navigation/types'
 import type { CheckInResult, Trip } from '../api/types'
@@ -16,6 +17,7 @@ export function GuideModeScreen({ route }: Props) {
   const { tripId } = route.params
   const { data, loading, error, reload } = useResource<Trip>(`/trips/${tripId}`, { auth: true, deps: [tripId] })
   const [busy, setBusy] = useState(false)
+  const [placing, setPlacing] = useState(false)
 
   if (loading) return <Loading />
   if (error || !data) return <EmptyState text={error ?? '불러오기 실패'} />
@@ -36,6 +38,7 @@ export function GuideModeScreen({ route }: Props) {
         method: 'POST', auth: true,
         body: { lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy ?? undefined, force },
       })
+      setPlacing(true) // 착수의 손맛 — 바둑돌 놓기
       if (res.tripStatus === 'COMPLETED') Alert.alert('여행 완료!', '모든 스팟을 다 돌았어요. 리뷰를 남겨보세요.')
       reload()
     } catch (e) {
@@ -65,6 +68,7 @@ export function GuideModeScreen({ route }: Props) {
   const pct = data.progress.total ? Math.round((data.progress.done / data.progress.total) * 100) : 0
 
   return (
+    <View style={{ flex: 1 }}>
     <ScrollView style={{ backgroundColor: colors.bg }} contentContainerStyle={{ padding: space(5), gap: space(4) }}>
       {/* 카카오맵 — 키 설정 시 실제 지도, 없으면 플레이스홀더 (다음 목적지 중심) */}
       <MapView
@@ -105,6 +109,8 @@ export function GuideModeScreen({ route }: Props) {
         </View>
       ))}
     </ScrollView>
+      {placing && <StonePlacementAnimation onDone={() => setPlacing(false)} />}
+    </View>
   )
 }
 
