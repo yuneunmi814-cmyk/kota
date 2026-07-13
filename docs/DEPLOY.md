@@ -33,7 +33,7 @@ EXPO_PUBLIC_API_BASE=http://<PC-IP>:4000/api/v1 npm run android
 ### 관리자 웹(CMS)
 ```bash
 cd admin-web && npm install && npm run dev   # http://localhost:5173 (/api → :4000 프록시)
-# 시드 계정: super@travelpack.app / travelpack-dev-1234
+# 시드 계정: super@kota.app / kota-dev-1234
 ```
 
 ---

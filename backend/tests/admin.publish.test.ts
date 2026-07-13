@@ -16,7 +16,7 @@ describe('관리자 발행 워크플로 (2.2, 3.8)', () => {
   })
 
   it('관리자 로그인 (TOTP 미설정 시드 계정)', async () => {
-    const res = await api.post('/api/v1/admin/auth/login').send({ email: 'editor@travelpack.app', password: 'test-admin-pw' })
+    const res = await api.post('/api/v1/admin/auth/login').send({ email: 'editor@kota.app', password: 'test-admin-pw' })
     expect(res.status).toBe(200)
     expect(res.body.data.mfaRequired).toBe(false)
     expect(res.body.data.role).toBe('CONTENT_MANAGER')
@@ -62,7 +62,7 @@ describe('관리자 발행 워크플로 (2.2, 3.8)', () => {
     const marketer = await api
       .post('/api/v1/admin/accounts')
       .set('Authorization', `Bearer ${superToken}`)
-      .send({ email: 'marketer@travelpack.app', name: '마케터', role: 'MARKETER' })
+      .send({ email: 'marketer@kota.app', name: '마케터', role: 'MARKETER' })
     expect(marketer.status).toBe(201)
     const mToken = await adminToken(BigInt(marketer.body.data.adminId), 'MARKETER')
 

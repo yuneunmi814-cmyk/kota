@@ -1,5 +1,5 @@
 import subprocess, os
-SRC = open('/Users/yoon/Documents/travelpack/design/gen-screens.py').read()
+SRC = open('/Users/yoon/Documents/kota/design/gen-screens.py').read()
 prefix = SRC.split('\nACTIVE=')[0]           # 헬퍼+S(화면정의)까지만, 하단 생성 루프 제외
 ns = {}; exec(prefix, ns)
 S, frame = ns['S'], ns['frame']
@@ -10,7 +10,7 @@ CAP = {"01-home":"검증된 추천 코스로 시작","02-course":"일자별 일�
        "07-editor":"나만의 여행팩 만들기","08-about":"안전한 서비스·약관 안내"}
 def esc(s): return s.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
 
-OUT = "/Users/yoon/Documents/travelpack/design/store/ios"; os.makedirs(OUT, exist_ok=True)
+OUT = "/Users/yoon/Documents/kota/design/store/ios"; os.makedirs(OUT, exist_ok=True)
 W, H = 1290, 2796               # iPhone 6.7" — App Store Connect 필수 사이즈
 PW = 980; PH = PW*2; PX = (W-PW)//2; PY = 720
 sx = PW/300.0; sy = PH/600.0
@@ -23,7 +23,7 @@ for name, inner in S.items():
     canvas = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}">
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23456b"/><stop offset="1" stop-color="#14283f"/></linearGradient></defs>
 <rect width="{W}" height="{H}" fill="url(#bg)"/>
-<text x="{W//2}" y="210" font-size="46" fill="{ORANGE}" font-weight="800" text-anchor="middle">TravelPack</text>
+<text x="{W//2}" y="210" font-size="46" fill="{ORANGE}" font-weight="800" text-anchor="middle">KOTA</text>
 <text x="{W//2}" y="372" font-size="78" fill="#ffffff" font-weight="800" text-anchor="middle">{esc(CAP[name])}</text>
 <rect x="{cardX+10}" y="{cardY+20}" width="{cardW}" height="{cardH}" rx="{cardR}" fill="#06101d" opacity="0.33"/>
 {nested}

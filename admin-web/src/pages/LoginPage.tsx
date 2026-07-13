@@ -8,7 +8,7 @@ export function LoginPage() {
   const { login, verifyMfa } = useAuth()
   const nav = useNavigate()
   const toast = useToast()
-  const [email, setEmail] = useState('editor@travelpack.app')
+  const [email, setEmail] = useState('editor@kota.app')
   const [password, setPassword] = useState('')
   const [busy, setBusy] = useState(false)
   const [mfa, setMfa] = useState<{ tempToken: string } | null>(null)
@@ -53,7 +53,7 @@ export function LoginPage() {
             <path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557" />
             <circle cx="60" cy="78" r="5" fill="#fff" />
           </svg>
-          <b>TravelPack 관리자</b>
+          <b>KOTA 관리자</b>
           <span>{mfa ? '2단계 인증 코드를 입력하세요' : 'CMS 콘솔에 로그인'}</span>
         </div>
 

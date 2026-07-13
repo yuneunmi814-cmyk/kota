@@ -1,4 +1,4 @@
-# TravelPack 모바일 앱 (M3)
+# KOTA 모바일 앱 (M3)
 
 React Native(Expo SDK 56) + TypeScript. 안드로이드 우선.
 

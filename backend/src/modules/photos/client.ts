@@ -39,7 +39,7 @@ function unwrap(json: unknown): GalleryPhoto[] {
 
 export async function fetchPhotosByKeyword(keyword: string, rows = 10): Promise<GalleryPhoto[]> {
   const sp = new URLSearchParams({
-    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'TravelPack', _type: 'json',
+    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'KOTA', _type: 'json',
     numOfRows: String(rows), pageNo: '1', arrange: 'A', keyword,
   })
   return unwrap(await transport(`${BASE}/gallerySearchList1?${sp.toString()}`))

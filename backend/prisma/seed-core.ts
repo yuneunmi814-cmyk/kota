@@ -102,9 +102,9 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
 
   const passwordHash = await bcrypt.hash(adminPassword, rounds)
   const [superAdmin, editor, reviewer] = await Promise.all([
-    prisma.adminUser.create({ data: { email: 'super@travelpack.app', passwordHash, name: '총괄 관리자', role: 'SUPER_ADMIN' } }),
-    prisma.adminUser.create({ data: { email: 'editor@travelpack.app', passwordHash, name: '콘텐츠 에디터', role: 'CONTENT_MANAGER' } }),
-    prisma.adminUser.create({ data: { email: 'reviewer@travelpack.app', passwordHash, name: '콘텐츠 검수자', role: 'CONTENT_MANAGER' } }),
+    prisma.adminUser.create({ data: { email: 'super@kota.app', passwordHash, name: '총괄 관리자', role: 'SUPER_ADMIN' } }),
+    prisma.adminUser.create({ data: { email: 'editor@kota.app', passwordHash, name: '콘텐츠 에디터', role: 'CONTENT_MANAGER' } }),
+    prisma.adminUser.create({ data: { email: 'reviewer@kota.app', passwordHash, name: '콘텐츠 검수자', role: 'CONTENT_MANAGER' } }),
   ])
 
   const jeju = await prisma.region.create({ data: { name: '제주', slug: 'jeju', sortOrder: 1, thumbnailUrl: SPOT_IMAGES['성산일출봉'] } })
@@ -234,8 +234,8 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
     // 스토어 심사용 데모 계정 (게스트 열람 외 로그인 기능 테스트용)
     await prisma.user.create({
       data: {
-        email: 'demo@travelpack.app',
-        passwordHash: await bcrypt.hash('travelpack-demo-1234', rounds),
+        email: 'demo@kota.app',
+        passwordHash: await bcrypt.hash('kota-demo-1234', rounds),
         nickname: '데모여행자',
         provider: 'local',
         consents: {

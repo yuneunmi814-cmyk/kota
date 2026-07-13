@@ -24,7 +24,7 @@ export function OnboardingScreen({ onDone }: { onDone: () => void }) {
       <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false} onMomentumScrollEnd={onScroll} style={{ flexGrow: 0 }}>
         {SLIDES.map((s, i) => (
           <View key={i} style={[styles.slide, { width }]}>
-            <View style={styles.art}><Text style={styles.artMark}>TravelPack</Text></View>
+            <View style={styles.art}><Text style={styles.artMark}>KOTA</Text></View>
             <Text style={styles.title}>{s.title}</Text>
             <Text style={styles.desc}>{s.desc}</Text>
           </View>

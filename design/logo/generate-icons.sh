@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TravelPack 아이콘 PNG 일괄 생성 — iOS AppIcon + Android mipmap
+# KOTA 아이콘 PNG 일괄 생성 — iOS AppIcon + Android mipmap
 # 요구: rsvg-convert (brew install librsvg)
 set -euo pipefail
 cd "$(dirname "$0")"

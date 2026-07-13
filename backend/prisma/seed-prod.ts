@@ -19,11 +19,11 @@ try {
       console.log(`[seed-prod] 이미 데이터 존재(지역 ${existing}곳) → 시드 건너뜀(덮어쓰지 않음)`)
     } else {
       if (force && existing > 0) console.warn(`[seed-prod] ⚠️ SEED_FORCE=true — 기존 데이터(지역 ${existing}곳)를 삭제하고 재시드합니다`)
-      const password = process.env.SEED_ADMIN_PASSWORD ?? 'travelpack-dev-1234'
+      const password = process.env.SEED_ADMIN_PASSWORD ?? 'kota-dev-1234'
       const result = await runSeed(prisma, password, 10, { regions: true })
       const [regions, spots, courses] = await Promise.all([prisma.region.count(), prisma.spot.count(), prisma.course.count()])
       console.log(`[seed-prod] 초기 시드 완료 — 지역 ${regions}곳 / 스팟 ${spots} / 코스 ${courses}`)
-      console.log(`[seed-prod] 발행 코스 #${result.publishedCourseId} · 관리자 super@/editor@/reviewer@travelpack.app`)
+      console.log(`[seed-prod] 발행 코스 #${result.publishedCourseId} · 관리자 super@/editor@/reviewer@kota.app`)
     }
   }
 } catch (e) {

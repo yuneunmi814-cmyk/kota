@@ -1,4 +1,4 @@
-# TravelPack 백엔드 — tsx로 TS 직접 실행(별도 빌드 불필요). Node 22+.
+# KOTA 백엔드 — tsx로 TS 직접 실행(별도 빌드 불필요). Node 22+.
 FROM node:22-bookworm-slim
 
 WORKDIR /app

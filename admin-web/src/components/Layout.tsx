@@ -34,7 +34,7 @@ export function Layout() {
   const loc = useLocation()
   const items = NAV.filter((n) => role && n.roles.includes(role))
   const base = '/' + (loc.pathname.split('/')[1] ?? '')
-  const title = TITLES[base] ?? TITLES['/'] ?? 'TravelPack'
+  const title = TITLES[base] ?? TITLES['/'] ?? 'KOTA'
 
   return (
     <div className="shell">
@@ -46,7 +46,7 @@ export function Layout() {
             <path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557" />
             <circle cx="60" cy="78" r="5" fill="#fff" />
           </svg>
-          TravelPack
+          KOTA
         </div>
         <nav>
           {items.map((n) => (

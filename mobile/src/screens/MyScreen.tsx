@@ -47,7 +47,7 @@ export function MyScreen({ navigation }: Props) {
         </Card>
       )}
       {!isAuthed && <Button title="사업자 정보 · 약관" kind="ghost" onPress={() => navigation.navigate('About')} />}
-      <Text style={styles.ver}>TravelPack v0.1.0</Text>
+      <Text style={styles.ver}>KOTA v0.1.0</Text>
     </ScrollView>
   )
 }

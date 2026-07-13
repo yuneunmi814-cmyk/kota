@@ -38,7 +38,7 @@ function unwrap(json: unknown): { items: EngItem[]; totalCount: number } {
 // 시도(lDongRegnCd)별 영문 콘텐츠 목록 (contentId + 영문 title)
 export async function fetchEngByRegion(lDongRegnCd: string, pageNo: number, rows = 100): Promise<{ items: EngItem[]; totalCount: number }> {
   const sp = new URLSearchParams({
-    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'TravelPack', _type: 'json',
+    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'KOTA', _type: 'json',
     numOfRows: String(rows), pageNo: String(pageNo), lDongRegnCd, arrange: 'A',
   })
   return unwrap(await transport(`${BASE}/areaBasedList2?${sp.toString()}`))

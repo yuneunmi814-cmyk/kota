@@ -35,7 +35,7 @@ describe('파일 업로드 (3.7)', () => {
 
 describe('S3 presign 생성 (버킷 설정 시)', () => {
   beforeAll(() => {
-    process.env.S3_BUCKET = 'travelpack-test-bucket'
+    process.env.S3_BUCKET = 'kota-test-bucket'
     process.env.AWS_REGION = 'ap-northeast-2'
     process.env.AWS_ACCESS_KEY_ID = 'AKIATEST'
     process.env.AWS_SECRET_ACCESS_KEY = 'testsecret'
@@ -46,7 +46,7 @@ describe('S3 presign 생성 (버킷 설정 시)', () => {
     const r = await createPresignedUpload('image/jpeg', 'REVIEW')
     expect(r.key).toMatch(/^uploads\/reviews\/.+\.jpg$/)
     expect(r.uploadUrl).toContain('X-Amz-Signature')
-    expect(r.uploadUrl).toContain('travelpack-test-bucket')
+    expect(r.uploadUrl).toContain('kota-test-bucket')
     expect(r.fileUrl).toContain(r.key)
   })
 })

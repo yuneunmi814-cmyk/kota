@@ -45,7 +45,7 @@ interface GeoSpot { name: string; lat: number; lng: number; image: string | null
 
 async function geocode(name: string, regionKo: string): Promise<{ lat: number; lng: number; image: string | null } | null> {
   const sp = new URLSearchParams({
-    serviceKey: env.TOURAPI_SERVICE_KEY ?? '', MobileOS: 'ETC', MobileApp: 'TravelPack', _type: 'json',
+    serviceKey: env.TOURAPI_SERVICE_KEY ?? '', MobileOS: 'ETC', MobileApp: 'KOTA', _type: 'json',
     keyword: name, numOfRows: '10', arrange: 'O',
   })
   const res = await fetch(`https://apis.data.go.kr/B551011/KorService2/searchKeyword2?${sp.toString()}`)

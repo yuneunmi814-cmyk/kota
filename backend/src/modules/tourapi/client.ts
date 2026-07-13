@@ -5,7 +5,7 @@ import { Errors } from '../../lib/errors.js'
 // 공공데이터포털 발급 serviceKey는 TOURAPI_SERVICE_KEY 환경변수에서 읽는다(코드에 박지 않음).
 const BASE = 'https://apis.data.go.kr/B551011/KorService2'
 const MOBILE_OS = 'ETC'
-const MOBILE_APP = 'TravelPack'
+const MOBILE_APP = 'KOTA'
 
 export interface TourApiRawItem {
   contentid: string

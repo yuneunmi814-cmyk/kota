@@ -1,4 +1,4 @@
-# TravelPack 브랜드 마크
+# KOTA 브랜드 마크
 
 > 콘셉트: **게임팩(카트리지) × 소풍** — "코스 팩을 꽂으면 가이드가 시작된다."
 > 카트리지 실루엣 + 상단 그립 라인 + 라벨 창 속 여행 핀.
@@ -9,13 +9,13 @@
 
 | 파일 | 용도 |
 |---|---|
-| `travelpack-mark.svg` | **메인 마크** (선셋 오렌지). 밝은 배경 기본 |
-| `travelpack-mark-navy.svg` | 보조 마크 (네이비 반전). 문서·포멀·흑백 인쇄 |
-| `travelpack-mark-mono.svg` | 단색 라인 (`currentColor` 상속). 워터마크·각인·1색 인쇄 |
-| `travelpack-mark-picnic.svg` | 시즌 (피크닉 그린). 봄·가을 캠페인 |
-| `travelpack-mark-sea.svg` | 시즌 (바다 소풍). 여름 캠페인 |
-| `travelpack-app-icon.svg` | 스토어/런처 아이콘 (1024, 네이비 배경 + 오렌지 마크) |
-| `travelpack-wordmark.svg` | 가로형 워드마크 락업 (앱바·스플래시·스토어 목록) |
+| `kota-mark.svg` | **메인 마크** (선셋 오렌지). 밝은 배경 기본 |
+| `kota-mark-navy.svg` | 보조 마크 (네이비 반전). 문서·포멀·흑백 인쇄 |
+| `kota-mark-mono.svg` | 단색 라인 (`currentColor` 상속). 워터마크·각인·1색 인쇄 |
+| `kota-mark-picnic.svg` | 시즌 (피크닉 그린). 봄·가을 캠페인 |
+| `kota-mark-sea.svg` | 시즌 (바다 소풍). 여름 캠페인 |
+| `kota-app-icon.svg` | 스토어/런처 아이콘 (1024, 네이비 배경 + 오렌지 마크) |
+| `kota-wordmark.svg` | 가로형 워드마크 락업 (앱바·스플래시·스토어 목록) |
 
 ## 컬러 토큰
 
@@ -28,7 +28,7 @@
 | Picnic Green | `#5E9457` / `#8CC084` | 시즌 |
 | Sea Blue | `#3D9BD9` | 시즌 |
 
-> 앱 디자인 토큰(`docs/TravelPack_기획설계서.md` 1.1절)과 동일 체계. 메인은 오렌지+네이비, 그린·바다는 시즌 한정 서브 팔레트.
+> 앱 디자인 토큰(`docs/KOTA_기획설계서.md` 1.1절)과 동일 체계. 메인은 오렌지+네이비, 그린·바다는 시즌 한정 서브 팔레트.
 
 ## 사용 규칙
 
@@ -43,6 +43,6 @@ SVG가 원본(SoT). PNG가 필요하면:
 
 ```bash
 # 예: 앱 아이콘 512/1024 PNG (rsvg-convert 또는 resvg 사용)
-rsvg-convert -w 1024 -h 1024 travelpack-app-icon.svg -o travelpack-app-icon-1024.png
-rsvg-convert -w 512  -h 512  travelpack-app-icon.svg -o travelpack-app-icon-512.png
+rsvg-convert -w 1024 -h 1024 kota-app-icon.svg -o kota-app-icon-1024.png
+rsvg-convert -w 512  -h 512  kota-app-icon.svg -o kota-app-icon-512.png
 ```

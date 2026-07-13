@@ -6,7 +6,7 @@ import { applyYoutubeCourses } from '../prisma/youtube-courses-loader.js'
 const prisma = new PrismaClient()
 async function main() {
   const editor = await prisma.adminUser.findFirst({
-    where: { OR: [{ email: 'editor@travelpack.app' }, { role: 'CONTENT_MANAGER' }, { role: 'SUPER_ADMIN' }] },
+    where: { OR: [{ email: 'editor@kota.app' }, { role: 'CONTENT_MANAGER' }, { role: 'SUPER_ADMIN' }] },
     select: { id: true },
   })
   if (!editor) { console.error('✖ 에디터 관리자 없음'); process.exit(1) }

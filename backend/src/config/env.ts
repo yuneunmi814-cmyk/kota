@@ -4,7 +4,7 @@ import { z } from 'zod'
 const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().default(4000),
-  DATABASE_URL: z.string().default('postgresql://localhost:5432/travelpack_dev'),
+  DATABASE_URL: z.string().default('postgresql://localhost:5432/kota_dev'),
   TEST_DATABASE_URL: z.string().optional(),
   REDIS_URL: z.string().optional().or(z.literal('')),
   JWT_PRIVATE_KEY_PATH: z.string().default('keys/private.pem'),

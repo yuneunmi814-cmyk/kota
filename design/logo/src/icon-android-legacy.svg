@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="TravelPack 안드로이드 레거시 정사각 아이콘">
-  <title>TravelPack Android Legacy (square)</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="KOTA 안드로이드 레거시 정사각 아이콘">
+  <title>KOTA Android Legacy (square)</title>
   <desc>API 25 이하 런처용 정사각 아이콘. 둥근 모서리 포함(어댑티브 미지원 기기 대비)</desc>
   <rect width="1024" height="1024" rx="180" fill="#1D3557"/>
   <g transform="translate(212,162) scale(5)">

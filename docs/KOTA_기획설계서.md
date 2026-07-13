@@ -1,4 +1,4 @@
-# TravelPack 서비스 기획·설계서
+# KOTA 서비스 기획·설계서
 
 | 항목 | 내용 |
 |---|---|
@@ -15,7 +15,7 @@
 
 ### 0.1 서비스 정의
 
-> **TravelPack** — "패키지여행의 편안함을 앱으로."
+> **KOTA** — "패키지여행의 편안함을 앱으로."
 > 이것저것 알아보기 귀찮은 사람을 위해, 대표 명소 위주의 **검증된 여행 코스**를 추천하고
 > 코스를 따라가며 쓰는 **가이드 모드**와 관광지 **큐레이션 정보**를 제공하는 모바일 앱.
 
@@ -161,7 +161,7 @@ flowchart LR
 ### 1.5 Figma 파일 구조 제안
 
 ```
-📄 TravelPack_Android
+📄 KOTA_Android
  ├─ 00_Cover            — 프로젝트 개요, 버전 히스토리
  ├─ 01_Foundations      — 컬러/타이포/그리드/아이콘 (토큰 = 1.1 표)
  ├─ 02_Components       — Button(Primary·Ghost·Disabled variants), Card/Course, Card/Spot,
@@ -429,7 +429,7 @@ erDiagram
 
 ### 공통 규약
 
-- **Base URL**: `https://api.travelpack.app/api/v1`
+- **Base URL**: `https://api.kota.app/api/v1`
 - **인증 헤더**: `Authorization: Bearer {accessToken}`
 - **표준 응답**: 성공 `{ "success": true, "data": { … } }` / 실패 `{ "success": false, "error": { "code": "AUTH_001", "message": "…" } }`
 - **페이지네이션**: 커서 방식 `?cursor={lastId}&limit=20` → `data.items[]`, `data.nextCursor`

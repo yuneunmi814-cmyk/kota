@@ -1,5 +1,5 @@
 import subprocess, os
-OUT = "/Users/yoon/Documents/travelpack/design/screens"; os.makedirs(OUT, exist_ok=True)
+OUT = "/Users/yoon/Documents/kota/design/screens"; os.makedirs(OUT, exist_ok=True)
 FONT = "'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif"
 ORANGE="#FF6B35"; DEEP="#C24818"; WEAK="#FFF0E9"; NAVY="#1D3557"; GREEN="#12B76A"
 LINE="#E7EAEE"; BG="#F7F7F9"; SUB="#6B7684"; HINT="#8B95A1"; INK="#191F28"
@@ -19,7 +19,7 @@ def marker(x,y,n,color=ORANGE):
     return f'<circle cx="{x}" cy="{y}" r="13" fill="{color}" stroke="#fff" stroke-width="3"/>'+T(x,y+4,str(n),11,"#fff","700","middle")
 
 import base64
-PHOTODIR="/Users/yoon/Documents/travelpack/design/screens/photos"
+PHOTODIR="/Users/yoon/Documents/kota/design/screens/photos"
 def img(x,y,w,h,slug,rx=12):
     b=base64.b64encode(open(f"{PHOTODIR}/{slug}.jpg","rb").read()).decode()
     cid=f"c{slug}{x}{y}"
@@ -50,7 +50,7 @@ S = {}
 
 # 1) 홈
 S["01-home"] = (
- T(24,54,"TravelPack",22,ORANGE,"800")
+ T(24,54,"KOTA",22,ORANGE,"800")
  + R(20,68,260,72,14,WEAK) + T(36,98,"커뮤니티 인기 여행팩",14,DEEP,"800")
  + T(36,120,"여행 고수의 코스를 무료로 둘러보기",10.5,DEEP) + T(264,108,"›",20,DEEP,"700","end")
  + T(24,172,"이번 주 추천 코스",14,NAVY,"700")

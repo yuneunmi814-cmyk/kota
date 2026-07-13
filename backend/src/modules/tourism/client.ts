@@ -10,7 +10,7 @@ const KOR = 'https://apis.data.go.kr/B551011/KorService2'
 const KORWITH = 'https://apis.data.go.kr/B551011/KorWithService2'
 const TARRLTE = 'https://apis.data.go.kr/B551011/TarRlteTarService1'
 const MOBILE_OS = 'ETC'
-const MOBILE_APP = 'TravelPack'
+const MOBILE_APP = 'KOTA'
 
 // 테스트 주입 지점 — 실제 HTTP 대신 가짜 응답을 넣는다.
 export type Transport = (url: string) => Promise<unknown>

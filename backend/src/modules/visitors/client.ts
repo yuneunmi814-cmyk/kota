@@ -40,7 +40,7 @@ function unwrap(json: unknown): RegionVisitorRow[] {
 // 광역 시도별 방문자수 (기간). 한 응답에 전체 시도가 들어온다.
 export async function fetchMetcoVisitors(startYmd: string, endYmd: string): Promise<RegionVisitorRow[]> {
   const sp = new URLSearchParams({
-    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'TravelPack', _type: 'json',
+    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'KOTA', _type: 'json',
     numOfRows: '2000', pageNo: '1', startYmd, endYmd,
   })
   return unwrap(await transport(`${BASE}/metcoRegnVisitrDDList?${sp.toString()}`))

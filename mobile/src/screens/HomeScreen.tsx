@@ -34,7 +34,7 @@ export function HomeScreen({ navigation }: Props) {
 
   return (
     <ScrollView style={{ backgroundColor: colors.bg }} contentContainerStyle={{ padding: space(5), gap: space(5) }}>
-      <Text style={styles.brand}>TravelPack</Text>
+      <Text style={styles.brand}>KOTA</Text>
 
       <Pressable onPress={openSearch} style={styles.searchBar}>
         <Text style={styles.searchIcon}>🔍</Text>

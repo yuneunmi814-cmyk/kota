@@ -14,7 +14,7 @@ const plugins: NonNullable<ExpoConfig['plugins']> = [
 if (KAKAO_NATIVE_KEY) plugins.push(['@react-native-kakao/core', { nativeAppKey: KAKAO_NATIVE_KEY }])
 
 const config: ExpoConfig = {
-  name: 'TravelPack',
+  name: 'KOTA',
   slug: 'travelpack',
   version: '1.0.0',
   orientation: 'portrait',

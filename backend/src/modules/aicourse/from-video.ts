@@ -72,7 +72,7 @@ async function kakaoLocal(name: string, regionKo: string): Promise<{ lat: number
 
 async function tourapiGeo(name: string, regionKo: string): Promise<{ lat: number; lng: number; image: string | null } | null> {
   if (!env.TOURAPI_SERVICE_KEY) return null
-  const sp = new URLSearchParams({ serviceKey: env.TOURAPI_SERVICE_KEY, MobileOS: 'ETC', MobileApp: 'TravelPack', _type: 'json', keyword: name, numOfRows: '5', arrange: 'O' })
+  const sp = new URLSearchParams({ serviceKey: env.TOURAPI_SERVICE_KEY, MobileOS: 'ETC', MobileApp: 'KOTA', _type: 'json', keyword: name, numOfRows: '5', arrange: 'O' })
   const t = await (await fetch(`https://apis.data.go.kr/B551011/KorService2/searchKeyword2?${sp}`)).text()
   if (t.trimStart().startsWith('<')) return null
   let items: unknown

@@ -1,4 +1,4 @@
-# TravelPack 관리자 웹 (CMS)
+# KOTA 관리자 웹 (CMS)
 
 React + Vite + TypeScript. 백엔드 API(`../backend`)에 붙는 운영 콘솔.
 
@@ -15,7 +15,7 @@ npm run dev                          # http://localhost:5173
 
 Vite dev 서버가 `/api` 요청을 `:4000`으로 프록시하므로 CORS 설정이 불필요합니다.
 
-시드 관리자: `super@` / `editor@` / `reviewer@travelpack.app` (pw: `travelpack-dev-1234`)
+시드 관리자: `super@` / `editor@` / `reviewer@kota.app` (pw: `kota-dev-1234`)
 
 ## 구성
 

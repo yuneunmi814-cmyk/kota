@@ -15,16 +15,16 @@ jobs:
       postgres:
         image: postgis/postgis:16-3.4
         env:
-          POSTGRES_USER: travelpack
-          POSTGRES_PASSWORD: travelpack
-          POSTGRES_DB: travelpack_test
+          POSTGRES_USER: kota
+          POSTGRES_PASSWORD: kota
+          POSTGRES_DB: kota_test
         ports:
           - 5432:5432
         options: >-
-          --health-cmd="pg_isready -U travelpack -d travelpack_test"
+          --health-cmd="pg_isready -U kota -d kota_test"
           --health-interval=5s --health-timeout=5s --health-retries=10
     env:
-      TEST_DATABASE_URL: postgresql://travelpack:travelpack@localhost:5432/travelpack_test
+      TEST_DATABASE_URL: postgresql://kota:kota@localhost:5432/kota_test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

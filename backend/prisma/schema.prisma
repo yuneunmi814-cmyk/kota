@@ -1,4 +1,4 @@
-// TravelPack DB 스키마 — docs/TravelPack_기획설계서.md 2.3절 기준 (20개 테이블)
+// KOTA DB 스키마 — docs/KOTA_기획설계서.md 2.3절 기준 (20개 테이블)
 generator client {
   provider = "prisma-client-js"
 }

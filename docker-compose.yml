@@ -1,4 +1,4 @@
-# TravelPack 체험용 풀스택 (DB + Redis + 백엔드 API)
+# KOTA 체험용 풀스택 (DB + Redis + 백엔드 API)
 #
 #   docker compose up -d --build          # 전체 기동 (API → http://localhost:4000)
 #   docker compose run --rm seed          # 제주 시드 (관리자 3계정 + 코스 2개 + 스팟 8곳)
@@ -11,15 +11,15 @@ services:
   db:
     image: postgis/postgis:16-3.4
     environment:
-      POSTGRES_USER: travelpack
-      POSTGRES_PASSWORD: travelpack
-      POSTGRES_DB: travelpack_dev
+      POSTGRES_USER: kota
+      POSTGRES_PASSWORD: kota
+      POSTGRES_DB: kota_dev
     ports:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U travelpack -d travelpack_dev"]
+      test: ["CMD-SHELL", "pg_isready -U kota -d kota_dev"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -33,12 +33,12 @@ services:
     build: ./backend
     environment:
       NODE_ENV: development # 데모: mock 결제 활성화에 필요(운영은 production)
-      DATABASE_URL: postgresql://travelpack:travelpack@db:5432/travelpack_dev
+      DATABASE_URL: postgresql://kota:kota@db:5432/kota_dev
       REDIS_URL: redis://redis:6379
       PG_PROVIDER: mock # 데모용 즉시 승인 결제
       MARKETPLACE_FEE_PERCENT: "20"
       TOURAPI_SERVICE_KEY: ${TOURAPI_SERVICE_KEY:-}
-      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-travelpack-dev-1234}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-kota-dev-1234}
     ports:
       - "4000:4000"
     depends_on:
@@ -53,8 +53,8 @@ services:
     profiles: ["seed"]
     command: npm run db:seed
     environment:
-      DATABASE_URL: postgresql://travelpack:travelpack@db:5432/travelpack_dev
-      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-travelpack-dev-1234}
+      DATABASE_URL: postgresql://kota:kota@db:5432/kota_dev
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-kota-dev-1234}
     depends_on:
       db:
         condition: service_healthy

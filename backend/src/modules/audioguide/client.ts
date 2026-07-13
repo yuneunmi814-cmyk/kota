@@ -51,7 +51,7 @@ function unwrap(json: unknown): OdiiStory[] {
 // 스팟 좌표 반경 내 오디오 스토리 조회 (storyLocationBasedList)
 export async function fetchStoriesNearby(opts: { lng: number; lat: number; radiusM: number; langCode: LangCode; rows?: number }): Promise<OdiiStory[]> {
   const sp = new URLSearchParams({
-    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'TravelPack', _type: 'json',
+    serviceKey: serviceKey(), MobileOS: 'ETC', MobileApp: 'KOTA', _type: 'json',
     numOfRows: String(opts.rows ?? 20), pageNo: '1',
     langCode: opts.langCode, mapX: String(opts.lng), mapY: String(opts.lat), radius: String(opts.radiusM),
   })

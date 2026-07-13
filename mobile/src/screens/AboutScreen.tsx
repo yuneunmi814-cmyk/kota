@@ -56,7 +56,7 @@ export function AboutScreen(_props: Props) {
       </Card>
 
       <Text style={styles.source}>관광 정보·사진 일부는 한국관광공사 TourAPI를 활용합니다.</Text>
-      <Text style={styles.ver}>TravelPack v0.1.0</Text>
+      <Text style={styles.ver}>KOTA v0.1.0</Text>
     </ScrollView>
   )
 }
