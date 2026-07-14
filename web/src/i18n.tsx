@@ -12,6 +12,9 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'home.festivals': '다가오는 축제',
+    'festival.ongoing': '진행중',
+    'festival.upcoming': '예정',
     'nav.festivals': '축제',
     'nav.food': '찐맛집',
     'nav.spots': '관광지',
@@ -33,6 +36,9 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'home.festivals': 'Upcoming festivals',
+    'festival.ongoing': 'Now on',
+    'festival.upcoming': 'Upcoming',
     'nav.festivals': 'Festivals',
     'nav.food': 'Local Eats',
     'nav.spots': 'Attractions',
@@ -54,6 +60,9 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'home.festivals': 'เทศกาลที่กำลังจะมาถึง',
+    'festival.ongoing': 'กำลังจัด',
+    'festival.upcoming': 'เร็วๆ นี้',
     'nav.festivals': 'เทศกาล',
     'nav.food': 'ร้านเด็ด',
     'nav.spots': 'ที่เที่ยว',
@@ -75,6 +84,9 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'home.festivals': 'まもなく開催の祭り',
+    'festival.ongoing': '開催中',
+    'festival.upcoming': '開催予定',
     'nav.festivals': '祭り',
     'nav.food': '本場グルメ',
     'nav.spots': '観光地',

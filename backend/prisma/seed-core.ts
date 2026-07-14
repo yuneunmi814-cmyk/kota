@@ -88,6 +88,7 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
     prisma.courseTheme.deleteMany(),
     prisma.course.deleteMany(),
     prisma.video.deleteMany(),
+    prisma.festival.deleteMany(),
     prisma.spotImage.deleteMany(),
     prisma.spot.deleteMany(),
     prisma.banner.deleteMany(),
@@ -132,6 +133,33 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
       { name: '군산', slug: 'gunsan', sortOrder: 21 },
       { name: '포항', slug: 'pohang', sortOrder: 22 },
       { name: '공주', slug: 'gongju', sortOrder: 23 },
+    ],
+  })
+
+  // 데모 축제 — 시드 실행 시점 기준 상대 날짜라 언제 돌려도 진행중/예정 상태가 유지됨
+  const gongju = await prisma.region.findUniqueOrThrow({ where: { slug: 'gongju' } })
+  const day = 86400_000
+  const onDate = (offset: number) => new Date(new Date(Date.now() + offset * day).toISOString().slice(0, 10))
+  await prisma.festival.createMany({
+    data: [
+      {
+        regionId: jeju.id, name: '탐라 등불 축제', tourapiContentId: 'seed-fest-1',
+        summary: '제주 원도심을 밝히는 가을 등불 축제', address: '제주특별자치도 제주시 동문로',
+        lat: 33.5121, lng: 126.5281, startDate: onDate(-2), endDate: onDate(5),
+        imageUrl: SPOT_IMAGES['동문재래시장'] ?? null, tel: '064-120',
+      },
+      {
+        regionId: jeju.id, name: '성산 일출 축제', tourapiContentId: 'seed-fest-2',
+        summary: '새해 소망을 비는 일출 명소 축제', address: '제주특별자치도 서귀포시 성산읍',
+        lat: 33.4587, lng: 126.9425, startDate: onDate(20), endDate: onDate(22),
+        imageUrl: SPOT_IMAGES['성산일출봉'] ?? null, tel: '064-760-2761',
+      },
+      {
+        regionId: gongju.id, name: '공주 백제문화제', tourapiContentId: 'seed-fest-3',
+        summary: '금강변에서 열리는 대표 역사 축제', address: '충청남도 공주시 금벽로',
+        lat: 36.4665, lng: 127.1236, startDate: onDate(45), endDate: onDate(53),
+        imageUrl: null, tel: '041-840-2266',
+      },
     ],
   })
 

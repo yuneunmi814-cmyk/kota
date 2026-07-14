@@ -9,6 +9,7 @@ import { errorHandler, notFoundHandler } from './middleware/error.js'
 import { authRouter } from './modules/auth/auth.router.js'
 import { usersRouter } from './modules/users/users.router.js'
 import { exploreRouter } from './modules/explore/explore.router.js'
+import { festivalsRouter } from './modules/festivals/festivals.router.js'
 import { bookmarksRouter } from './modules/bookmarks/bookmarks.router.js'
 import { tripsRouter } from './modules/trips/trips.router.js'
 import { reviewsRouter } from './modules/reviews/reviews.router.js'
@@ -43,6 +44,7 @@ export function createApp(): express.Express {
   api.use('/auth', authRouter)
   api.use('/users', usersRouter)
   api.use(exploreRouter)   // /home /regions /themes /courses /spots /search
+  api.use(festivalsRouter) // /festivals /festivals/calendar /festivals/:id
   api.use(bookmarksRouter) // /bookmarks /users/me/bookmarks
   api.use(tripsRouter)     // /trips*
   api.use(reviewsRouter)   // /reviews* /courses/:id/reviews /spots/:id/reviews /users/me/reviews

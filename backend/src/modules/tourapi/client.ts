@@ -103,6 +103,35 @@ export async function fetchAreaBased(params: AreaBasedParams): Promise<AreaBased
   return unwrap<TourApiRawItem>(await transport(url))
 }
 
+// searchFestival2 (contentTypeId=15) — 기간 조건 축제 목록. eventStartDate 필수(해당 일 이후 개최·진행 축제).
+export interface TourApiFestivalItem extends TourApiRawItem {
+  eventstartdate?: string // YYYYMMDD
+  eventenddate?: string   // YYYYMMDD
+}
+
+export interface FestivalSearchParams {
+  eventStartDate: string // YYYYMMDD
+  eventEndDate?: string
+  areaCode?: number
+  sigunguCode?: number
+  pageNo?: number
+  numOfRows?: number
+}
+
+export async function fetchFestivals(params: FestivalSearchParams): Promise<{ items: TourApiFestivalItem[]; totalCount: number }> {
+  const url = buildUrl('searchFestival2', {
+    eventStartDate: params.eventStartDate,
+    eventEndDate: params.eventEndDate,
+    areaCode: params.areaCode,
+    sigunguCode: params.sigunguCode,
+    pageNo: params.pageNo ?? 1,
+    numOfRows: params.numOfRows ?? 50,
+    arrange: 'C', // 수정일순
+  })
+  const { items, totalCount } = unwrap<TourApiFestivalItem>(await transport(url))
+  return { items, totalCount }
+}
+
 // detailCommon2 — 단일 콘텐츠 상세(좌표·주소·이미지·개요 포함)
 export interface TourApiPoi {
   contentid: string

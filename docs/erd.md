@@ -173,6 +173,7 @@ REFUNDED REFUNDED
     Int sort_order 
     Boolean is_active 
     Int visitor_score 
+    Int buzz_score 
     }
   
 
@@ -252,6 +253,41 @@ REFUNDED REFUNDED
     String source 
     String source_id "❓"
     Int sort_order 
+    }
+  
+
+  "videos" {
+    BigInt id "🗝️"
+    String youtube_id 
+    String title 
+    String channel_title "❓"
+    String thumbnail_url "❓"
+    BigInt view_count 
+    DateTime published_at "❓"
+    Int duration_sec "❓"
+    BigInt region_id "❓"
+    BigInt spot_id "❓"
+    Int sort_order 
+    DateTime created_at 
+    }
+  
+
+  "festivals" {
+    BigInt id "🗝️"
+    BigInt region_id 
+    String name 
+    String summary "❓"
+    String address "❓"
+    Float lat "❓"
+    Float lng "❓"
+    DateTime start_date 
+    DateTime end_date 
+    String image_url "❓"
+    String tel "❓"
+    String source 
+    String tourapi_content_id 
+    DateTime created_at 
+    DateTime updated_at 
     }
   
 
@@ -427,6 +463,9 @@ REFUNDED REFUNDED
     "spot_translations" }o--|| spots : "spot"
     "audio_guides" }o--|| spots : "spot"
     "spot_images" }o--|| spots : "spot"
+    "videos" }o--|o regions : "region"
+    "videos" }o--|o spots : "spot"
+    "festivals" }o--|| regions : "region"
     "courses" |o--|| "ContentStatus" : "enum:status"
     "courses" |o--|| "CourseAuthorType" : "enum:author_type"
     "courses" }o--|| regions : "region"

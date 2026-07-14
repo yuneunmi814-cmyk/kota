@@ -10,6 +10,18 @@ export async function apiGet<T>(path: string): Promise<T> {
 
 export type Region = { id: string; name: string; slug: string; thumbnailUrl: string | null }
 
+export type Festival = {
+  id: string
+  name: string
+  summary: string | null
+  address: string | null
+  startDate: string // YYYY-MM-DD
+  endDate: string
+  imageUrl: string | null
+  region: { id: string; name: string; slug: string }
+  status: 'ongoing' | 'upcoming' | 'ended'
+}
+
 export type SearchResult = {
   courses: { id: string; title: string; summary?: string | null; region?: { name: string } | null }[]
   spots: { id: string; name: string; category: string; address: string | null; region: string }[]

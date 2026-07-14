@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import RegionBanner from '../components/RegionBanner'
+import FestivalRail from '../components/FestivalRail'
 import { useT } from '../i18n'
 
 // 메인 페이지 — 전도준 디자인 시안(샘플3) 반영: 검색 히어로 + 50:50 하단 배너
@@ -37,6 +38,8 @@ export default function HomePage() {
             {t('home.searchButton')}
           </button>
         </form>
+
+        <FestivalRail />
 
         <section className="rounded-sm overflow-hidden flex flex-col md:flex-row shadow-2xl border-t-4 border-gold bg-navy max-w-5xl mx-auto">
           <div className="md:w-1/2 h-[240px] md:h-[380px]">

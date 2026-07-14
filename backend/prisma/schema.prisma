@@ -182,9 +182,10 @@ model Region {
   /// 유튜브 여행영상 화제도(상위 영상 조회수 기반) — '요즘 뜨는 곳' 추천 랭킹용
   buzzScore    Int     @default(0) @map("buzz_score")
 
-  spots   Spot[]
-  courses Course[]
-  videos  Video[]
+  spots     Spot[]
+  courses   Course[]
+  videos    Video[]
+  festivals Festival[]
 
   @@map("regions")
 }
@@ -320,6 +321,33 @@ model Video {
   @@index([regionId, sortOrder])
   @@index([spotId, sortOrder])
   @@map("videos")
+}
+
+/// 지역축제(TourAPI searchFestival2, contentTypeId=15) — 코타 웹의 핵심 축(축제+교통+식당).
+/// 기간(startDate~endDate)이 본질이라 Spot과 분리. 축제 달력(날짜별 개수)·진행중/예정 필터에 사용.
+model Festival {
+  id               BigInt   @id @default(autoincrement())
+  regionId         BigInt   @map("region_id")
+  name             String
+  summary          String?
+  address          String?
+  /// 좌표 없는 축제도 목록에는 노출 — 지도 표시만 생략
+  lat              Float?
+  lng              Float?
+  startDate        DateTime @map("start_date") @db.Date
+  endDate          DateTime @map("end_date") @db.Date
+  imageUrl         String?  @map("image_url")
+  tel              String?
+  source           String   @default("TOURAPI")
+  tourapiContentId String   @unique @map("tourapi_content_id")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  region Region @relation(fields: [regionId], references: [id])
+
+  @@index([endDate, startDate]) // 진행중·예정(endDate >= today) 조회용
+  @@index([regionId, startDate])
+  @@map("festivals")
 }
 
 model Course {
