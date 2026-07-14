@@ -153,6 +153,16 @@ npm run typecheck       # tsc --noEmit
 
 응답 규약: `{ "success": true, "data": ... }` / `{ "success": false, "error": { "code", "message" } }` · BigInt id는 문자열로 직렬화.
 
+## 1.5) 코타 웹 (공모전 MVP — 외국인 대상 지역축제 여행팩)
+
+```bash
+cd web
+npm install
+npm run dev             # http://localhost:5174  (/api 요청은 :4000으로 프록시)
+```
+
+전도준 디자인 시안(한지 미색·남색·금색, 명조체·민화 무드) 기반 메인 페이지 + 통합 검색. **다국어 UI(한·영·태·일)** 내장 — 헤더 🌐 메뉴로 전환. 백엔드 없이도 정적 폴백으로 화면이 뜹니다.
+
 ## 2) 관리자 웹 (CMS)
 
 ```bash

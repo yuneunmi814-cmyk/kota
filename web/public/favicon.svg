@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" role="img" aria-label="KOTA 로고 마크">
+  <title>KOTA</title>
+  <desc>게임 카트리지 모양 안에 여행 핀을 담은 KOTA 메인 마크 (선셋 오렌지)</desc>
+  <!-- 카트리지 본체 -->
+  <rect x="18" y="10" width="84" height="120" rx="16" fill="#FF6B35"/>
+  <!-- 상단 그립 라인 -->
+  <line x1="34" y1="29" x2="86" y2="29" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  <line x1="34" y1="40" x2="86" y2="40" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  <!-- 라벨 창 -->
+  <rect x="32" y="54" width="56" height="62" rx="8" fill="#FFFFFF"/>
+  <!-- 여행 핀 -->
+  <path d="M60,63 c-10,0 -16,7 -16,15 0,10 16,24 16,24 s16,-14 16,-24 c0,-8 -6,-15 -16,-15 z" fill="#1D3557"/>
+  <circle cx="60" cy="78" r="5" fill="#FFFFFF"/>
+</svg>

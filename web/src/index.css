@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* 디자인 시안(샘플3) 토큰 — 한지 미색 + 남색 + 금색, 명조체(민화 무드) */
+@theme {
+  --font-serif: "Noto Serif KR", "Nanum Myeongjo", "Apple Myungjo", serif;
+  --color-paper: #fdfbf7;
+  --color-paper-2: #f4f1ea;
+  --color-hanji: #e8e2d2;
+  --color-navy: #1a237e;
+  --color-navy-2: #283593;
+  --color-gold: #d4af37;
+}
+
+body {
+  @apply bg-paper text-navy font-serif antialiased;
+}
