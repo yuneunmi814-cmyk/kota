@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { apiGet, type Region } from '../api'
+import { staticRegions } from '../staticData'
 import { useT } from '../i18n'
 
 // 지역 선택 원형 배너 — 디자인 시안(샘플3): 원형 일러스트 + 선택 지역 남색 테두리 확대
@@ -26,7 +27,11 @@ export default function RegionBanner() {
       .then((d) => {
         if (d.regions.length > 0) setRegions(d.regions)
       })
-      .catch(() => {}) // 폴백 유지
+      .catch(() =>
+        staticRegions() // API 없으면 베이크된 정적 데이터
+          .then((r) => { if (r.length > 0) setRegions(r) })
+          .catch(() => {}), // 그래도 없으면 하드코딩 폴백 유지
+      )
   }, [])
 
   const scrollBy = (dir: -1 | 1) => scrollRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' })

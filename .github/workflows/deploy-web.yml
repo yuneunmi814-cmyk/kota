@@ -1,0 +1,50 @@
+name: deploy-web
+
+# 코타 웹 → GitHub Pages (https://yuneunmi814-cmyk.github.io/kota/)
+# API 서버 없이도 web/public/data/*.json 베이크 데이터로 지역·축제가 렌더된다 (backend `npm run export:web`로 갱신)
+on:
+  push:
+    branches: [main]
+    paths: ['web/**', '.github/workflows/deploy-web.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      # 프로젝트 페이지라 base=/kota/ — 라우터 basename은 BASE_URL로 자동 반영
+      - run: npm run build -- --base=/kota/
+        working-directory: web
+      # SPA 딥링크(/search 등) 새로고침 대응 — Pages는 404.html로 폴백
+      - run: cp dist/index.html dist/404.html
+        working-directory: web
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

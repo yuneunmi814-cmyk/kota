@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { apiGet, type Festival } from '../api'
+import { staticFestivals } from '../staticData'
 import { useT } from '../i18n'
 
 // 다가오는 축제 레일 — GET /festivals (진행중+예정, 시작일순). API 없거나 비면 섹션 숨김
@@ -10,7 +11,11 @@ export default function FestivalRail() {
   useEffect(() => {
     apiGet<{ items: Festival[] }>('/festivals?limit=8')
       .then((d) => setFestivals(d.items))
-      .catch(() => setFestivals([]))
+      .catch(() =>
+        staticFestivals(8) // API 없으면 베이크된 정적 데이터
+          .then(setFestivals)
+          .catch(() => setFestivals([])),
+      )
   }, [])
 
   if (festivals.length === 0) return null
