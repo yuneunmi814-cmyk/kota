@@ -39,3 +39,41 @@ export const REGION_AREA: Record<string, AreaMapping> = {
 export function resolveArea(slug: string): AreaMapping | null {
   return REGION_AREA[slug] ?? null
 }
+
+/* ── 신형 법정동 코드 매핑 (searchFestival2 등 lDong 파라미터용) ────────
+   2026-07 확인: 광주+전남이 "전남광주통합특별시"(regnCd 12)로 통합 — 구 코드(29 광주·46 전남)는 결과가 비다시피 함.
+   searchFestival2는 구형 areaCode 필터가 부실(서울 2건 vs lDong 99건)해 반드시 이 코드를 쓸 것.
+   값은 KorService2 ldongCode2 응답으로 확정(2026-07-15). 구(區)가 있는 시는 시+구 코드 전부 나열(구 단위로 태깅된 축제 누락 방지). */
+export interface LdongMapping {
+  regnCd: string
+  signguCds?: string[]
+}
+
+export const REGION_LDONG: Record<string, LdongMapping> = {
+  jeju: { regnCd: '50' },
+  busan: { regnCd: '26' },
+  seoul: { regnCd: '11' },
+  incheon: { regnCd: '28' },
+  daegu: { regnCd: '27' },
+  daejeon: { regnCd: '30' },
+  ulsan: { regnCd: '31' },
+  sejong: { regnCd: '36110' }, // 세종은 시도 코드 자체가 5자리(36110) — '36'은 0건
+  gwangju: { regnCd: '12', signguCds: ['210', '240', '270', '300', '330'] }, // 통합시 내 옛 광주 5개 구
+  yeosu: { regnCd: '12', signguCds: ['130'] },
+  suncheon: { regnCd: '12', signguCds: ['150'] },
+  gyeongju: { regnCd: '47', signguCds: ['130'] },
+  andong: { regnCd: '47', signguCds: ['170'] },
+  pohang: { regnCd: '47', signguCds: ['110', '111', '113'] },
+  gangneung: { regnCd: '51', signguCds: ['150'] },
+  chuncheon: { regnCd: '51', signguCds: ['110'] },
+  jeonju: { regnCd: '52', signguCds: ['110', '111', '113'] },
+  gunsan: { regnCd: '52', signguCds: ['130'] },
+  suwon: { regnCd: '41', signguCds: ['110', '111', '113', '115', '117'] },
+  cheongju: { regnCd: '43', signguCds: ['110', '111', '112', '113', '114'] },
+  tongyeong: { regnCd: '48', signguCds: ['220'] },
+  gongju: { regnCd: '44', signguCds: ['150'] },
+}
+
+export function resolveLdong(slug: string): LdongMapping | null {
+  return REGION_LDONG[slug] ?? null
+}

@@ -1,7 +1,7 @@
 import { prisma } from '../../lib/prisma.js'
 import { Errors } from '../../lib/errors.js'
 import { fetchFestivals, type TourApiFestivalItem } from '../tourapi/client.js'
-import { resolveArea } from '../tourapi/regions.js'
+import { resolveLdong } from '../tourapi/regions.js'
 import { sanitizeText } from '../../lib/util.js'
 
 /* ── 지역축제 동기화 (searchFestival2, contentTypeId=15) ────────────
@@ -84,8 +84,8 @@ export function toFestivalInput(item: TourApiFestivalItem, regionId: bigint): Fe
 }
 
 export async function syncRegionFestivals(opts: FestivalSyncOptions): Promise<FestivalSyncSummary> {
-  const area = resolveArea(opts.regionSlug)
-  if (!area) throw Errors.validation(`알 수 없는 지역 slug: ${opts.regionSlug}`)
+  const ldong = resolveLdong(opts.regionSlug)
+  if (!ldong) throw Errors.validation(`알 수 없는 지역 slug: ${opts.regionSlug}`)
   const region = await prisma.region.findUnique({ where: { slug: opts.regionSlug }, select: { id: true, name: true } })
   if (!region) throw Errors.notFound(`지역(slug=${opts.regionSlug})`)
 
@@ -95,38 +95,46 @@ export async function syncRegionFestivals(opts: FestivalSyncOptions): Promise<Fe
   const log = opts.onProgress ?? (() => {})
 
   const summary: FestivalSyncSummary = { region: region.name, fetched: 0, created: 0, updated: 0, skipped: 0, dryRun: Boolean(opts.dryRun) }
+  const seen = new Set<string>() // 시+구 코드 중복 태깅 대비 — 같은 실행 내 재처리 방지
 
-  let pageNo = 1
-  while (summary.fetched < maxItems) {
-    const res = await fetchFestivals({
-      eventStartDate: from,
-      areaCode: area.areaCode,
-      sigunguCode: area.sigunguCode,
-      pageNo,
-      numOfRows: Math.min(PAGE_SIZE, maxItems - summary.fetched),
-    })
-    if (res.items.length === 0) break
+  // 구(區) 단위 태깅 누락을 막기 위해 시군구 코드별로 각각 조회 (없으면 시도 단위 1회)
+  const signguCds: (string | undefined)[] = ldong.signguCds?.length ? ldong.signguCds : [undefined]
 
-    for (const raw of res.items) {
-      summary.fetched += 1
-      const mapped = toFestivalInput(raw, region.id)
-      if (!mapped.ok) { summary.skipped += 1; continue }
-      if (opts.dryRun) { summary.created += 1; continue }
+  for (const signguCd of signguCds) {
+    let pageNo = 1
+    while (summary.fetched < maxItems) {
+      const res = await fetchFestivals({
+        eventStartDate: from,
+        lDongRegnCd: ldong.regnCd,
+        lDongSignguCd: signguCd,
+        pageNo,
+        numOfRows: Math.min(PAGE_SIZE, maxItems - summary.fetched),
+      })
+      if (res.items.length === 0) break
 
-      const { tourapiContentId, ...data } = mapped.value
-      const existing = await prisma.festival.findUnique({ where: { tourapiContentId }, select: { id: true } })
-      if (existing) {
-        await prisma.festival.update({ where: { id: existing.id }, data })
-        summary.updated += 1
-      } else {
-        await prisma.festival.create({ data: { ...data, tourapiContentId } })
-        summary.created += 1
+      for (const raw of res.items) {
+        if (raw.contentid && seen.has(raw.contentid)) continue
+        if (raw.contentid) seen.add(raw.contentid)
+        summary.fetched += 1
+        const mapped = toFestivalInput(raw, region.id)
+        if (!mapped.ok) { summary.skipped += 1; continue }
+        if (opts.dryRun) { summary.created += 1; continue }
+
+        const { tourapiContentId, ...data } = mapped.value
+        const existing = await prisma.festival.findUnique({ where: { tourapiContentId }, select: { id: true } })
+        if (existing) {
+          await prisma.festival.update({ where: { id: existing.id }, data })
+          summary.updated += 1
+        } else {
+          await prisma.festival.create({ data: { ...data, tourapiContentId } })
+          summary.created += 1
+        }
       }
-    }
 
-    log(`${summary.fetched}건 처리 (생성 ${summary.created} / 갱신 ${summary.updated} / 스킵 ${summary.skipped})`)
-    if (res.items.length < PAGE_SIZE || summary.fetched >= res.totalCount) break
-    pageNo += 1
+      log(`${summary.fetched}건 처리 (생성 ${summary.created} / 갱신 ${summary.updated} / 스킵 ${summary.skipped})`)
+      if (res.items.length < PAGE_SIZE || pageNo * PAGE_SIZE >= res.totalCount) break
+      pageNo += 1
+    }
   }
 
   return summary

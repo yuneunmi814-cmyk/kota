@@ -109,11 +109,13 @@ export interface TourApiFestivalItem extends TourApiRawItem {
   eventenddate?: string   // YYYYMMDD
 }
 
+// 지역 필터는 반드시 신형 법정동 코드(lDongRegnCd/lDongSignguCd) 사용 —
+// 구형 areaCode는 searchFestival2에서 결과가 크게 누락됨(서울 2건 vs lDong 99건, 2026-07-15 확인)
 export interface FestivalSearchParams {
   eventStartDate: string // YYYYMMDD
   eventEndDate?: string
-  areaCode?: number
-  sigunguCode?: number
+  lDongRegnCd?: string
+  lDongSignguCd?: string
   pageNo?: number
   numOfRows?: number
 }
@@ -122,8 +124,8 @@ export async function fetchFestivals(params: FestivalSearchParams): Promise<{ it
   const url = buildUrl('searchFestival2', {
     eventStartDate: params.eventStartDate,
     eventEndDate: params.eventEndDate,
-    areaCode: params.areaCode,
-    sigunguCode: params.sigunguCode,
+    lDongRegnCd: params.lDongRegnCd,
+    lDongSignguCd: params.lDongSignguCd,
     pageNo: params.pageNo ?? 1,
     numOfRows: params.numOfRows ?? 50,
     arrange: 'C', // 수정일순
