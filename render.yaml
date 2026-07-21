@@ -4,15 +4,15 @@
 #   백엔드 URL이 나오면 admin-web의 VITE_API_BASE에 그 주소(.../api/v1)를 넣어 재배포.
 # 무료 플랜은 체험용(웹 슬립·DB 90일). 운영은 plan을 starter 이상으로 올리세요.
 databases:
-  - name: travelpack-db
-    databaseName: travelpack
+  - name: kota-db
+    databaseName: kota
     plan: free # 운영: basic-256mb 이상
     postgresMajorVersion: "16" # PostGIS 확장은 마이그레이션이 CREATE EXTENSION으로 활성화
 
 services:
   # Redis 호환 (RTR 토큰·캐시). 미연결 시 백엔드는 인메모리 폴백(단일 인스턴스 전용)
   - type: keyvalue
-    name: travelpack-redis
+    name: kota-redis
     plan: free
     maxmemoryPolicy: noeviction
     ipAllowList: [] # 내부(렌더 네트워크)에서만 접근
@@ -21,7 +21,7 @@ services:
   # 첫 배포 시 전국 지역·코스·관광지·심사용 데모계정이 자동 적재됨(이미 있으면 건너뜀).
   # 재시드를 원치 않으면 env SEED_ON_START=false. 강한 관리자 비번은 SEED_ADMIN_PASSWORD로.
   - type: web
-    name: travelpack-api
+    name: kota-api
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
@@ -33,9 +33,9 @@ services:
       - key: PORT
         value: "4000"
       - key: DATABASE_URL
-        fromDatabase: { name: travelpack-db, property: connectionString }
+        fromDatabase: { name: kota-db, property: connectionString }
       - key: REDIS_URL
-        fromService: { name: travelpack-redis, type: keyvalue, property: connectionString }
+        fromService: { name: kota-redis, type: keyvalue, property: connectionString }
       - key: SEED_ADMIN_PASSWORD
         sync: false # 대시보드에서 강한 값으로 설정
       - key: TOURAPI_SERVICE_KEY
@@ -46,13 +46,13 @@ services:
 
   # 관리자 웹(CMS) — 정적 사이트. VITE_API_BASE로 위 API를 가리킴(백엔드 CORS 허용)
   - type: web
-    name: travelpack-admin
+    name: kota-admin
     runtime: static
     buildCommand: cd admin-web && npm ci && npm run build
     staticPublishPath: admin-web/dist
     envVars:
       - key: VITE_API_BASE
-        sync: false # 예: https://travelpack-api.onrender.com/api/v1 (백엔드 배포 후 입력)
+        sync: false # 예: https://kota-api.onrender.com/api/v1 (백엔드 배포 후 입력)
     routes:
       - type: rewrite # SPA — 모든 경로를 index.html로
         source: /*
