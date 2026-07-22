@@ -12,6 +12,9 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'home.bannerTitle': '당신의 취향에 딱\n맞는 지역 축제를 찾아보세요',
+    'home.bannerBody': '전국의 지역 축제를 둘러보고 여행을 계획하세요.',
+    'home.bannerCta': '축제 보러가기',
     'home.festivals': '다가오는 축제',
     'festival.ongoing': '진행중',
     'festival.upcoming': '예정',
@@ -30,6 +33,9 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'home.bannerTitle': 'Find local festivals\nmade for your taste',
+    'home.bannerBody': 'Browse festivals across Korea and plan your trip.',
+    'home.bannerCta': 'Explore festivals',
     'home.festivals': 'Upcoming festivals',
     'festival.ongoing': 'Now on',
     'festival.upcoming': 'Upcoming',
@@ -48,6 +54,9 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'home.bannerTitle': 'พบเทศกาลท้องถิ่น\nที่ใช่สำหรับคุณ',
+    'home.bannerBody': 'ดูเทศกาลทั่วเกาหลีและวางแผนทริปของคุณ',
+    'home.bannerCta': 'ดูเทศกาล',
     'home.festivals': 'เทศกาลที่กำลังจะมาถึง',
     'festival.ongoing': 'กำลังจัด',
     'festival.upcoming': 'เร็วๆ นี้',
@@ -66,6 +75,9 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'home.bannerTitle': 'あなた好みの\n地域の祭りを見つけよう',
+    'home.bannerBody': '韓国全国の祭りを見て旅を計画しましょう。',
+    'home.bannerCta': '祭りを見る',
     'home.festivals': 'まもなく開催の祭り',
     'festival.ongoing': '開催中',
     'festival.upcoming': '開催予定',

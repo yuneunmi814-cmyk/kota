@@ -17,7 +17,7 @@ function distanceKm(a: Coords, f: Festival & { lat?: number | null; lng?: number
 }
 
 // 축제 카드 그리드 — 디자인 시안2(화이트+딥그린). 내 위치가 있으면 가까운 순, 없으면 시작일순
-export default function FestivalRail({ coords, regionSlug }: { coords: Coords | null; regionSlug: string | null }) {
+export default function FestivalRail({ coords, regionSlug, hideTitle }: { coords: Coords | null; regionSlug: string | null; hideTitle?: boolean }) {
   const t = useT()
   const [festivals, setFestivals] = useState<(Festival & { distanceKm?: number | null })[]>([])
 
@@ -42,10 +42,17 @@ export default function FestivalRail({ coords, regionSlug }: { coords: Coords | 
 
   return (
     <section className="max-w-5xl mx-auto mb-16 px-4 text-left">
-      <h2 className="text-[22px] font-black mb-6 text-green flex items-center gap-2">
-        {t('home.festivals')}
-        {coords && <span className="text-[12px] font-bold bg-green text-white px-2.5 py-1 rounded-full">{t('home.nearMe')}</span>}
-      </h2>
+      {!hideTitle && (
+        <h2 className="text-[22px] font-black mb-6 text-green flex items-center gap-2">
+          {t('home.festivals')}
+          {coords && <span className="text-[12px] font-bold bg-green text-white px-2.5 py-1 rounded-full">{t('home.nearMe')}</span>}
+        </h2>
+      )}
+      {hideTitle && coords && (
+        <div className="mb-5 -mt-2 text-center">
+          <span className="text-[12px] font-bold bg-green text-white px-3 py-1.5 rounded-full">{t('home.nearMe')}</span>
+        </div>
+      )}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {list.slice(0, 12).map((f) => (
           <article key={f.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
