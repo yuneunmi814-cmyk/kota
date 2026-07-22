@@ -15,6 +15,8 @@ export type Festival = {
   name: string
   summary: string | null
   address: string | null
+  lat: number | null
+  lng: number | null
   startDate: string // YYYY-MM-DD
   endDate: string
   imageUrl: string | null

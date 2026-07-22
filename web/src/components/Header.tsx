@@ -2,67 +2,40 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LANGS, useLang, useT } from '../i18n'
 
-// 상단 GNB — 디자인 시안(샘플3): 남색 텍스트 + 금색 포인트, 활성 탭 금색 밑줄
+// 상단 헤더 — 디자인 시안2: 화이트 + 딥그린. 축제 단일 서비스라 메뉴 없이 로고·검색·언어만
 export default function Header() {
   const t = useT()
   const { lang, setLang } = useLang()
   const [langOpen, setLangOpen] = useState(false)
   const navigate = useNavigate()
 
-  const menus = [
-    { key: 'festivals', label: t('nav.festivals'), active: true },
-    { key: 'food', label: t('nav.food') },
-    { key: 'spots', label: t('nav.spots') },
-    { key: 'packs', label: t('nav.packs'), badge: 'AI' },
-  ]
-
   return (
-    <header className="w-full flex justify-center bg-paper h-[80px] z-50 border-b border-hanji sticky top-0">
-      <div className="w-full max-w-[1200px] flex items-center justify-between px-4 relative">
-        <Link to="/" className="font-black text-[24px] flex items-center tracking-widest text-navy">
+    <header className="w-full flex justify-center bg-white h-[72px] z-50 border-b border-gray-100 sticky top-0">
+      <div className="w-full max-w-[1200px] flex items-center justify-between px-5">
+        <Link to="/" className="font-black text-[24px] tracking-tighter text-green">
           KOTA
         </Link>
 
-        <nav className="hidden md:flex items-center gap-[45px] font-bold text-[17px] text-navy">
-          {menus.map((m) =>
-            m.active ? (
-              <div
-                key={m.key}
-                className="text-gold cursor-pointer relative h-[80px] flex items-center after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-gold"
-              >
-                {m.label}
-              </div>
-            ) : (
-              <div key={m.key} className="flex items-center gap-1 cursor-pointer hover:text-gold transition-colors">
-                {m.label}
-                {m.badge && (
-                  <span className="bg-gold text-navy text-[10px] font-black px-[4px] py-[1px] rounded-sm">{m.badge}</span>
-                )}
-              </div>
-            ),
-          )}
-        </nav>
-
-        <div className="flex items-center gap-[18px]">
+        <div className="flex items-center gap-4">
           <button
             aria-label={t('home.searchButton')}
             onClick={() => navigate('/search')}
-            className="w-[36px] h-[36px] rounded-full bg-navy flex items-center justify-center text-gold hover:bg-navy-2 transition"
+            className="w-9 h-9 rounded-full bg-green flex items-center justify-center text-white hover:opacity-90 transition"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
 
           <div className="relative">
             <button
               onClick={() => setLangOpen((v) => !v)}
-              className="flex items-center gap-1 text-[14px] text-navy cursor-pointer font-medium hover:text-gold transition-colors"
+              className="flex items-center gap-1 text-[14px] font-semibold text-green hover:opacity-70 transition"
             >
               🌐 {LANGS.find((l) => l.code === lang)?.label} <span className="text-[10px]">▼</span>
             </button>
             {langOpen && (
-              <div className="absolute right-0 top-[36px] bg-paper border border-hanji shadow-lg rounded-sm min-w-[120px]">
+              <div className="absolute right-0 top-[38px] bg-white border border-gray-200 shadow-lg rounded-xl min-w-[130px] overflow-hidden">
                 {LANGS.map((l) => (
                   <button
                     key={l.code}
@@ -70,7 +43,7 @@ export default function Header() {
                       setLang(l.code)
                       setLangOpen(false)
                     }}
-                    className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-paper-2 ${l.code === lang ? 'text-gold font-bold' : 'text-navy'}`}
+                    className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-gray-50 ${l.code === lang ? 'text-green font-bold' : 'text-gray-600'}`}
                   >
                     {l.label}
                   </button>

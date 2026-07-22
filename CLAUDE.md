@@ -9,7 +9,7 @@
 - `design/logo.html` + `design/logo/` — 브랜드 로고("게임팩 × 소풍") SVG 원본·앱 아이콘·워드마크·가이드
 - `backend/` — Express + TypeScript + Prisma + PostgreSQL(PostGIS) API 서버
 - `admin-web/` — 관리자 웹(CMS), React + Vite + TS. dev 서버가 `/api`를 :4000으로 프록시 (`cd admin-web && npm run dev`, :5173)
-- `web/` — **코타 웹(공모전 MVP)**, React + Vite + TS + Tailwind v4. 외국인(태·일) 대상 지역축제 여행팩 웹 — 다국어 UI(ko/en/th/ja, `src/i18n.tsx`), 디자인 토큰은 전도준 시안(한지 `--color-paper`·남색 `--color-navy`·금색 `--color-gold`, 명조체) → `src/index.css` @theme. `/api` 프록시 :4000 (`cd web && npm run dev`, :5174). API 폴백: 백엔드 없어도 정적 데이터로 렌더
+- `web/` — **코타 웹(공모전 MVP)**, React + Vite + TS + Tailwind v4. 외국인(태·일) 대상 지역축제 여행팩 웹 — 다국어 UI(ko/en/th/ja, `src/i18n.tsx`), 디자인 토큰은 전도준 시안2(화이트 배경·딥그린 `--color-green` #004027·핀 레드 `--color-pin`, Pretendard) → `src/index.css` @theme. 홈 = "내 위치 기반 지역 축제"(geolocation→가까운 순 정렬) + 지역 필터 + 축제 그리드 — **축제 단일 축**(호텔·맛집 탭 없음, 결정 2026-07-22). `/api` 프록시 :4000 (`cd web && npm run dev`, :5174). API 폴백: 백엔드 없어도 정적 데이터로 렌더
 - `mobile/` — RN 안드로이드 앱(M3), Expo SDK 56 + TS. 하단탭 5개 + 가이드 모드(expo-location 체크인). API 베이스는 `EXPO_PUBLIC_API_BASE`(기본 10.0.2.2:4000)
 
 ## backend 명령어 (cd backend)
