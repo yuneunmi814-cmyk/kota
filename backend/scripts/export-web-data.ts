@@ -20,7 +20,7 @@ async function main() {
     select: {
       id: true, name: true, summary: true, address: true, lat: true, lng: true,
       startDate: true, endDate: true, imageUrl: true, tel: true,
-      region: { select: { id: true, name: true, slug: true } },
+      region: { select: { id: true, name: true, slug: true, visitorScore: true } },
     },
   })
 
@@ -32,6 +32,8 @@ async function main() {
       exportedAt: new Date().toISOString(),
       items: festivals.map((f) => ({
         ...f,
+        region: { id: f.region.id, name: f.region.name, slug: f.region.slug },
+        popularity: f.region.visitorScore, // 지역 방문자수 기반 인기 프록시
         startDate: f.startDate.toISOString().slice(0, 10),
         endDate: f.endDate.toISOString().slice(0, 10),
       })),

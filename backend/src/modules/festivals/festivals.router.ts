@@ -10,7 +10,7 @@ export const festivalsRouter = Router()
 const festivalSelect = {
   id: true, name: true, summary: true, address: true, lat: true, lng: true,
   startDate: true, endDate: true, imageUrl: true, tel: true,
-  region: { select: { id: true, name: true, slug: true } },
+  region: { select: { id: true, name: true, slug: true, visitorScore: true } },
 } satisfies Prisma.FestivalSelect
 type FestivalForCard = Prisma.FestivalGetPayload<{ select: typeof festivalSelect }>
 
@@ -32,7 +32,8 @@ function toCard(f: FestivalForCard, today: Date) {
     endDate: f.endDate.toISOString().slice(0, 10),
     imageUrl: f.imageUrl,
     tel: f.tel,
-    region: f.region,
+    region: { id: f.region.id, name: f.region.name, slug: f.region.slug },
+    popularity: f.region.visitorScore, // 지역 방문자수(관광 빅데이터) 기반 인기 프록시
     // 진행중(ongoing) / 예정(upcoming) / 종료(ended) — KST 오늘 기준
     status: f.endDate < today ? 'ended' : f.startDate <= today ? 'ongoing' : 'upcoming',
   }

@@ -12,6 +12,10 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'filter.date': '시작일순',
+    'filter.distance': '거리순',
+    'filter.popularity': '인기순',
+    'geo.denied': '위치 권한이 꺼져 있어요. 브라우저 주소창의 사이트 설정에서 위치를 허용해 주세요.',
     'home.bannerTitle': '당신의 취향에 딱\n맞는 지역 축제를 찾아보세요',
     'home.bannerBody': '전국의 지역 축제를 둘러보고 여행을 계획하세요.',
     'home.bannerCta': '축제 보러가기',
@@ -33,6 +37,10 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'filter.date': 'By date',
+    'filter.distance': 'Nearest',
+    'filter.popularity': 'Popular',
+    'geo.denied': 'Location is blocked. Please allow location in your browser site settings.',
     'home.bannerTitle': 'Find local festivals\nmade for your taste',
     'home.bannerBody': 'Browse festivals across Korea and plan your trip.',
     'home.bannerCta': 'Explore festivals',
@@ -54,6 +62,10 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'filter.date': 'ตามวันที่',
+    'filter.distance': 'ใกล้สุด',
+    'filter.popularity': 'ยอดนิยม',
+    'geo.denied': 'การเข้าถึงตำแหน่งถูกปิดอยู่ กรุณาอนุญาตในตั้งค่าเว็บไซต์ของเบราว์เซอร์',
     'home.bannerTitle': 'พบเทศกาลท้องถิ่น\nที่ใช่สำหรับคุณ',
     'home.bannerBody': 'ดูเทศกาลทั่วเกาหลีและวางแผนทริปของคุณ',
     'home.bannerCta': 'ดูเทศกาล',
@@ -75,6 +87,10 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'filter.date': '開始日順',
+    'filter.distance': '近い順',
+    'filter.popularity': '人気順',
+    'geo.denied': '位置情報がブロックされています。ブラウザのサイト設定で位置情報を許可してください。',
     'home.bannerTitle': 'あなた好みの\n地域の祭りを見つけよう',
     'home.bannerBody': '韓国全国の祭りを見て旅を計画しましょう。',
     'home.bannerCta': '祭りを見る',

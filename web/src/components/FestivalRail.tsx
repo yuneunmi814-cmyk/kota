@@ -16,8 +16,20 @@ function distanceKm(a: Coords, f: Festival & { lat?: number | null; lng?: number
   return R * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s))
 }
 
-// 축제 카드 그리드 — 디자인 시안2(화이트+딥그린). 내 위치가 있으면 가까운 순, 없으면 시작일순
-export default function FestivalRail({ coords, regionSlug, hideTitle }: { coords: Coords | null; regionSlug: string | null; hideTitle?: boolean }) {
+export type FestivalSort = 'date' | 'distance' | 'popularity'
+
+// 축제 카드 그리드 — 디자인 시안2(화이트+딥그린). sort: 시작일순(기본)·거리순(coords 필요)·인기순(지역 방문자수)
+export default function FestivalRail({
+  coords,
+  regionSlug,
+  hideTitle,
+  sort = 'date',
+}: {
+  coords: Coords | null
+  regionSlug: string | null
+  hideTitle?: boolean
+  sort?: FestivalSort
+}) {
   const t = useT()
   const [festivals, setFestivals] = useState<(Festival & { distanceKm?: number | null })[]>([])
 
@@ -32,11 +44,13 @@ export default function FestivalRail({ coords, regionSlug, hideTitle }: { coords
       )
   }, [regionSlug])
 
-  const list = coords
-    ? festivals
-        .map((f) => ({ ...f, distanceKm: distanceKm(coords, f) }))
-        .sort((a, b) => (a.distanceKm ?? Infinity) - (b.distanceKm ?? Infinity))
-    : festivals
+  const withDistance = coords ? festivals.map((f) => ({ ...f, distanceKm: distanceKm(coords, f) })) : festivals
+  const list =
+    sort === 'distance' && coords
+      ? [...withDistance].sort((a, b) => (a.distanceKm ?? Infinity) - (b.distanceKm ?? Infinity))
+      : sort === 'popularity'
+        ? [...withDistance].sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0))
+        : withDistance // 시작일순 (API·베이크 기본 정렬)
 
   if (list.length === 0) return null
 

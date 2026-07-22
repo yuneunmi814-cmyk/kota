@@ -21,6 +21,7 @@ export type Festival = {
   endDate: string
   imageUrl: string | null
   region: { id: string; name: string; slug: string }
+  popularity: number // 지역 방문자수(관광 빅데이터) 기반 인기 프록시
   status: 'ongoing' | 'upcoming' | 'ended'
 }
 

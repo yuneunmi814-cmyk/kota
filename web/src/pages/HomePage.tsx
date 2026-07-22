@@ -25,11 +25,11 @@ export default function HomePage() {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setLocating(false)
-        navigate(`/festivals?lat=${pos.coords.latitude.toFixed(5)}&lng=${pos.coords.longitude.toFixed(5)}`)
+        navigate(`/festivals?lat=${pos.coords.latitude.toFixed(5)}&lng=${pos.coords.longitude.toFixed(5)}&sort=distance`)
       },
       () => {
         setLocating(false)
-        navigate('/festivals') // 거부·실패 시 기본(시작일순) 목록으로
+        navigate('/festivals?geo=denied') // 차단 시 브라우저가 묻지 않고 즉시 실패 → 목록에서 안내
       },
       { enableHighAccuracy: false, timeout: 10_000 },
     )
