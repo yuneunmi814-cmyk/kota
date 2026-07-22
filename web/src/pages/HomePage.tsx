@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import RegionBanner from '../components/RegionBanner'
 import PromoBanner from '../components/PromoBanner'
 import { useT } from '../i18n'
+import { FEATURES } from '../features'
 
 // 메인 페이지 — 디자인 시안2: 타이틀 + 내 위치 + 지역 배너 + 티켓형 프로모 배너
 // 축제 그리드는 /festivals 로 이동 (지역·내 위치 선택 시 그 페이지로 넘어감)
@@ -55,8 +56,8 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* 통합 검색 — 알약 형태 */}
-        <form onSubmit={onSubmit} className="relative w-full max-w-xl mx-auto shadow-sm rounded-full border border-gray-300 mb-4 focus-within:border-green transition-colors">
+        {/* 통합 검색 — 알약 형태 (FEATURES.search로 숨김/부활) */}
+        {FEATURES.search && <form onSubmit={onSubmit} className="relative w-full max-w-xl mx-auto shadow-sm rounded-full border border-gray-300 mb-4 focus-within:border-green transition-colors">
           <input
             type="text"
             value={q}
@@ -67,7 +68,7 @@ export default function HomePage() {
           <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 bg-green text-white px-7 rounded-full font-bold hover:opacity-90 transition">
             {t('home.searchButton')}
           </button>
-        </form>
+        </form>}
       </main>
 
       <RegionBanner selected={null} onSelect={(slug) => navigate(slug ? `/festivals?region=${slug}` : '/festivals')} />
