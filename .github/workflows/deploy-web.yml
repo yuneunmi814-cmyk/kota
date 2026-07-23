@@ -30,8 +30,11 @@ jobs:
       - run: npm ci
         working-directory: web
       # 프로젝트 페이지라 base=/kota/ — 라우터 basename은 BASE_URL로 자동 반영
+      # VITE_API_BASE로 라이브 API(Render) 연결 — 콜드/다운 시 web은 정적 베이크 데이터로 자동 폴백
       - run: npm run build -- --base=/kota/
         working-directory: web
+        env:
+          VITE_API_BASE: https://kota-api-109d.onrender.com/api/v1
       # SPA 딥링크(/search 등) 새로고침 대응 — Pages는 404.html로 폴백
       - run: cp dist/index.html dist/404.html
         working-directory: web

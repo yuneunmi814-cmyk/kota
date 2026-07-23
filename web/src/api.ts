@@ -1,8 +1,12 @@
 // 백엔드 응답 규약: { success: true, data } / { success: false, error: { code, message } }
 const BASE = import.meta.env.VITE_API_BASE ?? '/api/v1'
 
+// Render 무료 인스턴스는 유휴 시 스핀다운(콜드 스타트 50초+). 타임아웃을 두고
+// 초과하면 throw → 호출부의 정적 베이크 데이터 폴백으로 즉시 전환(사용자 대기 방지).
+const TIMEOUT_MS = 6000
+
 export async function apiGet<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE}${path}`)
+  const res = await fetch(`${BASE}${path}`, { signal: AbortSignal.timeout(TIMEOUT_MS) })
   const body = (await res.json()) as { success: boolean; data?: T; error?: { code: string; message: string } }
   if (!body.success || body.data === undefined) throw new Error(body.error?.message ?? `API 오류 (${res.status})`)
   return body.data
