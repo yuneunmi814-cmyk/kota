@@ -143,19 +143,22 @@ export async function runSeed(prisma: PrismaClient, adminPassword: string, round
   await prisma.festival.createMany({
     data: [
       {
-        regionId: jeju.id, name: '탐라 등불 축제', tourapiContentId: 'seed-fest-1',
+        regionId: jeju.id, name: '탐라 등불 축제', externalId: 'seed:fest-1', source: 'SEED',
+        sido: '제주특별자치도', sigungu: '제주시',
         summary: '제주 원도심을 밝히는 가을 등불 축제', address: '제주특별자치도 제주시 동문로',
         lat: 33.5121, lng: 126.5281, startDate: onDate(-2), endDate: onDate(5),
         imageUrl: SPOT_IMAGES['동문재래시장'] ?? null, tel: '064-120',
       },
       {
-        regionId: jeju.id, name: '성산 일출 축제', tourapiContentId: 'seed-fest-2',
+        regionId: jeju.id, name: '성산 일출 축제', externalId: 'seed:fest-2', source: 'SEED',
+        sido: '제주특별자치도', sigungu: '서귀포시',
         summary: '새해 소망을 비는 일출 명소 축제', address: '제주특별자치도 서귀포시 성산읍',
         lat: 33.4587, lng: 126.9425, startDate: onDate(20), endDate: onDate(22),
         imageUrl: SPOT_IMAGES['성산일출봉'] ?? null, tel: '064-760-2761',
       },
       {
-        regionId: gongju.id, name: '공주 백제문화제', tourapiContentId: 'seed-fest-3',
+        regionId: gongju.id, name: '공주 백제문화제', externalId: 'seed:fest-3', source: 'SEED',
+        sido: '충청남도', sigungu: '공주시',
         summary: '금강변에서 열리는 대표 역사 축제', address: '충청남도 공주시 금벽로',
         lat: 36.4665, lng: 127.1236, startDate: onDate(45), endDate: onDate(53),
         imageUrl: null, tel: '041-840-2266',

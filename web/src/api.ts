@@ -24,7 +24,11 @@ export type Festival = {
   startDate: string // YYYY-MM-DD
   endDate: string
   imageUrl: string | null
-  region: { id: string; name: string; slug: string }
+  homepage?: string | null
+  sido?: string | null
+  sigungu?: string | null
+  // 큐레이션 지역 매칭 시 id·slug 존재, 미매칭(전국) 축제는 null (name은 시·군·구 표시)
+  region: { id: string | null; name: string; slug: string | null }
   popularity: number // 지역 방문자수(관광 빅데이터) 기반 인기 프록시
   status: 'ongoing' | 'upcoming' | 'ended'
 }

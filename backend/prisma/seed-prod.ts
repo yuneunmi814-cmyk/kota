@@ -15,8 +15,11 @@ const prisma = new PrismaClient()
 const force = process.env.SEED_FORCE === 'true'
 
 interface BakedFestival {
-  tourapiContentId: string
-  regionSlug: string
+  externalId: string
+  source: string
+  regionSlug: string | null
+  sido: string | null
+  sigungu: string | null
   name: string
   summary: string | null
   address: string | null
@@ -26,6 +29,7 @@ interface BakedFestival {
   endDate: string
   imageUrl: string | null
   tel: string | null
+  homepage: string | null
 }
 
 // 베이크된 실축제(prisma/seed-festivals.json, bake:festivals로 생성) 적재 — API 키 없이 실데이터 재현
@@ -40,13 +44,12 @@ async function seedBakedFestivals(): Promise<number> {
   const bySlug = new Map(regions.map((r) => [r.slug, r.id]))
   let created = 0
   for (const f of items) {
-    const regionId = bySlug.get(f.regionSlug)
-    if (!regionId) continue
-    const { regionSlug: _slug, tourapiContentId, startDate, endDate, ...data } = f
+    const { regionSlug, externalId, startDate, endDate, ...data } = f
+    const regionId = regionSlug ? bySlug.get(regionSlug) ?? null : null // 미매칭 축제도 적재(전국)
     await prisma.festival.upsert({
-      where: { tourapiContentId },
+      where: { externalId },
       update: {},
-      create: { ...data, tourapiContentId, regionId, startDate: new Date(startDate), endDate: new Date(endDate) },
+      create: { ...data, externalId, regionId, startDate: new Date(startDate), endDate: new Date(endDate) },
     })
     created += 1
   }
@@ -59,7 +62,7 @@ try {
   } else {
     const existing = await prisma.region.count()
     if (existing > 0 && !force) {
-      console.log(`[seed-prod] 이미 데이터 존재(지역 ${existing}곳) → 시드 건너뜀(덮어쓰지 않음)`)
+      console.log(`[seed-prod] 기반 데이터 존재(지역 ${existing}곳) → 지역/스팟/코스 시드 건너뜀(덮어쓰지 않음)`)
     } else {
       if (force && existing > 0) console.warn(`[seed-prod] ⚠️ SEED_FORCE=true — 기존 데이터(지역 ${existing}곳)를 삭제하고 재시드합니다`)
       // 비번 env 미설정 시 고정 기본값 대신 랜덤 생성 — 공개 레포에 적힌 비번으로 프로덕션 관리자가 만들어지는 것 방지
@@ -70,11 +73,13 @@ try {
         console.log('[seed-prod]    (이 로그에서만 확인 가능 — 지금 기록해 두거나, env 설정 후 SEED_FORCE=true로 재시드하세요)')
       }
       const result = await runSeed(prisma, password, 10, { regions: true })
-      const festivalCount = await seedBakedFestivals()
       const [regions, spots, courses] = await Promise.all([prisma.region.count(), prisma.spot.count(), prisma.course.count()])
-      console.log(`[seed-prod] 초기 시드 완료 — 지역 ${regions}곳 / 스팟 ${spots} / 코스 ${courses} / 실축제 ${festivalCount}건(베이크)`)
+      console.log(`[seed-prod] 기반 시드 완료 — 지역 ${regions}곳 / 스팟 ${spots} / 코스 ${courses}`)
       console.log(`[seed-prod] 발행 코스 #${result.publishedCourseId} · 관리자 super@/editor@/reviewer@kota.app`)
     }
+    // 축제는 항상 최신 베이크로 upsert(멱등) — 기반 데이터가 이미 있어도 배포마다 최신 축제 반영
+    const festivalCount = await seedBakedFestivals()
+    console.log(`[seed-prod] 베이크 축제 동기화 — ${festivalCount}건 upsert`)
   }
 } catch (e) {
   console.error('[seed-prod] 시드 실패(서버 기동은 계속):', e instanceof Error ? e.message : e)

@@ -323,30 +323,38 @@ model Video {
   @@map("videos")
 }
 
-/// 지역축제(TourAPI searchFestival2, contentTypeId=15) — 코타 웹의 핵심 축(축제+교통+식당).
-/// 기간(startDate~endDate)이 본질이라 Spot과 분리. 축제 달력(날짜별 개수)·진행중/예정 필터에 사용.
+/// 지역축제 — 코타 웹의 핵심 축. 전국(모든 시군구) 커버.
+/// 소스: TourAPI searchFestival2(contentTypeId=15) + 전국문화축제표준데이터(tn_pubr_public_cltur_fstvl_api).
+/// 기간(startDate~endDate)이 본질이라 Spot과 분리. regionId는 큐레이션 23개 지역과 매칭될 때만 채워짐(그 외는 sido/sigungu만).
 model Festival {
-  id               BigInt   @id @default(autoincrement())
-  regionId         BigInt   @map("region_id")
-  name             String
-  summary          String?
-  address          String?
+  id         BigInt   @id @default(autoincrement())
+  /// 큐레이션 지역(배너 필터용)과 매칭될 때만. 미매칭 축제(예: 제천·영월)는 null → '전국'에서만 노출
+  regionId   BigInt?  @map("region_id")
+  /// 행정구역 — 모든 축제가 보유. sido=시·도, sigungu=시·군·구(세종 등은 null)
+  sido       String?
+  sigungu    String?
+  name       String
+  summary    String?
+  address    String?
   /// 좌표 없는 축제도 목록에는 노출 — 지도 표시만 생략
-  lat              Float?
-  lng              Float?
-  startDate        DateTime @map("start_date") @db.Date
-  endDate          DateTime @map("end_date") @db.Date
-  imageUrl         String?  @map("image_url")
-  tel              String?
-  source           String   @default("TOURAPI")
-  tourapiContentId String   @unique @map("tourapi_content_id")
-  createdAt        DateTime @default(now()) @map("created_at")
-  updatedAt        DateTime @updatedAt @map("updated_at")
+  lat        Float?
+  lng        Float?
+  startDate  DateTime @map("start_date") @db.Date
+  endDate    DateTime @map("end_date") @db.Date
+  imageUrl   String?  @map("image_url")
+  tel        String?
+  homepage   String?
+  source     String   @default("TOURAPI") // TOURAPI | STDFEST(전국문화축제표준데이터)
+  /// 소스 접두 고유키: `tourapi:<contentid>` | `stdfest:<insttCode>-<name>-<start>` (멱등 upsert)
+  externalId String   @unique @map("external_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
 
-  region Region @relation(fields: [regionId], references: [id])
+  region Region? @relation(fields: [regionId], references: [id])
 
   @@index([endDate, startDate]) // 진행중·예정(endDate >= today) 조회용
   @@index([regionId, startDate])
+  @@index([name, startDate]) // 소스 간 중복 제거(정규화 이름+시작일) 조회용
   @@map("festivals")
 }
 

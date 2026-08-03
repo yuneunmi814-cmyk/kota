@@ -15,11 +15,14 @@ async function main() {
     select: { id: true, name: true, slug: true, thumbnailUrl: true },
   })
 
+  // 진행중/예정만 내보냄(종료 축제는 정적 데이터에서 제외 — 용량·신선도)
+  const today = new Date(new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10))
   const festivals = await prisma.festival.findMany({
+    where: { endDate: { gte: today } },
     orderBy: [{ startDate: 'asc' }, { id: 'asc' }],
     select: {
       id: true, name: true, summary: true, address: true, lat: true, lng: true,
-      startDate: true, endDate: true, imageUrl: true, tel: true,
+      startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true,
       region: { select: { id: true, name: true, slug: true, visitorScore: true } },
     },
   })
@@ -32,8 +35,10 @@ async function main() {
       exportedAt: new Date().toISOString(),
       items: festivals.map((f) => ({
         ...f,
-        region: { id: f.region.id, name: f.region.name, slug: f.region.slug },
-        popularity: f.region.visitorScore, // 지역 방문자수 기반 인기 프록시
+        region: f.region
+          ? { id: f.region.id, name: f.region.name, slug: f.region.slug }
+          : { id: null, name: f.sigungu ?? f.sido ?? '전국', slug: null },
+        popularity: f.region?.visitorScore ?? 0, // 지역 방문자수 기반 인기 프록시(미매칭=0)
         startDate: f.startDate.toISOString().slice(0, 10),
         endDate: f.endDate.toISOString().slice(0, 10),
       })),

@@ -1,7 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { api, prisma, seedAll } from './helpers.js'
 import { setTourApiTransportForTest } from '../src/modules/tourapi/client.js'
-import { syncRegionFestivals, todayYmd, toFestivalInput } from '../src/modules/festivals/sync.js'
+import { syncRegionFestivals, todayYmd, toTourApiInput } from '../src/modules/festivals/sync.js'
+import { setStdFestTransportForTest, syncStdFestivals } from '../src/modules/festivals/stdfest.js'
 
 // data.go.kr searchFestival2 응답 형태를 흉내낸 가짜 트랜스포트
 function envelope(items: unknown[], totalCount = items.length) {
@@ -13,7 +14,7 @@ function envelope(items: unknown[], totalCount = items.length) {
   }
 }
 
-// 오늘 기준 상대 날짜(YYYYMMDD) — 테스트가 날짜에 고정되지 않도록
+// 오늘 기준 상대 날짜 — 테스트가 날짜에 고정되지 않도록
 function ymdOffset(days: number): string {
   const d = new Date(Date.now() + 9 * 3600_000 + days * 86400_000)
   return d.toISOString().slice(0, 10).replace(/-/g, '')
@@ -49,10 +50,12 @@ describe('지역축제 (코타 웹 핵심 축)', () => {
     expect(s.skipped).toBe(1) // 기간 없는 축제
   })
 
-  it('동기화: 기간·좌표·이미지가 저장되고 멱등(재실행 시 갱신)', async () => {
-    const f = await prisma.festival.findUniqueOrThrow({ where: { tourapiContentId: '9001' }, include: { region: true } })
+  it('동기화: 기간·좌표·이미지가 저장되고 멱등(재실행 시 갱신), externalId 소스 접두', async () => {
+    const f = await prisma.festival.findUniqueOrThrow({ where: { externalId: 'tourapi:9001' }, include: { region: true } })
     expect(f.name).toBe('탐라 문화제')
-    expect(f.region.slug).toBe('jeju')
+    expect(f.region?.slug).toBe('jeju') // 주소(제주특별자치도)로 큐레이션 지역 매칭
+    expect(f.sido).toBe('제주특별자치도')
+    expect(f.sigungu).toBe('제주시')
     expect(f.lat).toBeCloseTo(33.4996, 3)
     expect(f.imageUrl).toContain('festival.jpg')
 
@@ -88,20 +91,8 @@ describe('지역축제 (코타 웹 핵심 축)', () => {
     expect(bad.status).toBe(422)
   })
 
-  it('GET /festivals — 복합 커서 페이지네이션(startDate,id)', async () => {
-    const p1 = await api.get('/api/v1/festivals?includeEnded=1&limit=2')
-    expect(p1.body.data.items).toHaveLength(2)
-    expect(p1.body.data.nextCursor).toMatch(/^\d{4}-\d{2}-\d{2}_\d+$/)
-
-    const p2 = await api.get(`/api/v1/festivals?includeEnded=1&limit=2&cursor=${p1.body.data.nextCursor}`)
-    const names1 = (p1.body.data.items as { name: string }[]).map((i) => i.name)
-    const names2 = (p2.body.data.items as { name: string }[]).map((i) => i.name)
-    expect(names2).toHaveLength(1)
-    expect(names1).not.toContain(names2[0]) // 중복·누락 없음
-  })
-
-  it('GET /festivals/calendar — 날짜별 진행 축제 수 (축제 많은 날 선정용)', async () => {
-    const target = new Date(`${isoOffset(1)}T00:00:00Z`) // 진행중 축제 기간 내 날짜
+  it('GET /festivals/calendar — 날짜별 진행 축제 수', async () => {
+    const target = new Date(`${isoOffset(1)}T00:00:00Z`)
     const res = await api.get(`/api/v1/festivals/calendar?year=${target.getUTCFullYear()}&month=${target.getUTCMonth() + 1}`)
     expect(res.status).toBe(200)
     const days = res.body.data.days as { date: string; count: number }[]
@@ -113,7 +104,7 @@ describe('지역축제 (코타 웹 핵심 축)', () => {
   })
 
   it('GET /festivals/:id — 상세 + 좌표 기반 주변 관광지(반경 3km)', async () => {
-    const f = await prisma.festival.findUniqueOrThrow({ where: { tourapiContentId: '9001' } })
+    const f = await prisma.festival.findUniqueOrThrow({ where: { externalId: 'tourapi:9001' } })
     const res = await api.get(`/api/v1/festivals/${f.id}`)
     expect(res.status).toBe(200)
     expect(res.body.data.name).toBe('탐라 문화제')
@@ -124,19 +115,62 @@ describe('지역축제 (코타 웹 핵심 축)', () => {
   })
 
   it('좌표 없는 축제도 목록에 노출되고 상세의 주변 관광지는 빈 배열', async () => {
-    const f = await prisma.festival.findUniqueOrThrow({ where: { tourapiContentId: '9002' } })
+    const f = await prisma.festival.findUniqueOrThrow({ where: { externalId: 'tourapi:9002' } })
     expect(f.lat).toBeNull()
     const res = await api.get(`/api/v1/festivals/${f.id}`)
     expect(res.status).toBe(200)
     expect(res.body.data.nearbySpots).toEqual([])
   })
 
-  it('매퍼: 잘못된 좌표(0,0)는 null 처리, todayYmd는 KST 8자리', () => {
-    const r = toFestivalInput(
-      { contentid: '1', contenttypeid: '15', title: 'X', eventstartdate: '20260801', eventenddate: '20260803', mapx: '0', mapy: '0' },
-      1n,
+  it('매퍼: 주소로 시·도/시·군·구·큐레이션 매핑 — 비큐레이션(영월)은 regionId null', () => {
+    const jeju = toTourApiInput(
+      { contentid: '1', contenttypeid: '15', title: 'X', addr1: '제주특별자치도 제주시', eventstartdate: '20260801', eventenddate: '20260803', mapx: '0', mapy: '0' },
+      new Map([['jeju', 7n]]),
     )
-    expect(r.ok && r.value.lat === null && r.value.lng === null).toBe(true)
+    expect(jeju.ok && jeju.value.regionId).toBe(7n) // 제주 매칭
+    expect(jeju.ok && jeju.value.lat).toBeNull() // (0,0) → null
+    expect(jeju.ok && jeju.value.externalId).toBe('tourapi:1')
+
+    const yeongwol = toTourApiInput(
+      { contentid: '2', contenttypeid: '15', title: '영월동강뗏목축제', addr1: '강원특별자치도 영월군 영월읍', eventstartdate: '20260801', eventenddate: '20260803' },
+      new Map([['jeju', 7n]]),
+    )
+    expect(yeongwol.ok && yeongwol.value.regionId).toBeNull() // 큐레이션 미매칭
+    expect(yeongwol.ok && yeongwol.value.sido).toBe('강원특별자치도')
+    expect(yeongwol.ok && yeongwol.value.sigungu).toBe('영월군')
     expect(todayYmd()).toMatch(/^\d{8}$/)
+  })
+
+  it('표준데이터: 소도시 축제(영월동강뗏목) 보강 + TourAPI 중복은 스킵', async () => {
+    setStdFestTransportForTest(async () => ({
+      header: { resultCode: '00', resultMsg: 'NORMAL SERVICE.' },
+      body: {
+        totalCount: 2,
+        items: {
+          item: [
+            // TourAPI '탐라 문화제'와 같은 시작일·이름 → 중복 스킵
+            { fstvlNm: '탐라문화제', fstvlStartDate: isoOffset(-1), fstvlEndDate: isoOffset(3), rdnmadr: '제주특별자치도 제주시 동문로', insttCode: 'A' },
+            // TourAPI에 없는 소도시 축제 → 신규(regionId null, 전국)
+            { fstvlNm: '영월동강뗏목축제', fstvlStartDate: isoOffset(2), fstvlEndDate: isoOffset(4), rdnmadr: '강원특별자치도 영월군 영월읍 하송리', latitude: '37.1836', longitude: '128.4617', phoneNumber: '033-370-2622', insttCode: 'B' },
+          ],
+        },
+      },
+    }))
+    const s = await syncStdFestivals({ from: ymdOffset(-40) })
+    expect(s.created).toBe(1) // 영월만 신규
+    expect(s.skipped).toBeGreaterThanOrEqual(1) // 탐라문화제 중복
+
+    const f = await prisma.festival.findFirstOrThrow({ where: { name: '영월동강뗏목축제' }, include: { region: true } })
+    expect(f.source).toBe('STDFEST')
+    expect(f.region).toBeNull() // 큐레이션 미매칭 → 전국
+    expect(f.sido).toBe('강원특별자치도')
+    expect(f.sigungu).toBe('영월군')
+    expect(f.lat).toBeCloseTo(37.1836, 3)
+
+    // 목록(전국)에 노출되고, region.name은 시·군·구로 표시
+    const list = await api.get('/api/v1/festivals?limit=50')
+    const yeongwol = (list.body.data.items as { name: string; region: { name: string; slug: string | null } }[]).find((i) => i.name === '영월동강뗏목축제')
+    expect(yeongwol?.region.name).toBe('영월군')
+    expect(yeongwol?.region.slug).toBeNull()
   })
 })

@@ -22,7 +22,8 @@ npm run db:migrate   # prisma migrate dev
 npm run db:seed      # 제주 시드 (관리자 3계정 + 코스 2개 + 스팟 8곳)
 npm run sync:tourapi -- --region=jeju [--types=12,39] [--max=100] [--overview] [--dry-run]   # 관광지
 npm run sync:tourapi -- --region=jeju --courses [--max=10] [--dry-run]                        # 여행코스(경유지→좌표 연결)
-npm run sync:festivals -- --region=gongju [--from=YYYYMMDD] [--max=200] [--dry-run]           # 지역축제(searchFestival2)→festivals
+npm run sync:festivals -- --all --std [--from=YYYYMMDD]     # 축제 전국(TourAPI 16개 시·도 + 전국문화축제표준데이터, 중복제거) → festivals
+# npm run sync:festivals -- --region=gongju | --all | --std  (개별 선택 가능) · npm run bake:festivals(예정 축제 → seed-festivals.json)
 npm run sync:audioguide -- --region=jeju [--langs=ko,en] [--radius=1000] [--dry-run]          # 오디오 가이드(오디·좌표 매칭)
 npm run sync:photos -- --region=jeju [--all] [--dry-run]    # 관광사진(스팟명 키워드 매칭→spot_images)
 npm run sync:i18n -- --region=jeju [--all] [--dry-run]      # 영문(EngService2, title 괄호 한글명 매칭→spot_translations)
@@ -40,7 +41,7 @@ npm run sync:youtube -- --all [--max=8] [--dry-run]         # 유튜브 여행�
 - 발행 워크플로: DRAFT→IN_REVIEW→PUBLISHED(4-eyes: 작성자≠승인자)→ARCHIVED. 발행 변경 시 캐시 버전 범프
 - 관리자 쓰기·개인정보 열람은 logAudit() 필수
 - 마켓플레이스: **v1은 무료 공유 모델**(여행팩 무료 공유·자랑). 유료 결제·이용권·페이월·정산 코드는 **보존된 채 비활성** — 모바일이 가격을 안 보내(price 0)·PG 미설정이라 페이월/구매가 트리거되지 않음. 유료화 시 모바일 가격칸 복원 + `PG_PROVIDER`/`PG_API_SECRET` + price>0 발행으로 재활성. 마켓 인기순은 **saveCount** 기준(판매수는 유료화 시). 스키마/엔드포인트(보존): Course에 `authorType`·`price`·`salesCount`, `course_purchases`(이용권), `courseEntitlement()` 페이월(`/courses/:id` locked + `/trips` 게이트), `isPaymentEnabled()`(mock\|portone), 정산 `MARKETPLACE_FEE_PERCENT`. USER 코스 발행은 관리자 4-eyes 재사용. **테스트는 유료 경로까지 검증(88개)** — 유료 코드가 죽지 않게 유지
-- 축제: `festivals` 테이블(기간이 본질이라 Spot과 분리, 좌표 nullable). 공개 API `GET /festivals`(기본 진행중+예정, 복합 커서 `YYYY-MM-DD_id`)·`/festivals/calendar`(날짜별 개수)·`/festivals/:id`(PostGIS 반경 3km 주변 스팟). 동기화 `src/modules/festivals/`, 시드에 데모 축제 3건(상대 날짜). **라이브 검증 완료**(2026-07-15, 전국 121건)
+- 축제: `festivals` 테이블(전국 커버, 기간 본질이라 Spot과 분리, 좌표·regionId nullable). **2개 소스** — TourAPI searchFestival2(16개 시·도, `sync.ts`) + 전국문화축제표준데이터(`stdfest.ts`, TourAPI가 놓치는 소도시 축제 보강). `externalId`(소스 접두 `tourapi:`/`stdfest:`) 멱등 upsert, 소스 간 정규화 이름+시작일로 중복 제거(`regionMap.ts`). regionId는 큐레이션 23개 지역과 매칭될 때만(광역시·제주=시·도, 도-소속 시=시명), 미매칭은 sido/sigungu만→'전국' 노출. 공개 API `GET /festivals`(기본 진행중+예정, 복합 커서 `YYYY-MM-DD_id`, region.slug=null 가능)·`/festivals/calendar`·`/festivals/:id`(PostGIS 반경 3km). 베이크(`bake:festivals`→`seed-festivals.json`, 예정만)를 seed-prod가 매 기동 upsert. **라이브 검증**(2026-08-03, 전국 416건: TourAPI 198+표준 218)
 - **법정동 코드 개편 주의(2026-07)**: 광주+전남 → **전남광주통합특별시(regnCd 12)** 통합, 구 코드(29·46)는 결과가 비다시피 함. `searchFestival2`는 구형 areaCode 필터도 부실(서울 2건 vs lDong 99건) → 축제는 `REGION_LDONG`(regions.ts, ldongCode2로 확정한 시+구 코드) 사용. ⚠️ i18n(EngService2)·visitors(DataLab)의 기존 lDongRegnCd '29'/'46'·sidoKey('광주'·'전라남')는 통합 반영 전 값 — 재검증 필요
 - 로컬 DB: Homebrew PostgreSQL 17 + PostGIS (`postgresql://yoon@localhost:5432/kota_dev`)
 

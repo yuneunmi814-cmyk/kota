@@ -9,7 +9,7 @@ export const festivalsRouter = Router()
 
 const festivalSelect = {
   id: true, name: true, summary: true, address: true, lat: true, lng: true,
-  startDate: true, endDate: true, imageUrl: true, tel: true,
+  startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true,
   region: { select: { id: true, name: true, slug: true, visitorScore: true } },
 } satisfies Prisma.FestivalSelect
 type FestivalForCard = Prisma.FestivalGetPayload<{ select: typeof festivalSelect }>
@@ -21,6 +21,10 @@ function todayKst(): Date {
 }
 
 function toCard(f: FestivalForCard, today: Date) {
+  // 큐레이션 지역이 있으면 그 이름/slug, 없으면 시·군·구(없으면 시·도) 표시 — slug 없으면 '전국'에서만 노출
+  const regionCard = f.region
+    ? { id: f.region.id, name: f.region.name, slug: f.region.slug }
+    : { id: null, name: f.sigungu ?? f.sido ?? '전국', slug: null }
   return {
     id: f.id,
     name: f.name,
@@ -32,8 +36,11 @@ function toCard(f: FestivalForCard, today: Date) {
     endDate: f.endDate.toISOString().slice(0, 10),
     imageUrl: f.imageUrl,
     tel: f.tel,
-    region: { id: f.region.id, name: f.region.name, slug: f.region.slug },
-    popularity: f.region.visitorScore, // 지역 방문자수(관광 빅데이터) 기반 인기 프록시
+    homepage: f.homepage,
+    sido: f.sido,
+    sigungu: f.sigungu,
+    region: regionCard,
+    popularity: f.region?.visitorScore ?? 0, // 지역 방문자수(관광 빅데이터) 기반 인기 프록시(미매칭=0)
     // 진행중(ongoing) / 예정(upcoming) / 종료(ended) — KST 오늘 기준
     status: f.endDate < today ? 'ended' : f.startDate <= today ? 'ongoing' : 'upcoming',
   }
