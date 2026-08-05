@@ -2,7 +2,10 @@
 # 사용: Render 대시보드 → New → Blueprint → 이 레포 선택 → Apply.
 #   적용 후 대시보드에서 sync:false 값(TOURAPI_SERVICE_KEY 등)을 채우고,
 #   백엔드 URL이 나오면 admin-web의 VITE_API_BASE에 그 주소(.../api/v1)를 넣어 재배포.
-# 무료 플랜은 체험용(웹 슬립·DB 90일). 운영은 plan을 starter 이상으로 올리세요.
+# 무료 플랜은 체험용. 운영은 plan을 유료로 올리세요.
+#   ⚠️ 무료 Postgres는 생성 후 30일 만료 + 14일 유예 후 데이터 삭제 (90일 아님 — 2026-08-04 정정).
+#   실제 이력: travelpack-db 2026-07-14 만료 → API 9일간 다운 → 07-22 kota-db 재생성.
+#   현재 kota-db 정지 예정일 2026-08-21. 상세 → docs/C-level/02_CTO_윤은미/06_기술_의사결정_기록.md ADR-003
 databases:
   - name: kota-db
     databaseName: kota
