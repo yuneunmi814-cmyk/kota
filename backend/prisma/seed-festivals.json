@@ -19,7 +19,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:6280000-인천도시역사관어린이특별전-20251209",
+   "externalId": "stdfest:6280000-2025년인천도시역사관어린이특별전-20251209",
    "source": "STDFEST",
    "regionSlug": "incheon",
    "sido": "인천광역시",
@@ -33,6 +33,23 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": null,
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2786391",
+   "source": "TOURAPI",
+   "regionSlug": "busan",
+   "sido": "부산광역시",
+   "sigungu": "수영구",
+   "name": "광안리 M(Marvelous) 드론 라이트쇼",
+   "summary": null,
+   "address": "부산광역시 수영구 광안해변로 219 (광안동)",
+   "lat": 35.1537727886,
+   "lng": 129.1185199367,
+   "startDate": "2026-01-01",
+   "endDate": "2026-12-31",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/12/3518612_image2_1.jpeg",
+   "tel": "051-610-6518",
    "homepage": null
   },
   {
@@ -118,23 +135,6 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/99/4001599_image2_1.jpg",
    "tel": "02-3789-7402",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:2786391",
-   "source": "TOURAPI",
-   "regionSlug": "busan",
-   "sido": "부산광역시",
-   "sigungu": "수영구",
-   "name": "광안리 M(Marvelous) 드론 라이트쇼",
-   "summary": null,
-   "address": "부산광역시 수영구 광안해변로 219 (광안동)",
-   "lat": 35.1537727886,
-   "lng": 129.1185199367,
-   "startDate": "2026-01-01",
-   "endDate": "2026-12-31",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/12/3518612_image2_1.jpeg",
-   "tel": "051-610-6518",
    "homepage": null
   },
   {
@@ -308,40 +308,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:293030",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경기도",
-   "sigungu": "안성시",
-   "name": "안성 남사당바우덕이 풍물단 상설 공연 ‘곰뱅이텄다’",
-   "summary": null,
-   "address": "경기도 안성시 보개면 남사당로 198-2",
-   "lat": 37.0317706868448,
-   "lng": 127.310126633916,
-   "startDate": "2026-04-04",
-   "endDate": "2026-11-29",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4039532_image2_1.jpg",
-   "tel": "031-678-2518",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:2987489",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "전라남도",
-   "sigungu": "고흥군",
-   "name": "2026 고흥 녹동항 드론쇼",
-   "summary": null,
-   "address": "전남광주통합특별시 고흥군 도양읍 봉암리 3953",
-   "lat": 34.5256,
-   "lng": 127.1341,
-   "startDate": "2026-04-04",
-   "endDate": "2026-10-31",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/97/4054497_image2_1.jpg",
-   "tel": "061-830-5902",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:2865136",
    "source": "TOURAPI",
    "regionSlug": "gwangju",
@@ -376,6 +342,40 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:293030",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "경기도",
+   "sigungu": "안성시",
+   "name": "안성 남사당바우덕이 풍물단 상설 공연 ‘곰뱅이텄다’",
+   "summary": null,
+   "address": "경기도 안성시 보개면 남사당로 198-2",
+   "lat": 37.0317706868448,
+   "lng": 127.310126633916,
+   "startDate": "2026-04-04",
+   "endDate": "2026-11-29",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4039532_image2_1.jpg",
+   "tel": "031-678-2518",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2987489",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "전라남도",
+   "sigungu": "고흥군",
+   "name": "2026 고흥 녹동항 드론쇼",
+   "summary": null,
+   "address": "전남광주통합특별시 고흥군 도양읍 봉암리 3953",
+   "lat": 34.5256,
+   "lng": 127.1341,
+   "startDate": "2026-04-04",
+   "endDate": "2026-10-31",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/97/4054497_image2_1.jpg",
+   "tel": "061-830-5902",
+   "homepage": null
+  },
+  {
    "externalId": "stdfest:5680000-당진삽교호드론라이트쇼-20260404",
    "source": "STDFEST",
    "regionSlug": null,
@@ -390,23 +390,6 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:3497454",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "종로구",
-   "name": "의정부지 상설 전통문화행사",
-   "summary": null,
-   "address": "서울특별시 종로구 종로1길 45 (세종로)",
-   "lat": 37.57461832188537,
-   "lng": 126.978384931809,
-   "startDate": "2026-04-11",
-   "endDate": "2026-10-31",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4056513_image2_1.jpg",
-   "tel": "02-737-6444",
    "homepage": null
   },
   {
@@ -427,20 +410,20 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:4058556",
+   "externalId": "tourapi:3497454",
    "source": "TOURAPI",
-   "regionSlug": "suwon",
-   "sido": "경기도",
-   "sigungu": "수원시",
-   "name": "컬처라운지 경기, 장(場)",
+   "regionSlug": "seoul",
+   "sido": "서울특별시",
+   "sigungu": "종로구",
+   "name": "의정부지 상설 전통문화행사",
    "summary": null,
-   "address": "경기도 수원시 영통구 도청로 지하36 (이의동) 지하",
-   "lat": 37.2879129895568,
-   "lng": 127.054491044714,
-   "startDate": "2026-04-18",
-   "endDate": "2026-12-15",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4058721_image2_1.png",
-   "tel": "031-259-4724",
+   "address": "서울특별시 종로구 종로1길 45 (세종로)",
+   "lat": 37.57461832188537,
+   "lng": 126.978384931809,
+   "startDate": "2026-04-11",
+   "endDate": "2026-10-31",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4056513_image2_1.jpg",
+   "tel": "02-737-6444",
    "homepage": null
   },
   {
@@ -458,6 +441,23 @@
    "endDate": "2026-10-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/58/4067258_image2_1.JPG",
    "tel": "- 063-236-1577 - 010-4348-3130",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:4058556",
+   "source": "TOURAPI",
+   "regionSlug": "suwon",
+   "sido": "경기도",
+   "sigungu": "수원시",
+   "name": "컬처라운지 경기, 장(場)",
+   "summary": null,
+   "address": "경기도 수원시 영통구 도청로 지하36 (이의동) 지하",
+   "lat": 37.2879129895568,
+   "lng": 127.054491044714,
+   "startDate": "2026-04-18",
+   "endDate": "2026-12-15",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4058721_image2_1.png",
+   "tel": "031-259-4724",
    "homepage": null
   },
   {
@@ -614,7 +614,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:5130000-경산갓바위소원성취축제-20260601",
+   "externalId": "stdfest:5130000-2026경산갓바위소원성취축제-20260601",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -648,7 +648,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4181000-춘천연극제-20260611",
+   "externalId": "stdfest:4181000-2026춘천연극제-20260611",
    "source": "STDFEST",
    "regionSlug": "chuncheon",
    "sido": "강원특별자치도",
@@ -733,6 +733,23 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:4086427",
+   "source": "TOURAPI",
+   "regionSlug": "chuncheon",
+   "sido": "강원특별자치도",
+   "sigungu": "춘천시",
+   "name": "춘천 썸머워터 페스티벌",
+   "summary": null,
+   "address": "강원특별자치도 춘천시 삼천동 200-9 춘천수변공원",
+   "lat": 37.8724857,
+   "lng": 127.7002608,
+   "startDate": "2026-07-17",
+   "endDate": "2026-08-17",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4086431_image2_1.jpg",
+   "tel": "033-255-0920",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:4094595",
    "source": "TOURAPI",
    "regionSlug": "seoul",
@@ -764,23 +781,6 @@
    "endDate": "2026-08-17",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/3493222_image2_1.JPG",
    "tel": "010-3371-2000",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:4086427",
-   "source": "TOURAPI",
-   "regionSlug": "chuncheon",
-   "sido": "강원특별자치도",
-   "sigungu": "춘천시",
-   "name": "춘천 썸머워터 페스티벌",
-   "summary": null,
-   "address": "강원특별자치도 춘천시 삼천동 200-9 춘천수변공원",
-   "lat": 37.8724857,
-   "lng": 127.7002608,
-   "startDate": "2026-07-17",
-   "endDate": "2026-08-17",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4086431_image2_1.jpg",
-   "tel": "033-255-0920",
    "homepage": null
   },
   {
@@ -835,23 +835,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:506534",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "충청남도",
-   "sigungu": "보령시",
-   "name": "보령머드축제",
-   "summary": null,
-   "address": "충청남도 보령시 신흑동 2282",
-   "lat": 36.314822,
-   "lng": 126.515029,
-   "startDate": "2026-07-24",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/3534979_image2_1.jpg",
-   "tel": "041-930-0891",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:2728613",
    "source": "TOURAPI",
    "regionSlug": "jeju",
@@ -869,7 +852,24 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4791000-변산비치펍시즌2-20260724",
+   "externalId": "tourapi:506534",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "충청남도",
+   "sigungu": "보령시",
+   "name": "보령머드축제",
+   "summary": null,
+   "address": "충청남도 보령시 신흑동 2282",
+   "lat": 36.314822,
+   "lng": 126.515029,
+   "startDate": "2026-07-24",
+   "endDate": "2026-08-09",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/3534979_image2_1.jpg",
+   "tel": "041-930-0891",
+   "homepage": null
+  },
+  {
+   "externalId": "stdfest:4791000-2026년변산비치펍시즌2-20260724",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "전북특별자치도",
@@ -1056,23 +1056,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:142193",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "마포구",
-   "name": "서울프린지페스티벌2026",
-   "summary": null,
-   "address": "서울특별시 마포구 월드컵북로 94 (성산동)",
-   "lat": 37.5620373293,
-   "lng": 126.9150631652,
-   "startDate": "2026-08-06",
-   "endDate": "2026-08-23",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/4087022_image2_1.jpg",
-   "tel": "070-7092-8172",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:2644679",
    "source": "TOURAPI",
    "regionSlug": "busan",
@@ -1087,6 +1070,57 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/92/4077792_image2_1.jpg",
    "tel": "02-2231-2011",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2728529",
+   "source": "TOURAPI",
+   "regionSlug": "yeosu",
+   "sido": "전라남도",
+   "sigungu": "여수시",
+   "name": "제7회 섬의 날",
+   "summary": null,
+   "address": "전남광주통합특별시 여수시 박람회길 1 (덕충동)",
+   "lat": 34.7509493146,
+   "lng": 127.7470910959,
+   "startDate": "2026-08-06",
+   "endDate": "2026-08-09",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4081290_image2_1.jpg",
+   "tel": "02-2058-1070",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2557842",
+   "source": "TOURAPI",
+   "regionSlug": "jeonju",
+   "sido": "전북특별자치도",
+   "sigungu": "전주시",
+   "name": "전주 가맥축제",
+   "summary": null,
+   "address": "전북특별자치도 전주시 덕진구 권삼득로 308 (덕진동1가)",
+   "lat": 35.8442101179,
+   "lng": 127.1292609884,
+   "startDate": "2026-08-06",
+   "endDate": "2026-08-08",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/4086143_image2_1.jpg",
+   "tel": "070-8870-6870",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:142193",
+   "source": "TOURAPI",
+   "regionSlug": "seoul",
+   "sido": "서울특별시",
+   "sigungu": "마포구",
+   "name": "서울프린지페스티벌2026",
+   "summary": null,
+   "address": "서울특별시 마포구 월드컵북로 94 (성산동)",
+   "lat": 37.5620373293,
+   "lng": 126.9150631652,
+   "startDate": "2026-08-06",
+   "endDate": "2026-08-23",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/4087022_image2_1.jpg",
+   "tel": "070-7092-8172",
    "homepage": null
   },
   {
@@ -1107,20 +1141,20 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2557842",
+   "externalId": "tourapi:142080",
    "source": "TOURAPI",
-   "regionSlug": "jeonju",
-   "sido": "전북특별자치도",
-   "sigungu": "전주시",
-   "name": "전주 가맥축제",
+   "regionSlug": "busan",
+   "sido": "부산광역시",
+   "sigungu": "사하구",
+   "name": "부산바다축제",
    "summary": null,
-   "address": "전북특별자치도 전주시 덕진구 권삼득로 308 (덕진동1가)",
-   "lat": 35.8442101179,
-   "lng": 127.1292609884,
-   "startDate": "2026-08-06",
-   "endDate": "2026-08-08",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/4086143_image2_1.jpg",
-   "tel": "070-8870-6870",
+   "address": "부산광역시 사하구 다대동 다대포 해수욕장",
+   "lat": 35.046996,
+   "lng": 128.966195,
+   "startDate": "2026-08-07",
+   "endDate": "2026-08-13",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/40/4085840_image2_1.jpg",
+   "tel": "051-713-5000",
    "homepage": null
   },
   {
@@ -1175,40 +1209,6 @@
    "homepage": "http://www.jinjumusic.com/"
   },
   {
-   "externalId": "stdfest:6260000-부산바다축제-20260807",
-   "source": "STDFEST",
-   "regionSlug": "busan",
-   "sido": "부산광역시",
-   "sigungu": "사하구",
-   "name": "부산바다축제",
-   "summary": "공연행사+불꽃쇼+체험행사 등",
-   "address": "부산광역시 사하구 몰운대1길 14",
-   "lat": 35.046382,
-   "lng": 128.968007,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": "051-888-5224",
-   "homepage": "https://festivalbusan.com/"
-  },
-  {
-   "externalId": "tourapi:3517184",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "영등포구",
-   "name": "한강 다리밑 영화관",
-   "summary": null,
-   "address": "서울특별시 영등포구 여의동로 330 (여의도동)",
-   "lat": 37.5263478533,
-   "lng": 126.9335951931,
-   "startDate": "2026-08-08",
-   "endDate": "2026-08-22",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4095469_image2_1.jpg",
-   "tel": "02-120",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:2989846",
    "source": "TOURAPI",
    "regionSlug": "incheon",
@@ -1223,6 +1223,23 @@
    "endDate": "2026-08-15",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/70/4089470_image2_1.JPG",
    "tel": "032-749-7330 / 032-822-1000",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:3517184",
+   "source": "TOURAPI",
+   "regionSlug": "seoul",
+   "sido": "서울특별시",
+   "sigungu": "영등포구",
+   "name": "한강 다리밑 영화관",
+   "summary": "여의도한강공원 원효대교 남단 하부",
+   "address": "서울특별시 영등포구 여의동로 330 (여의도동)",
+   "lat": 37.5263478533,
+   "lng": 126.9335951931,
+   "startDate": "2026-08-08",
+   "endDate": "2026-08-22",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4095469_image2_1.jpg",
+   "tel": "02-120",
    "homepage": null
   },
   {
@@ -1260,6 +1277,74 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:2736033",
+   "source": "TOURAPI",
+   "regionSlug": "busan",
+   "sido": "부산광역시",
+   "sigungu": "해운대구",
+   "name": "부산인디커넥트페스티벌 2026",
+   "summary": null,
+   "address": "부산광역시 해운대구 APEC로 55 (우동)",
+   "lat": 35.1687048508,
+   "lng": 129.1354937071,
+   "startDate": "2026-08-14",
+   "endDate": "2026-08-16",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/55/4087155_image2_1.jpg",
+   "tel": "070-8855-5058",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2541883",
+   "source": "TOURAPI",
+   "regionSlug": "gangneung",
+   "sido": "강원특별자치도",
+   "sigungu": "강릉시",
+   "name": "강릉 국가유산 야행",
+   "summary": null,
+   "address": "강원특별자치도 강릉시 임영로131번길 6 임영관",
+   "lat": 37.7532215016,
+   "lng": 128.8920940489,
+   "startDate": "2026-08-14",
+   "endDate": "2026-08-16",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/3317777_image2_1.jpg",
+   "tel": "033-823-3206",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:3485078",
+   "source": "TOURAPI",
+   "regionSlug": "incheon",
+   "sido": "인천광역시",
+   "sigungu": "강화군",
+   "name": "국가유산 미디어아트",
+   "summary": null,
+   "address": "인천광역시 강화군 강화읍 북문길 42 12개 지역 내 국가유산  강화(고려궁지 등), 철원(노동당사), 경주(대릉원), 양산(통도사), 진주(진주성), 통영(삼도수군통제영), 군산(구 군산세관 본관 등), 여수(진남관), 익산(미륵사지), 부여(정림사지), 아산(이충무공 유허), 청주(용두사지 철당간 등)",
+   "lat": 37.7508207356,
+   "lng": 126.4853900771,
+   "startDate": "2026-08-14",
+   "endDate": "2026-11-08",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/40/4055040_image2_1.jpg",
+   "tel": "02-3011-7781",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2724153",
+   "source": "TOURAPI",
+   "regionSlug": "gunsan",
+   "sido": "전북특별자치도",
+   "sigungu": "군산시",
+   "name": "군산 국가유산 야행",
+   "summary": null,
+   "address": "전북특별자치도 군산시 구영2길 43 (영화동)",
+   "lat": 35.9901979568,
+   "lng": 126.7098663883,
+   "startDate": "2026-08-14",
+   "endDate": "2026-08-22",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4089203_image2_1.jpg",
+   "tel": "063-453-2447",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:1539730",
    "source": "TOURAPI",
    "regionSlug": "seoul",
@@ -1294,40 +1379,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2736033",
-   "source": "TOURAPI",
-   "regionSlug": "busan",
-   "sido": "부산광역시",
-   "sigungu": "해운대구",
-   "name": "부산인디커넥트페스티벌 2026",
-   "summary": null,
-   "address": "부산광역시 해운대구 APEC로 55 (우동)",
-   "lat": 35.1687048508,
-   "lng": 129.1354937071,
-   "startDate": "2026-08-14",
-   "endDate": "2026-08-16",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/55/4087155_image2_1.jpg",
-   "tel": "070-8855-5058",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:1916616",
-   "source": "TOURAPI",
-   "regionSlug": "suwon",
-   "sido": "경기도",
-   "sigungu": "수원시",
-   "name": "수원 국가유산 야행",
-   "summary": null,
-   "address": "경기도 수원시 수원천로392번길",
-   "lat": 37.286645,
-   "lng": 127.0197179,
-   "startDate": "2026-08-14",
-   "endDate": "2026-08-16",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/14/4095814_image2_1.jpg",
-   "tel": "031-290-3562~5",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:4093783",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -1345,24 +1396,7 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2541883",
-   "source": "TOURAPI",
-   "regionSlug": "gangneung",
-   "sido": "강원특별자치도",
-   "sigungu": "강릉시",
-   "name": "강릉 국가유산 야행",
-   "summary": null,
-   "address": "강원특별자치도 강릉시 임영로131번길 6 임영관",
-   "lat": 37.7532215016,
-   "lng": 128.8920940489,
-   "startDate": "2026-08-14",
-   "endDate": "2026-08-16",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/3317777_image2_1.jpg",
-   "tel": "033-823-3206",
-   "homepage": null
-  },
-  {
-   "externalId": "stdfest:5060000-김천포도축제-20260814",
+   "externalId": "stdfest:5060000-2026김천포도축제-20260814",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -1379,20 +1413,20 @@
    "homepage": "www.gcpodo.com"
   },
   {
-   "externalId": "tourapi:1847202",
+   "externalId": "tourapi:1916616",
    "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "서대문구",
-   "name": "서대문독립민주축제",
-   "summary": null,
-   "address": "서울특별시 서대문구 통일로 251 (현저동)",
-   "lat": 37.5746183894,
-   "lng": 126.9573284067,
-   "startDate": "2026-08-15",
+   "regionSlug": "suwon",
+   "sido": "경기도",
+   "sigungu": "수원시",
+   "name": "수원 국가유산 야행",
+   "summary": "수원화성 일원",
+   "address": "경기도 수원시 수원천로392번길",
+   "lat": 37.286645,
+   "lng": 127.0197179,
+   "startDate": "2026-08-14",
    "endDate": "2026-08-16",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/12/4089612_image2_1.JPG",
-   "tel": "02-330-1410",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/14/4095814_image2_1.jpg",
+   "tel": "031-290-3562~5",
    "homepage": null
   },
   {
@@ -1410,6 +1444,23 @@
    "endDate": "2026-08-23",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/91/4087291_image2_1.jpg",
    "tel": "054-776-5956",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:1847202",
+   "source": "TOURAPI",
+   "regionSlug": "seoul",
+   "sido": "서울특별시",
+   "sigungu": "서대문구",
+   "name": "서대문독립민주축제",
+   "summary": null,
+   "address": "서울특별시 서대문구 통일로 251 (현저동)",
+   "lat": 37.5746183894,
+   "lng": 126.9573284067,
+   "startDate": "2026-08-15",
+   "endDate": "2026-08-16",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/12/4089612_image2_1.JPG",
+   "tel": "02-330-1410",
    "homepage": null
   },
   {
@@ -1444,23 +1495,6 @@
    "endDate": "2026-08-23",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/75/4059475_image2_1.jpg",
    "tel": "02-761-2512",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:1068150",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경상남도",
-   "sigungu": "사천시",
-   "name": "사천시 삼천포항 자연산 전어축제",
-   "summary": null,
-   "address": "경상남도 사천시 팔포3길 56-35 (동금동)",
-   "lat": 34.9273831672,
-   "lng": 128.078886292,
-   "startDate": "2026-08-20",
-   "endDate": "2026-08-23",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/28/3513728_image2_1.jpg",
-   "tel": "055-832-8565",
    "homepage": null
   },
   {
@@ -1532,23 +1566,6 @@
    "homepage": "https://www.hongseong.go.kr/tour/index.do"
   },
   {
-   "externalId": "tourapi:141268",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "충청남도",
-   "sigungu": "서천군",
-   "name": "서천 홍원항 자연산 전어 꽃게 축제",
-   "summary": null,
-   "address": "충청남도 서천군 홍원길 88",
-   "lat": 36.1562870722,
-   "lng": 126.5012838671,
-   "startDate": "2026-08-22",
-   "endDate": "2026-09-06",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/78/2828778_image2_1.jpg",
-   "tel": "041-950-4414",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:1939183",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -1563,6 +1580,23 @@
    "endDate": "2026-08-22",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4078831_image2_1.jpg",
    "tel": "053-755-5881",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:141268",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "충청남도",
+   "sigungu": "서천군",
+   "name": "서천 홍원항 자연산 전어 꽃게 축제",
+   "summary": "서천 서면 홍원항 일원",
+   "address": "충청남도 서천군 홍원길 88",
+   "lat": 36.1562870722,
+   "lng": 126.5012838671,
+   "startDate": "2026-08-22",
+   "endDate": "2026-09-06",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/78/2828778_image2_1.jpg",
+   "tel": "041-950-4414",
    "homepage": null
   },
   {
@@ -1651,6 +1685,23 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:2651042",
+   "source": "TOURAPI",
+   "regionSlug": "andong",
+   "sido": "경상북도",
+   "sigungu": "안동시",
+   "name": "세계유산축전",
+   "summary": null,
+   "address": "경상북도 안동시 풍천면 하회종가길 2-1",
+   "lat": 36.5407525056,
+   "lng": 128.5227975834,
+   "startDate": "2026-08-28",
+   "endDate": "2026-10-25",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/34/4055834_image2_1.jpg",
+   "tel": "02-3011-7783",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:3351268",
    "source": "TOURAPI",
    "regionSlug": "seoul",
@@ -1702,23 +1753,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2651042",
-   "source": "TOURAPI",
-   "regionSlug": "andong",
-   "sido": "경상북도",
-   "sigungu": "안동시",
-   "name": "세계유산축전",
-   "summary": null,
-   "address": "경상북도 안동시 풍천면 하회종가길 2-1",
-   "lat": 36.5407525056,
-   "lng": 128.5227975834,
-   "startDate": "2026-08-28",
-   "endDate": "2026-10-25",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/34/4055834_image2_1.jpg",
-   "tel": "02-3011-7783",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:1018971",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -1736,41 +1770,7 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:3339982",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "전북특별자치도",
-   "sigungu": "고창군",
-   "name": "제7회 고창농악 꽃대림축제",
-   "summary": null,
-   "address": "전북특별자치도 고창군 성송면 향산1길 106",
-   "lat": 35.3835095686,
-   "lng": 126.6404331137,
-   "startDate": "2026-08-28",
-   "endDate": "2026-08-30",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/4095643_image2_1.jpg",
-   "tel": "063-562-2044",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:4008618",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "전라남도",
-   "sigungu": "고흥군",
-   "name": "고흥 국가유산 야행",
-   "summary": null,
-   "address": "전남광주통합특별시 고흥군 고흥읍 옥하리 88-1",
-   "lat": 34.6138476,
-   "lng": 127.2856799,
-   "startDate": "2026-08-28",
-   "endDate": "2026-08-29",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/67/4095567_image2_1.jpg",
-   "tel": "061-830-6773",
-   "homepage": null
-  },
-  {
-   "externalId": "stdfest:4540000-강경국가유산야행-20260828",
+   "externalId": "stdfest:4540000-2026강경국가유산야행-20260828",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "충청남도",
@@ -1821,23 +1821,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2989981",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "서초구",
-   "name": "서초뮤직앤아트페스티벌(SMAF)",
-   "summary": null,
-   "address": "서울특별시 서초구 신반포로 194 (반포동)",
-   "lat": 37.5061540847,
-   "lng": 127.0055699583,
-   "startDate": "2026-08-29",
-   "endDate": "2026-08-30",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/29/4094029_image2_1.jpg",
-   "tel": "02-3477-2808",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:2991394",
    "source": "TOURAPI",
    "regionSlug": "busan",
@@ -1852,6 +1835,23 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/37/4069137_image2_1.jpg",
    "tel": "070-4705-2008",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2989981",
+   "source": "TOURAPI",
+   "regionSlug": "seoul",
+   "sido": "서울특별시",
+   "sigungu": "서초구",
+   "name": "서초뮤직앤아트페스티벌(SMAF)",
+   "summary": null,
+   "address": "서울특별시 서초구 신반포로 194 (반포동)",
+   "lat": 37.5061540847,
+   "lng": 127.0055699583,
+   "startDate": "2026-08-29",
+   "endDate": "2026-08-30",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/29/4094029_image2_1.jpg",
+   "tel": "02-3477-2808",
    "homepage": null
   },
   {
@@ -1906,7 +1906,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:3780000-파크콘서트-20260901",
+   "externalId": "stdfest:3780000-2026파크콘서트-20260901",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -2093,7 +2093,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4060000-파주포크페스티벌-20260904",
+   "externalId": "stdfest:4060000-2026년파주포크페스티벌-20260904",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -2127,7 +2127,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:5230000-금당야행-20260904",
+   "externalId": "stdfest:5230000-2026금당야행-20260904",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -2195,7 +2195,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4060000-파주포크페스티벌-20260905",
+   "externalId": "stdfest:4060000-2026년파주포크페스티벌-20260905",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -2297,23 +2297,6 @@
    "homepage": "http://www.seo.incheon.kr/"
   },
   {
-   "externalId": "tourapi:4095402",
-   "source": "TOURAPI",
-   "regionSlug": "suwon",
-   "sido": "경기도",
-   "sigungu": "수원시",
-   "name": "2026 서가콘서트 : 셜록홈즈",
-   "summary": null,
-   "address": "경기도 수원시 팔달구 효원로307번길 20 (인계동)",
-   "lat": 37.261583328,
-   "lng": 127.0375696865,
-   "startDate": "2026-09-08",
-   "endDate": "2026-09-08",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/58/4095458_image2_1.jpg",
-   "tel": "031-230-3268",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:4075091",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -2331,6 +2314,23 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:4095402",
+   "source": "TOURAPI",
+   "regionSlug": "suwon",
+   "sido": "경기도",
+   "sigungu": "수원시",
+   "name": "2026 서가콘서트 : 셜록홈즈",
+   "summary": "경기아트센터 소극장",
+   "address": "경기도 수원시 팔달구 효원로307번길 20 (인계동)",
+   "lat": 37.261583328,
+   "lng": 127.0375696865,
+   "startDate": "2026-09-08",
+   "endDate": "2026-09-08",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/58/4095458_image2_1.jpg",
+   "tel": "031-230-3268",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:4093222",
    "source": "TOURAPI",
    "regionSlug": "seoul",
@@ -2345,6 +2345,23 @@
    "endDate": "2026-09-10",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/30/4093830_image2_1.png",
    "tel": "054-480-6762",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2614198",
+   "source": "TOURAPI",
+   "regionSlug": "gwangju",
+   "sido": "광주광역시",
+   "sigungu": "서구",
+   "name": "2026 광주 ACE Fair",
+   "summary": null,
+   "address": "전남광주통합특별시 서구 상무누리로 30",
+   "lat": 35.1468884464,
+   "lng": 126.8405217823,
+   "startDate": "2026-09-10",
+   "endDate": "2026-09-10",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4001646_image2_1.jpg",
+   "tel": "062-611-2242",
    "homepage": null
   },
   {
@@ -2382,23 +2399,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2614198",
-   "source": "TOURAPI",
-   "regionSlug": "gwangju",
-   "sido": "광주광역시",
-   "sigungu": "서구",
-   "name": "2026 광주 ACE Fair",
-   "summary": null,
-   "address": "전남광주통합특별시 서구 상무누리로 30",
-   "lat": 35.1468884464,
-   "lng": 126.8405217823,
-   "startDate": "2026-09-10",
-   "endDate": "2026-09-10",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4001646_image2_1.jpg",
-   "tel": "062-611-2242",
-   "homepage": null
-  },
-  {
    "externalId": "stdfest:4060000-dmz국제다큐멘터리영화제-20260910",
    "source": "STDFEST",
    "regionSlug": null,
@@ -2414,6 +2414,23 @@
    "imageUrl": null,
    "tel": "031-940-4723",
    "homepage": "https://dmzdocs.com"
+  },
+  {
+   "externalId": "tourapi:1945450",
+   "source": "TOURAPI",
+   "regionSlug": "jeonju",
+   "sido": "전북특별자치도",
+   "sigungu": "전주시",
+   "name": "전주독서대전",
+   "summary": null,
+   "address": "전북특별자치도 전주시 완산구 전주천동로 20 (교동)",
+   "lat": 35.81227650714569,
+   "lng": 127.1595840813063,
+   "startDate": "2026-09-11",
+   "endDate": "2026-09-13",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4060669_image2_1.jpg",
+   "tel": "063-230-1858",
+   "homepage": null
   },
   {
    "externalId": "tourapi:1018469",
@@ -2484,40 +2501,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:1945450",
-   "source": "TOURAPI",
-   "regionSlug": "jeonju",
-   "sido": "전북특별자치도",
-   "sigungu": "전주시",
-   "name": "전주독서대전",
-   "summary": null,
-   "address": "전북특별자치도 전주시 완산구 전주천동로 20 (교동)",
-   "lat": 35.81227650714569,
-   "lng": 127.1595840813063,
-   "startDate": "2026-09-11",
-   "endDate": "2026-09-13",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4060669_image2_1.jpg",
-   "tel": "063-230-1858",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:4095228",
-   "source": "TOURAPI",
-   "regionSlug": "yeosu",
-   "sido": "전라남도",
-   "sigungu": "여수시",
-   "name": "2026 남도 K-가든 페스티벌",
-   "summary": null,
-   "address": "전남광주통합특별시 여수시 문수로 124 (여서동)",
-   "lat": 34.7555508881,
-   "lng": 127.7081166574,
-   "startDate": "2026-09-11",
-   "endDate": "2026-10-31",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/56/4095456_image2_1.jpg",
-   "tel": "010-5865-2532",
-   "homepage": null
-  },
-  {
    "externalId": "stdfest:5410000-창녕양파마늘가요제-20260911",
    "source": "STDFEST",
    "regionSlug": null,
@@ -2569,7 +2552,7 @@
    "homepage": "www.mldc.kr"
   },
   {
-   "externalId": "stdfest:4060000-헤이리판페스티벌-20260911",
+   "externalId": "stdfest:4060000-2026헤이리판페스티벌-20260911",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -2620,7 +2603,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:5860000-장흥회령포이순신축제-20260911",
+   "externalId": "stdfest:5860000-2026장흥회령포이순신축제-20260911",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "전라남도",
@@ -2637,23 +2620,6 @@
    "homepage": "https://www.jangheung.go.kr/tour/festival/autumn/hoeryeongpo"
   },
   {
-   "externalId": "tourapi:3493864",
-   "source": "TOURAPI",
-   "regionSlug": "busan",
-   "sido": "부산광역시",
-   "sigungu": "기장군",
-   "name": "기장군반려동물문화축제",
-   "summary": null,
-   "address": "부산광역시 기장군 정관읍 구연3로 27",
-   "lat": 35.322187987,
-   "lng": 129.1818960826,
-   "startDate": "2026-09-12",
-   "endDate": "2026-09-12",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/44/4093144_image2_1.jpg",
-   "tel": "010-3880-4966",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:3532372",
    "source": "TOURAPI",
    "regionSlug": "daejeon",
@@ -2668,6 +2634,23 @@
    "endDate": "2026-09-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/83/4081183_image2_1.jpg",
    "tel": "042-825-6781",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:3493864",
+   "source": "TOURAPI",
+   "regionSlug": "busan",
+   "sido": "부산광역시",
+   "sigungu": "기장군",
+   "name": "기장군반려동물문화축제",
+   "summary": null,
+   "address": "부산광역시 기장군 정관읍 구연3로 27",
+   "lat": 35.322187987,
+   "lng": 129.1818960826,
+   "startDate": "2026-09-12",
+   "endDate": "2026-09-12",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/44/4093144_image2_1.jpg",
+   "tel": "010-3880-4966",
    "homepage": null
   },
   {
@@ -2705,7 +2688,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4540000-한국유교문화축전-20260912",
+   "externalId": "stdfest:4540000-2026한국유교문화축전-20260912",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "충청남도",
@@ -2943,6 +2926,23 @@
    "homepage": "dhfesta.or.kr/dmrf"
   },
   {
+   "externalId": "tourapi:2412052",
+   "source": "TOURAPI",
+   "regionSlug": "busan",
+   "sido": "부산광역시",
+   "sigungu": "수영구",
+   "name": "대한민국 청년의 날 축제",
+   "summary": null,
+   "address": "부산광역시 수영구 광안해변로 219 (광안동) 광안리해수욕장 일원",
+   "lat": 35.1537727634,
+   "lng": 129.1185199725,
+   "startDate": "2026-09-18",
+   "endDate": "2026-09-20",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4084482_image2_1.JPG",
+   "tel": "02-780-3939",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:3524889",
    "source": "TOURAPI",
    "regionSlug": "seoul",
@@ -2977,37 +2977,20 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2412052",
-   "source": "TOURAPI",
-   "regionSlug": "busan",
-   "sido": "부산광역시",
-   "sigungu": "수영구",
-   "name": "대한민국 청년의 날 축제",
-   "summary": null,
-   "address": "부산광역시 수영구 광안해변로 219 (광안동) 광안리해수욕장 일원",
-   "lat": 35.1537727634,
-   "lng": 129.1185199725,
-   "startDate": "2026-09-18",
-   "endDate": "2026-09-20",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4084482_image2_1.JPG",
-   "tel": "02-780-3939",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:1100492",
+   "externalId": "tourapi:589386",
    "source": "TOURAPI",
    "regionSlug": null,
    "sido": "경기도",
-   "sigungu": "고양시",
-   "name": "고양호수예술축제",
+   "sigungu": "부천시",
+   "name": "부천국제만화축제",
    "summary": null,
-   "address": "경기도 고양시 일산동구 호수로 595 (장항동) 일산호수공원 및 일산문화광장 일원",
-   "lat": 37.6552847261,
-   "lng": 126.7689082803,
+   "address": "경기도 부천시 원미구 길주로 1 (상동)",
+   "lat": 37.5081987483,
+   "lng": 126.7421932715,
    "startDate": "2026-09-18",
    "endDate": "2026-09-20",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/61/4081461_image2_1.jpg",
-   "tel": "1577-7766",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/75/3557475_image2_1.JPG",
+   "tel": "032-310-3071",
    "homepage": null
   },
   {
@@ -3028,23 +3011,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:589386",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경기도",
-   "sigungu": "부천시",
-   "name": "부천국제만화축제",
-   "summary": null,
-   "address": "경기도 부천시 원미구 길주로 1 (상동)",
-   "lat": 37.5081987483,
-   "lng": 126.7421932715,
-   "startDate": "2026-09-18",
-   "endDate": "2026-09-20",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/75/3557475_image2_1.JPG",
-   "tel": "032-310-3071",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:2029491",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -3059,6 +3025,23 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/81/4087181_image2_1.jpg",
    "tel": "02-2009-9735",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:1100492",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "경기도",
+   "sigungu": "고양시",
+   "name": "고양호수예술축제",
+   "summary": null,
+   "address": "경기도 고양시 일산동구 호수로 595 (장항동) 일산호수공원 및 일산문화광장 일원",
+   "lat": 37.6552847261,
+   "lng": 126.7689082803,
+   "startDate": "2026-09-18",
+   "endDate": "2026-09-20",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/61/4081461_image2_1.jpg",
+   "tel": "1577-7766",
    "homepage": null
   },
   {
@@ -3181,6 +3164,23 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:2751090",
+   "source": "TOURAPI",
+   "regionSlug": "suwon",
+   "sido": "경기도",
+   "sigungu": "수원시",
+   "name": "수원화성 미디어아트",
+   "summary": null,
+   "address": "경기도 수원시 팔달구 장안동 334",
+   "lat": 37.285512,
+   "lng": 127.009673,
+   "startDate": "2026-09-19",
+   "endDate": "2026-10-06",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4076246_image2_1.jpg",
+   "tel": "031-290-3622031-5191-3084",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:2829118",
    "source": "TOURAPI",
    "regionSlug": "incheon",
@@ -3212,23 +3212,6 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/41/4087941_image2_1.jpg",
    "tel": "031-481-2318",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:2751090",
-   "source": "TOURAPI",
-   "regionSlug": "suwon",
-   "sido": "경기도",
-   "sigungu": "수원시",
-   "name": "수원화성 미디어아트",
-   "summary": null,
-   "address": "경기도 수원시 팔달구 장안동 334",
-   "lat": 37.285512,
-   "lng": 127.009673,
-   "startDate": "2026-09-19",
-   "endDate": "2026-10-06",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4076246_image2_1.jpg",
-   "tel": "031-290-3622031-5191-3084",
    "homepage": null
   },
   {
@@ -3436,24 +3419,7 @@
    "homepage": "www.idfac.or.kr/"
   },
   {
-   "externalId": "tourapi:141105",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경상남도",
-   "sigungu": "고성군",
-   "name": "경남고성공룡세계엑스포",
-   "summary": null,
-   "address": "경상남도 고성군 당항만로 1116 당항포관광지",
-   "lat": 35.0533072967,
-   "lng": 128.3915143393,
-   "startDate": "2026-09-22",
-   "endDate": "2026-11-01",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4084832_image2_1.jpg",
-   "tel": "055-670-7400",
-   "homepage": null
-  },
-  {
-   "externalId": "stdfest:5420000-경남고성공룡세계엑스포-20260923",
+   "externalId": "stdfest:5420000-2026경남고성공룡세계엑스포-20260923",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상남도",
@@ -3504,7 +3470,7 @@
    "homepage": "www.maskdance.com"
   },
   {
-   "externalId": "stdfest:5230000-삼강나루주막축제-20260925",
+   "externalId": "stdfest:5230000-2026삼강나루주막축제-20260925",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -3810,7 +3776,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:5190000-청도반시축제-20261001",
+   "externalId": "stdfest:5190000-2026청도반시축제-20261001",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -3827,7 +3793,7 @@
    "homepage": "http://www.청도반시축제.kr"
   },
   {
-   "externalId": "stdfest:5190000-청도세계코미디아트페스티벌-20261001",
+   "externalId": "stdfest:5190000-2026청도세계코미디아트페스티벌-20261001",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -3861,7 +3827,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:3780000-모두모여모란-20261001",
+   "externalId": "stdfest:3780000-2026모두모여모란-20261001",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -4014,23 +3980,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:1266642",
-   "source": "TOURAPI",
-   "regionSlug": "incheon",
-   "sido": "인천광역시",
-   "sigungu": "부평구",
-   "name": "부평풍물대축제",
-   "summary": null,
-   "address": "인천광역시 부평구 부평대로 34-1 (부평동)",
-   "lat": 37.4944181127,
-   "lng": 126.7229954336,
-   "startDate": "2026-10-02",
-   "endDate": "2026-10-04",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/4067377_image2_1.jpg",
-   "tel": "032-509-7516",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:506809",
    "source": "TOURAPI",
    "regionSlug": "incheon",
@@ -4048,20 +3997,20 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:506690",
+   "externalId": "tourapi:1266642",
    "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경기도",
-   "sigungu": "안성시",
-   "name": "안성맞춤 남사당 바우덕이축제",
+   "regionSlug": "incheon",
+   "sido": "인천광역시",
+   "sigungu": "부평구",
+   "name": "부평풍물대축제",
    "summary": null,
-   "address": "경기도 안성시 보개면 남사당로 198",
-   "lat": 37.0336344681,
-   "lng": 127.3054103868,
+   "address": "인천광역시 부평구 부평대로 34-1 (부평동)",
+   "lat": 37.4944181127,
+   "lng": 126.7229954336,
    "startDate": "2026-10-02",
-   "endDate": "2026-10-05",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/93/4091593_image2_1.jpg",
-   "tel": "031-678-5414",
+   "endDate": "2026-10-04",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/4067377_image2_1.jpg",
+   "tel": "032-509-7516",
    "homepage": null
   },
   {
@@ -4079,6 +4028,40 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/14/3549714_image2_1.jpg",
    "tel": "043-201-0254",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:1846797",
+   "source": "TOURAPI",
+   "regionSlug": "gunsan",
+   "sido": "전북특별자치도",
+   "sigungu": "군산시",
+   "name": "군산시간여행축제",
+   "summary": null,
+   "address": "전북특별자치도 군산시 중앙로1가 11-1",
+   "lat": 35.987791,
+   "lng": 126.711671,
+   "startDate": "2026-10-02",
+   "endDate": "2026-10-05",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/48/3561448_image2_1.jpg",
+   "tel": "063-454-3300",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:506690",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "경기도",
+   "sigungu": "안성시",
+   "name": "안성맞춤 남사당 바우덕이축제",
+   "summary": null,
+   "address": "경기도 안성시 보개면 남사당로 198",
+   "lat": 37.0336344681,
+   "lng": 127.3054103868,
+   "startDate": "2026-10-02",
+   "endDate": "2026-10-05",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/93/4091593_image2_1.jpg",
+   "tel": "031-678-5414",
    "homepage": null
   },
   {
@@ -4133,23 +4116,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:1846797",
-   "source": "TOURAPI",
-   "regionSlug": "gunsan",
-   "sido": "전북특별자치도",
-   "sigungu": "군산시",
-   "name": "군산시간여행축제",
-   "summary": null,
-   "address": "전북특별자치도 군산시 중앙로1가 11-1",
-   "lat": 35.987791,
-   "lng": 126.711671,
-   "startDate": "2026-10-02",
-   "endDate": "2026-10-05",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/48/3561448_image2_1.jpg",
-   "tel": "063-454-3300",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:1336591",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -4184,7 +4150,7 @@
    "homepage": "https://djsangnok.org"
   },
   {
-   "externalId": "stdfest:6430000-제천국제한방천연물산업엑스포-20261002",
+   "externalId": "stdfest:6430000-2026제천국제한방천연물산업엑스포-20261002",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "충청북도",
@@ -4320,7 +4286,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:3900000-페스티벌광명-20261003",
+   "externalId": "stdfest:3900000-2026페스티벌광명-20261003",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -4354,7 +4320,7 @@
    "homepage": "http://www.정조효문화제.com/"
   },
   {
-   "externalId": "stdfest:3740000-수원화성미디어아트-20261003",
+   "externalId": "stdfest:3740000-2026수원화성미디어아트-20261003",
    "source": "STDFEST",
    "regionSlug": "suwon",
    "sido": "경기도",
@@ -4422,40 +4388,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:563458",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경상남도",
-   "sigungu": "함양군",
-   "name": "함양산삼축제",
-   "summary": null,
-   "address": "경상남도 함양군 함양읍 필봉산길 49",
-   "lat": 35.5236812446,
-   "lng": 127.7218508587,
-   "startDate": "2026-10-07",
-   "endDate": "2026-10-11",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/67/4053967_image2_1.JPG",
-   "tel": "055-960-6432",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:232325",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "강원특별자치도",
-   "sigungu": "횡성군",
-   "name": "횡성한우축제",
-   "summary": null,
-   "address": "강원특별자치도 횡성군 횡성읍 북천리 221",
-   "lat": 37.500463,
-   "lng": 127.992519,
-   "startDate": "2026-10-07",
-   "endDate": "2026-10-11",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/42/4064642_image2_1.jpg",
-   "tel": "033-808-8007033-808-8009",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:692682",
    "source": "TOURAPI",
    "regionSlug": "gwangju",
@@ -4487,6 +4419,40 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/63/4076763_image2_1.jpg",
    "tel": "062-228-9812",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:563458",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "경상남도",
+   "sigungu": "함양군",
+   "name": "함양산삼축제",
+   "summary": null,
+   "address": "경상남도 함양군 함양읍 필봉산길 49",
+   "lat": 35.5236812446,
+   "lng": 127.7218508587,
+   "startDate": "2026-10-07",
+   "endDate": "2026-10-11",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/67/4053967_image2_1.JPG",
+   "tel": "055-960-6432",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:232325",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "강원특별자치도",
+   "sigungu": "횡성군",
+   "name": "횡성한우축제",
+   "summary": null,
+   "address": "강원특별자치도 횡성군 횡성읍 북천리 221",
+   "lat": 37.500463,
+   "lng": 127.992519,
+   "startDate": "2026-10-07",
+   "endDate": "2026-10-11",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/42/4064642_image2_1.jpg",
+   "tel": "033-808-8007033-808-8009",
    "homepage": null
   },
   {
@@ -4558,20 +4524,20 @@
    "homepage": "https://www.jangseong.go.kr/home/tour_new/festival/festival_04/festival_04_04"
   },
   {
-   "externalId": "tourapi:2408959",
+   "externalId": "tourapi:1718137",
    "source": "TOURAPI",
-   "regionSlug": "incheon",
-   "sido": "인천광역시",
-   "sigungu": "제물포구",
-   "name": "인천개항장 국가유산 야행",
+   "regionSlug": "gyeongju",
+   "sido": "경상북도",
+   "sigungu": "경주시",
+   "name": "신라문화제",
    "summary": null,
-   "address": "인천광역시 제물포구 신포로27번길 80 (관동1가)",
-   "lat": 37.4734688979,
-   "lng": 126.6213512914,
+   "address": "경상북도 경주시 노동동 261",
+   "lat": 35.841281,
+   "lng": 129.210644,
    "startDate": "2026-10-09",
    "endDate": "2026-10-11",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/61/4092561_image2_1.jpg",
-   "tel": "1544-7056",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/83/4063783_image2_1.JPG",
+   "tel": "054-776-5265",
    "homepage": null
   },
   {
@@ -4589,6 +4555,40 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/16/3553216_image2_1.jpg",
    "tel": "044-850-0591~0594",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2877244",
+   "source": "TOURAPI",
+   "regionSlug": "gongju",
+   "sido": "충청남도",
+   "sigungu": "공주시",
+   "name": "웰컴투신관동",
+   "summary": null,
+   "address": "충청남도 공주시 공주대학로 92 (신관동)",
+   "lat": 36.4731467766,
+   "lng": 127.1378517748,
+   "startDate": "2026-10-09",
+   "endDate": "2026-10-10",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4081503_image2_1.JPG",
+   "tel": "041-852-1321",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:2408959",
+   "source": "TOURAPI",
+   "regionSlug": "incheon",
+   "sido": "인천광역시",
+   "sigungu": "제물포구",
+   "name": "인천개항장 국가유산 야행",
+   "summary": null,
+   "address": "인천광역시 제물포구 신포로27번길 80 (관동1가)",
+   "lat": 37.4734688979,
+   "lng": 126.6213512914,
+   "startDate": "2026-10-09",
+   "endDate": "2026-10-11",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/61/4092561_image2_1.jpg",
+   "tel": "1544-7056",
    "homepage": null
   },
   {
@@ -4626,23 +4626,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:2877244",
-   "source": "TOURAPI",
-   "regionSlug": "gongju",
-   "sido": "충청남도",
-   "sigungu": "공주시",
-   "name": "웰컴투신관동",
-   "summary": null,
-   "address": "충청남도 공주시 공주대학로 92 (신관동)",
-   "lat": 36.4731467766,
-   "lng": 127.1378517748,
-   "startDate": "2026-10-09",
-   "endDate": "2026-10-10",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4081503_image2_1.JPG",
-   "tel": "041-852-1321",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:140752",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -4677,24 +4660,7 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:1718137",
-   "source": "TOURAPI",
-   "regionSlug": "gyeongju",
-   "sido": "경상북도",
-   "sigungu": "경주시",
-   "name": "신라문화제",
-   "summary": null,
-   "address": "경상북도 경주시 노동동 261",
-   "lat": 35.841281,
-   "lng": 129.210644,
-   "startDate": "2026-10-09",
-   "endDate": "2026-10-11",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/83/4063783_image2_1.JPG",
-   "tel": "054-776-5265",
-   "homepage": null
-  },
-  {
-   "externalId": "stdfest:3690000-외솔한글한마당-20261009",
+   "externalId": "stdfest:3690000-2026년외솔한글한마당-20261009",
    "source": "STDFEST",
    "regionSlug": "ulsan",
    "sido": "울산광역시",
@@ -4762,7 +4728,7 @@
    "homepage": "https://pajufair.com"
   },
   {
-   "externalId": "stdfest:4160000-재즈페스티벌in가평-20261009",
+   "externalId": "stdfest:4160000-2026년재즈페스티벌in가평-20261009",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -4779,7 +4745,7 @@
    "homepage": "https://jarasumjazz.com/"
   },
   {
-   "externalId": "stdfest:5080000-구미푸드페스티벌-20261009",
+   "externalId": "stdfest:5080000-2026구미푸드페스티벌-20261009",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -4796,7 +4762,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4510000-보령국가유산야행-20261009",
+   "externalId": "stdfest:4510000-2026년보령국가유산야행-20261009",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "충청남도",
@@ -4830,7 +4796,7 @@
    "homepage": "https://www.yeonsu.go.kr/tour/festival/neungheodae_festival/info.asp"
   },
   {
-   "externalId": "stdfest:3660000-대전서구아트페스티벌-20261009",
+   "externalId": "stdfest:3660000-2026대전서구아트페스티벌-20261009",
    "source": "STDFEST",
    "regionSlug": "daejeon",
    "sido": "대전광역시",
@@ -5153,6 +5119,23 @@
    "homepage": "https:/bhftf.or.kr"
   },
   {
+   "externalId": "tourapi:229048",
+   "source": "TOURAPI",
+   "regionSlug": "busan",
+   "sido": "부산광역시",
+   "sigungu": "동래구",
+   "name": "동래읍성역사축제",
+   "summary": null,
+   "address": "부산광역시 동래구 문화로 80 (명륜동)",
+   "lat": 35.2120802836554,
+   "lng": 129.0905355388211,
+   "startDate": "2026-10-16",
+   "endDate": "2026-10-18",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/3366443_image2_1.jpg",
+   "tel": "051-550-4092",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:2612274",
    "source": "TOURAPI",
    "regionSlug": "seoul",
@@ -5187,6 +5170,23 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:1344850",
+   "source": "TOURAPI",
+   "regionSlug": "cheongju",
+   "sido": "충청북도",
+   "sigungu": "청주시",
+   "name": "세종대왕과 초정약수축제",
+   "summary": null,
+   "address": "충청북도 청주시 청원구 내수읍 초정약수로 851 초정행궁",
+   "lat": 36.72128130535547,
+   "lng": 127.6006759255523,
+   "startDate": "2026-10-16",
+   "endDate": "2026-10-18",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4064382_image2_1.jpg",
+   "tel": "043-223-4048",
+   "homepage": null
+  },
+  {
    "externalId": "tourapi:1275743",
    "source": "TOURAPI",
    "regionSlug": "busan",
@@ -5204,23 +5204,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:229048",
-   "source": "TOURAPI",
-   "regionSlug": "busan",
-   "sido": "부산광역시",
-   "sigungu": "동래구",
-   "name": "동래읍성역사축제",
-   "summary": null,
-   "address": "부산광역시 동래구 문화로 80 (명륜동)",
-   "lat": 35.2120802836554,
-   "lng": 129.0905355388211,
-   "startDate": "2026-10-16",
-   "endDate": "2026-10-18",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/3366443_image2_1.jpg",
-   "tel": "051-550-4092",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:2667707",
    "source": "TOURAPI",
    "regionSlug": null,
@@ -5235,23 +5218,6 @@
    "endDate": "2026-10-19",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/17/4062917_image2_1.jpg",
    "tel": "031-770-2572",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:1344850",
-   "source": "TOURAPI",
-   "regionSlug": "cheongju",
-   "sido": "충청북도",
-   "sigungu": "청주시",
-   "name": "세종대왕과 초정약수축제",
-   "summary": null,
-   "address": "충청북도 청주시 청원구 내수읍 초정약수로 851 초정행궁",
-   "lat": 36.72128130535547,
-   "lng": 127.6006759255523,
-   "startDate": "2026-10-16",
-   "endDate": "2026-10-18",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4064382_image2_1.jpg",
-   "tel": "043-223-4048",
    "homepage": null
   },
   {
@@ -5340,7 +5306,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4540000-연산대추축제-20261016",
+   "externalId": "stdfest:4540000-2026연산대추축제-20261016",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "충청남도",
@@ -5374,7 +5340,7 @@
    "homepage": "https://www.hongseong.go.kr/tour/index.do"
   },
   {
-   "externalId": "stdfest:4181000-에코아트페어-20261016",
+   "externalId": "stdfest:4181000-2026에코아트페어-20261016",
    "source": "STDFEST",
    "regionSlug": "chuncheon",
    "sido": "강원특별자치도",
@@ -5425,7 +5391,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:5855000-화순고인돌가을꽃축제-20261017",
+   "externalId": "stdfest:5855000-2026화순고인돌가을꽃축제-20261017",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "전라남도",
@@ -5459,7 +5425,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4090000-김포라베니체축제-20261017",
+   "externalId": "stdfest:4090000-2026김포라베니체축제-20261017",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -5527,7 +5493,7 @@
    "homepage": "https://www.jnfac.or.kr/contents/1335"
   },
   {
-   "externalId": "stdfest:3170000-금천하모니축제-20261017",
+   "externalId": "stdfest:3170000-2026금천하모니축제-20261017",
    "source": "STDFEST",
    "regionSlug": "seoul",
    "sido": "서울특별시",
@@ -5646,7 +5612,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4540000-강경젓갈축제-20261022",
+   "externalId": "stdfest:4540000-2026강경젓갈축제-20261022",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "충청남도",
@@ -5697,40 +5663,6 @@
    "homepage": "https://www.gijang.go.kr/tour/index.gijang?menuCd=DOM_000000302004000000"
   },
   {
-   "externalId": "tourapi:1147035",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경기도",
-   "sigungu": "여주시",
-   "name": "여주오곡나루축제",
-   "summary": null,
-   "address": "경기도 여주시 천송동 290-3",
-   "lat": 37.29912,
-   "lng": 127.655753,
-   "startDate": "2026-10-23",
-   "endDate": "2026-10-25",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/63/3546463_image2_1.JPG",
-   "tel": "031-881-9694",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:3377995",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경상북도",
-   "sigungu": "김천시",
-   "name": "김천김밥축제",
-   "summary": null,
-   "address": "경상북도 김천시 대항면 황악로 1189-52",
-   "lat": 36.10293007467696,
-   "lng": 127.9948442950617,
-   "startDate": "2026-10-23",
-   "endDate": "2026-10-25",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/27/3544627_image2_1.jpg",
-   "tel": "053-965-0910",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:506616",
    "source": "TOURAPI",
    "regionSlug": "jeju",
@@ -5765,6 +5697,40 @@
    "homepage": null
   },
   {
+   "externalId": "tourapi:1147035",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "경기도",
+   "sigungu": "여주시",
+   "name": "여주오곡나루축제",
+   "summary": null,
+   "address": "경기도 여주시 천송동 290-3",
+   "lat": 37.29912,
+   "lng": 127.655753,
+   "startDate": "2026-10-23",
+   "endDate": "2026-10-25",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/63/3546463_image2_1.JPG",
+   "tel": "031-881-9694",
+   "homepage": null
+  },
+  {
+   "externalId": "tourapi:3377995",
+   "source": "TOURAPI",
+   "regionSlug": null,
+   "sido": "경상북도",
+   "sigungu": "김천시",
+   "name": "김천김밥축제",
+   "summary": null,
+   "address": "경상북도 김천시 대항면 황악로 1189-52",
+   "lat": 36.10293007467696,
+   "lng": 127.9948442950617,
+   "startDate": "2026-10-23",
+   "endDate": "2026-10-25",
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/27/3544627_image2_1.jpg",
+   "tel": "053-965-0910",
+   "homepage": null
+  },
+  {
    "externalId": "stdfest:5680000-남이흥장군문화제-20261023",
    "source": "STDFEST",
    "regionSlug": null,
@@ -5782,7 +5748,7 @@
    "homepage": "http://www.cnkccf.or.kr/dangjin.do"
   },
   {
-   "externalId": "stdfest:5480000-대장경기록문화축제-20261023",
+   "externalId": "stdfest:5480000-2026대장경기록문화축제-20261023",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상남도",
@@ -5918,7 +5884,7 @@
    "homepage": "https://www.hc.go.kr/09418/09428/09429.web"
   },
   {
-   "externalId": "stdfest:4060000-율곡문화제-20261024",
+   "externalId": "stdfest:4060000-2026율곡문화제-20261024",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -5935,7 +5901,7 @@
    "homepage": "https://www.pajucf.or.kr/main/main.php"
   },
   {
-   "externalId": "stdfest:4090000-김포선셋페스타-20261024",
+   "externalId": "stdfest:4090000-2026김포선셋페스타-20261024",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -5986,7 +5952,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:5530000-화성학생동아리축제-20261024",
+   "externalId": "stdfest:5530000-2025화성학생동아리축제-20261024",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -6241,7 +6207,7 @@
    "homepage": "www.해남미남축제.com"
   },
   {
-   "externalId": "stdfest:5230000-예천활축제-20261030",
+   "externalId": "stdfest:5230000-2026예천활축제-20261030",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -6309,7 +6275,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4060000-운정호수공원불꽃축제-20261031",
+   "externalId": "stdfest:4060000-2026년운정호수공원불꽃축제-20261031",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -6326,7 +6292,7 @@
    "homepage": "https://www.pajucf.or.kr/main/main.php"
   },
   {
-   "externalId": "stdfest:4090000-김포해병대문화축제-20261031",
+   "externalId": "stdfest:4090000-2026김포해병대문화축제-20261031",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -6343,7 +6309,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:3780000-가을걷이한마당-20261031",
+   "externalId": "stdfest:3780000-2026년가을걷이한마당-20261031",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경기도",
@@ -6598,7 +6564,7 @@
    "homepage": "https://festivalbusan.com/"
   },
   {
-   "externalId": "stdfest:5130000-경산반려문화축제-20261109",
+   "externalId": "stdfest:5130000-2026경산반려문화축제-20261109",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "경상북도",
@@ -6774,7 +6740,7 @@
    "sido": "부산광역시",
    "sigungu": "해운대구",
    "name": "부산브릿지마라톤",
-   "summary": null,
+   "summary": "부산 벡스코 제1전시장",
    "address": "부산광역시 해운대구 APEC로 55 (우동)",
    "lat": 35.1690637155,
    "lng": 129.1360182683,
@@ -6785,7 +6751,7 @@
    "homepage": null
   },
   {
-   "externalId": "stdfest:4540000-양촌곶감축제-20261211",
+   "externalId": "stdfest:4540000-2026양촌곶감축제-20261211",
    "source": "STDFEST",
    "regionSlug": null,
    "sido": "충청남도",
@@ -6955,7 +6921,7 @@
    "homepage": "https://www.inscc.kr/user/index.php"
   },
   {
-   "externalId": "stdfest:3130000-신년해맞이축제-20270101",
+   "externalId": "stdfest:3130000-2027신년해맞이축제-20270101",
    "source": "STDFEST",
    "regionSlug": "seoul",
    "sido": "서울특별시",

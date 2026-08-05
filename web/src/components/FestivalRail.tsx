@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { apiGet, type Festival } from '../api'
 import { staticFestivals } from '../staticData'
 import { useT } from '../i18n'
@@ -70,7 +71,11 @@ export default function FestivalRail({
       )}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {list.slice(0, 12).map((f) => (
-          <article key={f.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+          <Link
+            key={f.id}
+            to={`/festivals/${f.id}`}
+            className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-green/30 transition-all group block focus:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2"
+          >
             {/* 포스터가 없는 축제(주로 표준데이터)는 랜덤 사진 대신 브랜드 플레이스홀더 —
                 지역과 무관한 사진이 실제 축제처럼 보이면 신뢰를 해친다 */}
             <div className="aspect-[4/3] overflow-hidden bg-gray-100">
@@ -109,7 +114,7 @@ export default function FestivalRail({
                 {f.startDate.slice(5).replace('-', '.')} ~ {f.endDate.slice(5).replace('-', '.')}
               </p>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

@@ -27,6 +27,7 @@ export type Festival = {
   startDate: string // YYYY-MM-DD
   endDate: string
   imageUrl: string | null
+  tel?: string | null
   homepage?: string | null
   sido?: string | null
   sigungu?: string | null

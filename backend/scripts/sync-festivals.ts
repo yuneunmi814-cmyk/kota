@@ -1,12 +1,13 @@
 import { prisma } from '../src/lib/prisma.js'
-import { syncFestivalsTourApiAll, syncRegionFestivals } from '../src/modules/festivals/sync.js'
+import { syncFestivalsByArea, syncFestivalsTourApiAll, syncRegionFestivals } from '../src/modules/festivals/sync.js'
 import { syncStdFestivals } from '../src/modules/festivals/stdfest.js'
 import { REGION_LDONG } from '../src/modules/tourapi/regions.js'
 import { env } from '../src/config/env.js'
 
 // 사용법:
 //   npm run sync:festivals -- --region=gongju [--from=20260801] [--max=200] [--dry-run]   # 단일 큐레이션 지역
-//   npm run sync:festivals -- --all [--from=20260801]                                     # TourAPI 전국(16개 시·도)
+//   npm run sync:festivals -- --all [--from=20260801]                                     # TourAPI 전국(searchFestival2)
+//   npm run sync:festivals -- --area [--from=20260801]                                    # TourAPI 지역기반(areaBasedList2, 커버리지 넓음)
 //   npm run sync:festivals -- --std [--from=20260801]                                     # 전국문화축제표준데이터
 //   npm run sync:festivals -- --all --std                                                 # 둘 다(권장: TourAPI 먼저 → 표준데이터 중복제거)
 function arg(name: string): string | undefined {
@@ -26,8 +27,9 @@ async function main() {
   const region = arg('region')
   const all = flag('all')
   const std = flag('std')
-  if (!region && !all && !std) {
-    console.error('✖ --region=<slug> / --all / --std 중 하나 이상을 지정하세요. 지역:', Object.keys(REGION_LDONG).join(', '))
+  const area = flag('area')
+  if (!region && !all && !std && !area) {
+    console.error('✖ --region=<slug> / --all / --area / --std 중 하나 이상을 지정하세요. 지역:', Object.keys(REGION_LDONG).join(', '))
     process.exit(1)
   }
 
@@ -51,6 +53,17 @@ async function main() {
       console.log(`✔ ${s.region}: 가져옴 ${s.fetched} · 생성 ${s.created} · 갱신 ${s.updated} · 스킵 ${s.skipped}${s.dryRun ? ' (dry-run)' : ''}`)
     } catch (e) {
       console.error(`✖ ${region} 실패:`, e instanceof Error ? e.message : e)
+    }
+  }
+
+  // 1-b) TourAPI 지역기반(areaBasedList2) — searchFestival2보다 넓은 커버리지
+  if (area) {
+    console.log(`▶ TourAPI 지역기반 축제 동기화${from ? ` / from=${from}` : ''}${dryRun ? ' / DRY-RUN' : ''}`)
+    try {
+      const s = await syncFestivalsByArea({ from, dryRun, onProgress: (m) => console.log(`  ${m}`) })
+      console.log(`✔ ${s.region}: 가져옴 ${s.fetched} · 생성 ${s.created} · 갱신 ${s.updated} · 스킵 ${s.skipped}${s.dryRun ? ' (dry-run)' : ''}`)
+    } catch (e) {
+      console.error('✖ 지역기반 실패:', e instanceof Error ? e.message : e)
     }
   }
 

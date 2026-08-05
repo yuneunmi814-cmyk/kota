@@ -1,6 +1,6 @@
 import { prisma } from '../../lib/prisma.js'
 import { Errors } from '../../lib/errors.js'
-import { fetchFestivals, type TourApiFestivalItem } from '../tourapi/client.js'
+import { fetchFestivals, fetchFestivalIntro, fetchFestivalsByArea, type TourApiFestivalItem } from '../tourapi/client.js'
 import { resolveLdong } from '../tourapi/regions.js'
 import { sanitizeText } from '../../lib/util.js'
 import { curatedSlugFor, normalizeFestivalName, parseSidoSigungu, SIDO_REGN_CDS } from './regionMap.js'
@@ -109,6 +109,85 @@ export async function upsertFestival(input: FestivalInput, dedupeAcrossSource = 
 interface RegnTarget {
   regnCd: string
   signguCds?: string[]
+}
+
+/* ── areaBasedList2 경로 ─────────────────────────────────────────
+   searchFestival2보다 커버리지가 넓다(2026-08-05 실측: 929 ⊃ 562, 후자 단독 0건).
+   대신 응답에 개최 기간이 없어 축제마다 detailIntro2를 한 번 더 호출해 보강한다.
+   이미 있는 축제(externalId 동일)는 기간을 다시 조회하지 않아 호출량을 아낀다. */
+export interface AreaSyncOptions {
+  /** 이 날짜(YYYYMMDD) 이전에 끝난 축제는 버린다. 기본: 오늘 */
+  from?: string
+  maxPerSido?: number
+  dryRun?: boolean
+  onProgress?: (msg: string) => void
+}
+
+export async function syncFestivalsByArea(opts: AreaSyncOptions = {}): Promise<FestivalSyncSummary> {
+  const from = opts.from ?? todayYmd()
+  if (!/^\d{8}$/.test(from)) throw Errors.validation(`--from 은 YYYYMMDD 형식이어야 합니다: ${from}`)
+  const maxPerSido = opts.maxPerSido ?? 1000
+  const log = opts.onProgress ?? (() => {})
+
+  const regions = await prisma.region.findMany({ select: { id: true, slug: true } })
+  const regionIdBySlug = new Map(regions.map((r) => [r.slug, r.id]))
+  const known = new Map(
+    (await prisma.festival.findMany({ select: { externalId: true, startDate: true, endDate: true } })).map((f) => [
+      f.externalId,
+      f,
+    ]),
+  )
+  const summary: FestivalSyncSummary = { region: '전국(TourAPI 지역기반)', fetched: 0, created: 0, updated: 0, skipped: 0, dryRun: Boolean(opts.dryRun) }
+  const seen = new Set<string>()
+
+  for (const regnCd of SIDO_REGN_CDS) {
+    let pageNo = 1
+    let fetchedForSido = 0
+    while (fetchedForSido < maxPerSido) {
+      const res = await fetchFestivalsByArea({ lDongRegnCd: regnCd, pageNo, numOfRows: 100 })
+      if (res.items.length === 0) break
+
+      for (const raw of res.items) {
+        if (!raw.contentid || seen.has(raw.contentid)) continue
+        seen.add(raw.contentid)
+        summary.fetched += 1
+        fetchedForSido += 1
+
+        const externalId = `tourapi:${raw.contentid}`
+        const cached = known.get(externalId)
+        // 기간은 목록에 없다 — 이미 아는 축제면 저장된 기간을 재사용, 처음 보는 축제만 상세 호출
+        let startYmd: string | undefined
+        let endYmd: string | undefined
+        let place: string | null = null
+        if (cached) {
+          startYmd = cached.startDate.toISOString().slice(0, 10).replace(/-/g, '')
+          endYmd = cached.endDate.toISOString().slice(0, 10).replace(/-/g, '')
+        } else {
+          const intro = await fetchFestivalIntro(raw.contentid).catch(() => null)
+          startYmd = intro?.eventstartdate
+          endYmd = intro?.eventenddate
+          place = intro?.eventplace?.trim() || null
+        }
+        if (!startYmd) { summary.skipped += 1; continue }
+        const endForFilter = endYmd ?? startYmd
+        if (endForFilter < from) { summary.skipped += 1; continue } // 이미 끝난 축제
+
+        const mapped = toTourApiInput({ ...raw, eventstartdate: startYmd, eventenddate: endYmd }, regionIdBySlug)
+        if (!mapped.ok) { summary.skipped += 1; continue }
+        if (place) mapped.value.summary = place // 개최 장소를 요약으로 (표준데이터의 설명과 같은 자리)
+        if (opts.dryRun) { summary.created += 1; continue }
+
+        const mode = await upsertFestival(mapped.value)
+        summary[mode] += 1
+      }
+
+      if (res.items.length < 100 || pageNo * 100 >= res.totalCount) break
+      pageNo += 1
+    }
+    log(`[${regnCd}] 누적 ${summary.fetched}건 (생성 ${summary.created} / 갱신 ${summary.updated} / 스킵 ${summary.skipped})`)
+  }
+
+  return summary
 }
 
 // TourAPI 다중 시·도(또는 시·군) 대상 동기화 엔진

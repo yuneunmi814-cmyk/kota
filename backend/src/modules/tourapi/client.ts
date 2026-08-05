@@ -134,6 +134,43 @@ export async function fetchFestivals(params: FestivalSearchParams): Promise<{ it
   return { items, totalCount }
 }
 
+// areaBasedList2(contentTypeId=15) — 축제 목록. searchFestival2보다 커버리지가 넓다.
+// 2026-08-05 실측: areaBasedList2 929건 ⊃ searchFestival2 562건 (전자 단독 367건, 후자 단독 0건).
+// 단 이 응답에는 개최 기간이 없어 detailIntro2로 보강해야 한다.
+export async function fetchFestivalsByArea(params: {
+  lDongRegnCd?: string
+  lDongSignguCd?: string
+  pageNo?: number
+  numOfRows?: number
+}): Promise<{ items: TourApiRawItem[]; totalCount: number }> {
+  const url = buildUrl('areaBasedList2', {
+    contentTypeId: 15,
+    lDongRegnCd: params.lDongRegnCd,
+    lDongSignguCd: params.lDongSignguCd,
+    pageNo: params.pageNo ?? 1,
+    numOfRows: params.numOfRows ?? 100,
+    arrange: 'C', // 수정일순
+  })
+  const { items, totalCount } = unwrap<TourApiRawItem>(await transport(url))
+  return { items, totalCount }
+}
+
+// detailIntro2(contentTypeId=15) — 축제 개최 기간·장소·이용료. areaBasedList2에 없는 필드 보강용
+export interface FestivalIntro {
+  eventstartdate?: string // YYYYMMDD
+  eventenddate?: string
+  eventplace?: string
+  usetimefestival?: string
+  playtime?: string
+  sponsor1?: string
+}
+
+export async function fetchFestivalIntro(contentId: string): Promise<FestivalIntro | null> {
+  const url = buildUrl('detailIntro2', { contentId, contentTypeId: 15 })
+  const { items } = unwrap<FestivalIntro>(await transport(url))
+  return items[0] ?? null
+}
+
 // detailCommon2 — 단일 콘텐츠 상세(좌표·주소·이미지·개요 포함)
 export interface TourApiPoi {
   contentid: string

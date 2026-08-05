@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { apiGet, type SearchResult } from '../api'
 import { staticFestivals } from '../staticData'
@@ -80,7 +80,8 @@ export default function SearchPage() {
             <h2 className="text-xl font-bold mb-4 border-b border-gray-200 pb-2">{t('search.festivals')}</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {result.festivals.map((f) => (
-                <li key={f.id} className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col gap-1.5">
+                <li key={f.id}>
+                  <Link to={`/festivals/${f.id}`} className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col gap-1.5 h-full hover:border-green/30 hover:shadow-md transition-all">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span
                       className={
@@ -97,6 +98,7 @@ export default function SearchPage() {
                   <div className="text-[12px] text-gray-500 tabular-nums">
                     {f.startDate.slice(5).replace('-', '.')} ~ {f.endDate.slice(5).replace('-', '.')}
                   </div>
+                  </Link>
                 </li>
               ))}
             </ul>

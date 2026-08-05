@@ -9,7 +9,7 @@
 - `design/logo.html` + `design/logo/` — 브랜드 로고("게임팩 × 소풍") SVG 원본·앱 아이콘·워드마크·가이드
 - `backend/` — Express + TypeScript + Prisma + PostgreSQL(PostGIS) API 서버
 - `admin-web/` — 관리자 웹(CMS), React + Vite + TS. dev 서버가 `/api`를 :4000으로 프록시 (`cd admin-web && npm run dev`, :5173)
-- `web/` — **코타 웹(공모전 MVP)**, React + Vite + TS + Tailwind v4. 외국인(태·일) 대상 지역축제 여행팩 웹 — 다국어 UI(ko/en/th/ja, `src/i18n.tsx`), 디자인 토큰은 전도준 시안2(화이트 배경·딥그린 `--color-green` #004027·핀 레드 `--color-pin`, Pretendard) → `src/index.css` @theme. 홈 = "내 위치 기반 지역 축제"(geolocation→가까운 순 정렬) + **시·도 필터 칩**(축제 수 표시, `/festivals/sidos`에서 생성 — 하드코딩 없음) + 축제 그리드. 포스터 없는 축제는 랜덤 사진 대신 브랜드 플레이스홀더 — **축제 단일 축**(호텔·맛집 탭 없음, 결정 2026-07-22). `/api` 프록시 :4000 (`cd web && npm run dev`, :5174). **라이브: GitHub Pages https://yuneunmi814-cmyk.github.io/kota/ → Render API `https://kota-api-109d.onrender.com`(VITE_API_BASE 주입)**. API 폴백 3단: 라이브 API(6초 타임아웃) → 베이크 정적 데이터 → 하드코딩. Render 무료라 콜드 스타트 시 정적 폴백
+- `web/` — **코타 웹(공모전 MVP)**, React + Vite + TS + Tailwind v4. 외국인(태·일) 대상 지역축제 여행팩 웹 — 다국어 UI(ko/en/th/ja, `src/i18n.tsx`), 디자인 토큰은 전도준 시안2(화이트 배경·딥그린 `--color-green` #004027·핀 레드 `--color-pin`, Pretendard) → `src/index.css` @theme. 홈 = "내 위치 기반 지역 축제"(geolocation→가까운 순 정렬) + **시·도 필터 칩**(축제 수 표시, `/festivals/sidos`에서 생성 — 하드코딩 없음) + 축제 그리드. 포스터 없는 축제는 랜덤 사진 대신 브랜드 플레이스홀더 — **축제 단일 축**(호텔·맛집 탭 없음, 결정 2026-07-22). 라우트 `/`(홈) · `/festivals`(목록) · `/festivals/:id`(**상세** — 기간·장소·문의·길찾기·주변 관광지 3km) · `/search`. `/api` 프록시 :4000 (`cd web && npm run dev`, :5174). **라이브: GitHub Pages https://yuneunmi814-cmyk.github.io/kota/ → Render API `https://kota-api-109d.onrender.com`(VITE_API_BASE 주입)**. API 폴백 3단: 라이브 API(6초 타임아웃) → 베이크 정적 데이터 → 하드코딩. Render 무료라 콜드 스타트 시 정적 폴백
 - `mobile/` — RN 안드로이드 앱(M3), Expo SDK 56 + TS. 하단탭 5개 + 가이드 모드(expo-location 체크인). API 베이스는 `EXPO_PUBLIC_API_BASE`(기본 10.0.2.2:4000)
 
 ## backend 명령어 (cd backend)
@@ -22,7 +22,8 @@ npm run db:migrate   # prisma migrate dev
 npm run db:seed      # 제주 시드 (관리자 3계정 + 코스 2개 + 스팟 8곳)
 npm run sync:tourapi -- --region=jeju [--types=12,39] [--max=100] [--overview] [--dry-run]   # 관광지
 npm run sync:tourapi -- --region=jeju --courses [--max=10] [--dry-run]                        # 여행코스(경유지→좌표 연결)
-npm run sync:festivals -- --all --std [--from=YYYYMMDD]     # 축제 전국(TourAPI 16개 시·도 + 전국문화축제표준데이터, 중복제거) → festivals
+npm run sync:festivals -- --all --std [--from=YYYYMMDD]     # 축제 전국(TourAPI searchFestival2 + 전국문화축제표준데이터, 중복제거) → festivals
+npm run sync:festivals -- --area                            # TourAPI 지역기반(areaBasedList2) — 커버리지 넓지만 축제마다 detailIntro2 추가 호출(429 주의). 진행중/예정 순증은 소수
 # npm run sync:festivals -- --region=gongju | --all | --std  (개별 선택 가능) · npm run bake:festivals(예정 축제 → seed-festivals.json)
 npm run fix:festival-regions [-- --dry-run]   # 적재된 축제의 시·도 재파싱 + 소스 간 중복 정리(파싱 규칙 변경 시)
 npm run sync:audioguide -- --region=jeju [--langs=ko,en] [--radius=1000] [--dry-run]          # 오디오 가이드(오디·좌표 매칭)
