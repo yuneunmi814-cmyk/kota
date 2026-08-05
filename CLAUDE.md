@@ -26,6 +26,7 @@ npm run sync:festivals -- --all --std [--from=YYYYMMDD]     # 축제 전국(Tour
 npm run sync:festivals -- --area                            # TourAPI 지역기반(areaBasedList2) — 커버리지 넓지만 축제마다 detailIntro2 추가 호출(429 주의). 진행중/예정 순증은 소수
 # npm run sync:festivals -- --region=gongju | --all | --std  (개별 선택 가능) · npm run bake:festivals(예정 축제 → seed-festivals.json)
 npm run fix:festival-regions [-- --dry-run]   # 적재된 축제의 시·도 재파싱 + 소스 간 중복 정리(파싱 규칙 변경 시)
+npm run sync:manual [-- --dry-run]            # 수기 축제(prisma/manual-festivals.json) → DB. 공공데이터에 없는 지역 행사용
 npm run sync:audioguide -- --region=jeju [--langs=ko,en] [--radius=1000] [--dry-run]          # 오디오 가이드(오디·좌표 매칭)
 npm run sync:photos -- --region=jeju [--all] [--dry-run]    # 관광사진(스팟명 키워드 매칭→spot_images)
 npm run sync:i18n -- --region=jeju [--all] [--dry-run]      # 영문(EngService2, title 괄호 한글명 매칭→spot_translations)
@@ -44,6 +45,7 @@ npm run sync:youtube -- --all [--max=8] [--dry-run]         # 유튜브 여행�
 - 관리자 쓰기·개인정보 열람은 logAudit() 필수
 - 마켓플레이스: **v1은 무료 공유 모델**(여행팩 무료 공유·자랑). 유료 결제·이용권·페이월·정산 코드는 **보존된 채 비활성** — 모바일이 가격을 안 보내(price 0)·PG 미설정이라 페이월/구매가 트리거되지 않음. 유료화 시 모바일 가격칸 복원 + `PG_PROVIDER`/`PG_API_SECRET` + price>0 발행으로 재활성. 마켓 인기순은 **saveCount** 기준(판매수는 유료화 시). 스키마/엔드포인트(보존): Course에 `authorType`·`price`·`salesCount`, `course_purchases`(이용권), `courseEntitlement()` 페이월(`/courses/:id` locked + `/trips` 게이트), `isPaymentEnabled()`(mock\|portone), 정산 `MARKETPLACE_FEE_PERCENT`. USER 코스 발행은 관리자 4-eyes 재사용. **테스트는 유료 경로까지 검증(88개)** — 유료 코드가 죽지 않게 유지
 - 축제: `festivals` 테이블(전국 커버, 기간 본질이라 Spot과 분리, 좌표·regionId nullable). **2개 소스** — TourAPI searchFestival2(16개 시·도, `sync.ts`) + 전국문화축제표준데이터(`stdfest.ts`, 소도시 축제 보강). `externalId`(`tourapi:`/`stdfest:`) 멱등 upsert, 소스 간 **정규화 이름+시작일**로 중복 제거(`regionMap.ts` — 연도 접두 `2026 ○○축제`도 같은 축제로 판정). **시·도 정규화 필수**: 소스마다 표기가 달라(`전남광주통합특별시`·축약형 `강원`) `parseSidoSigungu`가 정식 17개 명칭으로 통일 — 통합 표기는 구(區)면 광주, 시·군이면 전남으로 분해. 화면 필터는 **`sido` 기준**(`GET /festivals/sidos`로 목록·개수 제공, `?sido=충청남도`) — 웹이 지역을 하드코딩하면 백엔드에 없는 slug로 0건이 뜨므로 **데이터에서 목록을 만든다**. `regionId`(큐레이션 23개)는 하위호환용 `?region=`에만. 통합 검색 `GET /search`에 축제 포함(축제명·시·도·시군구·주소 부분일치, 진행중+예정만). 베이크(`bake:festivals`, 예정만)를 seed-prod가 매 기동 upsert. **주간 자동 동기화**: `.github/workflows/sync-festivals.yml`(월 09:00 KST) → 동기화·재분류·베이크·커밋 → Pages·Render 자동 배포. 유지보수: `npm run fix:festival-regions`(파싱 규칙 변경 시 기존 행 교정+중복 정리)
+- **수기 축제(source=MANUAL)**: 공공 API에 아예 없는 지역 행사를 담는 통로 — 현수막·보도자료로만 알려지는 재단/시청 주관 행사(2026-08-05 실측: '의림지 달빛 물맞이 행차'가 TourAPI `searchKeyword2` '의림지'·'물맞이' 모두 0건). `prisma/manual-festivals.json` 편집 → `npm run sync:manual` → `bake:festivals`. **seed-prod의 prune 대상은 TOURAPI·STDFEST뿐이라 수기 데이터는 재배포에도 지워지지 않는다** — 이 분리가 수기 등록의 전제
 - **법정동 코드 개편 주의(2026-07)**: 광주+전남 → **전남광주통합특별시(regnCd 12)** 통합, 구 코드(29·46)는 결과가 비다시피 함. `searchFestival2`는 구형 areaCode 필터도 부실(서울 2건 vs lDong 99건) → 축제는 `REGION_LDONG`(regions.ts, ldongCode2로 확정한 시+구 코드) 사용. ⚠️ i18n(EngService2)·visitors(DataLab)의 기존 lDongRegnCd '29'/'46'·sidoKey('광주'·'전라남')는 통합 반영 전 값 — 재검증 필요
 - 로컬 DB: Homebrew PostgreSQL 17 + PostGIS (`postgresql://yoon@localhost:5432/kota_dev`)
 

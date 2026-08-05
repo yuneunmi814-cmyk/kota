@@ -716,23 +716,6 @@
    "homepage": null
   },
   {
-   "externalId": "tourapi:1829696",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "중구",
-   "name": "아시아프 (ASYAAF 100)",
-   "summary": null,
-   "address": "서울특별시 중구 세종대로21길 30 (태평로1가)",
-   "lat": 37.5678450408989,
-   "lng": 126.975895739578,
-   "startDate": "2026-07-01",
-   "endDate": "2026-08-05",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/49/4057349_image2_1.jpg",
-   "tel": "02-724-6361",
-   "homepage": null
-  },
-  {
    "externalId": "tourapi:4086427",
    "source": "TOURAPI",
    "regionSlug": "chuncheon",
@@ -951,23 +934,6 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/92/4089092_image2_1.jpg",
    "tel": "062-570-7809",
-   "homepage": null
-  },
-  {
-   "externalId": "tourapi:2394558",
-   "source": "TOURAPI",
-   "regionSlug": "gangneung",
-   "sido": "강원특별자치도",
-   "sigungu": "강릉시",
-   "name": "경포 썸머 페스티벌",
-   "summary": null,
-   "address": "강원특별자치도 강릉시 경포로 515 (안현동)",
-   "lat": 37.805223671,
-   "lng": 128.9067299347,
-   "startDate": "2026-07-30",
-   "endDate": "2026-08-05",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/15/4091115_image2_1.jpg",
-   "tel": "033-640-5130",
    "homepage": null
   },
   {

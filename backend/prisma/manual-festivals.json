@@ -1,0 +1,34 @@
+{
+ "_readme": [
+  "공공데이터에 없는 축제를 손으로 등록하는 파일입니다. (source=MANUAL)",
+  "왜 필요한가: 제천문화관광재단·시청이 보도자료·현수막으로만 알리는 지역 행사는",
+  "TourAPI에도 전국문화축제표준데이터에도 올라오지 않습니다. 실측으로 확인했습니다.",
+  "",
+  "추가하는 법:",
+  "  1) items 배열에 항목을 하나 추가합니다. externalId는 'manual:'로 시작하고 겹치지 않게 짓습니다.",
+  "  2) cd backend && npm run sync:manual    (로컬 DB 반영)",
+  "  3) npm run bake:festivals && npm run export:web   (배포용 데이터 갱신)",
+  "  4) 커밋·푸시하면 웹·API에 자동 반영됩니다.",
+  "",
+  "필수: externalId, name, startDate, endDate, address",
+  "권장: lat/lng(길찾기·거리순 정렬에 쓰임), summary, tel, homepage, imageUrl",
+  "  좌표를 모르면 카카오맵에서 장소를 검색해 URL의 좌표를 쓰거나, 비워둬도 목록에는 나옵니다.",
+  "sido/sigungu는 비워두면 address에서 자동으로 뽑습니다."
+ ],
+ "items": [
+  {
+   "externalId": "manual:jecheon-uirimji-moonlight-2026",
+   "name": "의림지 달빛 물맞이 행차",
+   "summary": "2천 년 생명수 의림지, 달빛 아래 몸과 마음을 씻다 — 2026 충청북도 문화유산 활용사업. 주최 제천시 / 주관 제천문화관광재단",
+   "address": "충청북도 제천시 의림대로47길 7 제천 의림지·의림지역사박물관 일원",
+   "lat": 37.1761553169,
+   "lng": 128.2094875238,
+   "startDate": "2026-08-01",
+   "endDate": "2026-08-02",
+   "tel": null,
+   "homepage": null,
+   "imageUrl": null,
+   "note": "2026-08-05 현장 현수막에서 수집(18:00~22:00). 공공 API 미등록 확인 — searchKeyword2 '의림지'·'물맞이' 모두 0건"
+  }
+ ]
+}
