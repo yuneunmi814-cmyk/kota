@@ -3,6 +3,7 @@ import { api, prisma, seedAll } from './helpers.js'
 import { setTourApiTransportForTest } from '../src/modules/tourapi/client.js'
 import { syncRegionFestivals, todayYmd, toTourApiInput } from '../src/modules/festivals/sync.js'
 import { setStdFestTransportForTest, syncStdFestivals } from '../src/modules/festivals/stdfest.js'
+import { normalizeFestivalName, parseSidoSigungu } from '../src/modules/festivals/regionMap.js'
 
 // data.go.kr searchFestival2 응답 형태를 흉내낸 가짜 트랜스포트
 function envelope(items: unknown[], totalCount = items.length) {
@@ -139,6 +140,59 @@ describe('지역축제 (코타 웹 핵심 축)', () => {
     expect(yeongwol.ok && yeongwol.value.sido).toBe('강원특별자치도')
     expect(yeongwol.ok && yeongwol.value.sigungu).toBe('영월군')
     expect(todayYmd()).toMatch(/^\d{8}$/)
+  })
+
+  it('시·도 정규화: 통합 표기·축약형을 정식 명칭으로 (2026-08 QA 지적)', () => {
+    // TourAPI '전남광주통합특별시' — 구(區)면 광주, 시·군이면 전남으로 되돌린다
+    expect(parseSidoSigungu('전남광주통합특별시 여수시 박람회길 1')).toEqual({ sido: '전라남도', sigungu: '여수시' })
+    expect(parseSidoSigungu('전남광주통합특별시 서구 상무대로')).toEqual({ sido: '광주광역시', sigungu: '서구' })
+    // 축약형도 시·도로 인식 (이전엔 sido=null로 '(없음)' 분류됐음)
+    expect(parseSidoSigungu('강원 춘천시 온의동 586')).toEqual({ sido: '강원특별자치도', sigungu: '춘천시' })
+    expect(parseSidoSigungu('충청남도 공주시 금벽로')).toEqual({ sido: '충청남도', sigungu: '공주시' })
+  })
+
+  it('중복 판정: 연도 접두가 붙어도 같은 축제로 본다 (2026-08 QA 지적)', () => {
+    expect(normalizeFestivalName('2026 고양호수예술축제')).toBe(normalizeFestivalName('고양호수예술축제'))
+    expect(normalizeFestivalName('2026 제14회 군산시간여행축제')).toBe(normalizeFestivalName('군산시간여행축제'))
+    // 서로 다른 축제까지 같다고 보면 안 됨
+    expect(normalizeFestivalName('진안홍삼축제')).not.toBe(normalizeFestivalName('금산인삼축제'))
+  })
+
+  it('GET /festivals/sidos + ?sido= — 시·도 목록과 필터 (지역 하드코딩 제거)', async () => {
+    const list = await api.get('/api/v1/festivals/sidos')
+    expect(list.status).toBe(200)
+    const sidos = list.body.data.sidos as { name: string; count: number }[]
+    expect(sidos.length).toBeGreaterThan(0)
+    expect(sidos[0]?.count).toBeGreaterThan(0)
+
+    const jeju = sidos.find((s) => s.name === '제주특별자치도')
+    expect(jeju).toBeDefined()
+
+    // 시·도로 필터하면 그 지역 축제만
+    const filtered = await api.get('/api/v1/festivals?sido=제주특별자치도&limit=50')
+    const items = filtered.body.data.items as { sido: string }[]
+    expect(items.length).toBe(jeju!.count)
+    expect(items.every((i) => i.sido === '제주특별자치도')).toBe(true)
+
+    // 없는 시·도는 빈 결과(에러 아님)
+    const none = await api.get('/api/v1/festivals?sido=없는도')
+    expect(none.status).toBe(200)
+    expect(none.body.data.items).toHaveLength(0)
+  })
+
+  it('GET /search — 축제가 검색된다 (축제명·지역명 모두)', async () => {
+    const byName = await api.get('/api/v1/search?q=탐라')
+    expect(byName.status).toBe(200)
+    const names = (byName.body.data.festivals as { name: string }[]).map((f) => f.name)
+    expect(names).toContain('탐라 문화제')
+
+    // 지역명으로도 찾힌다 — "내가 가려는 지역 축제를 못 찾는다"던 문제(2026-08-03 회의)
+    const byRegion = await api.get('/api/v1/search?q=제주')
+    expect((byRegion.body.data.festivals as unknown[]).length).toBeGreaterThan(0)
+
+    // 종료된 축제는 검색에 안 나온다
+    const ended = await api.get('/api/v1/search?q=지난 축제')
+    expect((ended.body.data.festivals as { name: string }[]).some((f) => f.name === '지난 축제')).toBe(false)
   })
 
   it('표준데이터: 소도시 축제(영월동강뗏목) 보강 + TourAPI 중복은 스킵', async () => {

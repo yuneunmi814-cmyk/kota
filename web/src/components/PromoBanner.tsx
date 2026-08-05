@@ -26,12 +26,12 @@ export default function PromoBanner() {
   return (
     <section className="max-w-5xl mx-auto px-4 w-full">
       <div className="rounded-2xl overflow-hidden flex flex-col md:flex-row bg-bright p-5 md:p-6 gap-6 shadow-md">
-        <div className="md:w-1/2 h-[220px] md:h-[300px] rounded-xl overflow-hidden shrink-0">
-          <img
-            src={img ?? 'https://picsum.photos/seed/kota-banner/700/450'}
-            alt={t('home.bannerCta')}
-            className="w-full h-full object-cover"
-          />
+        <div className="md:w-1/2 h-[220px] md:h-[300px] rounded-xl overflow-hidden shrink-0 bg-white/40">
+          {img ? (
+            <img src={img} alt={t('home.bannerCta')} className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-[56px]" aria-hidden="true">🎪</div>
+          )}
         </div>
         <div className="md:w-1/2 flex flex-col justify-center items-center text-center px-2 md:px-6">
           <h2 className="text-[24px] md:text-[28px] font-black mb-4 leading-snug text-green">

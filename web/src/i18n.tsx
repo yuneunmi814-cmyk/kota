@@ -12,6 +12,7 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'search.festivals': '축제',
     'filter.date': '시작일순',
     'filter.distance': '거리순',
     'filter.popularity': '인기순',
@@ -25,7 +26,7 @@ const MESSAGES = {
     'home.title': '내 위치 기반 지역 축제',
     'home.myLocation': '내 위치',
     'home.nearMe': '가까운 순',
-    'home.searchPlaceholder': '축제, 지역을 검색하세요',
+    'home.searchPlaceholder': '축제명·지역을 검색하세요 (예: 충청남도, 불꽃축제)',
     'home.searchButton': '검색',
     'region.all': '전국',
     'search.title': '검색 결과',
@@ -37,6 +38,7 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'search.festivals': 'Festivals',
     'filter.date': 'By date',
     'filter.distance': 'Nearest',
     'filter.popularity': 'Popular',
@@ -62,6 +64,7 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'search.festivals': 'เทศกาล',
     'filter.date': 'ตามวันที่',
     'filter.distance': 'ใกล้สุด',
     'filter.popularity': 'ยอดนิยม',
@@ -87,6 +90,7 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'search.festivals': '祭り',
     'filter.date': '開始日順',
     'filter.distance': '近い順',
     'filter.popularity': '人気順',

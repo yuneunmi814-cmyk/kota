@@ -20,6 +20,7 @@
     "sync:tourapi": "tsx scripts/sync-tourapi.ts",
     "sync:festivals": "tsx scripts/sync-festivals.ts",
     "bake:festivals": "tsx scripts/bake-festivals.ts",
+    "fix:festival-regions": "tsx scripts/fix-festival-regions.ts",
     "export:web": "tsx scripts/export-web-data.ts",
     "sync:audioguide": "tsx scripts/sync-audioguide.ts",
     "sync:photos": "tsx scripts/sync-enrich.ts photos",

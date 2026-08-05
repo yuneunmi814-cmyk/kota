@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { apiGet, type SearchResult } from '../api'
+import { staticFestivals } from '../staticData'
 import { useT } from '../i18n'
 
 // 통합 검색 — GET /api/v1/search?q= (코스·관광지·지역)
@@ -27,7 +28,19 @@ export default function SearchPage() {
         setResult(d)
         setState('idle')
       })
-      .catch(() => setState('error'))
+      // API가 없거나 느릴 때도 축제는 찾을 수 있도록 베이크 데이터로 폴백(축제명·지역명 부분일치)
+      .catch(() =>
+        staticFestivals(500)
+          .then((all) => {
+            const needle = q.toLowerCase()
+            const festivals = all.filter((f) =>
+              [f.name, f.sido, f.sigungu, f.address].some((v) => v?.toLowerCase().includes(needle)),
+            )
+            setResult({ festivals: festivals.slice(0, 30), courses: [], spots: [], regions: [] })
+            setState('idle')
+          })
+          .catch(() => setState('error')),
+      )
   }, [q])
 
   const onSubmit = (e: FormEvent) => {
@@ -35,7 +48,8 @@ export default function SearchPage() {
     if (input.trim()) navigate(`/search?q=${encodeURIComponent(input.trim())}`)
   }
 
-  const empty = result && result.courses.length === 0 && result.spots.length === 0 && result.regions.length === 0
+  const empty =
+    result && result.festivals.length === 0 && result.courses.length === 0 && result.spots.length === 0 && result.regions.length === 0
 
   return (
     <div className="min-h-screen bg-white text-green pb-20">
@@ -60,6 +74,34 @@ export default function SearchPage() {
         {state === 'loading' && <p className="text-gray-500">{t('search.loading')}</p>}
         {state === 'error' && <p className="text-gray-500">{t('search.error')}</p>}
         {empty && <p className="text-gray-500">{t('search.empty')}</p>}
+
+        {result && result.festivals.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-4 border-b border-gray-200 pb-2">{t('search.festivals')}</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {result.festivals.map((f) => (
+                <li key={f.id} className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col gap-1.5">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span
+                      className={
+                        f.status === 'ongoing'
+                          ? 'text-[11px] font-black bg-green text-white px-2 py-0.5 rounded-full'
+                          : 'text-[11px] font-bold border border-green/40 text-green/80 px-2 py-0.5 rounded-full'
+                      }
+                    >
+                      {f.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
+                    </span>
+                    <span className="text-[12px] font-semibold text-gray-500">{f.sigungu ?? f.sido ?? f.region.name}</span>
+                  </div>
+                  <div className="font-bold text-[16px] leading-snug">{f.name}</div>
+                  <div className="text-[12px] text-gray-500 tabular-nums">
+                    {f.startDate.slice(5).replace('-', '.')} ~ {f.endDate.slice(5).replace('-', '.')}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {result && result.regions.length > 0 && (
           <section className="mb-10">

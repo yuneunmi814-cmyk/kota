@@ -6,11 +6,11 @@ import FestivalRail, { type FestivalSort } from '../components/FestivalRail'
 import { useT } from '../i18n'
 
 // 축제 목록 — 상단은 홈과 같은 '내 위치' 버튼(기본값처럼 재클릭 가능), 아래 정렬 필터(거리순·인기순)
-// ?region=slug & lat/lng & sort=date|distance|popularity & geo=denied(권한 안내)
+// ?sido=충청남도 & lat/lng & sort=date|distance|popularity & geo=denied(권한 안내)
 export default function FestivalsPage() {
   const t = useT()
   const [params, setParams] = useSearchParams()
-  const region = params.get('region')
+  const sido = params.get('sido')
   const [locating, setLocating] = useState(false)
   const [geoDenied, setGeoDenied] = useState(params.get('geo') === 'denied')
 
@@ -105,8 +105,8 @@ export default function FestivalsPage() {
           {chip('popularity', t('filter.popularity'))}
         </div>
       </main>
-      <RegionBanner selected={region} onSelect={(slug) => update((next) => { if (slug) next.set('region', slug); else next.delete('region') })} />
-      <FestivalRail coords={coords} regionSlug={region} sort={sort} hideTitle />
+      <RegionBanner selected={sido} onSelect={(name) => update((next) => { if (name) next.set('sido', name); else next.delete('sido') })} />
+      <FestivalRail coords={coords} sido={sido} sort={sort} hideTitle />
     </div>
   )
 }

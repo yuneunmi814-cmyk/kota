@@ -7,7 +7,8 @@ import { parseId, parsePage } from '../../lib/util.js'
 
 export const festivalsRouter = Router()
 
-const festivalSelect = {
+// 통합 검색(explore)에서도 같은 카드 형태를 쓰도록 export
+export const festivalSelect = {
   id: true, name: true, summary: true, address: true, lat: true, lng: true,
   startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true,
   region: { select: { id: true, name: true, slug: true, visitorScore: true } },
@@ -15,12 +16,12 @@ const festivalSelect = {
 type FestivalForCard = Prisma.FestivalGetPayload<{ select: typeof festivalSelect }>
 
 // KST 기준 오늘 00:00 (UTC Date 컬럼과 비교용)
-function todayKst(): Date {
+export function todayKst(): Date {
   const kst = new Date(Date.now() + 9 * 3600_000)
   return new Date(`${kst.toISOString().slice(0, 10)}T00:00:00Z`)
 }
 
-function toCard(f: FestivalForCard, today: Date) {
+export function toCard(f: FestivalForCard, today: Date) {
   // 큐레이션 지역이 있으면 그 이름/slug, 없으면 시·군·구(없으면 시·도) 표시 — slug 없으면 '전국'에서만 노출
   const regionCard = f.region
     ? { id: f.region.id, name: f.region.name, slug: f.region.slug }
@@ -64,19 +65,22 @@ function parseFestivalCursor(v: unknown): { startDate: Date; id: bigint } | null
   return Number.isNaN(d.getTime()) ? null : { startDate: d, id: BigInt(m[2]!) }
 }
 
-// 축제 목록 — 기본: 진행중+예정(endDate >= 오늘), 시작일 오름차순. ?region=slug ?from= ?to= ?includeEnded=1
+// 축제 목록 — 기본: 진행중+예정(endDate >= 오늘), 시작일 오름차순.
+// ?sido=충청남도 (권장·전국 어디든) / ?region=slug (큐레이션 23개, 하위호환) / ?from= ?to= ?includeEnded=1
 festivalsRouter.get(
   '/festivals',
   h(async (req, res) => {
     const { limit } = parsePage(req.query as Record<string, unknown>, 20, 50)
     const cursor = parseFestivalCursor(req.query.cursor)
     const regionSlug = typeof req.query.region === 'string' && req.query.region !== '' ? req.query.region : undefined
+    const sido = typeof req.query.sido === 'string' && req.query.sido !== '' ? req.query.sido : undefined
     const from = parseDateParam(req.query.from, 'from')
     const to = parseDateParam(req.query.to, 'to')
     const includeEnded = req.query.includeEnded === '1' || req.query.includeEnded === 'true'
     const today = todayKst()
 
     const where: Prisma.FestivalWhereInput = {
+      ...(sido ? { sido } : {}),
       ...(regionSlug ? { region: { slug: regionSlug } } : {}),
       // from~to 기간과 겹치는 축제 (시작 ≤ to && 종료 ≥ from)
       ...(from ? { endDate: { gte: from } } : includeEnded ? {} : { endDate: { gte: today } }),
@@ -96,6 +100,26 @@ festivalsRouter.get(
     ok(res, {
       items: items.map((f) => toCard(f, today)),
       nextCursor: last ? `${last.startDate.toISOString().slice(0, 10)}_${last.id}` : null,
+    })
+  }),
+)
+
+// 시·도 목록 — 지역 배너용. 진행중+예정 축제가 있는 시·도만, 축제 수 많은 순.
+// 웹이 지역 목록을 하드코딩하지 않도록 데이터에서 직접 만든다(하드코딩 slug 불일치로 0건 뜨던 문제 방지).
+festivalsRouter.get(
+  '/festivals/sidos',
+  h(async (_req, res) => {
+    const today = todayKst()
+    const rows = await prisma.festival.groupBy({
+      by: ['sido'],
+      where: { endDate: { gte: today }, sido: { not: null } },
+      _count: { _all: true },
+      orderBy: { _count: { sido: 'desc' } },
+    })
+    ok(res, {
+      sidos: rows
+        .filter((r) => r.sido)
+        .map((r) => ({ name: r.sido as string, count: r._count._all })),
     })
   }),
 )

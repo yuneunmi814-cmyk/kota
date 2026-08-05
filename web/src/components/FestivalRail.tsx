@@ -21,12 +21,13 @@ export type FestivalSort = 'date' | 'distance' | 'popularity'
 // 축제 카드 그리드 — 디자인 시안2(화이트+딥그린). sort: 시작일순(기본)·거리순(coords 필요)·인기순(지역 방문자수)
 export default function FestivalRail({
   coords,
-  regionSlug,
+  sido,
   hideTitle,
   sort = 'date',
 }: {
   coords: Coords | null
-  regionSlug: string | null
+  /** 시·도 이름(예: '충청남도'). null이면 전국 */
+  sido: string | null
   hideTitle?: boolean
   sort?: FestivalSort
 }) {
@@ -34,15 +35,15 @@ export default function FestivalRail({
   const [festivals, setFestivals] = useState<(Festival & { distanceKm?: number | null })[]>([])
 
   useEffect(() => {
-    const q = regionSlug ? `&region=${encodeURIComponent(regionSlug)}` : ''
+    const q = sido ? `&sido=${encodeURIComponent(sido)}` : ''
     apiGet<{ items: Festival[] }>(`/festivals?limit=24${q}`)
       .then((d) => setFestivals(d.items))
       .catch(() =>
-        staticFestivals(200) // API 없으면 베이크된 정적 데이터에서 필터
-          .then((all) => setFestivals(regionSlug ? all.filter((f) => f.region.slug === regionSlug) : all.slice(0, 24)))
+        staticFestivals(500) // API 없으면 베이크된 정적 데이터에서 필터
+          .then((all) => setFestivals((sido ? all.filter((f) => f.sido === sido) : all).slice(0, 24)))
           .catch(() => setFestivals([])),
       )
-  }, [regionSlug])
+  }, [sido])
 
   const withDistance = coords ? festivals.map((f) => ({ ...f, distanceKm: distanceKm(coords, f) })) : festivals
   const list =
@@ -70,12 +71,22 @@ export default function FestivalRail({
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {list.slice(0, 12).map((f) => (
           <article key={f.id} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+            {/* 포스터가 없는 축제(주로 표준데이터)는 랜덤 사진 대신 브랜드 플레이스홀더 —
+                지역과 무관한 사진이 실제 축제처럼 보이면 신뢰를 해친다 */}
             <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-              <img
-                src={f.imageUrl ?? `https://picsum.photos/seed/kota-fest-${f.id}/400/300`}
-                alt={f.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              {f.imageUrl ? (
+                <img
+                  src={f.imageUrl}
+                  alt={f.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-green/5 border-b border-green/10">
+                  <span className="text-[22px] leading-none" aria-hidden="true">🎪</span>
+                  <span className="text-[11px] font-bold text-green/50">{f.sigungu ?? f.sido ?? 'KOTA'}</span>
+                </div>
+              )}
             </div>
             <div className="p-4">
               <div className="flex items-center gap-2 mb-2 flex-wrap">

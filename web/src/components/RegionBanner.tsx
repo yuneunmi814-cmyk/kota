@@ -1,56 +1,39 @@
 import { useEffect, useRef, useState } from 'react'
-import { apiGet, type Region } from '../api'
-import { staticRegions } from '../staticData'
+import { apiGet, type Sido } from '../api'
+import { staticSidos } from '../staticData'
 import { useT } from '../i18n'
 
-// 지역 선택 큐레이션 배너 — 디자인 시안2: 화이트 배경, 딥그린 라벨, 회색 테두리 화살표
-// API(/regions) 우선 → 베이크 JSON → 하드코딩 목록 (백엔드 없이도 렌더)
-const FALLBACK: Region[] = [
-  { id: 'goyang', name: '고양', slug: 'goyang', thumbnailUrl: null },
-  { id: 'gongju', name: '공주', slug: 'gongju', thumbnailUrl: null },
-  { id: 'jeonbuk', name: '전북', slug: 'jeonbuk', thumbnailUrl: null },
-  { id: 'gyeongbuk', name: '경북', slug: 'gyeongbuk', thumbnailUrl: null },
-  { id: 'jeju', name: '제주', slug: 'jeju', thumbnailUrl: null },
-  { id: 'seoul', name: '서울', slug: 'seoul', thumbnailUrl: null },
-  { id: 'busan', name: '부산', slug: 'busan', thumbnailUrl: null },
-  { id: 'daegu', name: '대구', slug: 'daegu', thumbnailUrl: null },
-]
-
-export default function RegionBanner({ selected, onSelect }: { selected: string | null; onSelect: (slug: string | null) => void }) {
+// 시·도 선택 배너 — 데이터(축제의 sido)에서 목록을 만들어 하드코딩 불일치를 없앤다.
+// 이전에는 웹이 지역 slug를 하드코딩해 백엔드에 없는 지역(goyang·jeonbuk·gyeongbuk)을 누르면 결과가 0건이었다.
+// 지역 사진은 쓰지 않는다 — 시·도를 대표하는 실제 사진이 없어 랜덤 이미지가 들어가던 문제(2026-08 QA)를 없앰.
+export default function RegionBanner({ selected, onSelect }: { selected: string | null; onSelect: (sido: string | null) => void }) {
   const t = useT()
-  const [regions, setRegions] = useState<Region[]>(FALLBACK)
+  const [sidos, setSidos] = useState<Sido[]>([])
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    apiGet<{ regions: Region[] }>('/regions')
-      .then((d) => {
-        if (d.regions.length > 0) setRegions(d.regions)
-      })
-      .catch(() =>
-        staticRegions()
-          .then((r) => { if (r.length > 0) setRegions(r) })
-          .catch(() => {}),
-      )
+    apiGet<{ sidos: Sido[] }>('/festivals/sidos')
+      .then((d) => setSidos(d.sidos))
+      .catch(() => staticSidos().then(setSidos).catch(() => setSidos([])))
   }, [])
 
   const scrollBy = (dir: -1 | 1) => scrollRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' })
 
-  const circle = (key: string, name: string, img: string | null, isActive: boolean, onClick: () => void) => (
-    <button key={key} onClick={onClick} className="flex flex-col items-center gap-2 cursor-pointer group shrink-0 hover:opacity-80 transition">
-      <div
-        className={
-          isActive
-            ? 'w-[84px] h-[84px] rounded-full shadow-md border-[3px] border-green overflow-hidden bg-white'
-            : 'w-[72px] h-[72px] rounded-full shadow-sm overflow-hidden group-hover:-translate-y-1 transition-transform bg-white border border-gray-200'
-        }
-      >
-        <img
-          src={img ?? `https://picsum.photos/seed/kota-${key}/150/150`}
-          className={`w-full h-full object-cover ${isActive ? '' : 'opacity-90'}`}
-          alt={name}
-        />
-      </div>
-      <span className={isActive ? 'text-[15px] font-black text-green' : 'text-[14px] font-semibold text-green/80'}>{name}</span>
+  const chip = (key: string, label: string, count: number | null, isActive: boolean, onClick: () => void) => (
+    <button
+      key={key}
+      onClick={onClick}
+      aria-pressed={isActive}
+      className={`shrink-0 px-5 py-2.5 rounded-full border text-[15px] font-bold transition flex items-center gap-2 ${
+        isActive
+          ? 'bg-green border-green text-white shadow-sm'
+          : 'bg-white border-gray-300 text-green hover:border-green'
+      }`}
+    >
+      {label}
+      {count !== null && (
+        <span className={`text-[12px] font-semibold tabular-nums ${isActive ? 'text-white/70' : 'text-gray-400'}`}>{count}</span>
+      )}
     </button>
   )
 
@@ -60,20 +43,20 @@ export default function RegionBanner({ selected, onSelect }: { selected: string 
         <button
           aria-label="이전 지역"
           onClick={() => scrollBy(-1)}
-          className="absolute left-0 w-9 h-9 border border-gray-300 rounded-full flex items-center justify-center bg-white text-green hover:bg-gray-100 transition shadow-sm"
+          className="absolute left-0 w-9 h-9 border border-gray-300 rounded-full flex items-center justify-center bg-white text-green hover:bg-gray-100 transition shadow-sm z-10"
         >
           <span className="text-sm font-bold">&lt;</span>
         </button>
 
-        <div ref={scrollRef} className="flex items-end gap-7 overflow-x-auto px-2">
-          {circle('all', t('region.all'), null, selected === null, () => onSelect(null))}
-          {regions.map((r) => circle(r.slug, r.name, r.thumbnailUrl, selected === r.slug, () => onSelect(r.slug)))}
+        <div ref={scrollRef} className="flex items-center gap-2.5 overflow-x-auto px-2 py-1 scroll-smooth">
+          {chip('all', t('region.all'), null, selected === null, () => onSelect(null))}
+          {sidos.map((s) => chip(s.name, s.name, s.count, selected === s.name, () => onSelect(s.name)))}
         </div>
 
         <button
           aria-label="다음 지역"
           onClick={() => scrollBy(1)}
-          className="absolute right-0 w-9 h-9 border border-gray-300 rounded-full flex items-center justify-center bg-white text-green hover:bg-gray-100 transition shadow-sm"
+          className="absolute right-0 w-9 h-9 border border-gray-300 rounded-full flex items-center justify-center bg-white text-green hover:bg-gray-100 transition shadow-sm z-10"
         >
           <span className="text-sm font-bold">&gt;</span>
         </button>

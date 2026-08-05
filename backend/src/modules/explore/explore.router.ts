@@ -9,6 +9,7 @@ import { parseId, parsePage } from '../../lib/util.js'
 import { nearbySpots } from '../../lib/geo.js'
 import { todayOpenStatus } from '../../lib/openHours.js'
 import { courseEntitlement } from '../marketplace/entitlement.js'
+import { festivalSelect, toCard as toFestivalCard, todayKst } from '../festivals/festivals.router.js'
 
 export const exploreRouter = Router()
 
@@ -386,11 +387,30 @@ exploreRouter.get(
     const type = typeof req.query.type === 'string' ? req.query.type : null
     const { cursor, limit } = parsePage(req.query as Record<string, unknown>, 10, 30)
 
+    const wantFestivals = !type || type === 'festival'
     const wantCourses = !type || type === 'course'
     const wantSpots = !type || type === 'spot'
     const wantRegions = !type || type === 'region'
+    const today = todayKst()
 
-    const [courses, spots, regions] = await Promise.all([
+    const [festivals, courses, spots, regions] = await Promise.all([
+      // 축제가 웹의 주력 콘텐츠 — 진행중·예정만, 축제명·지역명 어느 쪽으로도 찾히게
+      wantFestivals
+        ? prisma.festival.findMany({
+            where: {
+              endDate: { gte: today },
+              OR: [
+                { name: { contains: q, mode: 'insensitive' } },
+                { sido: { contains: q, mode: 'insensitive' } },
+                { sigungu: { contains: q, mode: 'insensitive' } },
+                { address: { contains: q, mode: 'insensitive' } },
+              ],
+            },
+            orderBy: [{ startDate: 'asc' }, { id: 'asc' }],
+            take: limit,
+            select: festivalSelect,
+          })
+        : [],
       wantCourses
         ? prisma.course.findMany({
             where: {
@@ -425,6 +445,7 @@ exploreRouter.get(
     ])
 
     ok(res, {
+      festivals: festivals.map((f) => toFestivalCard(f, today)),
       courses: courses.map(toCourseCard),
       spots: spots.map((s) => ({ id: s.id, name: s.name, category: s.category, address: s.address, region: s.region.name })),
       regions,

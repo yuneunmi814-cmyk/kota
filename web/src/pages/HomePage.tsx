@@ -71,7 +71,7 @@ export default function HomePage() {
         </form>}
       </main>
 
-      <RegionBanner selected={null} onSelect={(slug) => navigate(slug ? `/festivals?region=${slug}` : '/festivals')} />
+      <RegionBanner selected={null} onSelect={(name) => navigate(name ? `/festivals?sido=${encodeURIComponent(name)}` : '/festivals')} />
       <div className="mt-6">
         <PromoBanner />
       </div>

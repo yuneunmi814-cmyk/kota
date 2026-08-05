@@ -14,6 +14,9 @@ export async function apiGet<T>(path: string): Promise<T> {
 
 export type Region = { id: string; name: string; slug: string; thumbnailUrl: string | null }
 
+/** 시·도 필터 항목 — 축제 데이터에서 집계(하드코딩 없음) */
+export type Sido = { name: string; count: number }
+
 export type Festival = {
   id: string
   name: string
@@ -34,6 +37,7 @@ export type Festival = {
 }
 
 export type SearchResult = {
+  festivals: Festival[]
   courses: { id: string; title: string; summary?: string | null; region?: { name: string } | null }[]
   spots: { id: string; name: string; category: string; address: string | null; region: string }[]
   regions: { id: string; name: string; slug: string }[]

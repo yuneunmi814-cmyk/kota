@@ -1,4 +1,4 @@
-import type { Festival, Region } from './api'
+import type { Festival, Region, Sido } from './api'
 
 // API 서버가 없을 때(GitHub Pages 데모 등)의 정적 데이터 폴백.
 // backend `npm run export:web`이 public/data/*.json 을 생성한다.
@@ -25,4 +25,18 @@ export async function staticFestivals(limit: number): Promise<Festival[]> {
     .filter((f) => f.endDate >= today)
     .slice(0, limit)
     .map((f) => ({ ...f, status: f.startDate <= today ? 'ongoing' : 'upcoming' }))
+}
+
+// GET /festivals/sidos 재현 — 베이크 데이터에서 시·도별 축제 수 집계(축제 많은 순)
+export async function staticSidos(): Promise<Sido[]> {
+  const d = await loadJson<{ items: StaticFestival[] }>('festivals.json')
+  const today = new Date().toISOString().slice(0, 10)
+  const counts = new Map<string, number>()
+  for (const f of d.items) {
+    if (f.endDate < today || !f.sido) continue
+    counts.set(f.sido, (counts.get(f.sido) ?? 0) + 1)
+  }
+  return [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count)
 }
