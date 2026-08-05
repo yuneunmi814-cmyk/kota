@@ -32,28 +32,34 @@ interface BakedFestival {
   homepage: string | null
 }
 
-// 베이크된 실축제(prisma/seed-festivals.json, bake:festivals로 생성) 적재 — API 키 없이 실데이터 재현
-async function seedBakedFestivals(): Promise<number> {
+// 베이크된 실축제(prisma/seed-festivals.json, bake:festivals로 생성) 적재 — API 키 없이 실데이터 재현.
+// 베이크 파일을 "자동 수집 축제의 정답"으로 삼아 upsert + 정리(prune)를 함께 한다.
+// upsert만 하면 로컬에서 지운 중복·종료 축제가 프로덕션에 영원히 남아 화면에 중복으로 노출된다(2026-08-05 실측).
+async function seedBakedFestivals(): Promise<{ upserted: number; pruned: number }> {
   let items: BakedFestival[]
   try {
     items = (JSON.parse(readFileSync(resolve(import.meta.dirname, 'seed-festivals.json'), 'utf-8')) as { items: BakedFestival[] }).items
   } catch {
-    return 0 // 베이크 파일 없으면 조용히 건너뜀
+    return { upserted: 0, pruned: 0 } // 베이크 파일 없으면 조용히 건너뜀
   }
   const regions = await prisma.region.findMany({ select: { id: true, slug: true } })
   const bySlug = new Map(regions.map((r) => [r.slug, r.id]))
-  let created = 0
+
   for (const f of items) {
     const { regionSlug, externalId, startDate, endDate, ...data } = f
     const regionId = regionSlug ? bySlug.get(regionSlug) ?? null : null // 미매칭 축제도 적재(전국)
-    await prisma.festival.upsert({
-      where: { externalId },
-      update: {},
-      create: { ...data, externalId, regionId, startDate: new Date(startDate), endDate: new Date(endDate) },
-    })
-    created += 1
+    const row = { ...data, regionId, startDate: new Date(startDate), endDate: new Date(endDate) }
+    // update까지 반영해야 시·도 재분류 같은 교정이 프로덕션에 전달된다
+    await prisma.festival.upsert({ where: { externalId }, update: row, create: { ...row, externalId } })
   }
-  return created
+
+  // 자동 수집분(TOURAPI·STDFEST) 중 베이크에 없는 행 정리 — 중복·종료 축제 제거.
+  // 시드 데모(source=SEED)와 사람이 넣은 데이터는 건드리지 않는다.
+  const keep = items.map((f) => f.externalId)
+  const { count: pruned } = await prisma.festival.deleteMany({
+    where: { source: { in: ['TOURAPI', 'STDFEST'] }, externalId: { notIn: keep } },
+  })
+  return { upserted: items.length, pruned }
 }
 
 try {
@@ -77,9 +83,9 @@ try {
       console.log(`[seed-prod] 기반 시드 완료 — 지역 ${regions}곳 / 스팟 ${spots} / 코스 ${courses}`)
       console.log(`[seed-prod] 발행 코스 #${result.publishedCourseId} · 관리자 super@/editor@/reviewer@kota.app`)
     }
-    // 축제는 항상 최신 베이크로 upsert(멱등) — 기반 데이터가 이미 있어도 배포마다 최신 축제 반영
-    const festivalCount = await seedBakedFestivals()
-    console.log(`[seed-prod] 베이크 축제 동기화 — ${festivalCount}건 upsert`)
+    // 축제는 항상 최신 베이크에 맞춘다(멱등) — 배포마다 최신 축제 반영 + 사라진 축제 정리
+    const fest = await seedBakedFestivals()
+    console.log(`[seed-prod] 베이크 축제 동기화 — ${fest.upserted}건 반영 / ${fest.pruned}건 정리(중복·종료)`)
   }
 } catch (e) {
   console.error('[seed-prod] 시드 실패(서버 기동은 계속):', e instanceof Error ? e.message : e)
