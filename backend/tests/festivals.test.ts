@@ -195,6 +195,46 @@ describe('지역축제 (코타 웹 핵심 축)', () => {
     expect((ended.body.data.festivals as { name: string }[]).some((f) => f.name === '지난 축제')).toBe(false)
   })
 
+  it('다국어: ?lang=으로 축제명이 번역되고, 번역 없으면 한국어로 폴백', async () => {
+    const f = await prisma.festival.findUniqueOrThrow({ where: { externalId: 'tourapi:9001' } })
+    await prisma.festivalTranslation.createMany({
+      data: [
+        { festivalId: f.id, langCode: 'en', name: 'Tamna Culture Festival', summary: 'Jeju heritage festival', placeName: 'Jeju City' },
+        { festivalId: f.id, langCode: 'ja', name: '耽羅（タムラ）文化祭', placeName: '済州市' },
+      ],
+      skipDuplicates: true,
+    })
+
+    const en = await api.get('/api/v1/festivals?lang=en&limit=10')
+    const enItems = en.body.data.items as { name: string; nameKo: string; lang: string; placeName: string | null }[]
+    const tamnaEn = enItems.find((i) => i.nameKo === '탐라 문화제')
+    expect(tamnaEn?.name).toBe('Tamna Culture Festival')
+    expect(tamnaEn?.lang).toBe('en')
+    expect(tamnaEn?.placeName).toBe('Jeju City') // 외국인이 읽을 지명
+
+    // 번역이 없는 축제는 원문 그대로 — 부분 번역 상태에서도 목록이 깨지지 않아야 한다
+    const untranslated = enItems.find((i) => i.nameKo === '한라 등불 축제')
+    expect(untranslated?.name).toBe('한라 등불 축제')
+    expect(untranslated?.lang).toBe('ko')
+
+    // 일본어는 있고 태국어는 없는 축제 → ja는 번역, th는 원문
+    const ja = await api.get('/api/v1/festivals?lang=ja&limit=10')
+    expect((ja.body.data.items as { nameKo: string; name: string }[]).find((i) => i.nameKo === '탐라 문화제')?.name).toBe('耽羅（タムラ）文化祭')
+    const th = await api.get('/api/v1/festivals?lang=th&limit=10')
+    expect((th.body.data.items as { nameKo: string; name: string }[]).find((i) => i.nameKo === '탐라 문화제')?.name).toBe('탐라 문화제')
+
+    // 알 수 없는 언어는 한국어 취급(에러 아님)
+    const bogus = await api.get('/api/v1/festivals?lang=zz&limit=3')
+    expect(bogus.status).toBe(200)
+    expect((bogus.body.data.items as { lang: string }[])[0]?.lang).toBe('ko')
+
+    // 상세·검색에도 같은 규칙이 적용된다
+    const detail = await api.get(`/api/v1/festivals/${f.id}?lang=en`)
+    expect(detail.body.data.name).toBe('Tamna Culture Festival')
+    const search = await api.get('/api/v1/search?q=탐라&lang=en')
+    expect((search.body.data.festivals as { name: string }[])[0]?.name).toBe('Tamna Culture Festival')
+  })
+
   it('표준데이터: 소도시 축제(영월동강뗏목) 보강 + TourAPI 중복은 스킵', async () => {
     setStdFestTransportForTest(async () => ({
       header: { resultCode: '00', resultMsg: 'NORMAL SERVICE.' },

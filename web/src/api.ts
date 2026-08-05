@@ -5,8 +5,10 @@ const BASE = import.meta.env.VITE_API_BASE ?? '/api/v1'
 // 초과하면 throw → 호출부의 정적 베이크 데이터 폴백으로 즉시 전환(사용자 대기 방지).
 const TIMEOUT_MS = 6000
 
-export async function apiGet<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE}${path}`, { signal: AbortSignal.timeout(TIMEOUT_MS) })
+export async function apiGet<T>(path: string, lang?: string): Promise<T> {
+  // 축제 콘텐츠 번역: 한국어가 아니면 lang을 실어 보낸다(백엔드가 번역 없으면 원문 반환)
+  const url = lang && lang !== 'ko' ? `${BASE}${path}${path.includes('?') ? '&' : '?'}lang=${lang}` : `${BASE}${path}`
+  const res = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) })
   const body = (await res.json()) as { success: boolean; data?: T; error?: { code: string; message: string } }
   if (!body.success || body.data === undefined) throw new Error(body.error?.message ?? `API 오류 (${res.status})`)
   return body.data
@@ -20,7 +22,13 @@ export type Sido = { name: string; count: number }
 export type Festival = {
   id: string
   name: string
+  /** 번역이 적용됐을 때의 한국어 원문 — 현지 안내판·문의용 */
+  nameKo?: string
+  /** 실제 적용된 언어(번역이 없으면 'ko') */
+  lang?: string
   summary: string | null
+  /** 외국인이 읽을 지명(예: Jung-gu, Seoul) */
+  placeName?: string | null
   address: string | null
   lat: number | null
   lng: number | null

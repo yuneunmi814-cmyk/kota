@@ -12,6 +12,7 @@ export const festivalSelect = {
   id: true, name: true, summary: true, address: true, lat: true, lng: true,
   startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true,
   region: { select: { id: true, name: true, slug: true, visitorScore: true } },
+  translations: { select: { langCode: true, name: true, summary: true, placeName: true } },
 } satisfies Prisma.FestivalSelect
 type FestivalForCard = Prisma.FestivalGetPayload<{ select: typeof festivalSelect }>
 
@@ -21,15 +22,27 @@ export function todayKst(): Date {
   return new Date(`${kst.toISOString().slice(0, 10)}T00:00:00Z`)
 }
 
-export function toCard(f: FestivalForCard, today: Date) {
+export type FestivalLang = 'ko' | 'en' | 'ja' | 'th'
+
+// 지원 언어인지 확인 — 한국어이거나 알 수 없으면 원문 그대로
+export function parseLang(v: unknown): FestivalLang {
+  return v === 'en' || v === 'ja' || v === 'th' ? v : 'ko'
+}
+
+export function toCard(f: FestivalForCard, today: Date, lang: FestivalLang = 'ko') {
   // 큐레이션 지역이 있으면 그 이름/slug, 없으면 시·군·구(없으면 시·도) 표시 — slug 없으면 '전국'에서만 노출
   const regionCard = f.region
     ? { id: f.region.id, name: f.region.name, slug: f.region.slug }
     : { id: null, name: f.sigungu ?? f.sido ?? '전국', slug: null }
+  // 번역이 없는 축제는 한국어 원문으로 — 부분 번역 상태에서도 목록이 깨지지 않게
+  const tr = lang === 'ko' ? null : f.translations.find((t) => t.langCode === lang)
   return {
     id: f.id,
-    name: f.name,
-    summary: f.summary,
+    name: tr?.name ?? f.name,
+    nameKo: f.name, // 현지 안내판·검색용으로 원문도 함께
+    lang: tr ? lang : 'ko',
+    summary: tr?.summary ?? f.summary,
+    placeName: tr?.placeName ?? null,
     address: f.address,
     lat: f.lat,
     lng: f.lng,
@@ -77,6 +90,7 @@ festivalsRouter.get(
     const from = parseDateParam(req.query.from, 'from')
     const to = parseDateParam(req.query.to, 'to')
     const includeEnded = req.query.includeEnded === '1' || req.query.includeEnded === 'true'
+    const lang = parseLang(req.query.lang)
     const today = todayKst()
 
     const where: Prisma.FestivalWhereInput = {
@@ -98,7 +112,7 @@ festivalsRouter.get(
     })
     const last = items.length === limit ? items[items.length - 1] : undefined
     ok(res, {
-      items: items.map((f) => toCard(f, today)),
+      items: items.map((f) => toCard(f, today, lang)),
       nextCursor: last ? `${last.startDate.toISOString().slice(0, 10)}_${last.id}` : null,
     })
   }),
@@ -168,6 +182,7 @@ festivalsRouter.get(
   '/festivals/:festivalId',
   h(async (req, res) => {
     const id = parseId(req.params.festivalId, 'festivalId')
+    const lang = parseLang(req.query.lang)
     const festival = await prisma.festival.findUnique({ where: { id }, select: festivalSelect })
     if (!festival) throw Errors.notFound('축제')
 
@@ -184,6 +199,6 @@ festivalsRouter.get(
       nearbySpots = rows.map((r) => ({ id: r.id, name: r.name, category: r.category, distanceM: Math.round(r.distance_m) }))
     }
 
-    ok(res, { ...toCard(festival, todayKst()), nearbySpots })
+    ok(res, { ...toCard(festival, todayKst(), lang), nearbySpots })
   }),
 )

@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { apiGet, type Festival } from '../api'
 import { staticFestivals } from '../staticData'
-import { useT } from '../i18n'
+import { useLang, useT } from '../i18n'
 
 type NearbySpot = { id: string; name: string; category: string; distanceM: number }
 type FestivalDetail = Festival & { nearbySpots?: NearbySpot[] }
@@ -12,6 +12,7 @@ type FestivalDetail = Festival & { nearbySpots?: NearbySpot[] }
 // API가 없거나 느리면 베이크 데이터로 기본 정보만 보여준다(주변 관광지는 서버 계산이라 생략).
 export default function FestivalDetailPage() {
   const t = useT()
+  const { lang } = useLang()
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
   const [festival, setFestival] = useState<FestivalDetail | null>(null)
@@ -20,13 +21,13 @@ export default function FestivalDetailPage() {
   useEffect(() => {
     if (!id) return
     setState('loading')
-    apiGet<FestivalDetail>(`/festivals/${id}`)
+    apiGet<FestivalDetail>(`/festivals/${id}`, lang)
       .then((d) => {
         setFestival(d)
         setState('idle')
       })
       .catch(() =>
-        staticFestivals(500)
+        staticFestivals(500, lang)
           .then((all) => {
             const hit = all.find((f) => String(f.id) === id)
             if (!hit) {
@@ -38,7 +39,7 @@ export default function FestivalDetailPage() {
           })
           .catch(() => setState('notfound')),
       )
-  }, [id])
+  }, [id, lang])
 
   const fmt = (d: string) => d.replace(/-/g, '.').slice(2) // 2026-08-22 → 26.08.22
 
@@ -86,11 +87,14 @@ export default function FestivalDetailPage() {
               {festival.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
             </span>
             <span className="text-[14px] font-semibold text-gray-500">
-              {[festival.sido, festival.sigungu].filter(Boolean).join(' ') || festival.region.name}
+              {festival.placeName ?? ([festival.sido, festival.sigungu].filter(Boolean).join(' ') || festival.region.name)}
             </span>
           </div>
 
-          <h1 className="text-[26px] md:text-[32px] font-black leading-tight mb-4 text-green">{festival.name}</h1>
+          <h1 className="text-[26px] md:text-[32px] font-black leading-tight mb-1 text-green">{festival.name}</h1>
+          {festival.nameKo && festival.nameKo !== festival.name && (
+            <p className="text-[14px] text-gray-400 mb-4">{festival.nameKo}</p>
+          )}
 
           {festival.summary && <p className="text-[15px] text-gray-600 leading-relaxed mb-6">{festival.summary}</p>}
 

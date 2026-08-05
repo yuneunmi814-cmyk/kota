@@ -16,7 +16,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/01/4060301_image2_1.png",
    "tel": "02-766-7848",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "PAINTERS: Comedy Art Performance",
+     "summary": "Non-verbal show where artists paint giant artworks live on stage.",
+     "placeName": "Jung-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "ペインターズ（PAINTERS）",
+     "summary": "舞台上で巨大な絵を描き上げるノンバーバル・パフォーマンス。",
+     "placeName": "ソウル 中区"
+    },
+    {
+     "langCode": "th",
+     "name": "เพนเทอร์ส (PAINTERS) การแสดงศิลปะ",
+     "summary": "การแสดงไร้บทพูด วาดภาพขนาดใหญ่สดบนเวที",
+     "placeName": "จุงกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "stdfest:6280000-2025년인천도시역사관어린이특별전-20251209",
@@ -33,7 +53,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2786391",
@@ -50,7 +71,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/12/3518612_image2_1.jpeg",
    "tel": "051-610-6518",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gwangalli M Drone Light Show",
+     "summary": "Weekend drone show over Gwangalli Beach and Gwangan Bridge.",
+     "placeName": "Suyeong-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "広安里（クァンアンリ）M ドローンライトショー",
+     "summary": "広安里ビーチと広安大橋を舞台にした週末のドローンショー。",
+     "placeName": "釜山 水営区"
+    },
+    {
+     "langCode": "th",
+     "name": "โดรนไลต์โชว์ ควังอันลี M",
+     "summary": "โชว์โดรนสุดสัปดาห์เหนือหาดควังอันลีและสะพานควังอัน",
+     "placeName": "ซูยองกู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3473295",
@@ -67,7 +108,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/09/4046009_image2_1.png",
    "tel": "02-2153-0310, 0311 (12:00~13:00 점심시간)",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "DDP Architecture Tour",
+     "summary": "Guided tour of Dongdaemun Design Plaza, Zaha Hadid's landmark.",
+     "placeName": "Jung-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "DDP 建築ツアー",
+     "summary": "ザハ・ハディド設計の東大門デザインプラザを巡るガイドツアー。",
+     "placeName": "ソウル 中区"
+    },
+    {
+     "langCode": "th",
+     "name": "ทัวร์สถาปัตยกรรม DDP",
+     "summary": "ทัวร์ชมทงแดมุนดีไซน์พลาซา ผลงานของซาฮา ฮาดิด",
+     "placeName": "จุงกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4060434",
@@ -84,7 +145,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/35/4060435_image2_1.jpg",
    "tel": "02-953-0515",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Jinyeon: Korean Court Music Concert",
+     "summary": "Traditional Korean court music and dance performance.",
+     "placeName": "Jongno-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "国楽公演「進宴（チニョン）」",
+     "summary": "韓国伝統の宮中音楽と舞踊の公演。",
+     "placeName": "ソウル 鍾路区"
+    },
+    {
+     "langCode": "th",
+     "name": "การแสดงดนตรีราชสำนัก จินยอน",
+     "summary": "การแสดงดนตรีและนาฏศิลป์ราชสำนักเกาหลี",
+     "placeName": "ชงโนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:292961",
@@ -101,7 +182,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/4039379_image2_1.jpg",
    "tel": "02-6242-7402",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Royal Guard Changing Ceremony, Gyeongbokgung",
+     "summary": "Daily changing of the royal guards in Joseon costume.",
+     "placeName": "Jung-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "王宮守門将 交代儀式（景福宮）",
+     "summary": "朝鮮王朝の衣装をまとった守門将の交代を毎日再現。",
+     "placeName": "ソウル 中区"
+    },
+    {
+     "langCode": "th",
+     "name": "พิธีเปลี่ยนเวรทหารรักษาพระราชวัง",
+     "summary": "พิธีเปลี่ยนเวรทหารในชุดสมัยโชซอน จัดทุกวัน",
+     "placeName": "จุงกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2809535",
@@ -118,7 +219,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/57/4001657_image2_1.jpg",
    "tel": "행사장 02-319-1220운영사 02-737-6444",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Namsan Beacon Fire Ceremony",
+     "summary": "Reenactment of the signal-fire ritual once used to warn the capital.",
+     "placeName": "Jongno-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "南山（ナムサン）烽火儀式",
+     "summary": "都に危急を知らせた烽火（のろし）の儀式を再現。",
+     "placeName": "ソウル 鍾路区"
+    },
+    {
+     "langCode": "th",
+     "name": "พิธีจุดไฟสัญญาณนัมซาน",
+     "summary": "จำลองพิธีจุดไฟสัญญาณเตือนภัยสมัยโบราณ",
+     "placeName": "ชงโนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3107059",
@@ -135,7 +256,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/99/4001599_image2_1.jpg",
    "tel": "02-3789-7402",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Sungnyemun Gate Guard Ceremony 2026",
+     "summary": "Reenactment of the Joseon-era guard ritual at Seoul's Great South Gate.",
+     "placeName": "Jung-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "崇礼門（スンネムン）守衛儀式 2026",
+     "summary": "朝鮮王朝時代の門番の儀式を再現。",
+     "placeName": "ソウル 中区"
+    },
+    {
+     "langCode": "th",
+     "name": "พิธียามรักษาประตูซุงเนมุน 2026",
+     "summary": "จำลองพิธียามรักษาประตูสมัยราชวงศ์โชซอน",
+     "placeName": "จุงกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5680000-당진댄스페스티벌-20260101",
@@ -152,7 +293,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5680000-당진면천읍성축제-20260101",
@@ -169,7 +311,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2433596",
@@ -186,7 +329,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/76/4029576_image2_1.jpg",
    "tel": "032-743-0468",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Royal Family's Walk",
+     "summary": "Costumed royal procession reenactment.",
+     "placeName": "Yeongjong, Incheon"
+    },
+    {
+     "langCode": "ja",
+     "name": "王家の散歩",
+     "summary": "王族の行列を再現するパレード。",
+     "placeName": "仁川 永宗"
+    },
+    {
+     "langCode": "th",
+     "name": "ขบวนเสด็จราชวงศ์",
+     "summary": "จำลองขบวนเสด็จของราชวงศ์",
+     "placeName": "ยองจง อินชอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4067214",
@@ -203,7 +366,27 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4067313_image2_1.jpg",
    "tel": "070-4337-5058",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Year of Island Tourism 2026, Yeosu",
+     "summary": "Year-long island tourism campaign across Yeosu's archipelago.",
+     "placeName": "Yeosu"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 島訪問の年（麗水）",
+     "summary": "麗水（ヨス）の島々を巡る通年の観光キャンペーン。",
+     "placeName": "麗水（ヨス）"
+    },
+    {
+     "langCode": "th",
+     "name": "ปีแห่งการเที่ยวเกาะ 2026 ยอซู",
+     "summary": "แคมเปญท่องเที่ยวหมู่เกาะยอซูตลอดทั้งปี",
+     "placeName": "ยอซู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3113265",
@@ -220,7 +403,8 @@
    "endDate": "2026-11-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4054469_image2_1.jpg",
    "tel": "031-687-0548",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3488655",
@@ -237,7 +421,8 @@
    "endDate": "2026-12-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/85/4039885_image2_1.jpg",
    "tel": "062-412-1197",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3488421",
@@ -254,7 +439,8 @@
    "endDate": "2026-12-26",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/15/4093315_image2_1.jpg",
    "tel": "031-870-9110",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4062064",
@@ -271,7 +457,27 @@
    "endDate": "2026-08-17",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/26/4062226_image2_1.jpg",
    "tel": "054-705-5501",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Pause: Empty, Stay, Refill",
+     "summary": "Slow-travel art program in the old capital of Gyeongju.",
+     "placeName": "Gyeongju"
+    },
+    {
+     "langCode": "ja",
+     "name": "休符：空にして、留まり、満たす",
+     "summary": "古都・慶州（キョンジュ）でのスローな滞在型アートプログラム。",
+     "placeName": "慶州（キョンジュ）"
+    },
+    {
+     "langCode": "th",
+     "name": "พัก: ว่าง อยู่ เติม",
+     "summary": "โปรแกรมศิลปะพักผ่อนในเมืองเก่าคยองจู",
+     "placeName": "คยองจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3492276",
@@ -288,7 +494,8 @@
    "endDate": "2026-11-29",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4055582_image2_1.png",
    "tel": "032-575-2526, 070-5001-0265",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3377038",
@@ -305,7 +512,8 @@
    "endDate": "2026-11-12",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4054090_image2_1.jpg",
    "tel": "010-8441-2371",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2865136",
@@ -322,7 +530,8 @@
    "endDate": "2026-11-07",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/01/4067301_image2_1.jpg",
    "tel": "062-413-1274",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3478890",
@@ -339,7 +548,8 @@
    "endDate": "2026-11-07",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/37/4040737_image2_1.jpg",
    "tel": "062-413-2535",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:293030",
@@ -356,7 +566,8 @@
    "endDate": "2026-11-29",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4039532_image2_1.jpg",
    "tel": "031-678-2518",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2987489",
@@ -373,7 +584,27 @@
    "endDate": "2026-10-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/97/4054497_image2_1.jpg",
    "tel": "061-830-5902",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Goheung Nokdong Port Drone Show 2026",
+     "summary": "Drone light show over Nokdong Port.",
+     "placeName": "Goheung, Jeollanam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 高興（コフン）鹿洞港 ドローンショー",
+     "summary": "鹿洞港の夜空を彩るドローンライトショー。",
+     "placeName": "全羅南道 高興"
+    },
+    {
+     "langCode": "th",
+     "name": "โดรนโชว์ท่าเรือนกดง โคฮึง 2026",
+     "summary": "โชว์โดรนเหนือท่าเรือนกดง",
+     "placeName": "โคฮึง ชอลลาใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5680000-당진삽교호드론라이트쇼-20260404",
@@ -390,7 +621,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3512205",
@@ -407,7 +639,27 @@
    "endDate": "2026-10-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/17/4044417_image2_1.jpg",
    "tel": "064-760-2572",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seogwipo Old Town Culture Festival 2026",
+     "summary": "Street culture festival in Seogwipo's historic downtown.",
+     "placeName": "Seogwipo, Jeju"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 西帰浦（ソギポ）旧都心 文化フェスティバル",
+     "summary": "西帰浦の旧市街で開かれるストリート文化祭。",
+     "placeName": "済州 西帰浦"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลวัฒนธรรมย่านเมืองเก่าซอกวีโพ 2026",
+     "summary": "เทศกาลวัฒนธรรมริมถนนในย่านเมืองเก่าซอกวีโพ",
+     "placeName": "ซอกวีโพ เชจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3497454",
@@ -424,7 +676,8 @@
    "endDate": "2026-10-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4056513_image2_1.jpg",
    "tel": "02-737-6444",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2547013",
@@ -441,7 +694,27 @@
    "endDate": "2026-10-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/58/4067258_image2_1.JPG",
    "tel": "- 063-236-1577 - 010-4348-3130",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Jeonju Hanok Village Traditional Parade",
+     "summary": "Street parade of traditional Korean performing arts in the hanok village.",
+     "placeName": "Jeonju"
+    },
+    {
+     "langCode": "ja",
+     "name": "全州韓屋村 伝統演戯パレード",
+     "summary": "韓屋村を練り歩く韓国伝統芸能のストリートパレード。",
+     "placeName": "全州（チョンジュ）"
+    },
+    {
+     "langCode": "th",
+     "name": "ขบวนพาเหรดศิลปะพื้นบ้าน หมู่บ้านฮันอกชอนจู",
+     "summary": "ขบวนพาเหรดศิลปะการแสดงพื้นบ้านในหมู่บ้านฮันอก",
+     "placeName": "ชอนจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4058556",
@@ -458,7 +731,8 @@
    "endDate": "2026-12-15",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4058721_image2_1.png",
    "tel": "031-259-4724",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3111722",
@@ -475,7 +749,8 @@
    "endDate": "2026-11-15",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/49/4058449_image2_1.png",
    "tel": "02-6953-9239",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2434545",
@@ -492,7 +767,8 @@
    "endDate": "2026-10-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/4051822_image2_1.png",
    "tel": "064-760-2654",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2766000",
@@ -509,7 +785,27 @@
    "endDate": "2026-10-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/09/4059609_image2_1.png",
    "tel": "033-749-4860",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Naora Show",
+     "summary": "Outdoor performance program in Wonju.",
+     "placeName": "Wonju, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "ナオラショー",
+     "summary": "原州（ウォンジュ）で開かれる野外パフォーマンス。",
+     "placeName": "江原 原州"
+    },
+    {
+     "langCode": "th",
+     "name": "นาโอราโชว์",
+     "summary": "การแสดงกลางแจ้งในเมืองวอนจู",
+     "placeName": "วอนจู คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4062805",
@@ -526,7 +822,27 @@
    "endDate": "2026-12-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/07/4063007_image2_1.jpg",
    "tel": "043-299-9314",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Goesan Space City: Star Explorers",
+     "summary": "Stargazing and space-science program in rural Goesan.",
+     "placeName": "Goesan, Chungcheongbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "忠北 槐山（クェサン）宇宙特別市：星々探査隊",
+     "summary": "槐山の夜空を舞台にした星空観察・宇宙科学プログラム。",
+     "placeName": "忠清北道 槐山"
+    },
+    {
+     "langCode": "th",
+     "name": "เมืองอวกาศเควซัน: นักสำรวจดวงดาว",
+     "summary": "โปรแกรมดูดาวและวิทยาศาสตร์อวกาศในชนบทเควซัน",
+     "placeName": "เควซัน ชุงชองเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2720203",
@@ -543,7 +859,8 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/74/4060474_image2_1.png",
    "tel": "02-2088-7218",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3116066",
@@ -560,7 +877,27 @@
    "endDate": "2026-09-19",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4060146_image2_1.jpg",
    "tel": "02-6953-9239",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Hangang River Night View Tour",
+     "summary": "Evening tour of Seoul's riverside night scenery.",
+     "placeName": "Yeongdeungpo-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "漢江（ハンガン）夜景ツアー",
+     "summary": "ソウルの川辺の夜景を巡るナイトツアー。",
+     "placeName": "ソウル 永登浦区"
+    },
+    {
+     "langCode": "th",
+     "name": "ทัวร์ชมวิวกลางคืนแม่น้ำฮัน",
+     "summary": "ทัวร์ชมทิวทัศน์ยามค่ำริมแม่น้ำฮันในโซล",
+     "placeName": "ยองดึงโพกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2657619",
@@ -577,7 +914,27 @@
    "endDate": "2026-11-01",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/63/4081263_image2_1.jpg",
    "tel": "031-290-3600",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Hwaseong Haenggung Palace Night Opening",
+     "summary": "UNESCO-listed palace opens after dark with lighting and performances.",
+     "placeName": "Suwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "華城行宮（ファソンヘングン）夜間開場",
+     "summary": "世界遺産の行宮を夜間開放。ライトアップと公演。",
+     "placeName": "水原（スウォン）"
+    },
+    {
+     "langCode": "th",
+     "name": "เปิดพระราชวังฮวาซองแฮงกุงยามค่ำ",
+     "summary": "พระราชวังมรดกโลกเปิดยามค่ำ พร้อมไฟประดับและการแสดง",
+     "placeName": "ซูวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2598331",
@@ -594,7 +951,8 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/68/4059668_image2_1.jpg",
    "tel": "02-2133-2543",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2774275",
@@ -611,7 +969,27 @@
    "endDate": "2026-09-19",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/45/4055545_image2_1.jpg",
    "tel": "061-270-8431",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Mokpo Maritime W Show 2026",
+     "summary": "Sea-stage light and fountain show in Mokpo harbour.",
+     "placeName": "Mokpo, Jeollanam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 木浦（モクポ）海上Wショー",
+     "summary": "木浦港の海上ステージで繰り広げる噴水・光のショー。",
+     "placeName": "全羅南道 木浦"
+    },
+    {
+     "langCode": "th",
+     "name": "โชว์กลางทะเลมกโพ W 2026",
+     "summary": "โชว์แสงและน้ำพุบนเวทีกลางทะเลท่าเรือมกโพ",
+     "placeName": "มกโพ ชอลลาใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5130000-2026경산갓바위소원성취축제-20260601",
@@ -628,7 +1006,8 @@
    "endDate": "2026-09-30",
    "imageUrl": null,
    "tel": "053-819-0332",
-   "homepage": "https://gsctf.or.kr/"
+   "homepage": "https://gsctf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "tourapi:4082595",
@@ -645,7 +1024,8 @@
    "endDate": "2026-12-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/70/4082670_image2_1.png",
    "tel": "02-723-0300",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4181000-2026춘천연극제-20260611",
@@ -662,7 +1042,8 @@
    "endDate": "2026-12-19",
    "imageUrl": null,
    "tel": "033-241-4345",
-   "homepage": "http://citf.or.kr/"
+   "homepage": "http://citf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5020000-포항흥해국가유산야행-20260612",
@@ -679,7 +1060,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "054-289-7855",
-   "homepage": "http://www.phcf.or.kr"
+   "homepage": "http://www.phcf.or.kr",
+   "translations": []
   },
   {
    "externalId": "tourapi:3495437",
@@ -696,7 +1078,8 @@
    "endDate": "2026-10-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/93/4080593_image2_1.jpg",
    "tel": "033-253-7111",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2550263",
@@ -713,7 +1096,27 @@
    "endDate": "2026-08-17",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/76/4078876_image2_1.JPG",
    "tel": "031-775-1835",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Semiwon Lotus Festival",
+     "summary": "Lotus garden festival where the Han River's two branches meet.",
+     "placeName": "Yangpyeong, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "洗美苑（セミウォン）蓮の花文化祭",
+     "summary": "南漢江と北漢江が出会う場所の蓮園で開かれる祭り。",
+     "placeName": "京畿 楊平（ヤンピョン）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลดอกบัวเซมีวอน",
+     "summary": "เทศกาลสวนดอกบัว ณ จุดบรรจบของแม่น้ำฮันสองสาย",
+     "placeName": "ยางพยอง คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4086427",
@@ -730,7 +1133,27 @@
    "endDate": "2026-08-17",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4086431_image2_1.jpg",
    "tel": "033-255-0920",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Summer Water Festival",
+     "summary": "Lakeside water festival in the city of Soyang Lake.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "春川（チュンチョン）サマーウォーターフェスティバル",
+     "summary": "昭陽湖の街で開かれる湖畔の水祭り。",
+     "placeName": "江原 春川（チュンチョン）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลน้ำฤดูร้อนชุนชอน",
+     "summary": "เทศกาลเล่นน้ำริมทะเลสาบในเมืองชุนชอน",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4094595",
@@ -747,7 +1170,8 @@
    "endDate": "2026-09-27",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/83/4094783_image2_1.png",
    "tel": "02-580-1655",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:142228",
@@ -764,7 +1188,27 @@
    "endDate": "2026-08-17",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/3493222_image2_1.JPG",
    "tel": "010-3371-2000",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Taebaek Sunflower Festival",
+     "summary": "Highland sunflower fields in full bloom at 1,000m altitude.",
+     "placeName": "Taebaek, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "太白（テベク）ひまわり祭り",
+     "summary": "標高1,000mの高原に広がるひまわり畑。",
+     "placeName": "江原 太白（テベク）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลทานตะวันแทแบ็ก",
+     "summary": "ทุ่งทานตะวันบานสะพรั่งบนที่ราบสูง 1,000 เมตร",
+     "placeName": "แทแบ็ก คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:606549",
@@ -781,7 +1225,27 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/56/4075256_image2_1.jpg",
    "tel": "033-375-6372",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Donggang International Photo Festival (24th)",
+     "summary": "Korea's leading photography festival on the Donggang River.",
+     "placeName": "Yeongwol, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "第24回 東江（トンガン）国際写真祭",
+     "summary": "東江のほとりで開かれる韓国有数の写真祭。",
+     "placeName": "江原 寧越（ヨンウォル）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลภาพถ่ายนานาชาติทงคัง ครั้งที่ 24",
+     "summary": "เทศกาลภาพถ่ายชั้นนำของเกาหลี ริมแม่น้ำทงคัง",
+     "placeName": "ยองวอล คังวอน"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5885000-물놀이페스타-20260717",
@@ -798,7 +1262,8 @@
    "endDate": "2026-08-17",
    "imageUrl": null,
    "tel": "061-320-2247",
-   "homepage": "https://www.hpftf.or.kr/contentsView.do?pageId=www167"
+   "homepage": "https://www.hpftf.or.kr/contentsView.do?pageId=www167",
+   "translations": []
   },
   {
    "externalId": "tourapi:3509884",
@@ -815,7 +1280,27 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/04/4079504_image2_1.png",
    "tel": "02-6941-0645",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seoul Summer Beach",
+     "summary": "Pop-up urban beach in central Seoul.",
+     "placeName": "Jongno-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "ソウル・サマービーチ",
+     "summary": "都心に現れる期間限定のアーバンビーチ。",
+     "placeName": "ソウル 鍾路区"
+    },
+    {
+     "langCode": "th",
+     "name": "โซลซัมเมอร์บีช",
+     "summary": "ชายหาดจำลองกลางกรุงโซล เปิดเฉพาะฤดูร้อน",
+     "placeName": "ชงโนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2728613",
@@ -832,7 +1317,27 @@
    "endDate": "2026-08-17",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/60/4081660_image2_1.png",
    "tel": "1670-1188",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gwimong at Jeju Shinhwa World",
+     "summary": "Korean folklore-themed night attraction on Jeju Island.",
+     "placeName": "Seogwipo, Jeju"
+    },
+    {
+     "langCode": "ja",
+     "name": "鬼夢（グィモン）済州神話ワールド",
+     "summary": "韓国の伝承をテーマにした済州島のナイトアトラクション。",
+     "placeName": "済州 西帰浦"
+    },
+    {
+     "langCode": "th",
+     "name": "กวีมง ณ เชจูชินฮวาเวิลด์",
+     "summary": "แหล่งท่องเที่ยวยามค่ำธีมตำนานพื้นบ้านเกาหลี บนเกาะเชจู",
+     "placeName": "ซอกวีโพ เชจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:506534",
@@ -849,7 +1354,27 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/3534979_image2_1.jpg",
    "tel": "041-930-0891",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Boryeong Mud Festival",
+     "summary": "Korea's best-known summer festival — mud baths, slides and beach parties.",
+     "placeName": "Boryeong, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "保寧（ポリョン）マッド（泥）フェスティバル",
+     "summary": "韓国を代表する夏祭り。泥風呂・泥すべり・ビーチパーティー。",
+     "placeName": "忠清南道 保寧"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลโคลนโพรยอง",
+     "summary": "เทศกาลฤดูร้อนชื่อดังที่สุดของเกาหลี เล่นโคลน สไลเดอร์ และปาร์ตี้ริมหาด",
+     "placeName": "โพรยอง ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:4791000-2026년변산비치펍시즌2-20260724",
@@ -866,7 +1391,8 @@
    "endDate": "2026-08-17",
    "imageUrl": null,
    "tel": "063-580-4395",
-   "homepage": "www.buan.go.kr/tour/index.buan"
+   "homepage": "www.buan.go.kr/tour/index.buan",
+   "translations": []
   },
   {
    "externalId": "tourapi:2499947",
@@ -883,7 +1409,27 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/88/4087988_image2_1.JPG",
    "tel": "02-2038-4901",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seongbuk Culture Vacance",
+     "summary": "Neighbourhood summer culture program in Seongbuk.",
+     "placeName": "Seongbuk-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "城北（ソンブク）文化バカンス",
+     "summary": "城北区の夏の地域文化プログラム。",
+     "placeName": "ソウル 城北区"
+    },
+    {
+     "langCode": "th",
+     "name": "ซองบุกคัลเจอร์วาคานซ์",
+     "summary": "โปรแกรมวัฒนธรรมฤดูร้อนของย่านซองบุก",
+     "placeName": "ซองบุกกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2372235",
@@ -900,7 +1446,8 @@
    "endDate": "2026-08-15",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/78/4084478_image2_1.jpg",
    "tel": "055-835-6436",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4090201",
@@ -917,7 +1464,8 @@
    "endDate": "2026-08-29",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/02/4090202_image2_1.jpg",
    "tel": "052-255-1823",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4089090",
@@ -934,7 +1482,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/92/4089092_image2_1.jpg",
    "tel": "062-570-7809",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5470000-거창국제연극제-20260731",
@@ -951,7 +1500,8 @@
    "endDate": "2026-08-09",
    "imageUrl": null,
    "tel": "055-940-8455",
-   "homepage": "https://www.kift.or.kr/"
+   "homepage": "https://www.kift.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:4181000-춘천인형극제-20260731",
@@ -968,7 +1518,8 @@
    "endDate": "2026-12-26",
    "imageUrl": null,
    "tel": "033-242-8452",
-   "homepage": "www.cocobau.com"
+   "homepage": "www.cocobau.com",
+   "translations": []
   },
   {
    "externalId": "tourapi:2828431",
@@ -985,7 +1536,27 @@
    "endDate": "2026-08-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/50/4089550_image2_1.jpg",
    "tel": "02-120",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Hangang Festival",
+     "summary": "Summer festival along the Han River with water play and night markets.",
+     "placeName": "Mapo-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "漢江（ハンガン）フェスティバル",
+     "summary": "水遊びやナイトマーケットが並ぶ漢江の夏祭り。",
+     "placeName": "ソウル 麻浦区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลแม่น้ำฮัน",
+     "summary": "เทศกาลฤดูร้อนริมแม่น้ำฮัน มีกิจกรรมทางน้ำและตลาดกลางคืน",
+     "placeName": "มาโพกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3509748",
@@ -1002,7 +1573,27 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/17/4090217_image2_1.jpg",
    "tel": "054-740-3950",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "EX HORROR Season 6: Silla X Zombie",
+     "summary": "Horror night event set in the ancient Silla capital.",
+     "placeName": "Gyeongju"
+    },
+    {
+     "langCode": "ja",
+     "name": "EX HORROR シーズン6：新羅×ゾンビ",
+     "summary": "古都・慶州を舞台にしたホラーナイトイベント。",
+     "placeName": "慶州（キョンジュ）"
+    },
+    {
+     "langCode": "th",
+     "name": "EX HORROR ซีซัน 6: ชิลลา X ซอมบี้",
+     "summary": "อีเวนต์สยองขวัญยามค่ำ ในเมืองโบราณคยองจู",
+     "placeName": "คยองจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2539802",
@@ -1019,7 +1610,27 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/16/4075616_image2_1.jpg",
    "tel": "033-439-5800",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Hongcheon River Starlight Music & Beer Festival",
+     "summary": "Riverside beer festival with live music under the stars.",
+     "placeName": "Hongcheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "洪川江 星あかり音楽ビール祭り",
+     "summary": "星空の下、川辺でライブ音楽とビールを楽しむ祭り。",
+     "placeName": "江原 洪川（ホンチョン）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลเบียร์และดนตรีใต้แสงดาว ริมแม่น้ำฮงชอน",
+     "summary": "เทศกาลเบียร์ริมแม่น้ำ พร้อมดนตรีสดใต้แสงดาว",
+     "placeName": "ฮงชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2644679",
@@ -1036,7 +1647,27 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/92/4077792_image2_1.jpg",
    "tel": "02-2231-2011",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Busan International Buddhism Expo 2026",
+     "summary": "Buddhist culture expo — temple food, crafts and meditation programs.",
+     "placeName": "Haeundae-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 釜山国際仏教博覧会",
+     "summary": "精進料理・工芸・瞑想プログラムなど仏教文化の博覧会。",
+     "placeName": "釜山 海雲台区"
+    },
+    {
+     "langCode": "th",
+     "name": "งานแสดงพุทธศาสนานานาชาติปูซาน 2026",
+     "summary": "งานแสดงวัฒนธรรมพุทธ อาหารวัด งานฝีมือ และการทำสมาธิ",
+     "placeName": "แฮอุนแดกู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2728529",
@@ -1053,7 +1684,27 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4081290_image2_1.jpg",
    "tel": "02-2058-1070",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "7th Island Day",
+     "summary": "National Island Day celebration hosted in Yeosu.",
+     "placeName": "Yeosu, Jeollanam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "第7回 島の日",
+     "summary": "麗水（ヨス）で開かれる国の記念日「島の日」の祝祭。",
+     "placeName": "全羅南道 麗水"
+    },
+    {
+     "langCode": "th",
+     "name": "วันเกาะแห่งชาติ ครั้งที่ 7",
+     "summary": "งานฉลองวันเกาะแห่งชาติ จัดที่ยอซู",
+     "placeName": "ยอซู ชอลลาใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2557842",
@@ -1070,7 +1721,27 @@
    "endDate": "2026-08-08",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/4086143_image2_1.jpg",
    "tel": "070-8870-6870",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Jeonju Gamaek Beer Festival",
+     "summary": "Beer-and-snack festival born from Jeonju's corner-store drinking culture.",
+     "placeName": "Jeonju"
+    },
+    {
+     "langCode": "ja",
+     "name": "全州（チョンジュ）カメクビール祭り",
+     "summary": "街の酒屋で飲む全州独特の文化から生まれたビール祭り。",
+     "placeName": "全州（チョンジュ）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลเบียร์คาแมค ชอนจู",
+     "summary": "เทศกาลเบียร์จากวัฒนธรรมดื่มหน้าร้านชำของชอนจู",
+     "placeName": "ชอนจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:142193",
@@ -1087,7 +1758,27 @@
    "endDate": "2026-08-23",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/4087022_image2_1.jpg",
    "tel": "070-7092-8172",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seoul Fringe Festival 2026",
+     "summary": "Independent arts festival — theatre, music and street performance.",
+     "placeName": "Mapo-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "ソウル・フリンジ・フェスティバル 2026",
+     "summary": "演劇・音楽・ストリートパフォーマンスの独立系アートフェス。",
+     "placeName": "ソウル 麻浦区"
+    },
+    {
+     "langCode": "th",
+     "name": "โซลฟรินจ์เฟสติวัล 2026",
+     "summary": "เทศกาลศิลปะอิสระ ละคร ดนตรี และการแสดงข้างถนน",
+     "placeName": "มาโพกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4091116",
@@ -1104,7 +1795,8 @@
    "endDate": "2026-08-22",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/25/4091125_image2_1.jpg",
    "tel": "070-4266-7078",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:142080",
@@ -1121,7 +1813,27 @@
    "endDate": "2026-08-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/40/4085840_image2_1.jpg",
    "tel": "051-713-5000",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Busan Sea Festival",
+     "summary": "Busan's flagship summer festival across its beaches.",
+     "placeName": "Saha-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "釜山（プサン）海祭り",
+     "summary": "釜山のビーチを舞台にした代表的な夏祭り。",
+     "placeName": "釜山 沙下区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลทะเลปูซาน",
+     "summary": "เทศกาลฤดูร้อนหลักของปูซาน จัดตามชายหาดต่างๆ",
+     "placeName": "ซาฮากู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4070865",
@@ -1138,7 +1850,27 @@
    "endDate": "2026-08-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/67/4070867_image2_1.JPG",
    "tel": "055-359-5790",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Miryang Super Festival",
+     "summary": "Summer music festival in Miryang.",
+     "placeName": "Miryang, Gyeongsangnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "密陽（ミリャン）スーパーフェスティバル",
+     "summary": "密陽で開かれる夏の音楽フェス。",
+     "placeName": "慶尚南道 密陽"
+    },
+    {
+     "langCode": "th",
+     "name": "มิลยางซูเปอร์เฟสติวัล",
+     "summary": "เทศกาลดนตรีฤดูร้อนในเมืองมิลยาง",
+     "placeName": "มิลยาง คยองซังใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5480000-고스트파크축제-20260807",
@@ -1155,7 +1887,8 @@
    "endDate": "2026-08-16",
    "imageUrl": null,
    "tel": "055-930-4697",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5310000-진주m2페스티벌-20260807",
@@ -1172,7 +1905,8 @@
    "endDate": "2026-08-08",
    "imageUrl": null,
    "tel": "055-795-3216",
-   "homepage": "http://www.jinjumusic.com/"
+   "homepage": "http://www.jinjumusic.com/",
+   "translations": []
   },
   {
    "externalId": "tourapi:2989846",
@@ -1189,7 +1923,27 @@
    "endDate": "2026-08-15",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/70/4089470_image2_1.JPG",
    "tel": "032-749-7330 / 032-822-1000",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Songdo Beach Festival",
+     "summary": "Beach festival at Songdo, Incheon.",
+     "placeName": "Yeonsu-gu, Incheon"
+    },
+    {
+     "langCode": "ja",
+     "name": "松島（ソンド）海辺祭り",
+     "summary": "仁川・松島のビーチで開かれる祭り。",
+     "placeName": "仁川 延寿区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลชายหาดซองโด",
+     "summary": "เทศกาลริมหาดซองโด เมืองอินชอน",
+     "placeName": "ยอนซูกู อินชอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3517184",
@@ -1206,7 +1960,27 @@
    "endDate": "2026-08-22",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4095469_image2_1.jpg",
    "tel": "02-120",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Cinema Under the Hangang Bridge",
+     "summary": "Free open-air cinema beneath a Han River bridge.",
+     "placeName": "Yeongdeungpo-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "漢江の橋の下の映画館",
+     "summary": "漢江の橋の下で開かれる無料の野外映画上映。",
+     "placeName": "ソウル 永登浦区"
+    },
+    {
+     "langCode": "th",
+     "name": "โรงหนังใต้สะพานแม่น้ำฮัน",
+     "summary": "ฉายหนังกลางแปลงฟรี ใต้สะพานข้ามแม่น้ำฮัน",
+     "placeName": "ยองดึงโพกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3497353",
@@ -1223,7 +1997,27 @@
    "endDate": "2026-08-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4092532_image2_1.jpg",
    "tel": "051-745-7288",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Busan Sea Library 2026",
+     "summary": "Read a book on the beach — outdoor library by the sea.",
+     "placeName": "Suyeong-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 釜山 海の図書館",
+     "summary": "ビーチで本が読める海辺の屋外図書館。",
+     "placeName": "釜山 水営区"
+    },
+    {
+     "langCode": "th",
+     "name": "ห้องสมุดริมทะเลปูซาน 2026",
+     "summary": "ห้องสมุดกลางแจ้งริมหาด อ่านหนังสือชมทะเล",
+     "placeName": "ซูยองกู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:507454",
@@ -1240,7 +2034,27 @@
    "endDate": "2026-08-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/08/4041308_image2_1.jpg",
    "tel": "055-640-5631",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Tongyeong Hansan Daecheop Festival",
+     "summary": "Reenactment of Admiral Yi Sun-sin's naval victory at Hansan Island.",
+     "placeName": "Tongyeong"
+    },
+    {
+     "langCode": "ja",
+     "name": "統営（トンヨン）閑山大捷祭り",
+     "summary": "李舜臣（イ・スンシン）将軍の閑山島海戦の勝利を再現。",
+     "placeName": "統営（トンヨン）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลฮันซันแดชอบ ทงยอง",
+     "summary": "จำลองชัยชนะทางเรือของแม่ทัพอี ซุนชิน ที่เกาะฮันซัน",
+     "placeName": "ทงยอง"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2736033",
@@ -1257,7 +2071,8 @@
    "endDate": "2026-08-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/55/4087155_image2_1.jpg",
    "tel": "070-8855-5058",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2541883",
@@ -1274,7 +2089,8 @@
    "endDate": "2026-08-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/3317777_image2_1.jpg",
    "tel": "033-823-3206",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3485078",
@@ -1291,7 +2107,8 @@
    "endDate": "2026-11-08",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/40/4055040_image2_1.jpg",
    "tel": "02-3011-7781",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2724153",
@@ -1308,7 +2125,8 @@
    "endDate": "2026-08-22",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4089203_image2_1.jpg",
    "tel": "063-453-2447",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1539730",
@@ -1325,7 +2143,8 @@
    "endDate": "2026-08-14",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/87/4090187_image2_1.jpg",
    "tel": "02-332-5545",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3383748",
@@ -1342,7 +2161,8 @@
    "endDate": "2026-08-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4089821_image2_1.jpg",
    "tel": "051-461-4297",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4093783",
@@ -1359,7 +2179,8 @@
    "endDate": "2026-08-15",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/02/4093802_image2_1.JPG",
    "tel": "041-634-8707",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5060000-2026김천포도축제-20260814",
@@ -1376,7 +2197,8 @@
    "endDate": "2026-08-16",
    "imageUrl": null,
    "tel": "054-421-2532",
-   "homepage": "www.gcpodo.com"
+   "homepage": "www.gcpodo.com",
+   "translations": []
   },
   {
    "externalId": "tourapi:1916616",
@@ -1393,7 +2215,27 @@
    "endDate": "2026-08-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/14/4095814_image2_1.jpg",
    "tel": "031-290-3562~5",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Suwon Heritage Night Tour",
+     "summary": "Night opening of Suwon's UNESCO fortress heritage sites.",
+     "placeName": "Suwon, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "水原（スウォン）国家遺産 夜行",
+     "summary": "世界遺産・水原華城の文化財を夜間open。",
+     "placeName": "京畿 水原"
+    },
+    {
+     "langCode": "th",
+     "name": "ทัวร์มรดกยามค่ำ ซูวอน",
+     "summary": "เปิดชมโบราณสถานป้อมฮวาซองยามค่ำคืน",
+     "placeName": "ซูวอน คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4087207",
@@ -1410,7 +2252,8 @@
    "endDate": "2026-08-23",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/91/4087291_image2_1.jpg",
    "tel": "054-776-5956",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1847202",
@@ -1427,7 +2270,8 @@
    "endDate": "2026-08-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/12/4089612_image2_1.JPG",
    "tel": "02-330-1410",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-힙한청주페스티벌in제조창-20260815",
@@ -1444,7 +2288,8 @@
    "endDate": "2026-08-16",
    "imageUrl": null,
    "tel": "043-201-2016",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3351451",
@@ -1461,7 +2306,8 @@
    "endDate": "2026-08-23",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/75/4059475_image2_1.jpg",
    "tel": "02-761-2512",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1840830",
@@ -1478,7 +2324,8 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/24/4093324_image2_1.jpg",
    "tel": "051-916-8828",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2846353",
@@ -1495,7 +2342,8 @@
    "endDate": "2026-08-23",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/68/4089268_image2_1.jpg",
    "tel": "054-730-5852",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-한여름밤의오싹호러페스티벌-20260821",
@@ -1512,7 +2360,8 @@
    "endDate": "2026-08-22",
    "imageUrl": null,
    "tel": "043-201-1793",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4600000-홍성남당항대하축제-20260821",
@@ -1529,7 +2378,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "041-630-1237",
-   "homepage": "https://www.hongseong.go.kr/tour/index.do"
+   "homepage": "https://www.hongseong.go.kr/tour/index.do",
+   "translations": []
   },
   {
    "externalId": "tourapi:1939183",
@@ -1546,7 +2396,8 @@
    "endDate": "2026-08-22",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4078831_image2_1.jpg",
    "tel": "053-755-5881",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:141268",
@@ -1563,7 +2414,27 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/78/2828778_image2_1.jpg",
    "tel": "041-950-4414",
-   "homepage": null
+   "homepage": null,
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seocheon Hongwon Port Gizzard Shad & Blue Crab Festival",
+     "summary": "Autumn seafood festival — wild-caught gizzard shad and blue crab straight off the boats.",
+     "placeName": "Seocheon, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "舒川（ソチョン）洪原港 天然コノシロ・ワタリガニ祭り",
+     "summary": "水揚げされたばかりの天然コノシロとワタリガニを味わう秋の海鮮祭り。",
+     "placeName": "忠清南道 舒川"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลปลาโคโนชิโระและปูม้า ท่าเรือฮงวอน ซอชอน",
+     "summary": "เทศกาลอาหารทะเลฤดูใบไม้ร่วง ปลาโคโนชิโระและปูม้าสดจากเรือ",
+     "placeName": "ซอชอน ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5370000-거제맥주축제-20260823",
@@ -1580,7 +2451,8 @@
    "endDate": "2026-08-24",
    "imageUrl": null,
    "tel": "055-639-8192",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3399432",
@@ -1597,7 +2469,8 @@
    "endDate": "2026-11-15",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/4073777_image2_1.jpg",
    "tel": "064-710-4300",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1073801",
@@ -1614,7 +2487,8 @@
    "endDate": "2026-08-29",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/15/4091815_image2_1.jpg",
    "tel": "054-680-6381",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:142191",
@@ -1631,7 +2505,8 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/99/4093999_image2_1.jpg",
    "tel": "043-745-8924",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3335616",
@@ -1648,7 +2523,8 @@
    "endDate": "2026-08-29",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/29/4092929_image2_1.jpg",
    "tel": "061-430-3357",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2651042",
@@ -1665,7 +2541,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/34/4055834_image2_1.jpg",
    "tel": "02-3011-7783",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3351268",
@@ -1682,7 +2559,8 @@
    "endDate": "2026-08-29",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4090921_image2_1.jpg",
    "tel": "02-3291-5506",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2853756",
@@ -1699,7 +2577,8 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/05/4078805_image2_1.jpg",
    "tel": "031-236-7103",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3302552",
@@ -1716,7 +2595,8 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4091431_image2_1.jpg",
    "tel": "041-950-4256",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1018971",
@@ -1733,7 +2613,8 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/54/4095354_image2_1.jpg",
    "tel": "033-482-9174",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4540000-2026강경국가유산야행-20260828",
@@ -1750,7 +2631,8 @@
    "endDate": "2026-08-29",
    "imageUrl": null,
    "tel": "041-746-5664",
-   "homepage": "https://www.nonsan.go.kr/ggfestival/"
+   "homepage": "https://www.nonsan.go.kr/ggfestival/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-국가유산미디어아트-20260828",
@@ -1767,7 +2649,8 @@
    "endDate": "2026-09-17",
    "imageUrl": null,
    "tel": "043-201-2436",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3050000-맥주축제-20260828",
@@ -1784,7 +2667,8 @@
    "endDate": "2026-08-29",
    "imageUrl": null,
    "tel": "02-3295-5566",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2991394",
@@ -1801,7 +2685,8 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/37/4069137_image2_1.jpg",
    "tel": "070-4705-2008",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2989981",
@@ -1818,7 +2703,8 @@
    "endDate": "2026-08-30",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/29/4094029_image2_1.jpg",
    "tel": "02-3477-2808",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4090802",
@@ -1835,7 +2721,8 @@
    "endDate": "2026-08-29",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/07/4090807_image2_1.jpg",
    "tel": "031-369-1787",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1953493",
@@ -1852,7 +2739,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/62/4095062_image2_1.JPG",
    "tel": "061-450-5473",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-원도심골목길축제-20260829",
@@ -1869,7 +2757,8 @@
    "endDate": "2026-08-30",
    "imageUrl": null,
    "tel": "043-201-2018",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-2026파크콘서트-20260901",
@@ -1886,7 +2775,8 @@
    "endDate": "2026-09-30",
    "imageUrl": null,
    "tel": "031-729-2973",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3150000-강서문화야행-20260901",
@@ -1903,7 +2793,8 @@
    "endDate": "2026-09-01",
    "imageUrl": null,
    "tel": "02-2600-5890",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2996478",
@@ -1920,7 +2811,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/10/4020710_image2_1.jpg",
    "tel": "041-521-3411041-521-3405",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:141234",
@@ -1937,7 +2829,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/34/4091734_image2_1.jpg",
    "tel": "043-830-3463",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3305165",
@@ -1954,7 +2847,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/80/4083180_image2_1.JPG",
    "tel": "043-201-3666",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2614763",
@@ -1971,7 +2865,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4091769_image2_1.jpg",
    "tel": "041-852-8063",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3486887",
@@ -1988,7 +2883,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4092590_image2_1.jpg",
    "tel": "054-979-6087",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4091713",
@@ -2005,7 +2901,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/19/4091719_image2_1.jpg",
    "tel": "054-955-0808",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:507635",
@@ -2022,7 +2919,8 @@
    "endDate": "2026-09-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/28/3523028_image2_1.jpg",
    "tel": "033-335-2323",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506523",
@@ -2039,7 +2937,8 @@
    "endDate": "2026-09-12",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/3520569_image2_1.jpg",
    "tel": "063-324-2440",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3250000-유라리건맥축제-20260904",
@@ -2056,7 +2955,8 @@
    "endDate": "2026-09-05",
    "imageUrl": null,
    "tel": "051-600-4085",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-2026년파주포크페스티벌-20260904",
@@ -2073,7 +2973,8 @@
    "endDate": "2026-09-04",
    "imageUrl": null,
    "tel": "031-950-8431",
-   "homepage": "https://www.pajucf.or.kr/main/main.php"
+   "homepage": "https://www.pajucf.or.kr/main/main.php",
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-사회복지페스티벌-20260904",
@@ -2090,7 +2991,8 @@
    "endDate": "2026-09-04",
    "imageUrl": null,
    "tel": "031-729-2842",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5230000-2026금당야행-20260904",
@@ -2107,7 +3009,8 @@
    "endDate": "2026-09-05",
    "imageUrl": null,
    "tel": "054-650-6031",
-   "homepage": "yctf.kr"
+   "homepage": "yctf.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:4840000-광양전어축제-20260904",
@@ -2124,7 +3027,8 @@
    "endDate": "2026-09-06",
    "imageUrl": null,
    "tel": "061-797-4264",
-   "homepage": "http://www.gwangyang.go.kr/tour_culture"
+   "homepage": "http://www.gwangyang.go.kr/tour_culture",
+   "translations": []
   },
   {
    "externalId": "tourapi:2843521",
@@ -2141,7 +3045,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4094932_image2_1.png",
    "tel": "041-339-8367",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1689321",
@@ -2158,7 +3063,8 @@
    "endDate": "2026-09-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4092213_image2_1.jpg",
    "tel": "041-534-2634",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-2026년파주포크페스티벌-20260905",
@@ -2175,7 +3081,8 @@
    "endDate": "2026-09-05",
    "imageUrl": null,
    "tel": "031-950-8431",
-   "homepage": "https://www.pajucf.or.kr/main/main.php"
+   "homepage": "https://www.pajucf.or.kr/main/main.php",
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-청주읍성큰잔치-20260905",
@@ -2192,7 +3099,8 @@
    "endDate": "2026-09-06",
    "imageUrl": null,
    "tel": "043-201-2013",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5370000-거제둔덕포도한우축제-20260905",
@@ -2209,7 +3117,8 @@
    "endDate": "2026-09-06",
    "imageUrl": null,
    "tel": "055-639-6611",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5530000-화성송산포도축제-20260905",
@@ -2226,7 +3135,8 @@
    "endDate": "2026-09-06",
    "imageUrl": null,
    "tel": "031-5189-6441",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:6290000-광주비엔날레-20260905",
@@ -2243,7 +3153,8 @@
    "endDate": "2026-11-15",
    "imageUrl": null,
    "tel": "062-613-3431",
-   "homepage": "https://www.gwangjubiennale.org/gb/index.do"
+   "homepage": "https://www.gwangjubiennale.org/gb/index.do",
+   "translations": []
   },
   {
    "externalId": "stdfest:3561000-아라뱃길카약축제-20260905",
@@ -2260,7 +3171,8 @@
    "endDate": "2026-09-05",
    "imageUrl": null,
    "tel": "032-560-5933",
-   "homepage": "http://www.seo.incheon.kr/"
+   "homepage": "http://www.seo.incheon.kr/",
+   "translations": []
   },
   {
    "externalId": "tourapi:4075091",
@@ -2277,7 +3189,8 @@
    "endDate": "2026-09-09",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/88/4075188_image2_1.jpg",
    "tel": "010-2751-1082",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4095402",
@@ -2294,7 +3207,8 @@
    "endDate": "2026-09-08",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/58/4095458_image2_1.jpg",
    "tel": "031-230-3268",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4093222",
@@ -2311,7 +3225,8 @@
    "endDate": "2026-09-10",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/30/4093830_image2_1.png",
    "tel": "054-480-6762",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2614198",
@@ -2328,7 +3243,8 @@
    "endDate": "2026-09-10",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4001646_image2_1.jpg",
    "tel": "062-611-2242",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:573459",
@@ -2345,7 +3261,8 @@
    "endDate": "2026-09-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4087113_image2_1.png",
    "tel": "033-242-8452",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:763974",
@@ -2362,7 +3279,8 @@
    "endDate": "2026-09-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/4095779_image2_1.jpg",
    "tel": "063-350-2356",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-dmz국제다큐멘터리영화제-20260910",
@@ -2379,7 +3297,8 @@
    "endDate": "2026-09-16",
    "imageUrl": null,
    "tel": "031-940-4723",
-   "homepage": "https://dmzdocs.com"
+   "homepage": "https://dmzdocs.com",
+   "translations": []
   },
   {
    "externalId": "tourapi:1945450",
@@ -2396,7 +3315,8 @@
    "endDate": "2026-09-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4060669_image2_1.jpg",
    "tel": "063-230-1858",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1018469",
@@ -2413,7 +3333,8 @@
    "endDate": "2026-09-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4073769_image2_1.jpg",
    "tel": "02-6339-1232",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2392105",
@@ -2430,7 +3351,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/09/4086009_image2_1.png",
    "tel": "053-668-4245",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3499401",
@@ -2447,7 +3369,8 @@
    "endDate": "2026-09-12",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/36/4065636_image2_1.jpg",
    "tel": "031-717-4990",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1086249",
@@ -2464,7 +3387,8 @@
    "endDate": "2026-09-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/76/4091576_image2_1.jpg",
    "tel": "041-940-4852",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5410000-창녕양파마늘가요제-20260911",
@@ -2481,7 +3405,8 @@
    "endDate": "2026-09-11",
    "imageUrl": null,
    "tel": "055-530-1461",
-   "homepage": "https://www.cng.go.kr/01659/02141/03799.web"
+   "homepage": "https://www.cng.go.kr/01659/02141/03799.web",
+   "translations": []
   },
   {
    "externalId": "stdfest:5480000-대야문화제-20260911",
@@ -2498,7 +3423,8 @@
    "endDate": "2026-09-14",
    "imageUrl": null,
    "tel": "055-930-3172",
-   "homepage": "https://www.hc.go.kr/06573/06623/06628.web"
+   "homepage": "https://www.hc.go.kr/06573/06623/06628.web",
+   "translations": []
   },
   {
    "externalId": "stdfest:5870000-명량대첩축제-20260911",
@@ -2515,7 +3441,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "061-530-5158",
-   "homepage": "www.mldc.kr"
+   "homepage": "www.mldc.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-2026헤이리판페스티벌-20260911",
@@ -2532,7 +3459,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "031-946-8551",
-   "homepage": "https://www.heyri.net"
+   "homepage": "https://www.heyri.net",
+   "translations": []
   },
   {
    "externalId": "stdfest:5060000-한여름밤김천페스타-20260911",
@@ -2549,7 +3477,8 @@
    "endDate": "2026-09-12",
    "imageUrl": null,
    "tel": "054-421-2544",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4510000-무창포신비의바닷길축제-20260911",
@@ -2566,7 +3495,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "041-930-0891",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5860000-2026장흥회령포이순신축제-20260911",
@@ -2583,7 +3513,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "061-860-5762",
-   "homepage": "https://www.jangheung.go.kr/tour/festival/autumn/hoeryeongpo"
+   "homepage": "https://www.jangheung.go.kr/tour/festival/autumn/hoeryeongpo",
+   "translations": []
   },
   {
    "externalId": "tourapi:3532372",
@@ -2600,7 +3531,8 @@
    "endDate": "2026-09-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/83/4081183_image2_1.jpg",
    "tel": "042-825-6781",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3493864",
@@ -2617,7 +3549,8 @@
    "endDate": "2026-09-12",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/44/4093144_image2_1.jpg",
    "tel": "010-3880-4966",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3520743",
@@ -2634,7 +3567,8 @@
    "endDate": "2026-09-13",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/95/4091695_image2_1.jpg",
    "tel": "02-966-6561",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3420000-팔공산왕건축제-20260912",
@@ -2651,7 +3585,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "053-662-3981",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4540000-2026한국유교문화축전-20260912",
@@ -2668,7 +3603,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "041-980-3500",
-   "homepage": "https://www.ikcc.or.kr/ko/index"
+   "homepage": "https://www.ikcc.or.kr/ko/index",
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-동부창고페스타-20260912",
@@ -2685,7 +3621,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "043-201-2038",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3210000-도구로가을축제-20260912",
@@ -2702,7 +3639,8 @@
    "endDate": "2026-09-12",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5460000-함양연암문화제-20260912",
@@ -2719,7 +3657,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "055-960-4610",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3910000-평택호물빛축제-20260912",
@@ -2736,7 +3675,8 @@
    "endDate": "2026-09-12",
    "imageUrl": null,
    "tel": "070-8874-1013",
-   "homepage": "https://www.pccf.or.kr/"
+   "homepage": "https://www.pccf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3910000-노을동요제-20260912",
@@ -2753,7 +3693,8 @@
    "endDate": "2026-09-12",
    "imageUrl": null,
    "tel": "070-8874-3025",
-   "homepage": "http://www.noel.or.kr/"
+   "homepage": "http://www.noel.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:4050000-처인성문화제-20260912",
@@ -2770,7 +3711,8 @@
    "endDate": "2026-09-13",
    "imageUrl": null,
    "tel": "031-6193-2097",
-   "homepage": "http://www.ycc50.org/"
+   "homepage": "http://www.ycc50.org/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3150000-허준인트로축제-20260912",
@@ -2787,7 +3729,8 @@
    "endDate": "2026-09-12",
    "imageUrl": null,
    "tel": "02-2600-5890",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4033328",
@@ -2804,7 +3747,8 @@
    "endDate": "2026-09-16",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/4039679_image2_1.jpg",
    "tel": "051-711-0069",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2556687",
@@ -2821,7 +3765,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/65/4081065_image2_1.jpg",
    "tel": "070-7954-1369",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2699287",
@@ -2838,7 +3783,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/14/4078314_image2_1.jpg",
    "tel": "043-873-0107",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2867141",
@@ -2855,7 +3801,8 @@
    "endDate": "2026-09-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/35/4093235_image2_1.jpg",
    "tel": "054-840-7044",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-청주전통공예페스티벌-20260917",
@@ -2872,7 +3819,8 @@
    "endDate": "2026-09-27",
    "imageUrl": null,
    "tel": "043-201-2038",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4211000-동해무릉제-20260917",
@@ -2889,7 +3837,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "033-530-2412",
-   "homepage": "dhfesta.or.kr/dmrf"
+   "homepage": "dhfesta.or.kr/dmrf",
+   "translations": []
   },
   {
    "externalId": "tourapi:2412052",
@@ -2906,7 +3855,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4084482_image2_1.JPG",
    "tel": "02-780-3939",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3524889",
@@ -2923,7 +3873,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/58/4078758_image2_1.png",
    "tel": "010-4812-8679",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3544886",
@@ -2940,7 +3891,8 @@
    "endDate": "2026-09-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/66/4031666_image2_1.jpg",
    "tel": "02-758-2037",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:589386",
@@ -2957,7 +3909,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/75/3557475_image2_1.JPG",
    "tel": "032-310-3071",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1390147",
@@ -2974,7 +3927,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/88/4093188_image2_1.jpg",
    "tel": "031-687-0538",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2029491",
@@ -2991,7 +3945,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/81/4087181_image2_1.jpg",
    "tel": "02-2009-9735",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1100492",
@@ -3008,7 +3963,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/61/4081461_image2_1.jpg",
    "tel": "1577-7766",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1250585",
@@ -3025,7 +3981,8 @@
    "endDate": "2026-11-01",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/71/4065571_image2_1.jpg",
    "tel": "031-631-6501",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:142197",
@@ -3042,7 +3999,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/09/3528809_image2_1.jpg",
    "tel": "031-310-2920",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2746930",
@@ -3059,7 +4017,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/19/3539719_image2_1.jpg",
    "tel": "055-940-8227",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:140880",
@@ -3076,7 +4035,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/80/4090380_image2_1.jpg",
    "tel": "033-330-2856",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1718060",
@@ -3093,7 +4053,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/75/4092075_image2_1.jpg",
    "tel": "063-430-2392",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1078905",
@@ -3110,7 +4071,8 @@
    "endDate": "2026-09-27",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4041232_image2_1.jpg",
    "tel": "061-350-5269",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5310000-진주탈춤한마당-20260918",
@@ -3127,7 +4089,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "055-746-6888",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2751090",
@@ -3144,7 +4107,8 @@
    "endDate": "2026-10-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4076246_image2_1.jpg",
    "tel": "031-290-3622031-5191-3084",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2829118",
@@ -3161,7 +4125,8 @@
    "endDate": "2026-09-19",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/07/4090107_image2_1.jpg",
    "tel": "032-866-3994",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1389228",
@@ -3178,7 +4143,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/41/4087941_image2_1.jpg",
    "tel": "031-481-2318",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2872196",
@@ -3195,7 +4161,8 @@
    "endDate": "2026-09-20",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/4091643_image2_1.jpg",
    "tel": "055-359-5788",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5855000-화순적벽문화축제-20260919",
@@ -3212,7 +4179,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "061-373-5482",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3900000-구름산예술제-20260919",
@@ -3229,7 +4197,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "02-2680-6229",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5530000-도농어울림축제-20260919",
@@ -3246,7 +4215,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "031-5189-6335",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3210000-악기거리축제-20260919",
@@ -3263,7 +4233,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3450000-금호강바람소리길축제-20260919",
@@ -3280,7 +4251,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "053-665-2172",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3210000-잠원나루축제-20260919",
@@ -3297,7 +4269,8 @@
    "endDate": "2026-09-19",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3210000-서리풀페스티벌-20260919",
@@ -3314,7 +4287,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4040000-하남이성산성문화축제-20260919",
@@ -3331,7 +4305,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "031-790-7979",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3160000-구로g페스티벌-20260919",
@@ -3348,7 +4323,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "02-860-2282",
-   "homepage": "https://www.gfestival.co.kr/"
+   "homepage": "https://www.gfestival.co.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3190000-k분식페스티벌나루터영화제-20260920",
@@ -3365,7 +4341,8 @@
    "endDate": "2026-09-20",
    "imageUrl": null,
    "tel": "02-820-9403",
-   "homepage": "www.dongjak.go.kr"
+   "homepage": "www.dongjak.go.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:3190000-동작서커스데이-20260921",
@@ -3382,7 +4359,8 @@
    "endDate": "2026-09-21",
    "imageUrl": null,
    "tel": "02-820-9405",
-   "homepage": "www.idfac.or.kr/"
+   "homepage": "www.idfac.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5420000-2026경남고성공룡세계엑스포-20260923",
@@ -3399,7 +4377,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506670",
@@ -3416,7 +4395,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/06/4025906_image2_1.JPG",
    "tel": "054-840-3400",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5070000-안동국제탈춤페스티벌-20260925",
@@ -3433,7 +4413,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "054-840-3400",
-   "homepage": "www.maskdance.com"
+   "homepage": "www.maskdance.com",
+   "translations": []
   },
   {
    "externalId": "stdfest:5230000-2026삼강나루주막축제-20260925",
@@ -3450,7 +4431,8 @@
    "endDate": "2026-09-27",
    "imageUrl": null,
    "tel": "054-650-6031",
-   "homepage": "yctf.kr"
+   "homepage": "yctf.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5895000-삼계면민관군화합전통문화체험축제-20260926",
@@ -3467,7 +4449,8 @@
    "endDate": "2026-09-26",
    "imageUrl": null,
    "tel": "061-390-6963",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5895000-장성읍영천막걸리축제-20260926",
@@ -3484,7 +4467,8 @@
    "endDate": "2026-09-26",
    "imageUrl": null,
    "tel": "061-390-6801",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3190000-세계불꽃축제with버스킹-20260927",
@@ -3501,7 +4485,8 @@
    "endDate": "2026-09-27",
    "imageUrl": null,
    "tel": "02-820-9405",
-   "homepage": "www.idfac.or.kr/"
+   "homepage": "www.idfac.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3190000-동작댄스데이-20260928",
@@ -3518,7 +4503,8 @@
    "endDate": "2026-09-28",
    "imageUrl": null,
    "tel": "02-820-9405",
-   "homepage": "www.idfac.or.kr/"
+   "homepage": "www.idfac.or.kr/",
+   "translations": []
   },
   {
    "externalId": "tourapi:4080078",
@@ -3535,7 +4521,8 @@
    "endDate": "2026-10-02",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/28/4080328_image2_1.jpg",
    "tel": "02-785-5801",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4450000-생거진천문화축제-20260929",
@@ -3552,7 +4539,8 @@
    "endDate": "2026-10-02",
    "imageUrl": null,
    "tel": "043-539-3603",
-   "homepage": "www.jincheon.go.kr"
+   "homepage": "www.jincheon.go.kr",
+   "translations": []
   },
   {
    "externalId": "tourapi:3006246",
@@ -3569,7 +4557,8 @@
    "endDate": "2026-10-07",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/73/4094773_image2_1.jpg",
    "tel": "051-745-7298",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:229054",
@@ -3586,7 +4575,8 @@
    "endDate": "2026-10-05",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4091903_image2_1.JPG",
    "tel": "042-550-5310~2",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2992940",
@@ -3603,7 +4593,8 @@
    "endDate": "2026-10-05",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/74/3514774_image2_1.JPG",
    "tel": "042-840-2621~4",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506935",
@@ -3620,7 +4611,8 @@
    "endDate": "2026-10-05",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/35/4056635_image2_1.JPG",
    "tel": "1566-0155",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506895",
@@ -3637,7 +4629,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4085103_image2_1.jpg",
    "tel": "033-560-3013~5",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:574285",
@@ -3654,7 +4647,8 @@
    "endDate": "2026-10-05",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/54/3516354_image2_1.jpg",
    "tel": "063-540-3172",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:B551011-천안흥타령축제-20261001",
@@ -3671,7 +4665,8 @@
    "endDate": "2026-10-05",
    "imageUrl": null,
    "tel": "1566-0155",
-   "homepage": "https://cheonanfestival.com/"
+   "homepage": "https://cheonanfestival.com/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5470000-거창한마당대축제-20261001",
@@ -3688,7 +4683,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "055-940-8458",
-   "homepage": "거창한마당축제.kr"
+   "homepage": "거창한마당축제.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5141000-김수환추기경사랑과나눔문화축전-20261001",
@@ -3705,7 +4701,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "054-380-6065",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5141000-삼국유사문화축전-20261001",
@@ -3722,7 +4719,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "054-380-7323",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5141000-군위바비큐축제-20261001",
@@ -3739,7 +4737,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "054-380-7322",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5190000-2026청도반시축제-20261001",
@@ -3756,7 +4755,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "054-370-2211",
-   "homepage": "http://www.청도반시축제.kr"
+   "homepage": "http://www.청도반시축제.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5190000-2026청도세계코미디아트페스티벌-20261001",
@@ -3773,7 +4773,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "054-370-2211",
-   "homepage": "http://www.청도코아페.kr"
+   "homepage": "http://www.청도코아페.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-정자동놀터축제및작품발표회-20261001",
@@ -3790,7 +4791,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "031-729-7682",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-2026모두모여모란-20261001",
@@ -3807,7 +4809,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "031-729-8973",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-식품제조홍보및판매관-20261001",
@@ -3824,7 +4827,8 @@
    "endDate": "2026-10-01",
    "imageUrl": null,
    "tel": "031-729-3122",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-튼튼쑥쑥걷기대회-20261001",
@@ -3841,7 +4845,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "031-729-2932",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5130000-경산대추축제농산물한마당-20261001",
@@ -3858,7 +4863,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "053-819-0334",
-   "homepage": "https://gsctf.or.kr/"
+   "homepage": "https://gsctf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5885000-대한민국국향대전-20261001",
@@ -3875,7 +4881,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "061-320-2239",
-   "homepage": "https://www.hpftf.or.kr/"
+   "homepage": "https://www.hpftf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:6290000-gac공연예술축제그라제-20261001",
@@ -3892,7 +4899,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "062-613-8333",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4840000-광양전통숯불구이축제-20261001",
@@ -3909,7 +4917,8 @@
    "endDate": "2026-10-01",
    "imageUrl": null,
    "tel": "061-797-4903",
-   "homepage": "http://www.gwangyang.go.kr/tour_culture"
+   "homepage": "http://www.gwangyang.go.kr/tour_culture",
+   "translations": []
   },
   {
    "externalId": "stdfest:3060000-중랑북페스티벌-20261001",
@@ -3926,7 +4935,8 @@
    "endDate": "2026-10-01",
    "imageUrl": null,
    "tel": "02-2094-1832",
-   "homepage": "https://www.jungnang.go.kr/portal/main.do"
+   "homepage": "https://www.jungnang.go.kr/portal/main.do",
+   "translations": []
   },
   {
    "externalId": "tourapi:140799",
@@ -3943,7 +4953,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/06/4040606_image2_1.jpg",
    "tel": "051-713-5000",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506809",
@@ -3960,7 +4971,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/93/4074893_image2_1.jpg",
    "tel": "070-8820-4038",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1266642",
@@ -3977,7 +4989,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/4067377_image2_1.jpg",
    "tel": "032-509-7516",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:613316",
@@ -3994,7 +5007,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/14/3549714_image2_1.jpg",
    "tel": "043-201-0254",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1846797",
@@ -4011,7 +5025,8 @@
    "endDate": "2026-10-05",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/48/3561448_image2_1.jpg",
    "tel": "063-454-3300",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506690",
@@ -4028,7 +5043,8 @@
    "endDate": "2026-10-05",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/93/4091593_image2_1.jpg",
    "tel": "031-678-5414",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506465",
@@ -4045,7 +5061,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/59/3524159_image2_1.JPG",
    "tel": "041-750-2316",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2856675",
@@ -4062,7 +5079,8 @@
    "endDate": "2026-10-03",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/23/4092723_image2_1.png",
    "tel": "010-8266-7331",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506600",
@@ -4079,7 +5097,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/88/3523088_image2_1.JPG",
    "tel": "055-970-6670",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1336591",
@@ -4096,7 +5115,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/49/4062849_image2_1.JPG",
    "tel": "063-290-3976~8",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5680000-심훈상록문화제-20261002",
@@ -4113,7 +5133,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": null,
-   "homepage": "https://djsangnok.org"
+   "homepage": "https://djsangnok.org",
+   "translations": []
   },
   {
    "externalId": "stdfest:6430000-2026제천국제한방천연물산업엑스포-20261002",
@@ -4130,7 +5151,8 @@
    "endDate": "2026-10-07",
    "imageUrl": null,
    "tel": "043-653-9550",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3220000-강남페스티벌-20261002",
@@ -4147,7 +5169,8 @@
    "endDate": "2026-10-05",
    "imageUrl": null,
    "tel": "02-3423-5534",
-   "homepage": "https://visitgangnam.net/cultural-events/"
+   "homepage": "https://visitgangnam.net/cultural-events/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5390000-의령리치리치페스티벌-20261002",
@@ -4164,7 +5187,8 @@
    "endDate": "2026-10-05",
    "imageUrl": null,
    "tel": "055-570-2512",
-   "homepage": "https://www.uiryeong.go.kr/festival/index.uiryeong"
+   "homepage": "https://www.uiryeong.go.kr/festival/index.uiryeong",
+   "translations": []
   },
   {
    "externalId": "tourapi:1725929",
@@ -4181,7 +5205,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/62/4054062_image2_1.jpg",
    "tel": "031-290-4679",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506766",
@@ -4198,7 +5223,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/55/3563955_image2_1.jpg",
    "tel": "054-635-0020",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:506926",
@@ -4215,7 +5241,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/57/4082657_image2_1.png",
    "tel": "055-755-9111,761-9111",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4570000-백제문화제-20261003",
@@ -4232,7 +5259,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "041-830-2207",
-   "homepage": "https://www.baekjeculturalfestival.kr/"
+   "homepage": "https://www.baekjeculturalfestival.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3900000-광명동굴빛축제-20261003",
@@ -4249,7 +5277,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "02-2090-1413",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3900000-2026페스티벌광명-20261003",
@@ -4266,7 +5295,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "02-2680-2064",
-   "homepage": "https://festivalgm.or.kr/2025/"
+   "homepage": "https://festivalgm.or.kr/2025/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5530000-정조효문화제및정조대왕능행차공동재현-20261003",
@@ -4283,7 +5313,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "031-5189-6654",
-   "homepage": "http://www.정조효문화제.com/"
+   "homepage": "http://www.정조효문화제.com/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3740000-2026수원화성미디어아트-20261003",
@@ -4300,7 +5331,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "031-5191-3084",
-   "homepage": "https://www.swcf.or.kr/hlfl/"
+   "homepage": "https://www.swcf.or.kr/hlfl/",
+   "translations": []
   },
   {
    "externalId": "stdfest:4050000-용인시민의날연계축제행사-20261003",
@@ -4317,7 +5349,8 @@
    "endDate": "2026-10-04",
    "imageUrl": null,
    "tel": "031-6193-2064",
-   "homepage": "https://www.yongin.go.kr"
+   "homepage": "https://www.yongin.go.kr",
+   "translations": []
   },
   {
    "externalId": "tourapi:2554814",
@@ -4334,7 +5367,8 @@
    "endDate": "2026-10-04",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/59/4078459_image2_1.png",
    "tel": "서울 02-786-0610수원 031-5191-2367화성 070-4202-1017",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:914138",
@@ -4351,7 +5385,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4060890_image2_1.jpg",
    "tel": "031-5191-3647",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:692682",
@@ -4368,7 +5403,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/71/3584471_image2_1.jpg",
    "tel": "062-608-4672",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2990881",
@@ -4385,7 +5421,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/63/4076763_image2_1.jpg",
    "tel": "062-228-9812",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:563458",
@@ -4402,7 +5439,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/67/4053967_image2_1.JPG",
    "tel": "055-960-6432",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:232325",
@@ -4419,7 +5457,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/42/4064642_image2_1.jpg",
    "tel": "033-808-8007033-808-8009",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1105347",
@@ -4436,7 +5475,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/56/4071256_image2_1.JPG",
    "tel": "063-539-5697",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2031318",
@@ -4453,7 +5493,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/54/3377054_image2_1.png",
    "tel": "063-643-3900",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:6310000-울산공업축제-20261008",
@@ -4470,7 +5511,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "052-276-8590",
-   "homepage": "http://www.울산공업축제.kr"
+   "homepage": "http://www.울산공업축제.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5895000-황룡강가을꽃축제-20261008",
@@ -4487,7 +5529,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "061-390-7252",
-   "homepage": "https://www.jangseong.go.kr/home/tour_new/festival/festival_04/festival_04_04"
+   "homepage": "https://www.jangseong.go.kr/home/tour_new/festival/festival_04/festival_04_04",
+   "translations": []
   },
   {
    "externalId": "tourapi:1718137",
@@ -4504,7 +5547,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/83/4063783_image2_1.JPG",
    "tel": "054-776-5265",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1849007",
@@ -4521,7 +5565,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/16/3553216_image2_1.jpg",
    "tel": "044-850-0591~0594",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2877244",
@@ -4538,7 +5583,8 @@
    "endDate": "2026-10-10",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4081503_image2_1.JPG",
    "tel": "041-852-1321",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2408959",
@@ -4555,7 +5601,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/61/4092561_image2_1.jpg",
    "tel": "1544-7056",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2828336",
@@ -4572,7 +5619,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/4089877_image2_1.jpg",
    "tel": "031-310-4794",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4087092",
@@ -4589,7 +5637,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/98/4087098_image2_1.jpg",
    "tel": "070-7733-0390",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:140752",
@@ -4606,7 +5655,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/47/3550747_image2_1.jpg",
    "tel": "041-660-2696",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2622679",
@@ -4623,7 +5673,8 @@
    "endDate": "2026-10-11",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/26/4059026_image2_1.jpeg",
    "tel": "054-655-8082",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3690000-2026년외솔한글한마당-20261009",
@@ -4640,7 +5691,8 @@
    "endDate": "2026-10-09",
    "imageUrl": null,
    "tel": "052-290-3642",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5310000-개천예술제-20261009",
@@ -4657,7 +5709,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "055-752-0111",
-   "homepage": "http://www.gaecheonart.com"
+   "homepage": "http://www.gaecheonart.com",
+   "translations": []
   },
   {
    "externalId": "stdfest:5310000-코리아드라마페스티벌-20261009",
@@ -4674,7 +5727,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "055-755-2363",
-   "homepage": "http://www.kdfo.org"
+   "homepage": "http://www.kdfo.org",
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-파주페어북앤컬처-20261009",
@@ -4691,7 +5745,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "031-940-4721",
-   "homepage": "https://pajufair.com"
+   "homepage": "https://pajufair.com",
+   "translations": []
   },
   {
    "externalId": "stdfest:4160000-2026년재즈페스티벌in가평-20261009",
@@ -4708,7 +5763,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "031-581-2813",
-   "homepage": "https://jarasumjazz.com/"
+   "homepage": "https://jarasumjazz.com/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5080000-2026구미푸드페스티벌-20261009",
@@ -4725,7 +5781,8 @@
    "endDate": "2026-10-10",
    "imageUrl": null,
    "tel": "054-480-5593",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4510000-2026년보령국가유산야행-20261009",
@@ -4742,7 +5799,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "041-930-0891",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3520000-연수능허대문화축제-20261009",
@@ -4759,7 +5817,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "032-749-7332",
-   "homepage": "https://www.yeonsu.go.kr/tour/festival/neungheodae_festival/info.asp"
+   "homepage": "https://www.yeonsu.go.kr/tour/festival/neungheodae_festival/info.asp",
+   "translations": []
   },
   {
    "externalId": "stdfest:3660000-2026대전서구아트페스티벌-20261009",
@@ -4776,7 +5835,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "042-288-2742",
-   "homepage": "https://www.seogu.go.kr/prog/fstvl/tour/sub04_02/14/view.do"
+   "homepage": "https://www.seogu.go.kr/prog/fstvl/tour/sub04_02/14/view.do",
+   "translations": []
   },
   {
    "externalId": "stdfest:B551011-서산해미읍성축제-20261010",
@@ -4793,7 +5853,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "041-660-2696",
-   "homepage": "http://www.haemifest.com/"
+   "homepage": "http://www.haemifest.com/",
+   "translations": []
   },
   {
    "externalId": "stdfest:6290000-광주사운드파크페스티벌-20261010",
@@ -4810,7 +5871,8 @@
    "endDate": "2026-10-10",
    "imageUrl": null,
    "tel": "062-613-2471",
-   "homepage": "https://www.gicon.or.kr/menu.es?mid=a11003020200"
+   "homepage": "https://www.gicon.or.kr/menu.es?mid=a11003020200",
+   "translations": []
   },
   {
    "externalId": "stdfest:6290000-광주펫크닉-20261010",
@@ -4827,7 +5889,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "062-613-3051",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3860000-시민어울림한마당-20261010",
@@ -4844,7 +5907,8 @@
    "endDate": "2026-10-10",
    "imageUrl": null,
    "tel": "032-325-1566",
-   "homepage": "artbucheon.com"
+   "homepage": "artbucheon.com",
+   "translations": []
   },
   {
    "externalId": "stdfest:4050000-포은문화제-20261010",
@@ -4861,7 +5925,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "031-6193-2097",
-   "homepage": "http://www.ycc50.org/"
+   "homepage": "http://www.ycc50.org/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3430000-달구벌목민관축제-20261010",
@@ -4878,7 +5943,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "053-663-2181",
-   "homepage": "http://www.dgs.go.kr/tour/"
+   "homepage": "http://www.dgs.go.kr/tour/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3390000-사상강변축제-20261010",
@@ -4895,7 +5961,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "051-310-4062",
-   "homepage": "http://www.sasangculture.or.kr/"
+   "homepage": "http://www.sasangculture.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3150000-허준축제-20261010",
@@ -4912,7 +5979,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "02-2600-6455",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3860000-복사골청소년예술제-20261011",
@@ -4929,7 +5997,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "032-325-1566",
-   "homepage": "artbucheon.com"
+   "homepage": "artbucheon.com",
+   "translations": []
   },
   {
    "externalId": "stdfest:3430000-미소행복구민축제-20261011",
@@ -4946,7 +6015,8 @@
    "endDate": "2026-10-11",
    "imageUrl": null,
    "tel": "053-663-2181",
-   "homepage": "http://www.dgs.go.kr/tour/"
+   "homepage": "http://www.dgs.go.kr/tour/",
+   "translations": []
   },
   {
    "externalId": "tourapi:1230074",
@@ -4963,7 +6033,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/73/4095373_image2_1.jpg",
    "tel": "070-7576-1657",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:293084",
@@ -4980,7 +6051,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/72/4058672_image2_1.jpg",
    "tel": "043-745-8917",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1844150",
@@ -4997,7 +6069,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/66/4080666_image2_1.jpg",
    "tel": "054-979-3215",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:638241",
@@ -5014,7 +6087,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/59/3535559_image2_1.JPG",
    "tel": "063-650-1624",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:604454",
@@ -5031,7 +6105,8 @@
    "endDate": "2026-10-19",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/30/3519730_image2_1.jpg",
    "tel": "063-560-2949",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3700000-울산고래축제-20261015",
@@ -5048,7 +6123,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "052-226-1992",
-   "homepage": "http://www.ulsanwhale.com/index.jsp"
+   "homepage": "http://www.ulsanwhale.com/index.jsp",
+   "translations": []
   },
   {
    "externalId": "stdfest:5810000-광주서창억새축제-20261015",
@@ -5065,7 +6141,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "062-350-4792",
-   "homepage": "seogu.gwangju.kr"
+   "homepage": "seogu.gwangju.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5240000-봉화송이축제-20261015",
@@ -5082,7 +6159,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "054-674-3053",
-   "homepage": "https:/bhftf.or.kr"
+   "homepage": "https:/bhftf.or.kr",
+   "translations": []
   },
   {
    "externalId": "tourapi:229048",
@@ -5099,7 +6177,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/3366443_image2_1.jpg",
    "tel": "051-550-4092",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2612274",
@@ -5116,7 +6195,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4073831_image2_1.jpg",
    "tel": "02-828-5766",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1307813",
@@ -5133,7 +6213,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/3541977_image2_1.jpg",
    "tel": "02-3425-5240",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1344850",
@@ -5150,7 +6231,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4064382_image2_1.jpg",
    "tel": "043-223-4048",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1275743",
@@ -5167,7 +6249,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/56/4090456_image2_1.jpg",
    "tel": "051-715-6884",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2667707",
@@ -5184,7 +6267,8 @@
    "endDate": "2026-10-19",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/17/4062917_image2_1.jpg",
    "tel": "031-770-2572",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2551117",
@@ -5201,7 +6285,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/17/4073617_image2_1.jpg",
    "tel": "070-8824-0347",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:574014",
@@ -5218,7 +6303,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/3498990_image2_1.JPG",
    "tel": "061-270-8441",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3320000-낙동강구포나루축제-20261016",
@@ -5235,7 +6321,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "051-309-4522",
-   "homepage": "https://www.bsbukgu.go.kr/tour/index.bsbukgu?menuCd=DOM_000000402006001000"
+   "homepage": "https://www.bsbukgu.go.kr/tour/index.bsbukgu?menuCd=DOM_000000402006001000",
+   "translations": []
   },
   {
    "externalId": "stdfest:5480000-합천황토한우축제-20261016",
@@ -5252,7 +6339,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "055-930-3573",
-   "homepage": "https://www.hc.go.kr/06573/06623/10013.web"
+   "homepage": "https://www.hc.go.kr/06573/06623/10013.web",
+   "translations": []
   },
   {
    "externalId": "stdfest:5480000-수려한합천영화제-20261016",
@@ -5269,7 +6357,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "055-930-3753",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4540000-2026연산대추축제-20261016",
@@ -5286,7 +6375,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "041-746-5663",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4600000-광천김토굴새우젓축제-20261016",
@@ -5303,7 +6393,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "041-630-1237",
-   "homepage": "https://www.hongseong.go.kr/tour/index.do"
+   "homepage": "https://www.hongseong.go.kr/tour/index.do",
+   "translations": []
   },
   {
    "externalId": "stdfest:4181000-2026에코아트페어-20261016",
@@ -5320,7 +6411,8 @@
    "endDate": "2026-10-29",
    "imageUrl": null,
    "tel": "033-260-9331",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3400000-정관생태하천학습문화축제-20261016",
@@ -5337,7 +6429,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "051-709-4062",
-   "homepage": "https://www.gijang.go.kr/tour/index.gijang?menuCd=DOM_000000302007000000"
+   "homepage": "https://www.gijang.go.kr/tour/index.gijang?menuCd=DOM_000000302007000000",
+   "translations": []
   },
   {
    "externalId": "tourapi:3017799",
@@ -5354,7 +6447,8 @@
    "endDate": "2026-10-18",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/50/4063650_image2_1.JPG",
    "tel": "054-480-5593",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5855000-2026화순고인돌가을꽃축제-20261017",
@@ -5371,7 +6465,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "061-379-3575",
-   "homepage": "https://www.hwasun.go.kr/festival/"
+   "homepage": "https://www.hwasun.go.kr/festival/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3420000-동구어울림한마당축제-20261017",
@@ -5388,7 +6483,8 @@
    "endDate": "2026-10-17",
    "imageUrl": null,
    "tel": "053-662-4072",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4090000-2026김포라베니체축제-20261017",
@@ -5405,7 +6501,8 @@
    "endDate": "2026-10-17",
    "imageUrl": null,
    "tel": "031-980-5113",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3990000-정약용문화제-20261017",
@@ -5422,7 +6519,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "031-590-2799",
-   "homepage": "https://www.nyj.go.kr/thinkj/index.do"
+   "homepage": "https://www.nyj.go.kr/thinkj/index.do",
+   "translations": []
   },
   {
    "externalId": "stdfest:3470000-희망달서대축제-20261017",
@@ -5439,7 +6537,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "053-584-9711",
-   "homepage": "http://www.dscf.or.kr"
+   "homepage": "http://www.dscf.or.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:3060000-용마폭포문화예술축제-20261017",
@@ -5456,7 +6555,8 @@
    "endDate": "2026-10-17",
    "imageUrl": null,
    "tel": "02-3407-6540",
-   "homepage": "https://www.jnfac.or.kr/contents/1335"
+   "homepage": "https://www.jnfac.or.kr/contents/1335",
+   "translations": []
   },
   {
    "externalId": "stdfest:3170000-2026금천하모니축제-20261017",
@@ -5473,7 +6573,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "02-2627-1442",
-   "homepage": "https://gcfac.or.kr/content?gcfac_menu_cd=U0107"
+   "homepage": "https://gcfac.or.kr/content?gcfac_menu_cd=U0107",
+   "translations": []
   },
   {
    "externalId": "stdfest:3050000-동대문페스티벌-20261017",
@@ -5490,7 +6591,8 @@
    "endDate": "2026-10-17",
    "imageUrl": null,
    "tel": "02-2127-4711",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3080000-종교연합바자회-20261018",
@@ -5507,7 +6609,8 @@
    "endDate": "2026-10-18",
    "imageUrl": null,
    "tel": "02-901-6207",
-   "homepage": "www.gangbuk.go.kr"
+   "homepage": "www.gangbuk.go.kr",
+   "translations": []
   },
   {
    "externalId": "tourapi:825295",
@@ -5524,7 +6627,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/24/3546224_image2_1.JPG",
    "tel": "033-647-6802",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:2558866",
@@ -5541,7 +6645,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/59/4095359_image2_1.jpg",
    "tel": "041-332-4317",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:234232",
@@ -5558,7 +6663,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/49/3566649_image2_1.png",
    "tel": "055-831-2061",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4046174",
@@ -5575,7 +6681,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/93/4095093_image2_1.png",
    "tel": "033-744-6801",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4540000-2026강경젓갈축제-20261022",
@@ -5592,7 +6699,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "041-746-5664",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-오송화장품뷰티산업엑스포-20261022",
@@ -5609,7 +6717,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "043-201-1412",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3400000-철마한우불고기축제-20261022",
@@ -5626,7 +6735,8 @@
    "endDate": "2026-10-26",
    "imageUrl": null,
    "tel": "051-709-2891",
-   "homepage": "https://www.gijang.go.kr/tour/index.gijang?menuCd=DOM_000000302004000000"
+   "homepage": "https://www.gijang.go.kr/tour/index.gijang?menuCd=DOM_000000302004000000",
+   "translations": []
   },
   {
    "externalId": "tourapi:506616",
@@ -5643,7 +6753,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/11/4039211_image2_1.jpg",
    "tel": "064-760-3942",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:604097",
@@ -5660,7 +6771,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/3545732_image2_1.JPG",
    "tel": "062-613-3955~6",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1147035",
@@ -5677,7 +6789,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/63/3546463_image2_1.JPG",
    "tel": "031-881-9694",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3377995",
@@ -5694,7 +6807,8 @@
    "endDate": "2026-10-25",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/27/3544627_image2_1.jpg",
    "tel": "053-965-0910",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5680000-남이흥장군문화제-20261023",
@@ -5711,7 +6825,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "041-357-2367",
-   "homepage": "http://www.cnkccf.or.kr/dangjin.do"
+   "homepage": "http://www.cnkccf.or.kr/dangjin.do",
+   "translations": []
   },
   {
    "externalId": "stdfest:5480000-2026대장경기록문화축제-20261023",
@@ -5728,7 +6843,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "055-930-4696",
-   "homepage": "https://www.hc.go.kr/06573/08250.web"
+   "homepage": "https://www.hc.go.kr/06573/08250.web",
+   "translations": []
   },
   {
    "externalId": "stdfest:4761000-임실도자기축제-20261023",
@@ -5745,7 +6861,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "063-643-8689",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4681000-익산천만송이국화축제-20261023",
@@ -5762,7 +6879,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "063-859-4977",
-   "homepage": "https://www.iksan.go.kr/gukhwa/"
+   "homepage": "https://www.iksan.go.kr/gukhwa/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3450000-떡볶이페스티벌-20261023",
@@ -5779,7 +6897,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "053-665-2795",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:6290000-광주프린지페스티벌-20261023",
@@ -5796,7 +6915,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "062-613-3182",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4840000-광양kpop페스티벌-20261023",
@@ -5813,7 +6933,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "061-797-3714",
-   "homepage": "http://www.gwangyang.go.kr/tour_culture"
+   "homepage": "http://www.gwangyang.go.kr/tour_culture",
+   "translations": []
   },
   {
    "externalId": "stdfest:3420000-용암산성옥샘문화제-20261024",
@@ -5830,7 +6951,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "053-662-3801",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5480000-황매산억새축제-20261024",
@@ -5847,7 +6969,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "055-930-4753",
-   "homepage": "https://www.hc.go.kr/09418/09428/09429.web"
+   "homepage": "https://www.hc.go.kr/09418/09428/09429.web",
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-2026율곡문화제-20261024",
@@ -5864,7 +6987,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "031-950-8424",
-   "homepage": "https://www.pajucf.or.kr/main/main.php"
+   "homepage": "https://www.pajucf.or.kr/main/main.php",
+   "translations": []
   },
   {
    "externalId": "stdfest:4090000-2026김포선셋페스타-20261024",
@@ -5881,7 +7005,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "031-980-5105",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-반려동물문화행사-20261024",
@@ -5898,7 +7023,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "031-729-3287",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-청주미식주페스타-20261024",
@@ -5915,7 +7041,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "043-201-2056",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5530000-2025화성학생동아리축제-20261024",
@@ -5932,7 +7059,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "031-898-8440",
-   "homepage": "http://www.hsscf.kr/"
+   "homepage": "http://www.hsscf.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5020000-포항스틸아트페스티벌-20261024",
@@ -5949,7 +7077,8 @@
    "endDate": "2026-11-15",
    "imageUrl": null,
    "tel": "054-289-7854",
-   "homepage": "http://www.phcf.or.kr"
+   "homepage": "http://www.phcf.or.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:3990000-광릉숲축제-20261024",
@@ -5966,7 +7095,8 @@
    "endDate": "2026-10-25",
    "imageUrl": null,
    "tel": "031-590-2454",
-   "homepage": "https://www.nyj.go.kr/gff/index.do"
+   "homepage": "https://www.nyj.go.kr/gff/index.do",
+   "translations": []
   },
   {
    "externalId": "stdfest:3910000-10월마토예술제-20261024",
@@ -5983,7 +7113,8 @@
    "endDate": "2026-10-24",
    "imageUrl": null,
    "tel": "070-8874-3026",
-   "homepage": "https://www.pccf.or.kr/"
+   "homepage": "https://www.pccf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5865000-강진만춤추는갈대축제-20261024",
@@ -6000,7 +7131,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "061-430-3413",
-   "homepage": "http://www.gangjin.go.kr/culture/festival/gangjinman_reed"
+   "homepage": "http://www.gangjin.go.kr/culture/festival/gangjinman_reed",
+   "translations": []
   },
   {
    "externalId": "stdfest:3190000-도심속바다축제-20261025",
@@ -6017,7 +7149,8 @@
    "endDate": "2026-10-26",
    "imageUrl": null,
    "tel": "02-820-9401",
-   "homepage": "www.dongjak.go.kr"
+   "homepage": "www.dongjak.go.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5895000-백양사고불매선매향축제-20261026",
@@ -6034,7 +7167,8 @@
    "endDate": "2026-10-26",
    "imageUrl": null,
    "tel": "061-390-7241",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5895000-백양사산사음악회-20261026",
@@ -6051,7 +7185,8 @@
    "endDate": "2026-10-26",
    "imageUrl": null,
    "tel": "061-390-7241",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5895000-황룡면뱃나드리축제-20261026",
@@ -6068,7 +7203,8 @@
    "endDate": "2026-10-26",
    "imageUrl": null,
    "tel": "061-390-6991",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4600000-홍성글로벌바비큐페스티벌-20261029",
@@ -6085,7 +7221,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "041-634-8705",
-   "homepage": "https://hongju.or.kr/home/main.do"
+   "homepage": "https://hongju.or.kr/home/main.do",
+   "translations": []
   },
   {
    "externalId": "tourapi:3501104",
@@ -6102,7 +7239,8 @@
    "endDate": "2026-11-01",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/74/4078274_image2_1.JPG",
    "tel": "052-290-3541",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3260000-부산고등어축제-20261030",
@@ -6119,7 +7257,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "051-240-4062",
-   "homepage": "http://culture.bsseogu.go.kr"
+   "homepage": "http://culture.bsseogu.go.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:3280000-영도다리축제-20261030",
@@ -6136,7 +7275,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "051-419-4062",
-   "homepage": "http://www.yeongdo.go.kr/ydfestival.web"
+   "homepage": "http://www.yeongdo.go.kr/ydfestival.web",
+   "translations": []
   },
   {
    "externalId": "stdfest:3420000-팔공산단풍축제-20261030",
@@ -6153,7 +7293,8 @@
    "endDate": "2026-11-03",
    "imageUrl": null,
    "tel": "053-981-6624",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5870000-해남미남축제-20261030",
@@ -6170,7 +7311,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "061-530-5158",
-   "homepage": "www.해남미남축제.com"
+   "homepage": "www.해남미남축제.com",
+   "translations": []
   },
   {
    "externalId": "stdfest:5230000-2026예천활축제-20261030",
@@ -6187,7 +7329,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "054-650-6031",
-   "homepage": "yctf.kr"
+   "homepage": "yctf.kr",
+   "translations": []
   },
   {
    "externalId": "tourapi:3383613",
@@ -6204,7 +7347,8 @@
    "endDate": "2026-11-01",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/73/4066273_image2_1.JPG",
    "tel": "031-960-3034,3050",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5855000-화순운주문화축제-20261031",
@@ -6221,7 +7365,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "061-373-5482",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5480000-별내린마을별쿵축제-20261031",
@@ -6238,7 +7383,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "055-930-4692",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-2026년운정호수공원불꽃축제-20261031",
@@ -6255,7 +7401,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": "031-950-8433",
-   "homepage": "https://www.pajucf.or.kr/main/main.php"
+   "homepage": "https://www.pajucf.or.kr/main/main.php",
+   "translations": []
   },
   {
    "externalId": "stdfest:4090000-2026김포해병대문화축제-20261031",
@@ -6272,7 +7419,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "031-980-5110",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-2026년가을걷이한마당-20261031",
@@ -6289,7 +7437,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "031-729-4032",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-디저트베이커리페스타-20261031",
@@ -6306,7 +7455,8 @@
    "endDate": "2026-11-01",
    "imageUrl": null,
    "tel": "043-201-2057",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5370000-거제섬꽃축제-20261031",
@@ -6323,7 +7473,8 @@
    "endDate": "2026-11-08",
    "imageUrl": null,
    "tel": "055-639-6443",
-   "homepage": "http://www.geoje.go.kr/flower/index.geoje"
+   "homepage": "http://www.geoje.go.kr/flower/index.geoje",
+   "translations": []
   },
   {
    "externalId": "stdfest:5530000-화성루나빛축제-20261031",
@@ -6340,7 +7491,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "031-5189-3835",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:3910000-평택원평나루억새축제-20261031",
@@ -6357,7 +7509,8 @@
    "endDate": "2026-10-31",
    "imageUrl": null,
    "tel": "070-8874-3038",
-   "homepage": "https://www.pccf.or.kr/"
+   "homepage": "https://www.pccf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3780000-우리가족꼬마영웅올림픽-20261101",
@@ -6374,7 +7527,8 @@
    "endDate": "2026-11-30",
    "imageUrl": null,
    "tel": "031-729-2932",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:921212",
@@ -6391,7 +7545,8 @@
    "endDate": "2026-11-08",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/98/3533798_image2_1.jpg",
    "tel": "054-870-6237",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5310000-진주국제농식품박람회-20261104",
@@ -6408,7 +7563,8 @@
    "endDate": "2026-11-08",
    "imageUrl": null,
    "tel": "055-749-6266",
-   "homepage": "https://www.jinju.go.kr/agrex"
+   "homepage": "https://www.jinju.go.kr/agrex",
+   "translations": []
   },
   {
    "externalId": "stdfest:3210000-말죽거리축제-20261105",
@@ -6425,7 +7581,8 @@
    "endDate": "2026-11-06",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3492576",
@@ -6442,7 +7599,8 @@
    "endDate": "2026-11-08",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/80/4093280_image2_1.jpg",
    "tel": "02-2602-8602",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:3028462",
@@ -6459,7 +7617,8 @@
    "endDate": "2026-11-08",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/40/3497640_image2_1.jpg",
    "tel": "054-480-2652",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:1087020",
@@ -6476,7 +7635,8 @@
    "endDate": "2026-11-08",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/86/4095386_image2_1.jpg",
    "tel": "041-331-0619",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5710000-원도심골목길축제-20261107",
@@ -6493,7 +7653,8 @@
    "endDate": "2026-11-08",
    "imageUrl": null,
    "tel": "043-201-2018",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5370000-거제몽돌해변불꽃축제-20261107",
@@ -6510,7 +7671,8 @@
    "endDate": "2026-11-07",
    "imageUrl": null,
    "tel": "055-639-6492",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:6260000-부산불꽃축제-20261107",
@@ -6527,7 +7689,8 @@
    "endDate": "2026-11-07",
    "imageUrl": null,
    "tel": "051-888-5222",
-   "homepage": "https://festivalbusan.com/"
+   "homepage": "https://festivalbusan.com/",
+   "translations": []
   },
   {
    "externalId": "stdfest:5130000-2026경산반려문화축제-20261109",
@@ -6544,7 +7707,8 @@
    "endDate": "2026-11-10",
    "imageUrl": null,
    "tel": "053-810-5357",
-   "homepage": "www.gbgs.go.kr"
+   "homepage": "www.gbgs.go.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:4731000-진안고원김치보쌈축제-20261114",
@@ -6561,7 +7725,8 @@
    "endDate": "2026-11-15",
    "imageUrl": null,
    "tel": "063-430-2393",
-   "homepage": "https://jinankimchi.kr/"
+   "homepage": "https://jinankimchi.kr/",
+   "translations": []
   },
   {
    "externalId": "tourapi:588175",
@@ -6578,7 +7743,8 @@
    "endDate": "2026-11-22",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/88/3484788_image2_1.jpg",
    "tel": "054-289-7852~5",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5855000-미리미리크리스마스-20261120",
@@ -6595,7 +7761,8 @@
    "endDate": "2026-11-22",
    "imageUrl": null,
    "tel": "061-373-5483",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4060000-파주장단콩축제-20261127",
@@ -6612,7 +7779,8 @@
    "endDate": "2026-11-29",
    "imageUrl": null,
    "tel": "031-940-5281",
-   "homepage": "http://tour.paju.go.kr"
+   "homepage": "http://tour.paju.go.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:3520000-크리스마스문화축제-20261127",
@@ -6629,7 +7797,8 @@
    "endDate": "2027-01-20",
    "imageUrl": null,
    "tel": "032-749-7335",
-   "homepage": "https://www.yeonsu.go.kr/tour/festival/christmas/info.asp"
+   "homepage": "https://www.yeonsu.go.kr/tour/festival/christmas/info.asp",
+   "translations": []
   },
   {
    "externalId": "stdfest:3150000-마곡위시빌리지-20261127",
@@ -6646,7 +7815,8 @@
    "endDate": "2026-12-27",
    "imageUrl": null,
    "tel": "02-2600-5890",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5815000-양림크리스마스문화축제-20261201",
@@ -6663,7 +7833,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": "062-607-2316",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5885000-겨울빛축제-20261201",
@@ -6680,7 +7851,8 @@
    "endDate": "2027-01-01",
    "imageUrl": null,
    "tel": "061-320-2239",
-   "homepage": "https://www.hpftf.or.kr/"
+   "homepage": "https://www.hpftf.or.kr/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3250000-광복로겨울빛트리축제-20261205",
@@ -6697,7 +7869,8 @@
    "endDate": "2027-02-14",
    "imageUrl": null,
    "tel": "051-600-4085",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:4095478",
@@ -6714,7 +7887,8 @@
    "endDate": "2026-12-06",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/64/4095564_image2_1.png",
    "tel": "070-4111-5620",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4540000-2026양촌곶감축제-20261211",
@@ -6731,7 +7905,8 @@
    "endDate": "2026-12-13",
    "imageUrl": null,
    "tel": "041-746-5664",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5240000-한겨울분천산타마을축제-20261219",
@@ -6748,7 +7923,8 @@
    "endDate": "2027-02-14",
    "imageUrl": null,
    "tel": "054-674-3053",
-   "homepage": "https:/bhftf.or.kr"
+   "homepage": "https:/bhftf.or.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5420000-빛으로만나는문화축제-20261224",
@@ -6765,7 +7941,8 @@
    "endDate": "2027-01-31",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:4761000-산타축제-20261224",
@@ -6782,7 +7959,8 @@
    "endDate": "2026-12-27",
    "imageUrl": null,
    "tel": "063-643-8850",
-   "homepage": "www.cheesepark.kr"
+   "homepage": "www.cheesepark.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:5680000-왜목마을해넘이해돋이소원제-20261231",
@@ -6799,7 +7977,8 @@
    "endDate": "2027-01-01",
    "imageUrl": null,
    "tel": null,
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5870000-해넘이해맞이축제-20261231",
@@ -6816,7 +7995,8 @@
    "endDate": "2027-01-01",
    "imageUrl": null,
    "tel": "061-530-5158",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5370000-장승포항송년불꽃축제-20261231",
@@ -6833,7 +8013,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": "055-639-3534",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "stdfest:5020000-호미곶한민족해맞이축전-20261231",
@@ -6850,7 +8031,8 @@
    "endDate": "2027-01-01",
    "imageUrl": null,
    "tel": "054-289-7852",
-   "homepage": "http://www.phcf.or.kr"
+   "homepage": "http://www.phcf.or.kr",
+   "translations": []
   },
   {
    "externalId": "stdfest:6260000-부산시민의종타종식-20261231",
@@ -6867,7 +8049,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": "051-888-5224",
-   "homepage": "https://festivalbusan.com/"
+   "homepage": "https://festivalbusan.com/",
+   "translations": []
   },
   {
    "externalId": "stdfest:3561000-정서진해넘이행사-20261231",
@@ -6884,7 +8067,8 @@
    "endDate": "2026-12-31",
    "imageUrl": null,
    "tel": "032-582-4341",
-   "homepage": "https://www.inscc.kr/user/index.php"
+   "homepage": "https://www.inscc.kr/user/index.php",
+   "translations": []
   },
   {
    "externalId": "stdfest:3130000-2027신년해맞이축제-20270101",
@@ -6901,7 +8085,8 @@
    "endDate": "2027-01-01",
    "imageUrl": null,
    "tel": "02-3153-8353",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   },
   {
    "externalId": "tourapi:507599",
@@ -6918,7 +8103,8 @@
    "endDate": "2027-01-31",
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4071246_image2_1.jpg",
    "tel": "1688-3005",
-   "homepage": null
+   "homepage": null,
+   "translations": []
   }
  ]
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { apiGet, type Festival } from '../api'
 import { staticFestivals } from '../staticData'
-import { useT } from '../i18n'
+import { useLang, useT } from '../i18n'
 
 type Coords = { lat: number; lng: number }
 
@@ -33,18 +33,19 @@ export default function FestivalRail({
   sort?: FestivalSort
 }) {
   const t = useT()
+  const { lang } = useLang()
   const [festivals, setFestivals] = useState<(Festival & { distanceKm?: number | null })[]>([])
 
   useEffect(() => {
     const q = sido ? `&sido=${encodeURIComponent(sido)}` : ''
-    apiGet<{ items: Festival[] }>(`/festivals?limit=24${q}`)
+    apiGet<{ items: Festival[] }>(`/festivals?limit=24${q}`, lang)
       .then((d) => setFestivals(d.items))
       .catch(() =>
-        staticFestivals(500) // API 없으면 베이크된 정적 데이터에서 필터
+        staticFestivals(500, lang) // API 없으면 베이크된 정적 데이터에서 필터
           .then((all) => setFestivals((sido ? all.filter((f) => f.sido === sido) : all).slice(0, 24)))
           .catch(() => setFestivals([])),
       )
-  }, [sido])
+  }, [sido, lang])
 
   const withDistance = coords ? festivals.map((f) => ({ ...f, distanceKm: distanceKm(coords, f) })) : festivals
   const list =
@@ -104,7 +105,7 @@ export default function FestivalRail({
                 >
                   {f.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
                 </span>
-                <span className="text-[12px] font-semibold text-gray-500">{f.region.name}</span>
+                <span className="text-[12px] font-semibold text-gray-500">{f.placeName ?? f.region.name}</span>
                 {f.distanceKm != null && (
                   <span className="text-[12px] font-bold text-pin">{f.distanceKm < 10 ? f.distanceKm.toFixed(1) : Math.round(f.distanceKm)}km</span>
                 )}

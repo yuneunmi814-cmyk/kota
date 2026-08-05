@@ -15,15 +15,26 @@ export async function staticRegions(): Promise<Region[]> {
   return d.regions
 }
 
-type StaticFestival = Omit<Festival, 'status'>
+type StaticTranslation = { langCode: string; name: string; summary: string | null; placeName: string | null }
+type StaticFestival = Omit<Festival, 'status'> & { translations?: StaticTranslation[] }
+
+// 정적 데이터에도 번역을 적용한다 — 콜드 스타트(약 50초) 동안 보이는 게 이 화면이라
+// 여기서 한국어만 나오면 외국인에게는 API가 살아나기 전까지 못 읽는 목록이 된다.
+function applyLang(f: StaticFestival, lang?: string): StaticFestival {
+  if (!lang || lang === 'ko') return f
+  const tr = f.translations?.find((t) => t.langCode === lang)
+  if (!tr) return f
+  return { ...f, name: tr.name, nameKo: f.name, lang, summary: tr.summary ?? f.summary, placeName: tr.placeName }
+}
 
 // API의 GET /festivals 기본 동작 재현: 진행중+예정만, 시작일순, status 계산
-export async function staticFestivals(limit: number): Promise<Festival[]> {
+export async function staticFestivals(limit: number, lang?: string): Promise<Festival[]> {
   const d = await loadJson<{ items: StaticFestival[] }>('festivals.json')
   const today = new Date().toISOString().slice(0, 10)
   return d.items
     .filter((f) => f.endDate >= today)
     .slice(0, limit)
+    .map((f) => applyLang(f, lang))
     .map((f) => ({ ...f, status: f.startDate <= today ? 'ongoing' : 'upcoming' }))
 }
 

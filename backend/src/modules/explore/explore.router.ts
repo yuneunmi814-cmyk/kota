@@ -9,7 +9,7 @@ import { parseId, parsePage } from '../../lib/util.js'
 import { nearbySpots } from '../../lib/geo.js'
 import { todayOpenStatus } from '../../lib/openHours.js'
 import { courseEntitlement } from '../marketplace/entitlement.js'
-import { festivalSelect, toCard as toFestivalCard, todayKst } from '../festivals/festivals.router.js'
+import { festivalSelect, parseLang, toCard as toFestivalCard, todayKst } from '../festivals/festivals.router.js'
 
 export const exploreRouter = Router()
 
@@ -392,6 +392,7 @@ exploreRouter.get(
     const wantSpots = !type || type === 'spot'
     const wantRegions = !type || type === 'region'
     const today = todayKst()
+    const festLang = parseLang(req.query.lang)
 
     const [festivals, courses, spots, regions] = await Promise.all([
       // 축제가 웹의 주력 콘텐츠 — 진행중·예정만, 축제명·지역명 어느 쪽으로도 찾히게
@@ -445,7 +446,7 @@ exploreRouter.get(
     ])
 
     ok(res, {
-      festivals: festivals.map((f) => toFestivalCard(f, today)),
+      festivals: festivals.map((f) => toFestivalCard(f, today, festLang)),
       courses: courses.map(toCourseCard),
       spots: spots.map((s) => ({ id: s.id, name: s.name, category: s.category, address: s.address, region: s.region.name })),
       regions,

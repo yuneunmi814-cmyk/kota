@@ -30,6 +30,7 @@ interface BakedFestival {
   imageUrl: string | null
   tel: string | null
   homepage: string | null
+  translations?: { langCode: string; name: string; summary: string | null; placeName: string | null }[]
 }
 
 // 베이크된 실축제(prisma/seed-festivals.json, bake:festivals로 생성) 적재 — API 키 없이 실데이터 재현.
@@ -46,11 +47,19 @@ async function seedBakedFestivals(): Promise<{ upserted: number; pruned: number 
   const bySlug = new Map(regions.map((r) => [r.slug, r.id]))
 
   for (const f of items) {
-    const { regionSlug, externalId, startDate, endDate, ...data } = f
+    const { regionSlug, externalId, startDate, endDate, translations, ...data } = f
     const regionId = regionSlug ? bySlug.get(regionSlug) ?? null : null // 미매칭 축제도 적재(전국)
     const row = { ...data, regionId, startDate: new Date(startDate), endDate: new Date(endDate) }
     // update까지 반영해야 시·도 재분류 같은 교정이 프로덕션에 전달된다
-    await prisma.festival.upsert({ where: { externalId }, update: row, create: { ...row, externalId } })
+    const saved = await prisma.festival.upsert({ where: { externalId }, update: row, create: { ...row, externalId }, select: { id: true } })
+    // 축제 다국어(en/ja/th) — 타겟이 일본·동남아라 콘텐츠 번역이 UI 번역만큼 중요
+    for (const t of translations ?? []) {
+      await prisma.festivalTranslation.upsert({
+        where: { festivalId_langCode: { festivalId: saved.id, langCode: t.langCode } },
+        update: { name: t.name, summary: t.summary, placeName: t.placeName },
+        create: { festivalId: saved.id, langCode: t.langCode, name: t.name, summary: t.summary, placeName: t.placeName },
+      })
+    }
   }
 
   // 자동 수집분(TOURAPI·STDFEST) 중 베이크에 없는 행 정리 — 중복·종료 축제 제거.

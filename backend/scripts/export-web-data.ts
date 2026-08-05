@@ -24,6 +24,7 @@ async function main() {
       id: true, name: true, summary: true, address: true, lat: true, lng: true,
       startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true,
       region: { select: { id: true, name: true, slug: true, visitorScore: true } },
+      translations: { select: { langCode: true, name: true, summary: true, placeName: true } },
     },
   })
 

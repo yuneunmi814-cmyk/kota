@@ -15,6 +15,7 @@ async function main() {
       externalId: true, source: true, sido: true, sigungu: true, name: true, summary: true, address: true,
       lat: true, lng: true, startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true,
       region: { select: { slug: true } },
+      translations: { select: { langCode: true, name: true, summary: true, placeName: true } },
     },
   })
   const items = fs.map((f) => ({
@@ -22,6 +23,7 @@ async function main() {
     name: f.name, summary: f.summary, address: f.address, lat: f.lat, lng: f.lng,
     startDate: f.startDate.toISOString().slice(0, 10), endDate: f.endDate.toISOString().slice(0, 10),
     imageUrl: f.imageUrl, tel: f.tel, homepage: f.homepage,
+    translations: f.translations.map((t) => ({ langCode: t.langCode, name: t.name, summary: t.summary, placeName: t.placeName })),
   }))
   writeFileSync('prisma/seed-festivals.json', JSON.stringify({ exportedAt: new Date().toISOString().slice(0, 10), items }, null, 1))
   console.log('baked', items.length)

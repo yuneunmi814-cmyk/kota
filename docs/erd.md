@@ -294,6 +294,18 @@ REFUNDED REFUNDED
     }
   
 
+  "festival_translations" {
+    BigInt id "🗝️"
+    BigInt festival_id 
+    String lang_code 
+    String name 
+    String summary "❓"
+    String place_name "❓"
+    DateTime created_at 
+    DateTime updated_at 
+    }
+  
+
   "courses" {
     BigInt id "🗝️"
     BigInt region_id 
@@ -469,6 +481,7 @@ REFUNDED REFUNDED
     "videos" }o--|o regions : "region"
     "videos" }o--|o spots : "spot"
     "festivals" }o--|o regions : "region"
+    "festival_translations" }o--|| festivals : "festival"
     "courses" |o--|| "ContentStatus" : "enum:status"
     "courses" |o--|| "CourseAuthorType" : "enum:author_type"
     "courses" }o--|| regions : "region"

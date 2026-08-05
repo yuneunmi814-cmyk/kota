@@ -3,11 +3,12 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { apiGet, type SearchResult } from '../api'
 import { staticFestivals } from '../staticData'
-import { useT } from '../i18n'
+import { useLang, useT } from '../i18n'
 
 // 통합 검색 — GET /api/v1/search?q= (코스·관광지·지역)
 export default function SearchPage() {
   const t = useT()
+  const { lang } = useLang()
   const navigate = useNavigate()
   const [params] = useSearchParams()
   const q = params.get('q') ?? ''
@@ -23,14 +24,14 @@ export default function SearchPage() {
       return
     }
     setState('loading')
-    apiGet<SearchResult>(`/search?q=${encodeURIComponent(q)}`)
+    apiGet<SearchResult>(`/search?q=${encodeURIComponent(q)}`, lang)
       .then((d) => {
         setResult(d)
         setState('idle')
       })
       // API가 없거나 느릴 때도 축제는 찾을 수 있도록 베이크 데이터로 폴백(축제명·지역명 부분일치)
       .catch(() =>
-        staticFestivals(500)
+        staticFestivals(500, lang)
           .then((all) => {
             const needle = q.toLowerCase()
             const festivals = all.filter((f) =>
@@ -41,7 +42,7 @@ export default function SearchPage() {
           })
           .catch(() => setState('error')),
       )
-  }, [q])
+  }, [q, lang])
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -92,7 +93,7 @@ export default function SearchPage() {
                     >
                       {f.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
                     </span>
-                    <span className="text-[12px] font-semibold text-gray-500">{f.sigungu ?? f.sido ?? f.region.name}</span>
+                    <span className="text-[12px] font-semibold text-gray-500">{f.placeName ?? f.sigungu ?? f.sido ?? f.region.name}</span>
                   </div>
                   <div className="font-bold text-[16px] leading-snug">{f.name}</div>
                   <div className="text-[12px] text-gray-500 tabular-nums">

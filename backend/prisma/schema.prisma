@@ -350,12 +350,32 @@ model Festival {
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
 
-  region Region? @relation(fields: [regionId], references: [id])
+  region       Region?               @relation(fields: [regionId], references: [id])
+  translations FestivalTranslation[]
 
   @@index([endDate, startDate]) // 진행중·예정(endDate >= today) 조회용
   @@index([regionId, startDate])
   @@index([name, startDate]) // 소스 간 중복 제거(정규화 이름+시작일) 조회용
   @@map("festivals")
+}
+
+/// 축제 다국어 — 타겟이 일본·동남아인데 UI만 번역하고 축제명이 한국어면 외국인은 못 읽는다.
+/// 관광공사 영문 API(EngService2)는 축제(contentTypeId=15)를 0건 제공하므로 직접 번역해 적재한다.
+model FestivalTranslation {
+  id         BigInt   @id @default(autoincrement())
+  festivalId BigInt   @map("festival_id")
+  langCode   String   @map("lang_code") // en | ja | th
+  name       String
+  summary    String?
+  /// 개최지 표기(예: Uirimji, Jecheon) — 주소 전체가 아니라 외국인이 읽을 지명
+  placeName  String?  @map("place_name")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  festival Festival @relation(fields: [festivalId], references: [id], onDelete: Cascade)
+
+  @@unique([festivalId, langCode])
+  @@map("festival_translations")
 }
 
 model Course {
