@@ -60,6 +60,14 @@ jobs:
       - name: 축제 동기화 (TourAPI 전국 + 표준데이터)
         working-directory: backend
         run: npm run sync:festivals -- --all --std
+      # 지역기반(areaBasedList2) — 커버리지 보강. 상세 조회는 area-intro-cache.json에 누적돼
+      # 신규 축제만 API를 부른다(429 방지). 한도에 걸리면 다음 주에 이어서.
+      - name: Sync festivals (area-based)
+        working-directory: backend
+        env:
+          TOURAPI_SERVICE_KEY: ${{ secrets.TOURAPI_SERVICE_KEY }}
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/kota_sync
+        run: npm run sync:festivals -- --area
 
       - name: 지역 재분류·중복 정리
         working-directory: backend
@@ -76,7 +84,7 @@ jobs:
         run: |
           git config user.name "kota-bot"
           git config user.email "actions@github.com"
-          git add backend/prisma/seed-festivals.json web/public/data/
+          git add backend/prisma/seed-festivals.json backend/prisma/area-intro-cache.json web/public/data/
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋 생략"
           else

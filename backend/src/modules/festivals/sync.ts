@@ -1,3 +1,5 @@
+import { readFileSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { prisma } from '../../lib/prisma.js'
 import { Errors } from '../../lib/errors.js'
 import { fetchFestivals, fetchFestivalIntro, fetchFestivalsByArea, type TourApiFestivalItem } from '../tourapi/client.js'
@@ -123,6 +125,21 @@ export interface AreaSyncOptions {
   onProgress?: (msg: string) => void
 }
 
+// 지역기반 동기화의 상세(detailIntro2) 결과 영구 캐시 — contentid → 기간·장소.
+// DB는 종료 축제를 정리(prune)하므로 기간 정보가 사라진다. 캐시가 없으면 주간 CI가
+// 매번 과거 축제 수백 건의 상세를 재조회해 429(호출 한도)에 걸린다. 파일은 CI가 커밋해 누적.
+const AREA_INTRO_CACHE = resolve(import.meta.dirname, '../../../prisma/area-intro-cache.json')
+
+interface IntroCacheEntry { s?: string; e?: string; p?: string | null }
+
+function loadIntroCache(): Record<string, IntroCacheEntry> {
+  try { return JSON.parse(readFileSync(AREA_INTRO_CACHE, 'utf-8')) as Record<string, IntroCacheEntry> } catch { return {} }
+}
+
+function saveIntroCache(cache: Record<string, IntroCacheEntry>) {
+  writeFileSync(AREA_INTRO_CACHE, JSON.stringify(cache, null, 0))
+}
+
 export async function syncFestivalsByArea(opts: AreaSyncOptions = {}): Promise<FestivalSyncSummary> {
   const from = opts.from ?? todayYmd()
   if (!/^\d{8}$/.test(from)) throw Errors.validation(`--from 은 YYYYMMDD 형식이어야 합니다: ${from}`)
@@ -139,6 +156,8 @@ export async function syncFestivalsByArea(opts: AreaSyncOptions = {}): Promise<F
   )
   const summary: FestivalSyncSummary = { region: '전국(TourAPI 지역기반)', fetched: 0, created: 0, updated: 0, skipped: 0, dryRun: Boolean(opts.dryRun) }
   const seen = new Set<string>()
+  const introCache = loadIntroCache()
+  let introBlocked = false // 429를 만나면 이번 실행에서는 상세 조회를 멈춘다(캐시는 저장 — 다음 주에 이어서)
 
   for (const regnCd of SIDO_REGN_CDS) {
     let pageNo = 1
@@ -159,14 +178,28 @@ export async function syncFestivalsByArea(opts: AreaSyncOptions = {}): Promise<F
         let startYmd: string | undefined
         let endYmd: string | undefined
         let place: string | null = null
+        const fromFile = introCache[raw.contentid]
         if (cached) {
           startYmd = cached.startDate.toISOString().slice(0, 10).replace(/-/g, '')
           endYmd = cached.endDate.toISOString().slice(0, 10).replace(/-/g, '')
-        } else {
-          const intro = await fetchFestivalIntro(raw.contentid).catch(() => null)
-          startYmd = intro?.eventstartdate
-          endYmd = intro?.eventenddate
-          place = intro?.eventplace?.trim() || null
+        } else if (fromFile) {
+          startYmd = fromFile.s
+          endYmd = fromFile.e
+          place = fromFile.p ?? null
+        } else if (!introBlocked) {
+          try {
+            const intro = await fetchFestivalIntro(raw.contentid)
+            startYmd = intro?.eventstartdate
+            endYmd = intro?.eventenddate
+            place = intro?.eventplace?.trim() || null
+            // 실패(기간 없음)도 캐시 — 같은 콘텐츠를 매주 재조회하지 않게
+            introCache[raw.contentid] = { s: startYmd, e: endYmd, p: place }
+          } catch (e) {
+            if (e instanceof Error && /429|Too Many/i.test(e.message)) {
+              introBlocked = true
+              log(`⚠ TourAPI 호출 한도(429) — 남은 신규 축제 상세 조회는 다음 실행으로 미룸`)
+            }
+          }
         }
         if (!startYmd) { summary.skipped += 1; continue }
         const endForFilter = endYmd ?? startYmd
@@ -187,6 +220,7 @@ export async function syncFestivalsByArea(opts: AreaSyncOptions = {}): Promise<F
     log(`[${regnCd}] 누적 ${summary.fetched}건 (생성 ${summary.created} / 갱신 ${summary.updated} / 스킵 ${summary.skipped})`)
   }
 
+  if (!opts.dryRun) saveIntroCache(introCache)
   return summary
 }
 
