@@ -52,7 +52,13 @@ let transport: TourApiTransport = async (url) => {
     const code = /<returnReasonCode>(\d+)<\/returnReasonCode>/.exec(text)?.[1]
     throw Errors.conflict('TOURAPI_ERROR', `TourAPI 오류 응답${code ? ` (코드 ${code})` : ''} — serviceKey/쿼터를 확인하세요`)
   }
-  return JSON.parse(text)
+  const json = JSON.parse(text) as { OpenAPI_ServiceResponse?: { cmmMsgHeader?: { returnReasonCode?: string; errMsg?: string } } }
+  // 쿼터 초과는 JSON 에러 봉투(OpenAPI_ServiceResponse, 코드 22)로도 온다(2026-08-06 실측) — 조용히 빈 결과가 되지 않게 명시 에러로
+  const gate = json.OpenAPI_ServiceResponse?.cmmMsgHeader
+  if (gate?.returnReasonCode) {
+    throw Errors.conflict('TOURAPI_ERROR', `TourAPI 게이트 오류 (코드 ${gate.returnReasonCode}): ${gate.errMsg ?? ''} — 429/쿼터 확인`)
+  }
+  return json
 }
 export function setTourApiTransportForTest(fn: TourApiTransport): void { transport = fn }
 
