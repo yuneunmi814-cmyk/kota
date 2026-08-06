@@ -63,7 +63,7 @@ async function seedBakedFestivals(): Promise<{ upserted: number; pruned: number 
   }
 
   // 자동 수집분(TOURAPI·STDFEST) 중 베이크에 없는 행 정리 — 중복·종료 축제 제거.
-  // 시드 데모(source=SEED)와 사람이 넣은 데이터는 건드리지 않는다.
+  // 시드 데모(SEED)·수기(MANUAL)·문체부(MCST — 연 1회 자료라 주간 prune 부적합)는 건드리지 않는다.
   const keep = items.map((f) => f.externalId)
   const { count: pruned } = await prisma.festival.deleteMany({
     where: { source: { in: ['TOURAPI', 'STDFEST'] }, externalId: { notIn: keep } },

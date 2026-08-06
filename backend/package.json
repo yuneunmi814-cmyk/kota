@@ -23,6 +23,7 @@
     "fix:festival-regions": "tsx scripts/fix-festival-regions.ts",
     "sync:manual": "tsx scripts/sync-manual-festivals.ts",
     "sync:translations": "tsx scripts/sync-translations.ts",
+    "sync:mcst": "tsx scripts/sync-mcst-festivals.ts",
     "export:web": "tsx scripts/export-web-data.ts",
     "sync:audioguide": "tsx scripts/sync-audioguide.ts",
     "sync:photos": "tsx scripts/sync-enrich.ts photos",
