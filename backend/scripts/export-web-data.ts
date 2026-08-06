@@ -45,7 +45,60 @@ async function main() {
       })),
     }),
   )
+  // ===== SEO/GEO 파일 (web/public/) =====
+  // 커스텀 도메인 도입 시 SITE_ORIGIN 환경변수만 바꾸면 됨
+  const site = process.env.SITE_ORIGIN ?? 'https://yuneunmi814-cmyk.github.io/kota'
+  const pubDir = resolve(import.meta.dirname, '../../web/public')
+
+  // sitemap.xml — 축제 상세까지 전부 노출해야 축제명 검색으로 유입된다
+  const staticUrls = ['', '/festivals', '/search']
+  const urls = [
+    ...staticUrls.map((u) => ({ loc: `${site}${u}`, priority: u === '' ? '1.0' : '0.8' })),
+    ...festivals.map((f) => ({ loc: `${site}/festivals/${f.id}`, priority: '0.6' })),
+  ]
+  const lastmod = new Date().toISOString().slice(0, 10)
+  writeFileSync(
+    `${pubDir}/sitemap.xml`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
+      .map((u) => `  <url><loc>${u.loc}</loc><lastmod>${lastmod}</lastmod><priority>${u.priority}</priority></url>`)
+      .join('\n')}\n</urlset>\n`,
+  )
+
+  // robots.txt — 전체 허용 + 사이트맵 위치. AI 크롤러도 명시적으로 허용(GEO: AI 검색에 실리는 게 유입)
+  writeFileSync(
+    `${pubDir}/robots.txt`,
+    `User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${site}/sitemap.xml\n`,
+  )
+
+  // llms.txt — AI 검색·어시스턴트용 사이트 요약(GEO 표준 제안 형식)
+  const sidoCounts = new Map<string, number>()
+  for (const f of festivals) if (f.sido) sidoCounts.set(f.sido, (sidoCounts.get(f.sido) ?? 0) + 1)
+  const topSidos = [...sidoCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8)
+  writeFileSync(
+    `${pubDir}/llms.txt`,
+    `# KOTA — Korea Festa
+
+> Location-based Korean local festival travel packs for foreign travelers. ${festivals.length} ongoing/upcoming festivals across Korea with dates, venues, directions and nearby attractions, in Korean, English, Japanese and Thai.
+
+## What this site offers
+- Festival list with region filter: ${site}/festivals
+- Festival detail (dates, venue, phone, directions, nearby spots within 3km): ${site}/festivals/{id}
+- Unified search (festival/region/attraction names): ${site}/search?q=...
+- UI and festival content localized in ko/en/ja/th (language switch in header)
+
+## Data sources
+- Korea Tourism Organization TourAPI (searchFestival2, areaBasedList2)
+- Korea nationwide culture festival standard open data (data.go.kr)
+- Manually curated local festivals not present in any public API (verified on site)
+- Updated weekly via automated sync (${lastmod})
+
+## Current coverage by region (festival count)
+${topSidos.map(([n, c]) => `- ${n}: ${c}`).join('\n')}
+`,
+  )
+
   console.log(`✔ ${outDir} — 지역 ${regions.length} · 축제 ${festivals.length}건 내보냄`)
+  console.log(`✔ ${pubDir} — sitemap.xml(${urls.length} URL) · robots.txt · llms.txt`)
   await prisma.$disconnect()
 }
 

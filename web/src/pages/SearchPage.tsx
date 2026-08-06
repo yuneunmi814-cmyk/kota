@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
+import { setPageMeta } from '../seo'
 import { apiGet, type SearchResult } from '../api'
 import { staticFestivals } from '../staticData'
 import { useLang, useT } from '../i18n'
@@ -17,6 +18,7 @@ export default function SearchPage() {
   const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle')
 
   useEffect(() => {
+    setPageMeta(q ? `'${q}' 검색` : '검색', '축제·지역·관광지 통합 검색 — Search Korean festivals, regions and attractions.')
     setInput(q)
     if (!q) {
       setResult(null)

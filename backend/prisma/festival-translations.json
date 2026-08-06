@@ -1,272 +1,1892 @@
 {
-  "_readme": [
-    "축제 다국어 번역 (en / ja / th). 타겟은 일본·동남아(태국) — UI만 번역하고 축제명이 한국어면 외국인은 못 읽는다.",
-    "관광공사 영문 API(EngService2)는 축제(contentTypeId=15)를 0건 제공하므로 직접 번역해 넣는다(2026-08-05 실측).",
-    "",
-    "번역 원칙:",
-    "  · 지명·고유명사는 로마자 표기를 유지한다(Gwangalli, Hwaseong Haenggung) — 현지에서 길을 물을 수 있어야 한다",
-    "  · 무엇을 하는 행사인지 드러낸다 — 'Painters'가 아니라 'PAINTERS: Comedy Art Performance'",
-    "  · 일본어는 지명을 한자로 쓰되 읽기 어려운 곳은 가타카ナ 병기, 태국어는 발음 표기 위주",
-    "  · placeName은 주소 전체가 아니라 외국인이 읽을 지명(Jung-gu, Seoul)",
-    "",
-    "추가·수정 방법:",
-    "  1) items에 { festivalName(한국어 원문·매칭 키), en/ja/th } 항목 추가",
-    "  2) cd backend && npm run sync:translations",
-    "  3) npm run bake:festivals && npm run export:web → 커밋",
-    "축제명이 바뀌면 매칭이 끊기므로 festivalName은 DB 원문과 정확히 같아야 한다(스크립트가 미매칭을 경고한다)."
-  ],
-  "items": [
-    {
-      "festivalName": "페인터즈",
-      "en": { "name": "PAINTERS: Comedy Art Performance", "summary": "Non-verbal show where artists paint giant artworks live on stage.", "placeName": "Jung-gu, Seoul" },
-      "ja": { "name": "ペインターズ（PAINTERS）", "summary": "舞台上で巨大な絵を描き上げるノンバーバル・パフォーマンス。", "placeName": "ソウル 中区" },
-      "th": { "name": "เพนเทอร์ส (PAINTERS) การแสดงศิลปะ", "summary": "การแสดงไร้บทพูด วาดภาพขนาดใหญ่สดบนเวที", "placeName": "จุงกู กรุงโซล" }
-    },
-    {
-      "festivalName": "DDP 건축투어",
-      "en": { "name": "DDP Architecture Tour", "summary": "Guided tour of Dongdaemun Design Plaza, Zaha Hadid's landmark.", "placeName": "Jung-gu, Seoul" },
-      "ja": { "name": "DDP 建築ツアー", "summary": "ザハ・ハディド設計の東大門デザインプラザを巡るガイドツアー。", "placeName": "ソウル 中区" },
-      "th": { "name": "ทัวร์สถาปัตยกรรม DDP", "summary": "ทัวร์ชมทงแดมุนดีไซน์พลาซา ผลงานของซาฮา ฮาดิด", "placeName": "จุงกู กรุงโซล" }
-    },
-    {
-      "festivalName": "2026 숭례문 파수의식",
-      "en": { "name": "Sungnyemun Gate Guard Ceremony 2026", "summary": "Reenactment of the Joseon-era guard ritual at Seoul's Great South Gate.", "placeName": "Jung-gu, Seoul" },
-      "ja": { "name": "崇礼門（スンネムン）守衛儀式 2026", "summary": "朝鮮王朝時代の門番の儀式を再現。", "placeName": "ソウル 中区" },
-      "th": { "name": "พิธียามรักษาประตูซุงเนมุน 2026", "summary": "จำลองพิธียามรักษาประตูสมัยราชวงศ์โชซอน", "placeName": "จุงกู กรุงโซล" }
-    },
-    {
-      "festivalName": "서울 왕궁수문장 교대의식",
-      "en": { "name": "Royal Guard Changing Ceremony, Gyeongbokgung", "summary": "Daily changing of the royal guards in Joseon costume.", "placeName": "Jung-gu, Seoul" },
-      "ja": { "name": "王宮守門将 交代儀式（景福宮）", "summary": "朝鮮王朝の衣装をまとった守門将の交代を毎日再現。", "placeName": "ソウル 中区" },
-      "th": { "name": "พิธีเปลี่ยนเวรทหารรักษาพระราชวัง", "summary": "พิธีเปลี่ยนเวรทหารในชุดสมัยโชซอน จัดทุกวัน", "placeName": "จุงกู กรุงโซล" }
-    },
-    {
-      "festivalName": "국악공연 진연",
-      "en": { "name": "Jinyeon: Korean Court Music Concert", "summary": "Traditional Korean court music and dance performance.", "placeName": "Jongno-gu, Seoul" },
-      "ja": { "name": "国楽公演「進宴（チニョン）」", "summary": "韓国伝統の宮中音楽と舞踊の公演。", "placeName": "ソウル 鍾路区" },
-      "th": { "name": "การแสดงดนตรีราชสำนัก จินยอน", "summary": "การแสดงดนตรีและนาฏศิลป์ราชสำนักเกาหลี", "placeName": "ชงโนกู กรุงโซล" }
-    },
-    {
-      "festivalName": "광안리 M(Marvelous) 드론 라이트쇼",
-      "en": { "name": "Gwangalli M Drone Light Show", "summary": "Weekend drone show over Gwangalli Beach and Gwangan Bridge.", "placeName": "Suyeong-gu, Busan" },
-      "ja": { "name": "広安里（クァンアンリ）M ドローンライトショー", "summary": "広安里ビーチと広安大橋を舞台にした週末のドローンショー。", "placeName": "釜山 水営区" },
-      "th": { "name": "โดรนไลต์โชว์ ควังอันลี M", "summary": "โชว์โดรนสุดสัปดาห์เหนือหาดควังอันลีและสะพานควังอัน", "placeName": "ซูยองกู ปูซาน" }
-    },
-    {
-      "festivalName": "남산봉수의식 등 전통문화행사",
-      "en": { "name": "Namsan Beacon Fire Ceremony", "summary": "Reenactment of the signal-fire ritual once used to warn the capital.", "placeName": "Jongno-gu, Seoul" },
-      "ja": { "name": "南山（ナムサン）烽火儀式", "summary": "都に危急を知らせた烽火（のろし）の儀式を再現。", "placeName": "ソウル 鍾路区" },
-      "th": { "name": "พิธีจุดไฟสัญญาณนัมซาน", "summary": "จำลองพิธีจุดไฟสัญญาณเตือนภัยสมัยโบราณ", "placeName": "ชงโนกู กรุงโซล" }
-    },
-    {
-      "festivalName": "왕가의 산책",
-      "en": { "name": "Royal Family's Walk", "summary": "Costumed royal procession reenactment.", "placeName": "Yeongjong, Incheon" },
-      "ja": { "name": "王家の散歩", "summary": "王族の行列を再現するパレード。", "placeName": "仁川 永宗" },
-      "th": { "name": "ขบวนเสด็จราชวงศ์", "summary": "จำลองขบวนเสด็จของราชวงศ์", "placeName": "ยองจง อินชอน" }
-    },
-    {
-      "festivalName": "2026 섬 방문의 해",
-      "en": { "name": "Year of Island Tourism 2026, Yeosu", "summary": "Year-long island tourism campaign across Yeosu's archipelago.", "placeName": "Yeosu" },
-      "ja": { "name": "2026 島訪問の年（麗水）", "summary": "麗水（ヨス）の島々を巡る通年の観光キャンペーン。", "placeName": "麗水（ヨス）" },
-      "th": { "name": "ปีแห่งการเที่ยวเกาะ 2026 ยอซู", "summary": "แคมเปญท่องเที่ยวหมู่เกาะยอซูตลอดทั้งปี", "placeName": "ยอซู" }
-    },
-    {
-      "festivalName": "쉼표：비우고, 머무르고, 채우는",
-      "en": { "name": "Pause: Empty, Stay, Refill", "summary": "Slow-travel art program in the old capital of Gyeongju.", "placeName": "Gyeongju" },
-      "ja": { "name": "休符：空にして、留まり、満たす", "summary": "古都・慶州（キョンジュ）でのスローな滞在型アートプログラム。", "placeName": "慶州（キョンジュ）" },
-      "th": { "name": "พัก: ว่าง อยู่ เติม", "summary": "โปรแกรมศิลปะพักผ่อนในเมืองเก่าคยองจู", "placeName": "คยองจู" }
-    },
-    {
-      "festivalName": "2026 화성행궁 야간개장",
-      "en": { "name": "Hwaseong Haenggung Palace Night Opening", "summary": "UNESCO-listed palace opens after dark with lighting and performances.", "placeName": "Suwon" },
-      "ja": { "name": "華城行宮（ファソンヘングン）夜間開場", "summary": "世界遺産の行宮を夜間開放。ライトアップと公演。", "placeName": "水原（スウォン）" },
-      "th": { "name": "เปิดพระราชวังฮวาซองแฮงกุงยามค่ำ", "summary": "พระราชวังมรดกโลกเปิดยามค่ำ พร้อมไฟประดับและการแสดง", "placeName": "ซูวอน" }
-    },
-    {
-      "festivalName": "한강야경투어",
-      "en": { "name": "Hangang River Night View Tour", "summary": "Evening tour of Seoul's riverside night scenery.", "placeName": "Yeongdeungpo-gu, Seoul" },
-      "ja": { "name": "漢江（ハンガン）夜景ツアー", "summary": "ソウルの川辺の夜景を巡るナイトツアー。", "placeName": "ソウル 永登浦区" },
-      "th": { "name": "ทัวร์ชมวิวกลางคืนแม่น้ำฮัน", "summary": "ทัวร์ชมทิวทัศน์ยามค่ำริมแม่น้ำฮันในโซล", "placeName": "ยองดึงโพกู กรุงโซล" }
-    },
-    {
-      "festivalName": "한강페스티벌",
-      "en": { "name": "Hangang Festival", "summary": "Summer festival along the Han River with water play and night markets.", "placeName": "Mapo-gu, Seoul" },
-      "ja": { "name": "漢江（ハンガン）フェスティバル", "summary": "水遊びやナイトマーケットが並ぶ漢江の夏祭り。", "placeName": "ソウル 麻浦区" },
-      "th": { "name": "เทศกาลแม่น้ำฮัน", "summary": "เทศกาลฤดูร้อนริมแม่น้ำฮัน มีกิจกรรมทางน้ำและตลาดกลางคืน", "placeName": "มาโพกู กรุงโซล" }
-    },
-    {
-      "festivalName": "서울썸머비치",
-      "en": { "name": "Seoul Summer Beach", "summary": "Pop-up urban beach in central Seoul.", "placeName": "Jongno-gu, Seoul" },
-      "ja": { "name": "ソウル・サマービーチ", "summary": "都心に現れる期間限定のアーバンビーチ。", "placeName": "ソウル 鍾路区" },
-      "th": { "name": "โซลซัมเมอร์บีช", "summary": "ชายหาดจำลองกลางกรุงโซล เปิดเฉพาะฤดูร้อน", "placeName": "ชงโนกู กรุงโซล" }
-    },
-    {
-      "festivalName": "보령머드축제",
-      "en": { "name": "Boryeong Mud Festival", "summary": "Korea's best-known summer festival — mud baths, slides and beach parties.", "placeName": "Boryeong, Chungcheongnam-do" },
-      "ja": { "name": "保寧（ポリョン）マッド（泥）フェスティバル", "summary": "韓国を代表する夏祭り。泥風呂・泥すべり・ビーチパーティー。", "placeName": "忠清南道 保寧" },
-      "th": { "name": "เทศกาลโคลนโพรยอง", "summary": "เทศกาลฤดูร้อนชื่อดังที่สุดของเกาหลี เล่นโคลน สไลเดอร์ และปาร์ตี้ริมหาด", "placeName": "โพรยอง ชุงชองใต้" }
-    },
-    {
-      "festivalName": "전주 가맥축제",
-      "en": { "name": "Jeonju Gamaek Beer Festival", "summary": "Beer-and-snack festival born from Jeonju's corner-store drinking culture.", "placeName": "Jeonju" },
-      "ja": { "name": "全州（チョンジュ）カメクビール祭り", "summary": "街の酒屋で飲む全州独特の文化から生まれたビール祭り。", "placeName": "全州（チョンジュ）" },
-      "th": { "name": "เทศกาลเบียร์คาแมค ชอนจู", "summary": "เทศกาลเบียร์จากวัฒนธรรมดื่มหน้าร้านชำของชอนจู", "placeName": "ชอนจู" }
-    },
-    {
-      "festivalName": "부산바다축제",
-      "en": { "name": "Busan Sea Festival", "summary": "Busan's flagship summer festival across its beaches.", "placeName": "Saha-gu, Busan" },
-      "ja": { "name": "釜山（プサン）海祭り", "summary": "釜山のビーチを舞台にした代表的な夏祭り。", "placeName": "釜山 沙下区" },
-      "th": { "name": "เทศกาลทะเลปูซาน", "summary": "เทศกาลฤดูร้อนหลักของปูซาน จัดตามชายหาดต่างๆ", "placeName": "ซาฮากู ปูซาน" }
-    },
-    {
-      "festivalName": "통영한산대첩축제",
-      "en": { "name": "Tongyeong Hansan Daecheop Festival", "summary": "Reenactment of Admiral Yi Sun-sin's naval victory at Hansan Island.", "placeName": "Tongyeong" },
-      "ja": { "name": "統営（トンヨン）閑山大捷祭り", "summary": "李舜臣（イ・スンシン）将軍の閑山島海戦の勝利を再現。", "placeName": "統営（トンヨン）" },
-      "th": { "name": "เทศกาลฮันซันแดชอบ ทงยอง", "summary": "จำลองชัยชนะทางเรือของแม่ทัพอี ซุนชิน ที่เกาะฮันซัน", "placeName": "ทงยอง" }
-    },
-    {
-      "festivalName": "제24회 동강국제사진제",
-      "en": { "name": "Donggang International Photo Festival (24th)", "summary": "Korea's leading photography festival on the Donggang River.", "placeName": "Yeongwol, Gangwon" },
-      "ja": { "name": "第24回 東江（トンガン）国際写真祭", "summary": "東江のほとりで開かれる韓国有数の写真祭。", "placeName": "江原 寧越（ヨンウォル）" },
-      "th": { "name": "เทศกาลภาพถ่ายนานาชาติทงคัง ครั้งที่ 24", "summary": "เทศกาลภาพถ่ายชั้นนำของเกาหลี ริมแม่น้ำทงคัง", "placeName": "ยองวอล คังวอน" }
-    },
-    {
-      "festivalName": "태백 해바라기축제",
-      "en": { "name": "Taebaek Sunflower Festival", "summary": "Highland sunflower fields in full bloom at 1,000m altitude.", "placeName": "Taebaek, Gangwon" },
-      "ja": { "name": "太白（テベク）ひまわり祭り", "summary": "標高1,000mの高原に広がるひまわり畑。", "placeName": "江原 太白（テベク）" },
-      "th": { "name": "เทศกาลทานตะวันแทแบ็ก", "summary": "ทุ่งทานตะวันบานสะพรั่งบนที่ราบสูง 1,000 เมตร", "placeName": "แทแบ็ก คังวอน" }
-    },
-    {
-      "festivalName": "춘천 썸머워터 페스티벌",
-      "en": { "name": "Chuncheon Summer Water Festival", "summary": "Lakeside water festival in the city of Soyang Lake.", "placeName": "Chuncheon, Gangwon" },
-      "ja": { "name": "春川（チュンチョン）サマーウォーターフェスティバル", "summary": "昭陽湖の街で開かれる湖畔の水祭り。", "placeName": "江原 春川（チュンチョン）" },
-      "th": { "name": "เทศกาลน้ำฤดูร้อนชุนชอน", "summary": "เทศกาลเล่นน้ำริมทะเลสาบในเมืองชุนชอน", "placeName": "ชุนชอน คังวอน" }
-    },
-    {
-      "festivalName": "홍천강 별빛음악 맥주축제",
-      "en": { "name": "Hongcheon River Starlight Music & Beer Festival", "summary": "Riverside beer festival with live music under the stars.", "placeName": "Hongcheon, Gangwon" },
-      "ja": { "name": "洪川江 星あかり音楽ビール祭り", "summary": "星空の下、川辺でライブ音楽とビールを楽しむ祭り。", "placeName": "江原 洪川（ホンチョン）" },
-      "th": { "name": "เทศกาลเบียร์และดนตรีใต้แสงดาว ริมแม่น้ำฮงชอน", "summary": "เทศกาลเบียร์ริมแม่น้ำ พร้อมดนตรีสดใต้แสงดาว", "placeName": "ฮงชอน คังวอน" }
-    },
-    {
-      "festivalName": "세미원 연꽃문화제",
-      "en": { "name": "Semiwon Lotus Festival", "summary": "Lotus garden festival where the Han River's two branches meet.", "placeName": "Yangpyeong, Gyeonggi" },
-      "ja": { "name": "洗美苑（セミウォン）蓮の花文化祭", "summary": "南漢江と北漢江が出会う場所の蓮園で開かれる祭り。", "placeName": "京畿 楊平（ヤンピョン）" },
-      "th": { "name": "เทศกาลดอกบัวเซมีวอน", "summary": "เทศกาลสวนดอกบัว ณ จุดบรรจบของแม่น้ำฮันสองสาย", "placeName": "ยางพยอง คยองกี" }
-    },
-    {
-      "festivalName": "서울프린지페스티벌2026",
-      "en": { "name": "Seoul Fringe Festival 2026", "summary": "Independent arts festival — theatre, music and street performance.", "placeName": "Mapo-gu, Seoul" },
-      "ja": { "name": "ソウル・フリンジ・フェスティバル 2026", "summary": "演劇・音楽・ストリートパフォーマンスの独立系アートフェス。", "placeName": "ソウル 麻浦区" },
-      "th": { "name": "โซลฟรินจ์เฟสติวัล 2026", "summary": "เทศกาลศิลปะอิสระ ละคร ดนตรี และการแสดงข้างถนน", "placeName": "มาโพกู กรุงโซล" }
-    },
-    {
-      "festivalName": "2026 부산국제불교박람회",
-      "en": { "name": "Busan International Buddhism Expo 2026", "summary": "Buddhist culture expo — temple food, crafts and meditation programs.", "placeName": "Haeundae-gu, Busan" },
-      "ja": { "name": "2026 釜山国際仏教博覧会", "summary": "精進料理・工芸・瞑想プログラムなど仏教文化の博覧会。", "placeName": "釜山 海雲台区" },
-      "th": { "name": "งานแสดงพุทธศาสนานานาชาติปูซาน 2026", "summary": "งานแสดงวัฒนธรรมพุทธ อาหารวัด งานฝีมือ และการทำสมาธิ", "placeName": "แฮอุนแดกู ปูซาน" }
-    },
-    {
-      "festivalName": "제7회 섬의 날",
-      "en": { "name": "7th Island Day", "summary": "National Island Day celebration hosted in Yeosu.", "placeName": "Yeosu, Jeollanam-do" },
-      "ja": { "name": "第7回 島の日", "summary": "麗水（ヨス）で開かれる国の記念日「島の日」の祝祭。", "placeName": "全羅南道 麗水" },
-      "th": { "name": "วันเกาะแห่งชาติ ครั้งที่ 7", "summary": "งานฉลองวันเกาะแห่งชาติ จัดที่ยอซู", "placeName": "ยอซู ชอลลาใต้" }
-    },
-    {
-      "festivalName": "밀양 수퍼 페스티벌",
-      "en": { "name": "Miryang Super Festival", "summary": "Summer music festival in Miryang.", "placeName": "Miryang, Gyeongsangnam-do" },
-      "ja": { "name": "密陽（ミリャン）スーパーフェスティバル", "summary": "密陽で開かれる夏の音楽フェス。", "placeName": "慶尚南道 密陽" },
-      "th": { "name": "มิลยางซูเปอร์เฟสติวัล", "summary": "เทศกาลดนตรีฤดูร้อนในเมืองมิลยาง", "placeName": "มิลยาง คยองซังใต้" }
-    },
-    {
-      "festivalName": "송도해변축제",
-      "en": { "name": "Songdo Beach Festival", "summary": "Beach festival at Songdo, Incheon.", "placeName": "Yeonsu-gu, Incheon" },
-      "ja": { "name": "松島（ソンド）海辺祭り", "summary": "仁川・松島のビーチで開かれる祭り。", "placeName": "仁川 延寿区" },
-      "th": { "name": "เทศกาลชายหาดซองโด", "summary": "เทศกาลริมหาดซองโด เมืองอินชอน", "placeName": "ยอนซูกู อินชอน" }
-    },
-    {
-      "festivalName": "한강 다리밑 영화관",
-      "en": { "name": "Cinema Under the Hangang Bridge", "summary": "Free open-air cinema beneath a Han River bridge.", "placeName": "Yeongdeungpo-gu, Seoul" },
-      "ja": { "name": "漢江の橋の下の映画館", "summary": "漢江の橋の下で開かれる無料の野外映画上映。", "placeName": "ソウル 永登浦区" },
-      "th": { "name": "โรงหนังใต้สะพานแม่น้ำฮัน", "summary": "ฉายหนังกลางแปลงฟรี ใต้สะพานข้ามแม่น้ำฮัน", "placeName": "ยองดึงโพกู กรุงโซล" }
-    },
-    {
-      "festivalName": "2026 부산바다도서관",
-      "en": { "name": "Busan Sea Library 2026", "summary": "Read a book on the beach — outdoor library by the sea.", "placeName": "Suyeong-gu, Busan" },
-      "ja": { "name": "2026 釜山 海の図書館", "summary": "ビーチで本が読める海辺の屋外図書館。", "placeName": "釜山 水営区" },
-      "th": { "name": "ห้องสมุดริมทะเลปูซาน 2026", "summary": "ห้องสมุดกลางแจ้งริมหาด อ่านหนังสือชมทะเล", "placeName": "ซูยองกู ปูซาน" }
-    },
-    {
-      "festivalName": "EX HORROR 시즌 6 : 신라X좀비",
-      "en": { "name": "EX HORROR Season 6: Silla X Zombie", "summary": "Horror night event set in the ancient Silla capital.", "placeName": "Gyeongju" },
-      "ja": { "name": "EX HORROR シーズン6：新羅×ゾンビ", "summary": "古都・慶州を舞台にしたホラーナイトイベント。", "placeName": "慶州（キョンジュ）" },
-      "th": { "name": "EX HORROR ซีซัน 6: ชิลลา X ซอมบี้", "summary": "อีเวนต์สยองขวัญยามค่ำ ในเมืองโบราณคยองจู", "placeName": "คยองจู" }
-    },
-    {
-      "festivalName": "성북문화바캉스",
-      "en": { "name": "Seongbuk Culture Vacance", "summary": "Neighbourhood summer culture program in Seongbuk.", "placeName": "Seongbuk-gu, Seoul" },
-      "ja": { "name": "城北（ソンブク）文化バカンス", "summary": "城北区の夏の地域文化プログラム。", "placeName": "ソウル 城北区" },
-      "th": { "name": "ซองบุกคัลเจอร์วาคานซ์", "summary": "โปรแกรมวัฒนธรรมฤดูร้อนของย่านซองบุก", "placeName": "ซองบุกกู กรุงโซล" }
-    },
-    {
-      "festivalName": "귀몽 제주신화월드",
-      "en": { "name": "Gwimong at Jeju Shinhwa World", "summary": "Korean folklore-themed night attraction on Jeju Island.", "placeName": "Seogwipo, Jeju" },
-      "ja": { "name": "鬼夢（グィモン）済州神話ワールド", "summary": "韓国の伝承をテーマにした済州島のナイトアトラクション。", "placeName": "済州 西帰浦" },
-      "th": { "name": "กวีมง ณ เชจูชินฮวาเวิลด์", "summary": "แหล่งท่องเที่ยวยามค่ำธีมตำนานพื้นบ้านเกาหลี บนเกาะเชจู", "placeName": "ซอกวีโพ เชจู" }
-    },
-    {
-      "festivalName": "2026 서귀포 원도심 문화페스티벌",
-      "en": { "name": "Seogwipo Old Town Culture Festival 2026", "summary": "Street culture festival in Seogwipo's historic downtown.", "placeName": "Seogwipo, Jeju" },
-      "ja": { "name": "2026 西帰浦（ソギポ）旧都心 文化フェスティバル", "summary": "西帰浦の旧市街で開かれるストリート文化祭。", "placeName": "済州 西帰浦" },
-      "th": { "name": "เทศกาลวัฒนธรรมย่านเมืองเก่าซอกวีโพ 2026", "summary": "เทศกาลวัฒนธรรมริมถนนในย่านเมืองเก่าซอกวีโพ", "placeName": "ซอกวีโพ เชจู" }
-    },
-    {
-      "festivalName": "2026 목포해상W쇼",
-      "en": { "name": "Mokpo Maritime W Show 2026", "summary": "Sea-stage light and fountain show in Mokpo harbour.", "placeName": "Mokpo, Jeollanam-do" },
-      "ja": { "name": "2026 木浦（モクポ）海上Wショー", "summary": "木浦港の海上ステージで繰り広げる噴水・光のショー。", "placeName": "全羅南道 木浦" },
-      "th": { "name": "โชว์กลางทะเลมกโพ W 2026", "summary": "โชว์แสงและน้ำพุบนเวทีกลางทะเลท่าเรือมกโพ", "placeName": "มกโพ ชอลลาใต้" }
-    },
-    {
-      "festivalName": "2026 고흥 녹동항 드론쇼",
-      "en": { "name": "Goheung Nokdong Port Drone Show 2026", "summary": "Drone light show over Nokdong Port.", "placeName": "Goheung, Jeollanam-do" },
-      "ja": { "name": "2026 高興（コフン）鹿洞港 ドローンショー", "summary": "鹿洞港の夜空を彩るドローンライトショー。", "placeName": "全羅南道 高興" },
-      "th": { "name": "โดรนโชว์ท่าเรือนกดง โคฮึง 2026", "summary": "โชว์โดรนเหนือท่าเรือนกดง", "placeName": "โคฮึง ชอลลาใต้" }
-    },
-    {
-      "festivalName": "전주한옥마을 전통연희 퍼레이드-노상놀이야",
-      "en": { "name": "Jeonju Hanok Village Traditional Parade", "summary": "Street parade of traditional Korean performing arts in the hanok village.", "placeName": "Jeonju" },
-      "ja": { "name": "全州韓屋村 伝統演戯パレード", "summary": "韓屋村を練り歩く韓国伝統芸能のストリートパレード。", "placeName": "全州（チョンジュ）" },
-      "th": { "name": "ขบวนพาเหรดศิลปะพื้นบ้าน หมู่บ้านฮันอกชอนจู", "summary": "ขบวนพาเหรดศิลปะการแสดงพื้นบ้านในหมู่บ้านฮันอก", "placeName": "ชอนจู" }
-    },
-    {
-      "festivalName": "나오라쇼",
-      "en": { "name": "Naora Show", "summary": "Outdoor performance program in Wonju.", "placeName": "Wonju, Gangwon" },
-      "ja": { "name": "ナオラショー", "summary": "原州（ウォンジュ）で開かれる野外パフォーマンス。", "placeName": "江原 原州" },
-      "th": { "name": "นาโอราโชว์", "summary": "การแสดงกลางแจ้งในเมืองวอนจู", "placeName": "วอนจู คังวอน" }
-    },
-    {
-      "festivalName": "충북 괴산 우주특별시：별별탐사대",
-      "en": { "name": "Goesan Space City: Star Explorers", "summary": "Stargazing and space-science program in rural Goesan.", "placeName": "Goesan, Chungcheongbuk-do" },
-      "ja": { "name": "忠北 槐山（クェサン）宇宙特別市：星々探査隊", "summary": "槐山の夜空を舞台にした星空観察・宇宙科学プログラム。", "placeName": "忠清北道 槐山" },
-      "th": { "name": "เมืองอวกาศเควซัน: นักสำรวจดวงดาว", "summary": "โปรแกรมดูดาวและวิทยาศาสตร์อวกาศในชนบทเควซัน", "placeName": "เควซัน ชุงชองเหนือ" }
-    },
-    {
-      "festivalName": "의림지 달빛 물맞이 행차",
-      "en": { "name": "Uirimji Moonlight Water Blessing Procession", "summary": "Night procession at Uirimji, a reservoir built some 2,000 years ago — washing body and mind under the moonlight. Hosted by Jecheon City.", "placeName": "Jecheon, Chungcheongbuk-do" },
-      "ja": { "name": "義林池（ウィリムジ）月あかり水浴び行列", "summary": "約2千年前に築かれた貯水池・義林池で、月明かりの下、心身を清める夜の行列。主催：堤川市。", "placeName": "忠清北道 堤川（チェチョン）" },
-      "th": { "name": "ขบวนแห่รับน้ำใต้แสงจันทร์ อุยริมจี", "summary": "ขบวนแห่ยามค่ำที่อ่างเก็บน้ำอุยริมจี อายุราว 2,000 ปี ชำระกายใจใต้แสงจันทร์ จัดโดยเมืองเชชอน", "placeName": "เชชอน ชุงชองเหนือ" }
-    },
-    {
-      "festivalName": "서천 홍원항 자연산 전어 꽃게 축제",
-      "en": { "name": "Seocheon Hongwon Port Gizzard Shad & Blue Crab Festival", "summary": "Autumn seafood festival — wild-caught gizzard shad and blue crab straight off the boats.", "placeName": "Seocheon, Chungcheongnam-do" },
-      "ja": { "name": "舒川（ソチョン）洪原港 天然コノシロ・ワタリガニ祭り", "summary": "水揚げされたばかりの天然コノシロとワタリガニを味わう秋の海鮮祭り。", "placeName": "忠清南道 舒川" },
-      "th": { "name": "เทศกาลปลาโคโนชิโระและปูม้า ท่าเรือฮงวอน ซอชอน", "summary": "เทศกาลอาหารทะเลฤดูใบไม้ร่วง ปลาโคโนชิโระและปูม้าสดจากเรือ", "placeName": "ซอชอน ชุงชองใต้" }
-    },
-    {
-      "festivalName": "수원 국가유산 야행",
-      "en": { "name": "Suwon Heritage Night Tour", "summary": "Night opening of Suwon's UNESCO fortress heritage sites.", "placeName": "Suwon, Gyeonggi" },
-      "ja": { "name": "水原（スウォン）国家遺産 夜行", "summary": "世界遺産・水原華城の文化財を夜間open。", "placeName": "京畿 水原" },
-      "th": { "name": "ทัวร์มรดกยามค่ำ ซูวอน", "summary": "เปิดชมโบราณสถานป้อมฮวาซองยามค่ำคืน", "placeName": "ซูวอน คยองกี" }
-    }
-  ]
+ "_readme": [
+  "축제 다국어 번역 (en / ja / th). 타겟은 일본·동남아(태국) — UI만 번역하고 축제명이 한국어면 외국인은 못 읽는다.",
+  "관광공사 영문 API(EngService2)는 축제(contentTypeId=15)를 0건 제공하므로 직접 번역해 넣는다(2026-08-05 실측).",
+  "",
+  "번역 원칙:",
+  "  · 지명·고유명사는 로마자 표기를 유지한다(Gwangalli, Hwaseong Haenggung) — 현지에서 길을 물을 수 있어야 한다",
+  "  · 무엇을 하는 행사인지 드러낸다 — 'Painters'가 아니라 'PAINTERS: Comedy Art Performance'",
+  "  · 일본어는 지명을 한자로 쓰되 읽기 어려운 곳은 가타카ナ 병기, 태국어는 발음 표기 위주",
+  "  · placeName은 주소 전체가 아니라 외국인이 읽을 지명(Jung-gu, Seoul)",
+  "",
+  "추가·수정 방법:",
+  "  1) items에 { festivalName(한국어 원문·매칭 키), en/ja/th } 항목 추가",
+  "  2) cd backend && npm run sync:translations",
+  "  3) npm run bake:festivals && npm run export:web → 커밋",
+  "축제명이 바뀌면 매칭이 끊기므로 festivalName은 DB 원문과 정확히 같아야 한다(스크립트가 미매칭을 경고한다)."
+ ],
+ "items": [
+  {
+   "festivalName": "페인터즈",
+   "en": {
+    "name": "PAINTERS: Comedy Art Performance",
+    "summary": "Non-verbal show where artists paint giant artworks live on stage.",
+    "placeName": "Jung-gu, Seoul"
+   },
+   "ja": {
+    "name": "ペインターズ（PAINTERS）",
+    "summary": "舞台上で巨大な絵を描き上げるノンバーバル・パフォーマンス。",
+    "placeName": "ソウル 中区"
+   },
+   "th": {
+    "name": "เพนเทอร์ส (PAINTERS) การแสดงศิลปะ",
+    "summary": "การแสดงไร้บทพูด วาดภาพขนาดใหญ่สดบนเวที",
+    "placeName": "จุงกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "DDP 건축투어",
+   "en": {
+    "name": "DDP Architecture Tour",
+    "summary": "Guided tour of Dongdaemun Design Plaza, Zaha Hadid's landmark.",
+    "placeName": "Jung-gu, Seoul"
+   },
+   "ja": {
+    "name": "DDP 建築ツアー",
+    "summary": "ザハ・ハディド設計の東大門デザインプラザを巡るガイドツアー。",
+    "placeName": "ソウル 中区"
+   },
+   "th": {
+    "name": "ทัวร์สถาปัตยกรรม DDP",
+    "summary": "ทัวร์ชมทงแดมุนดีไซน์พลาซา ผลงานของซาฮา ฮาดิด",
+    "placeName": "จุงกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "2026 숭례문 파수의식",
+   "en": {
+    "name": "Sungnyemun Gate Guard Ceremony 2026",
+    "summary": "Reenactment of the Joseon-era guard ritual at Seoul's Great South Gate.",
+    "placeName": "Jung-gu, Seoul"
+   },
+   "ja": {
+    "name": "崇礼門（スンネムン）守衛儀式 2026",
+    "summary": "朝鮮王朝時代の門番の儀式を再現。",
+    "placeName": "ソウル 中区"
+   },
+   "th": {
+    "name": "พิธียามรักษาประตูซุงเนมุน 2026",
+    "summary": "จำลองพิธียามรักษาประตูสมัยราชวงศ์โชซอน",
+    "placeName": "จุงกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "서울 왕궁수문장 교대의식",
+   "en": {
+    "name": "Royal Guard Changing Ceremony, Gyeongbokgung",
+    "summary": "Daily changing of the royal guards in Joseon costume.",
+    "placeName": "Jung-gu, Seoul"
+   },
+   "ja": {
+    "name": "王宮守門将 交代儀式（景福宮）",
+    "summary": "朝鮮王朝の衣装をまとった守門将の交代を毎日再現。",
+    "placeName": "ソウル 中区"
+   },
+   "th": {
+    "name": "พิธีเปลี่ยนเวรทหารรักษาพระราชวัง",
+    "summary": "พิธีเปลี่ยนเวรทหารในชุดสมัยโชซอน จัดทุกวัน",
+    "placeName": "จุงกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "국악공연 진연",
+   "en": {
+    "name": "Jinyeon: Korean Court Music Concert",
+    "summary": "Traditional Korean court music and dance performance.",
+    "placeName": "Jongno-gu, Seoul"
+   },
+   "ja": {
+    "name": "国楽公演「進宴（チニョン）」",
+    "summary": "韓国伝統の宮中音楽と舞踊の公演。",
+    "placeName": "ソウル 鍾路区"
+   },
+   "th": {
+    "name": "การแสดงดนตรีราชสำนัก จินยอน",
+    "summary": "การแสดงดนตรีและนาฏศิลป์ราชสำนักเกาหลี",
+    "placeName": "ชงโนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "광안리 M(Marvelous) 드론 라이트쇼",
+   "en": {
+    "name": "Gwangalli M Drone Light Show",
+    "summary": "Weekend drone show over Gwangalli Beach and Gwangan Bridge.",
+    "placeName": "Suyeong-gu, Busan"
+   },
+   "ja": {
+    "name": "広安里（クァンアンリ）M ドローンライトショー",
+    "summary": "広安里ビーチと広安大橋を舞台にした週末のドローンショー。",
+    "placeName": "釜山 水営区"
+   },
+   "th": {
+    "name": "โดรนไลต์โชว์ ควังอันลี M",
+    "summary": "โชว์โดรนสุดสัปดาห์เหนือหาดควังอันลีและสะพานควังอัน",
+    "placeName": "ซูยองกู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "남산봉수의식 등 전통문화행사",
+   "en": {
+    "name": "Namsan Beacon Fire Ceremony",
+    "summary": "Reenactment of the signal-fire ritual once used to warn the capital.",
+    "placeName": "Jongno-gu, Seoul"
+   },
+   "ja": {
+    "name": "南山（ナムサン）烽火儀式",
+    "summary": "都に危急を知らせた烽火（のろし）の儀式を再現。",
+    "placeName": "ソウル 鍾路区"
+   },
+   "th": {
+    "name": "พิธีจุดไฟสัญญาณนัมซาน",
+    "summary": "จำลองพิธีจุดไฟสัญญาณเตือนภัยสมัยโบราณ",
+    "placeName": "ชงโนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "왕가의 산책",
+   "en": {
+    "name": "Royal Family's Walk",
+    "summary": "Costumed royal procession reenactment.",
+    "placeName": "Yeongjong, Incheon"
+   },
+   "ja": {
+    "name": "王家の散歩",
+    "summary": "王族の行列を再現するパレード。",
+    "placeName": "仁川 永宗"
+   },
+   "th": {
+    "name": "ขบวนเสด็จราชวงศ์",
+    "summary": "จำลองขบวนเสด็จของราชวงศ์",
+    "placeName": "ยองจง อินชอน"
+   }
+  },
+  {
+   "festivalName": "2026 섬 방문의 해",
+   "en": {
+    "name": "Year of Island Tourism 2026, Yeosu",
+    "summary": "Year-long island tourism campaign across Yeosu's archipelago.",
+    "placeName": "Yeosu"
+   },
+   "ja": {
+    "name": "2026 島訪問の年（麗水）",
+    "summary": "麗水（ヨス）の島々を巡る通年の観光キャンペーン。",
+    "placeName": "麗水（ヨス）"
+   },
+   "th": {
+    "name": "ปีแห่งการเที่ยวเกาะ 2026 ยอซู",
+    "summary": "แคมเปญท่องเที่ยวหมู่เกาะยอซูตลอดทั้งปี",
+    "placeName": "ยอซู"
+   }
+  },
+  {
+   "festivalName": "쉼표：비우고, 머무르고, 채우는",
+   "en": {
+    "name": "Pause: Empty, Stay, Refill",
+    "summary": "Slow-travel art program in the old capital of Gyeongju.",
+    "placeName": "Gyeongju"
+   },
+   "ja": {
+    "name": "休符：空にして、留まり、満たす",
+    "summary": "古都・慶州（キョンジュ）でのスローな滞在型アートプログラム。",
+    "placeName": "慶州（キョンジュ）"
+   },
+   "th": {
+    "name": "พัก: ว่าง อยู่ เติม",
+    "summary": "โปรแกรมศิลปะพักผ่อนในเมืองเก่าคยองจู",
+    "placeName": "คยองจู"
+   }
+  },
+  {
+   "festivalName": "2026 화성행궁 야간개장",
+   "en": {
+    "name": "Hwaseong Haenggung Palace Night Opening",
+    "summary": "UNESCO-listed palace opens after dark with lighting and performances.",
+    "placeName": "Suwon"
+   },
+   "ja": {
+    "name": "華城行宮（ファソンヘングン）夜間開場",
+    "summary": "世界遺産の行宮を夜間開放。ライトアップと公演。",
+    "placeName": "水原（スウォン）"
+   },
+   "th": {
+    "name": "เปิดพระราชวังฮวาซองแฮงกุงยามค่ำ",
+    "summary": "พระราชวังมรดกโลกเปิดยามค่ำ พร้อมไฟประดับและการแสดง",
+    "placeName": "ซูวอน"
+   }
+  },
+  {
+   "festivalName": "한강야경투어",
+   "en": {
+    "name": "Hangang River Night View Tour",
+    "summary": "Evening tour of Seoul's riverside night scenery.",
+    "placeName": "Yeongdeungpo-gu, Seoul"
+   },
+   "ja": {
+    "name": "漢江（ハンガン）夜景ツアー",
+    "summary": "ソウルの川辺の夜景を巡るナイトツアー。",
+    "placeName": "ソウル 永登浦区"
+   },
+   "th": {
+    "name": "ทัวร์ชมวิวกลางคืนแม่น้ำฮัน",
+    "summary": "ทัวร์ชมทิวทัศน์ยามค่ำริมแม่น้ำฮันในโซล",
+    "placeName": "ยองดึงโพกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "한강페스티벌",
+   "en": {
+    "name": "Hangang Festival",
+    "summary": "Summer festival along the Han River with water play and night markets.",
+    "placeName": "Mapo-gu, Seoul"
+   },
+   "ja": {
+    "name": "漢江（ハンガン）フェスティバル",
+    "summary": "水遊びやナイトマーケットが並ぶ漢江の夏祭り。",
+    "placeName": "ソウル 麻浦区"
+   },
+   "th": {
+    "name": "เทศกาลแม่น้ำฮัน",
+    "summary": "เทศกาลฤดูร้อนริมแม่น้ำฮัน มีกิจกรรมทางน้ำและตลาดกลางคืน",
+    "placeName": "มาโพกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "서울썸머비치",
+   "en": {
+    "name": "Seoul Summer Beach",
+    "summary": "Pop-up urban beach in central Seoul.",
+    "placeName": "Jongno-gu, Seoul"
+   },
+   "ja": {
+    "name": "ソウル・サマービーチ",
+    "summary": "都心に現れる期間限定のアーバンビーチ。",
+    "placeName": "ソウル 鍾路区"
+   },
+   "th": {
+    "name": "โซลซัมเมอร์บีช",
+    "summary": "ชายหาดจำลองกลางกรุงโซล เปิดเฉพาะฤดูร้อน",
+    "placeName": "ชงโนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "보령머드축제",
+   "en": {
+    "name": "Boryeong Mud Festival",
+    "summary": "Korea's best-known summer festival — mud baths, slides and beach parties.",
+    "placeName": "Boryeong, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "保寧（ポリョン）マッド（泥）フェスティバル",
+    "summary": "韓国を代表する夏祭り。泥風呂・泥すべり・ビーチパーティー。",
+    "placeName": "忠清南道 保寧"
+   },
+   "th": {
+    "name": "เทศกาลโคลนโพรยอง",
+    "summary": "เทศกาลฤดูร้อนชื่อดังที่สุดของเกาหลี เล่นโคลน สไลเดอร์ และปาร์ตี้ริมหาด",
+    "placeName": "โพรยอง ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "전주 가맥축제",
+   "en": {
+    "name": "Jeonju Gamaek Beer Festival",
+    "summary": "Beer-and-snack festival born from Jeonju's corner-store drinking culture.",
+    "placeName": "Jeonju"
+   },
+   "ja": {
+    "name": "全州（チョンジュ）カメクビール祭り",
+    "summary": "街の酒屋で飲む全州独特の文化から生まれたビール祭り。",
+    "placeName": "全州（チョンジュ）"
+   },
+   "th": {
+    "name": "เทศกาลเบียร์คาแมค ชอนจู",
+    "summary": "เทศกาลเบียร์จากวัฒนธรรมดื่มหน้าร้านชำของชอนจู",
+    "placeName": "ชอนจู"
+   }
+  },
+  {
+   "festivalName": "부산바다축제",
+   "en": {
+    "name": "Busan Sea Festival",
+    "summary": "Busan's flagship summer festival across its beaches.",
+    "placeName": "Saha-gu, Busan"
+   },
+   "ja": {
+    "name": "釜山（プサン）海祭り",
+    "summary": "釜山のビーチを舞台にした代表的な夏祭り。",
+    "placeName": "釜山 沙下区"
+   },
+   "th": {
+    "name": "เทศกาลทะเลปูซาน",
+    "summary": "เทศกาลฤดูร้อนหลักของปูซาน จัดตามชายหาดต่างๆ",
+    "placeName": "ซาฮากู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "통영한산대첩축제",
+   "en": {
+    "name": "Tongyeong Hansan Daecheop Festival",
+    "summary": "Reenactment of Admiral Yi Sun-sin's naval victory at Hansan Island.",
+    "placeName": "Tongyeong"
+   },
+   "ja": {
+    "name": "統営（トンヨン）閑山大捷祭り",
+    "summary": "李舜臣（イ・スンシン）将軍の閑山島海戦の勝利を再現。",
+    "placeName": "統営（トンヨン）"
+   },
+   "th": {
+    "name": "เทศกาลฮันซันแดชอบ ทงยอง",
+    "summary": "จำลองชัยชนะทางเรือของแม่ทัพอี ซุนชิน ที่เกาะฮันซัน",
+    "placeName": "ทงยอง"
+   }
+  },
+  {
+   "festivalName": "제24회 동강국제사진제",
+   "en": {
+    "name": "Donggang International Photo Festival (24th)",
+    "summary": "Korea's leading photography festival on the Donggang River.",
+    "placeName": "Yeongwol, Gangwon"
+   },
+   "ja": {
+    "name": "第24回 東江（トンガン）国際写真祭",
+    "summary": "東江のほとりで開かれる韓国有数の写真祭。",
+    "placeName": "江原 寧越（ヨンウォル）"
+   },
+   "th": {
+    "name": "เทศกาลภาพถ่ายนานาชาติทงคัง ครั้งที่ 24",
+    "summary": "เทศกาลภาพถ่ายชั้นนำของเกาหลี ริมแม่น้ำทงคัง",
+    "placeName": "ยองวอล คังวอน"
+   }
+  },
+  {
+   "festivalName": "태백 해바라기축제",
+   "en": {
+    "name": "Taebaek Sunflower Festival",
+    "summary": "Highland sunflower fields in full bloom at 1,000m altitude.",
+    "placeName": "Taebaek, Gangwon"
+   },
+   "ja": {
+    "name": "太白（テベク）ひまわり祭り",
+    "summary": "標高1,000mの高原に広がるひまわり畑。",
+    "placeName": "江原 太白（テベク）"
+   },
+   "th": {
+    "name": "เทศกาลทานตะวันแทแบ็ก",
+    "summary": "ทุ่งทานตะวันบานสะพรั่งบนที่ราบสูง 1,000 เมตร",
+    "placeName": "แทแบ็ก คังวอน"
+   }
+  },
+  {
+   "festivalName": "춘천 썸머워터 페스티벌",
+   "en": {
+    "name": "Chuncheon Summer Water Festival",
+    "summary": "Lakeside water festival in the city of Soyang Lake.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "春川（チュンチョン）サマーウォーターフェスティバル",
+    "summary": "昭陽湖の街で開かれる湖畔の水祭り。",
+    "placeName": "江原 春川（チュンチョン）"
+   },
+   "th": {
+    "name": "เทศกาลน้ำฤดูร้อนชุนชอน",
+    "summary": "เทศกาลเล่นน้ำริมทะเลสาบในเมืองชุนชอน",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "홍천강 별빛음악 맥주축제",
+   "en": {
+    "name": "Hongcheon River Starlight Music & Beer Festival",
+    "summary": "Riverside beer festival with live music under the stars.",
+    "placeName": "Hongcheon, Gangwon"
+   },
+   "ja": {
+    "name": "洪川江 星あかり音楽ビール祭り",
+    "summary": "星空の下、川辺でライブ音楽とビールを楽しむ祭り。",
+    "placeName": "江原 洪川（ホンチョン）"
+   },
+   "th": {
+    "name": "เทศกาลเบียร์และดนตรีใต้แสงดาว ริมแม่น้ำฮงชอน",
+    "summary": "เทศกาลเบียร์ริมแม่น้ำ พร้อมดนตรีสดใต้แสงดาว",
+    "placeName": "ฮงชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "세미원 연꽃문화제",
+   "en": {
+    "name": "Semiwon Lotus Festival",
+    "summary": "Lotus garden festival where the Han River's two branches meet.",
+    "placeName": "Yangpyeong, Gyeonggi"
+   },
+   "ja": {
+    "name": "洗美苑（セミウォン）蓮の花文化祭",
+    "summary": "南漢江と北漢江が出会う場所の蓮園で開かれる祭り。",
+    "placeName": "京畿 楊平（ヤンピョン）"
+   },
+   "th": {
+    "name": "เทศกาลดอกบัวเซมีวอน",
+    "summary": "เทศกาลสวนดอกบัว ณ จุดบรรจบของแม่น้ำฮันสองสาย",
+    "placeName": "ยางพยอง คยองกี"
+   }
+  },
+  {
+   "festivalName": "서울프린지페스티벌2026",
+   "en": {
+    "name": "Seoul Fringe Festival 2026",
+    "summary": "Independent arts festival — theatre, music and street performance.",
+    "placeName": "Mapo-gu, Seoul"
+   },
+   "ja": {
+    "name": "ソウル・フリンジ・フェスティバル 2026",
+    "summary": "演劇・音楽・ストリートパフォーマンスの独立系アートフェス。",
+    "placeName": "ソウル 麻浦区"
+   },
+   "th": {
+    "name": "โซลฟรินจ์เฟสติวัล 2026",
+    "summary": "เทศกาลศิลปะอิสระ ละคร ดนตรี และการแสดงข้างถนน",
+    "placeName": "มาโพกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "2026 부산국제불교박람회",
+   "en": {
+    "name": "Busan International Buddhism Expo 2026",
+    "summary": "Buddhist culture expo — temple food, crafts and meditation programs.",
+    "placeName": "Haeundae-gu, Busan"
+   },
+   "ja": {
+    "name": "2026 釜山国際仏教博覧会",
+    "summary": "精進料理・工芸・瞑想プログラムなど仏教文化の博覧会。",
+    "placeName": "釜山 海雲台区"
+   },
+   "th": {
+    "name": "งานแสดงพุทธศาสนานานาชาติปูซาน 2026",
+    "summary": "งานแสดงวัฒนธรรมพุทธ อาหารวัด งานฝีมือ และการทำสมาธิ",
+    "placeName": "แฮอุนแดกู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "제7회 섬의 날",
+   "en": {
+    "name": "7th Island Day",
+    "summary": "National Island Day celebration hosted in Yeosu.",
+    "placeName": "Yeosu, Jeollanam-do"
+   },
+   "ja": {
+    "name": "第7回 島の日",
+    "summary": "麗水（ヨス）で開かれる国の記念日「島の日」の祝祭。",
+    "placeName": "全羅南道 麗水"
+   },
+   "th": {
+    "name": "วันเกาะแห่งชาติ ครั้งที่ 7",
+    "summary": "งานฉลองวันเกาะแห่งชาติ จัดที่ยอซู",
+    "placeName": "ยอซู ชอลลาใต้"
+   }
+  },
+  {
+   "festivalName": "밀양 수퍼 페스티벌",
+   "en": {
+    "name": "Miryang Super Festival",
+    "summary": "Summer music festival in Miryang.",
+    "placeName": "Miryang, Gyeongsangnam-do"
+   },
+   "ja": {
+    "name": "密陽（ミリャン）スーパーフェスティバル",
+    "summary": "密陽で開かれる夏の音楽フェス。",
+    "placeName": "慶尚南道 密陽"
+   },
+   "th": {
+    "name": "มิลยางซูเปอร์เฟสติวัล",
+    "summary": "เทศกาลดนตรีฤดูร้อนในเมืองมิลยาง",
+    "placeName": "มิลยาง คยองซังใต้"
+   }
+  },
+  {
+   "festivalName": "송도해변축제",
+   "en": {
+    "name": "Songdo Beach Festival",
+    "summary": "Beach festival at Songdo, Incheon.",
+    "placeName": "Yeonsu-gu, Incheon"
+   },
+   "ja": {
+    "name": "松島（ソンド）海辺祭り",
+    "summary": "仁川・松島のビーチで開かれる祭り。",
+    "placeName": "仁川 延寿区"
+   },
+   "th": {
+    "name": "เทศกาลชายหาดซองโด",
+    "summary": "เทศกาลริมหาดซองโด เมืองอินชอน",
+    "placeName": "ยอนซูกู อินชอน"
+   }
+  },
+  {
+   "festivalName": "한강 다리밑 영화관",
+   "en": {
+    "name": "Cinema Under the Hangang Bridge",
+    "summary": "Free open-air cinema beneath a Han River bridge.",
+    "placeName": "Yeongdeungpo-gu, Seoul"
+   },
+   "ja": {
+    "name": "漢江の橋の下の映画館",
+    "summary": "漢江の橋の下で開かれる無料の野外映画上映。",
+    "placeName": "ソウル 永登浦区"
+   },
+   "th": {
+    "name": "โรงหนังใต้สะพานแม่น้ำฮัน",
+    "summary": "ฉายหนังกลางแปลงฟรี ใต้สะพานข้ามแม่น้ำฮัน",
+    "placeName": "ยองดึงโพกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "2026 부산바다도서관",
+   "en": {
+    "name": "Busan Sea Library 2026",
+    "summary": "Read a book on the beach — outdoor library by the sea.",
+    "placeName": "Suyeong-gu, Busan"
+   },
+   "ja": {
+    "name": "2026 釜山 海の図書館",
+    "summary": "ビーチで本が読める海辺の屋外図書館。",
+    "placeName": "釜山 水営区"
+   },
+   "th": {
+    "name": "ห้องสมุดริมทะเลปูซาน 2026",
+    "summary": "ห้องสมุดกลางแจ้งริมหาด อ่านหนังสือชมทะเล",
+    "placeName": "ซูยองกู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "EX HORROR 시즌 6 : 신라X좀비",
+   "en": {
+    "name": "EX HORROR Season 6: Silla X Zombie",
+    "summary": "Horror night event set in the ancient Silla capital.",
+    "placeName": "Gyeongju"
+   },
+   "ja": {
+    "name": "EX HORROR シーズン6：新羅×ゾンビ",
+    "summary": "古都・慶州を舞台にしたホラーナイトイベント。",
+    "placeName": "慶州（キョンジュ）"
+   },
+   "th": {
+    "name": "EX HORROR ซีซัน 6: ชิลลา X ซอมบี้",
+    "summary": "อีเวนต์สยองขวัญยามค่ำ ในเมืองโบราณคยองจู",
+    "placeName": "คยองจู"
+   }
+  },
+  {
+   "festivalName": "성북문화바캉스",
+   "en": {
+    "name": "Seongbuk Culture Vacance",
+    "summary": "Neighbourhood summer culture program in Seongbuk.",
+    "placeName": "Seongbuk-gu, Seoul"
+   },
+   "ja": {
+    "name": "城北（ソンブク）文化バカンス",
+    "summary": "城北区の夏の地域文化プログラム。",
+    "placeName": "ソウル 城北区"
+   },
+   "th": {
+    "name": "ซองบุกคัลเจอร์วาคานซ์",
+    "summary": "โปรแกรมวัฒนธรรมฤดูร้อนของย่านซองบุก",
+    "placeName": "ซองบุกกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "귀몽 제주신화월드",
+   "en": {
+    "name": "Gwimong at Jeju Shinhwa World",
+    "summary": "Korean folklore-themed night attraction on Jeju Island.",
+    "placeName": "Seogwipo, Jeju"
+   },
+   "ja": {
+    "name": "鬼夢（グィモン）済州神話ワールド",
+    "summary": "韓国の伝承をテーマにした済州島のナイトアトラクション。",
+    "placeName": "済州 西帰浦"
+   },
+   "th": {
+    "name": "กวีมง ณ เชจูชินฮวาเวิลด์",
+    "summary": "แหล่งท่องเที่ยวยามค่ำธีมตำนานพื้นบ้านเกาหลี บนเกาะเชจู",
+    "placeName": "ซอกวีโพ เชจู"
+   }
+  },
+  {
+   "festivalName": "2026 서귀포 원도심 문화페스티벌",
+   "en": {
+    "name": "Seogwipo Old Town Culture Festival 2026",
+    "summary": "Street culture festival in Seogwipo's historic downtown.",
+    "placeName": "Seogwipo, Jeju"
+   },
+   "ja": {
+    "name": "2026 西帰浦（ソギポ）旧都心 文化フェスティバル",
+    "summary": "西帰浦の旧市街で開かれるストリート文化祭。",
+    "placeName": "済州 西帰浦"
+   },
+   "th": {
+    "name": "เทศกาลวัฒนธรรมย่านเมืองเก่าซอกวีโพ 2026",
+    "summary": "เทศกาลวัฒนธรรมริมถนนในย่านเมืองเก่าซอกวีโพ",
+    "placeName": "ซอกวีโพ เชจู"
+   }
+  },
+  {
+   "festivalName": "2026 목포해상W쇼",
+   "en": {
+    "name": "Mokpo Maritime W Show 2026",
+    "summary": "Sea-stage light and fountain show in Mokpo harbour.",
+    "placeName": "Mokpo, Jeollanam-do"
+   },
+   "ja": {
+    "name": "2026 木浦（モクポ）海上Wショー",
+    "summary": "木浦港の海上ステージで繰り広げる噴水・光のショー。",
+    "placeName": "全羅南道 木浦"
+   },
+   "th": {
+    "name": "โชว์กลางทะเลมกโพ W 2026",
+    "summary": "โชว์แสงและน้ำพุบนเวทีกลางทะเลท่าเรือมกโพ",
+    "placeName": "มกโพ ชอลลาใต้"
+   }
+  },
+  {
+   "festivalName": "2026 고흥 녹동항 드론쇼",
+   "en": {
+    "name": "Goheung Nokdong Port Drone Show 2026",
+    "summary": "Drone light show over Nokdong Port.",
+    "placeName": "Goheung, Jeollanam-do"
+   },
+   "ja": {
+    "name": "2026 高興（コフン）鹿洞港 ドローンショー",
+    "summary": "鹿洞港の夜空を彩るドローンライトショー。",
+    "placeName": "全羅南道 高興"
+   },
+   "th": {
+    "name": "โดรนโชว์ท่าเรือนกดง โคฮึง 2026",
+    "summary": "โชว์โดรนเหนือท่าเรือนกดง",
+    "placeName": "โคฮึง ชอลลาใต้"
+   }
+  },
+  {
+   "festivalName": "전주한옥마을 전통연희 퍼레이드-노상놀이야",
+   "en": {
+    "name": "Jeonju Hanok Village Traditional Parade",
+    "summary": "Street parade of traditional Korean performing arts in the hanok village.",
+    "placeName": "Jeonju"
+   },
+   "ja": {
+    "name": "全州韓屋村 伝統演戯パレード",
+    "summary": "韓屋村を練り歩く韓国伝統芸能のストリートパレード。",
+    "placeName": "全州（チョンジュ）"
+   },
+   "th": {
+    "name": "ขบวนพาเหรดศิลปะพื้นบ้าน หมู่บ้านฮันอกชอนจู",
+    "summary": "ขบวนพาเหรดศิลปะการแสดงพื้นบ้านในหมู่บ้านฮันอก",
+    "placeName": "ชอนจู"
+   }
+  },
+  {
+   "festivalName": "나오라쇼",
+   "en": {
+    "name": "Naora Show",
+    "summary": "Outdoor performance program in Wonju.",
+    "placeName": "Wonju, Gangwon"
+   },
+   "ja": {
+    "name": "ナオラショー",
+    "summary": "原州（ウォンジュ）で開かれる野外パフォーマンス。",
+    "placeName": "江原 原州"
+   },
+   "th": {
+    "name": "นาโอราโชว์",
+    "summary": "การแสดงกลางแจ้งในเมืองวอนจู",
+    "placeName": "วอนจู คังวอน"
+   }
+  },
+  {
+   "festivalName": "충북 괴산 우주특별시：별별탐사대",
+   "en": {
+    "name": "Goesan Space City: Star Explorers",
+    "summary": "Stargazing and space-science program in rural Goesan.",
+    "placeName": "Goesan, Chungcheongbuk-do"
+   },
+   "ja": {
+    "name": "忠北 槐山（クェサン）宇宙特別市：星々探査隊",
+    "summary": "槐山の夜空を舞台にした星空観察・宇宙科学プログラム。",
+    "placeName": "忠清北道 槐山"
+   },
+   "th": {
+    "name": "เมืองอวกาศเควซัน: นักสำรวจดวงดาว",
+    "summary": "โปรแกรมดูดาวและวิทยาศาสตร์อวกาศในชนบทเควซัน",
+    "placeName": "เควซัน ชุงชองเหนือ"
+   }
+  },
+  {
+   "festivalName": "의림지 달빛 물맞이 행차",
+   "en": {
+    "name": "Uirimji Moonlight Water Blessing Procession",
+    "summary": "Night procession at Uirimji, a reservoir built some 2,000 years ago — washing body and mind under the moonlight. Hosted by Jecheon City.",
+    "placeName": "Jecheon, Chungcheongbuk-do"
+   },
+   "ja": {
+    "name": "義林池（ウィリムジ）月あかり水浴び行列",
+    "summary": "約2千年前に築かれた貯水池・義林池で、月明かりの下、心身を清める夜の行列。主催：堤川市。",
+    "placeName": "忠清北道 堤川（チェチョン）"
+   },
+   "th": {
+    "name": "ขบวนแห่รับน้ำใต้แสงจันทร์ อุยริมจี",
+    "summary": "ขบวนแห่ยามค่ำที่อ่างเก็บน้ำอุยริมจี อายุราว 2,000 ปี ชำระกายใจใต้แสงจันทร์ จัดโดยเมืองเชชอน",
+    "placeName": "เชชอน ชุงชองเหนือ"
+   }
+  },
+  {
+   "festivalName": "서천 홍원항 자연산 전어 꽃게 축제",
+   "en": {
+    "name": "Seocheon Hongwon Port Gizzard Shad & Blue Crab Festival",
+    "summary": "Autumn seafood festival — wild-caught gizzard shad and blue crab straight off the boats.",
+    "placeName": "Seocheon, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "舒川（ソチョン）洪原港 天然コノシロ・ワタリガニ祭り",
+    "summary": "水揚げされたばかりの天然コノシロとワタリガニを味わう秋の海鮮祭り。",
+    "placeName": "忠清南道 舒川"
+   },
+   "th": {
+    "name": "เทศกาลปลาโคโนชิโระและปูม้า ท่าเรือฮงวอน ซอชอน",
+    "summary": "เทศกาลอาหารทะเลฤดูใบไม้ร่วง ปลาโคโนชิโระและปูม้าสดจากเรือ",
+    "placeName": "ซอชอน ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "수원 국가유산 야행",
+   "en": {
+    "name": "Suwon Heritage Night Tour",
+    "summary": "Night opening of Suwon's UNESCO fortress heritage sites.",
+    "placeName": "Suwon, Gyeonggi"
+   },
+   "ja": {
+    "name": "水原（スウォン）国家遺産 夜行",
+    "summary": "世界遺産・水原華城の文化財を夜間open。",
+    "placeName": "京畿 水原"
+   },
+   "th": {
+    "name": "ทัวร์มรดกยามค่ำ ซูวอน",
+    "summary": "เปิดชมโบราณสถานป้อมฮวาซองยามค่ำคืน",
+    "placeName": "ซูวอน คยองกี"
+   }
+  },
+  {
+   "festivalName": "APAP 작품투어 (안양공공예술프로젝트)",
+   "en": {
+    "name": "APAP Public Art Tour, Anyang",
+    "summary": "Walking tour of Anyang Public Art Project's outdoor artworks.",
+    "placeName": "Anyang, Gyeonggi"
+   },
+   "ja": {
+    "name": "APAP作品ツアー（安養公共芸術プロジェクト）",
+    "summary": "安養（アニャン）の野外パブリックアートを巡るツアー。",
+    "placeName": "京畿 安養"
+   },
+   "th": {
+    "name": "ทัวร์ศิลปะสาธารณะ APAP อันยาง",
+    "summary": "ทัวร์เดินชมงานศิลปะกลางแจ้งของโครงการ APAP",
+    "placeName": "อันยาง คยองกี"
+   }
+  },
+  {
+   "festivalName": "2026 문화가 있는 날 청춘마이크",
+   "en": {
+    "name": "Youth Mic: Culture Day Busking 2026",
+    "summary": "Young artists' busking stages on national Culture Day.",
+    "placeName": "Buk-gu, Gwangju"
+   },
+   "ja": {
+    "name": "2026 文化がある日 青春マイク",
+    "summary": "若手アーティストによる路上ライブステージ。",
+    "placeName": "光州 北区"
+   },
+   "th": {
+    "name": "ยูธไมค์ 2026: เวทีบัสกิ้งวันวัฒนธรรม",
+    "summary": "เวทีดนตรีเปิดหมวกของศิลปินรุ่นใหม่",
+    "placeName": "บุกกู ควังจู"
+   }
+  },
+  {
+   "festivalName": "2026 국립극장 쏙쏙들이페스티벌",
+   "en": {
+    "name": "National Theater Kids Festival 2026",
+    "summary": "Family performing-arts festival by the National Theater of Korea.",
+    "placeName": "Paju, Gyeonggi"
+   },
+   "ja": {
+    "name": "2026 国立劇場 子どもフェスティバル",
+    "summary": "国立劇場によるファミリー向け舞台芸術祭。",
+    "placeName": "京畿 坡州"
+   },
+   "th": {
+    "name": "เทศกาลละครเด็ก โรงละครแห่งชาติ 2026",
+    "summary": "เทศกาลศิลปะการแสดงสำหรับครอบครัว",
+    "placeName": "พาจู คยองกี"
+   }
+  },
+  {
+   "festivalName": "2026 문화가 있는 날",
+   "en": {
+    "name": "Culture Day 2026, Incheon",
+    "summary": "Monthly culture-day discounts and pop-up performances.",
+    "placeName": "Incheon"
+   },
+   "ja": {
+    "name": "2026 文化がある日（仁川）",
+    "summary": "毎月の文化の日の割引とポップアップ公演。",
+    "placeName": "仁川"
+   },
+   "th": {
+    "name": "วันวัฒนธรรม 2026 อินชอน",
+    "summary": "ส่วนลดและการแสดงพิเศษประจำเดือนวันวัฒนธรรม",
+    "placeName": "อินชอน"
+   }
+  },
+  {
+   "festivalName": "2026 국제선명상대회",
+   "en": {
+    "name": "International Seon Meditation Conference 2026",
+    "summary": "Korean Seon (Zen) meditation gathering open to visitors.",
+    "placeName": "Gangnam-gu, Seoul"
+   },
+   "ja": {
+    "name": "2026 国際禅瞑想大会",
+    "summary": "誰でも参加できる韓国禅（ソン）瞑想の集い。",
+    "placeName": "ソウル 江南区"
+   },
+   "th": {
+    "name": "งานสมาธิซอนนานาชาติ 2026",
+    "summary": "งานรวมผู้ปฏิบัติสมาธิแบบซอน (เซน) ของเกาหลี",
+    "placeName": "คังนัมกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "2026 금남로 차 없는 거리 ‘걷자잉’",
+   "en": {
+    "name": "Geumnam-ro Car-Free Street 'Geotjaing'",
+    "summary": "Gwangju's main avenue goes car-free with markets and stages.",
+    "placeName": "Dong-gu, Gwangju"
+   },
+   "ja": {
+    "name": "錦南路 歩行者天国「コッチャイン」",
+    "summary": "光州のメインストリートが歩行者天国に。市場とステージ。",
+    "placeName": "光州 東区"
+   },
+   "th": {
+    "name": "ถนนปลอดรถคึมนัมโร 'คอดจาอิง'",
+    "summary": "ถนนสายหลักของควังจูปิดให้เดิน มีตลาดและเวทีการแสดง",
+    "placeName": "ทงกู ควังจู"
+   }
+  },
+  {
+   "festivalName": "2026 라온페스타",
+   "en": {
+    "name": "Raon Festa 2026",
+    "summary": "Youth culture festival in Daegu.",
+    "placeName": "Dong-gu, Daegu"
+   },
+   "ja": {
+    "name": "2026 ラオンフェスタ",
+    "summary": "大邱（テグ）の若者文化フェスティバル。",
+    "placeName": "大邱 東区"
+   },
+   "th": {
+    "name": "ราอนเฟสตา 2026",
+    "summary": "เทศกาลวัฒนธรรมเยาวชนในแทกู",
+    "placeName": "ทงกู แทกู"
+   }
+  },
+  {
+   "festivalName": "안성 남사당바우덕이 풍물단 상설 공연 ‘곰뱅이텄다’",
+   "en": {
+    "name": "Anseong Namsadang Baudeogi Troupe Show",
+    "summary": "Traditional itinerant performers — tightrope, spinning dishes, pungmul drums.",
+    "placeName": "Anseong, Gyeonggi"
+   },
+   "ja": {
+    "name": "安城 男寺党（ナムサダン）バウドギ風物団 常設公演",
+    "summary": "綱渡り・皿回し・農楽——朝鮮伝統の旅芸人の公演。",
+    "placeName": "京畿 安城"
+   },
+   "th": {
+    "name": "การแสดงคณะนัมซาดัง บาอูด็อกกี อันซอง",
+    "summary": "คณะละครเร่ดั้งเดิม ไต่เชือก หมุนจาน กลองพุงมุล",
+    "placeName": "อันซอง คยองกี"
+   }
+  },
+  {
+   "festivalName": "의정부지 상설 전통문화행사",
+   "en": {
+    "name": "Uijeongbu-ji Site Traditional Culture Program",
+    "summary": "Regular traditional performances at the historic Uijeongbu government site.",
+    "placeName": "Jongno-gu, Seoul"
+   },
+   "ja": {
+    "name": "議政府址 常設伝統文化行事",
+    "summary": "史跡・議政府址での定期伝統公演。",
+    "placeName": "ソウル 鍾路区"
+   },
+   "th": {
+    "name": "งานวัฒนธรรมดั้งเดิม ณ โบราณสถานอึยจองบู",
+    "summary": "การแสดงดั้งเดิมประจำ ณ โบราณสถานอึยจองบู",
+    "placeName": "ชงโนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "컬처라운지 경기, 장(場)",
+   "en": {
+    "name": "Culture Lounge Gyeonggi: Jang",
+    "summary": "Open cultural lounge and market program in Suwon.",
+    "placeName": "Suwon, Gyeonggi"
+   },
+   "ja": {
+    "name": "カルチャーラウンジ京畿、場（ジャン）",
+    "summary": "水原のオープンな文化ラウンジ＆マーケット。",
+    "placeName": "京畿 水原"
+   },
+   "th": {
+    "name": "คัลเจอร์เลานจ์คยองกี: จัง",
+    "summary": "เลานจ์วัฒนธรรมและตลาดเปิดในซูวอน",
+    "placeName": "ซูวอน คยองกี"
+   }
+  },
+  {
+   "festivalName": "한강역사탐방",
+   "en": {
+    "name": "Hangang River History Walk",
+    "summary": "Guided history walk along the Han River.",
+    "placeName": "Yeongdeungpo-gu, Seoul"
+   },
+   "ja": {
+    "name": "漢江歴史探訪",
+    "summary": "漢江沿いを歩くガイド付き歴史ツアー。",
+    "placeName": "ソウル 永登浦区"
+   },
+   "th": {
+    "name": "เดินชมประวัติศาสตร์แม่น้ำฮัน",
+    "summary": "ทัวร์เดินชมประวัติศาสตร์ริมแม่น้ำฮันพร้อมไกด์",
+    "placeName": "ยองดึงโพกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "새연교 주말 문화공연 '금토금토 새연쇼'",
+   "en": {
+    "name": "Saeyeongyo Bridge Weekend Show",
+    "summary": "Weekend performances at Seogwipo's Saeyeongyo Bridge.",
+    "placeName": "Seogwipo, Jeju"
+   },
+   "ja": {
+    "name": "セヨン橋 週末文化公演「セヨンショー」",
+    "summary": "西帰浦・セヨン橋の週末パフォーマンス。",
+    "placeName": "済州 西帰浦"
+   },
+   "th": {
+    "name": "โชว์สุดสัปดาห์สะพานแซยอนกโย",
+    "summary": "การแสดงสุดสัปดาห์ที่สะพานแซยอนกโย ซอกวีโพ",
+    "placeName": "ซอกวีโพ เชจู"
+   }
+  },
+  {
+   "festivalName": "2026 서울거리공연 구석구석라이브",
+   "en": {
+    "name": "Seoul Street Live 2026",
+    "summary": "Busking and street performances across Seoul.",
+    "placeName": "Jongno-gu, Seoul"
+   },
+   "ja": {
+    "name": "2026 ソウル街角公演 すみずみライブ",
+    "summary": "ソウル各地のストリートパフォーマンス。",
+    "placeName": "ソウル 鍾路区"
+   },
+   "th": {
+    "name": "โซลสตรีทไลฟ์ 2026",
+    "summary": "การแสดงข้างถนนทั่วกรุงโซล",
+    "placeName": "ชงโนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "문화가 흐르는 서울광장",
+   "en": {
+    "name": "Culture Flows at Seoul Plaza",
+    "summary": "Free concerts and shows at Seoul Plaza.",
+    "placeName": "Jung-gu, Seoul"
+   },
+   "ja": {
+    "name": "文化が流れるソウル広場",
+    "summary": "ソウル広場での無料コンサートと公演。",
+    "placeName": "ソウル 中区"
+   },
+   "th": {
+    "name": "วัฒนธรรมไหลริน ณ โซลพลาซา",
+    "summary": "คอนเสิร์ตและการแสดงฟรีที่จัตุรัสโซล",
+    "placeName": "จุงกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "팔색찬란",
+   "en": {
+    "name": "Palsaek Chanlan: Eight Colors of Splendor",
+    "summary": "Traditional arts program at Gyeongbokgung area.",
+    "placeName": "Jongno-gu, Seoul"
+   },
+   "ja": {
+    "name": "八色燦爛（パルセクチャンラン）",
+    "summary": "景福宮一帯の伝統芸術プログラム。",
+    "placeName": "ソウル 鍾路区"
+   },
+   "th": {
+    "name": "พัลแซกชันลัน: แปดสีแห่งความงาม",
+    "summary": "โปรแกรมศิลปะดั้งเดิมย่านพระราชวังคยองบก",
+    "placeName": "ชงโนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "2026 문화가 있는날 - 문화배달",
+   "en": {
+    "name": "Culture Delivery 2026, Yeoncheon",
+    "summary": "Culture programs delivered to rural neighbourhoods.",
+    "placeName": "Yeoncheon, Gyeonggi"
+   },
+   "ja": {
+    "name": "2026 文化配達（漣川）",
+    "summary": "農村地域へ文化プログラムをお届け。",
+    "placeName": "京畿 漣川"
+   },
+   "th": {
+    "name": "คัลเจอร์เดลิเวอรี 2026 ยอนชอน",
+    "summary": "ส่งโปรแกรมวัฒนธรรมถึงชุมชนชนบท",
+    "placeName": "ยอนชอน คยองกี"
+   }
+  },
+  {
+   "festivalName": "컨템포러리 아티스트 프로젝트 《이완 - 나는 쓴다》",
+   "en": {
+    "name": "Contemporary Artist Project: Lee Wan — I Write",
+    "summary": "Solo exhibition by contemporary artist Lee Wan.",
+    "placeName": "Seocho-gu, Seoul"
+   },
+   "ja": {
+    "name": "コンテンポラリーアーティスト・プロジェクト《イ・ワン——私は書く》",
+    "summary": "現代美術家イ・ワンの個展。",
+    "placeName": "ソウル 瑞草区"
+   },
+   "th": {
+    "name": "โปรเจกต์ศิลปินร่วมสมัย: อี วาน — ฉันเขียน",
+    "summary": "นิทรรศการเดี่ยวของศิลปินร่วมสมัยอี วาน",
+    "placeName": "ซอโชกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "2026 토요상설무대 프러포즈 및 사천 락 페스티벌",
+   "en": {
+    "name": "Sacheon Saturday Stage & Rock Festival",
+    "summary": "Weekly Saturday stage plus a summer rock festival by the sea.",
+    "placeName": "Sacheon, Gyeongsangnam-do"
+   },
+   "ja": {
+    "name": "泗川 土曜常設ステージ＆ロックフェスティバル",
+    "summary": "毎週土曜のステージと海辺のロックフェス。",
+    "placeName": "慶尚南道 泗川"
+   },
+   "th": {
+    "name": "เวทีวันเสาร์และร็อกเฟสติวัลซาชอน",
+    "summary": "เวทีประจำวันเสาร์และเทศกาลร็อกริมทะเล",
+    "placeName": "ซาชอน คยองซังใต้"
+   }
+  },
+  {
+   "festivalName": "〈도기陶器, 우리를 담은 질그릇〉",
+   "en": {
+    "name": "Earthenware: Vessels That Hold Us",
+    "summary": "Pottery exhibition on Korean earthenware traditions.",
+    "placeName": "Buk-gu, Daegu"
+   },
+   "ja": {
+    "name": "〈陶器、私たちを盛る器〉",
+    "summary": "韓国の土器・陶器の伝統をたどる展示。",
+    "placeName": "大邱 北区"
+   },
+   "th": {
+    "name": "เครื่องปั้นดินเผา: ภาชนะที่บรรจุเรา",
+    "summary": "นิทรรศการเครื่องปั้นดินเผาดั้งเดิมของเกาหลี",
+    "placeName": "บุกกู แทกู"
+   }
+  },
+  {
+   "festivalName": "가든 나이트 마켓",
+   "en": {
+    "name": "Garden Night Market",
+    "summary": "Evening garden market with food and crafts.",
+    "placeName": "Nam-gu, Ulsan"
+   },
+   "ja": {
+    "name": "ガーデン・ナイトマーケット",
+    "summary": "フードとクラフトの夜の庭園マーケット。",
+    "placeName": "蔚山 南区"
+   },
+   "th": {
+    "name": "การ์เดนไนต์มาร์เก็ต",
+    "summary": "ตลาดกลางคืนในสวน อาหารและงานฝีมือ",
+    "placeName": "นัมกู อุลซาน"
+   }
+  },
+  {
+   "festivalName": "우리동네 문화아지트 : LH주택전시관 복합문화행사",
+   "en": {
+    "name": "Neighbourhood Culture Hideout, Sejong",
+    "summary": "Community culture events at the LH housing gallery.",
+    "placeName": "Sejong"
+   },
+   "ja": {
+    "name": "うちの町の文化アジト（世宗）",
+    "summary": "LH住宅展示館での複合文化イベント。",
+    "placeName": "世宗（セジョン）"
+   },
+   "th": {
+    "name": "แหล่งวัฒนธรรมชุมชน เซจง",
+    "summary": "งานวัฒนธรรมชุมชนที่หอนิทรรศการ LH",
+    "placeName": "เซจง"
+   }
+  },
+  {
+   "festivalName": "부산인디커넥트페스티벌 2026",
+   "en": {
+    "name": "Busan Indie Connect Festival 2026",
+    "summary": "Asia's leading indie game festival — play unreleased games first.",
+    "placeName": "Haeundae-gu, Busan"
+   },
+   "ja": {
+    "name": "釜山インディコネクトフェスティバル 2026",
+    "summary": "アジア最大級のインディーゲーム祭。未発売作を先行プレイ。",
+    "placeName": "釜山 海雲台区"
+   },
+   "th": {
+    "name": "ปูซานอินดี้คอนเน็กต์เฟสติวัล 2026",
+    "summary": "เทศกาลเกมอินดี้ชั้นนำของเอเชีย เล่นเกมก่อนวางจำหน่าย",
+    "placeName": "แฮอุนแดกู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "2026 이럴때이런음악 해설이 있는 청소년음악회",
+   "en": {
+    "name": "Youth Concert with Commentary 2026",
+    "summary": "Classical concerts for young audiences, with friendly commentary.",
+    "placeName": "Jongno-gu, Seoul"
+   },
+   "ja": {
+    "name": "2026 解説つき青少年音楽会",
+    "summary": "わかりやすい解説つきのユースクラシックコンサート。",
+    "placeName": "ソウル 鍾路区"
+   },
+   "th": {
+    "name": "คอนเสิร์ตเยาวชนพร้อมคำบรรยาย 2026",
+    "summary": "คอนเสิร์ตคลาสสิกสำหรับผู้ชมรุ่นเยาว์ พร้อมคำอธิบาย",
+    "placeName": "ชงโนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "강릉 국가유산 야행",
+   "en": {
+    "name": "Gangneung Heritage Night",
+    "summary": "Night opening of Gangneung's heritage sites with lanterns and shows.",
+    "placeName": "Gangneung, Gangwon"
+   },
+   "ja": {
+    "name": "江陵（カンヌン）国家遺産夜行",
+    "summary": "江陵の文化財を夜間開放。灯りと公演。",
+    "placeName": "江原 江陵"
+   },
+   "th": {
+    "name": "คังนึงเฮอริเทจไนต์",
+    "summary": "เปิดโบราณสถานคังนึงยามค่ำ พร้อมโคมไฟและการแสดง",
+    "placeName": "คังนึง คังวอน"
+   }
+  },
+  {
+   "festivalName": "홍성 국가유산 야행",
+   "en": {
+    "name": "Hongseong Heritage Night",
+    "summary": "Night tour of Hongseong's historic sites.",
+    "placeName": "Hongseong, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "洪城（ホンソン）国家遺産夜行",
+    "summary": "洪城の史跡を巡るナイトツアー。",
+    "placeName": "忠清南道 洪城"
+   },
+   "th": {
+    "name": "ฮงซองเฮอริเทจไนต์",
+    "summary": "ทัวร์โบราณสถานฮงซองยามค่ำคืน",
+    "placeName": "ฮงซอง ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "제4회 다대포 선셋 영화 축제",
+   "en": {
+    "name": "Dadaepo Sunset Film Festival (4th)",
+    "summary": "Open-air cinema on Dadaepo Beach at sunset.",
+    "placeName": "Saha-gu, Busan"
+   },
+   "ja": {
+    "name": "第4回 多大浦（タデポ）サンセット映画祭",
+    "summary": "多大浦ビーチの夕日と野外シネマ。",
+    "placeName": "釜山 沙下区"
+   },
+   "th": {
+    "name": "เทศกาลหนังยามอาทิตย์ตกทาแดโพ ครั้งที่ 4",
+    "summary": "หนังกลางแปลงริมหาดทาแดโพยามอาทิตย์ตก",
+    "placeName": "ซาฮากู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "국가유산 미디어아트",
+   "en": {
+    "name": "Heritage Media Art, Ganghwa",
+    "summary": "Media-art projections on Ganghwa's heritage sites.",
+    "placeName": "Ganghwa, Incheon"
+   },
+   "ja": {
+    "name": "国家遺産メディアアート（江華）",
+    "summary": "江華島の文化財を彩るメディアアート。",
+    "placeName": "仁川 江華"
+   },
+   "th": {
+    "name": "มีเดียอาร์ตมรดกวัฒนธรรม คังฮวา",
+    "summary": "ฉายมีเดียอาร์ตบนโบราณสถานเกาะคังฮวา",
+    "placeName": "คังฮวา อินชอน"
+   }
+  },
+  {
+   "festivalName": "군산 국가유산 야행",
+   "en": {
+    "name": "Gunsan Heritage Night",
+    "summary": "Night walk through Gunsan's modern-history streetscape.",
+    "placeName": "Gunsan, Jeollabuk-do"
+   },
+   "ja": {
+    "name": "群山（クンサン）国家遺産夜行",
+    "summary": "近代史の街並みが残る群山のナイトウォーク。",
+    "placeName": "全北 群山"
+   },
+   "th": {
+    "name": "คุนซันเฮอริเทจไนต์",
+    "summary": "เดินชมย่านประวัติศาสตร์สมัยใหม่ของคุนซันยามค่ำ",
+    "placeName": "คุนซัน ชอลลาเหนือ"
+   }
+  },
+  {
+   "festivalName": "2026 경주 e스포츠 페스티벌",
+   "en": {
+    "name": "Gyeongju Esports Festival 2026",
+    "summary": "Esports tournaments and gaming events in Gyeongju.",
+    "placeName": "Gyeongju"
+   },
+   "ja": {
+    "name": "2026 慶州eスポーツフェスティバル",
+    "summary": "慶州で開かれるeスポーツ大会。",
+    "placeName": "慶州（キョンジュ）"
+   },
+   "th": {
+    "name": "เทศกาลอีสปอร์ตคยองจู 2026",
+    "summary": "การแข่งขันอีสปอร์ตและงานเกมมิ่งในคยองจู",
+    "placeName": "คยองจู"
+   }
+  },
+  {
+   "festivalName": "서대문독립민주축제",
+   "en": {
+    "name": "Seodaemun Independence & Democracy Festival",
+    "summary": "History festival at Seodaemun Prison History Hall.",
+    "placeName": "Seodaemun-gu, Seoul"
+   },
+   "ja": {
+    "name": "西大門独立民主祭り",
+    "summary": "西大門刑務所歴史館で開かれる歴史フェスティバル。",
+    "placeName": "ソウル 西大門区"
+   },
+   "th": {
+    "name": "เทศกาลอิสรภาพและประชาธิปไตยซอแดมุน",
+    "summary": "เทศกาลประวัติศาสตร์ ณ หอประวัติศาสตร์เรือนจำซอแดมุน",
+    "placeName": "ซอแดมุนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "K-일러스트레이션페어 마곡 2026",
+   "en": {
+    "name": "K-Illustration Fair Magok 2026",
+    "summary": "Illustration art fair — hundreds of Korean artists' booths.",
+    "placeName": "Gangseo-gu, Seoul"
+   },
+   "ja": {
+    "name": "K-イラストレーションフェア麻谷 2026",
+    "summary": "韓国イラストレーター数百組が集うアートフェア。",
+    "placeName": "ソウル 江西区"
+   },
+   "th": {
+    "name": "เคอิลลัสเตรชันแฟร์ มาก็อก 2026",
+    "summary": "แฟร์ศิลปะภาพประกอบ บูธศิลปินเกาหลีหลายร้อยราย",
+    "placeName": "คังซอกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "제14회 부산국제코미디페스티벌",
+   "en": {
+    "name": "Busan International Comedy Festival (14th)",
+    "summary": "Asia's biggest comedy festival — stand-up, nonverbal and street shows.",
+    "placeName": "Haeundae-gu, Busan"
+   },
+   "ja": {
+    "name": "第14回 釜山国際コメディフェスティバル",
+    "summary": "アジア最大のコメディ祭。スタンドアップから大道芸まで。",
+    "placeName": "釜山 海雲台区"
+   },
+   "th": {
+    "name": "เทศกาลคอมเมดี้นานาชาติปูซาน ครั้งที่ 14",
+    "summary": "เทศกาลตลกที่ใหญ่ที่สุดในเอเชีย สแตนด์อัพและโชว์ข้างถนน",
+    "placeName": "แฮอุนแดกู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "영덕 국가유산 야행",
+   "en": {
+    "name": "Yeongdeok Heritage Night",
+    "summary": "Night opening of Yeongdeok's heritage village.",
+    "placeName": "Yeongdeok, Gyeongsangbuk-do"
+   },
+   "ja": {
+    "name": "盈徳（ヨンドク）国家遺産夜行",
+    "summary": "盈徳の歴史村を夜間開放。",
+    "placeName": "慶尚北道 盈徳"
+   },
+   "th": {
+    "name": "ยองด็อกเฮอริเทจไนต์",
+    "summary": "เปิดหมู่บ้านโบราณยองด็อกยามค่ำ",
+    "placeName": "ยองด็อก คยองซังเหนือ"
+   }
+  },
+  {
+   "festivalName": "오감만족 문경새재맨발페스티벌",
+   "en": {
+    "name": "Mungyeong Saejae Barefoot Festival",
+    "summary": "Walk the historic Mungyeong Saejae pass barefoot on soft clay.",
+    "placeName": "Mungyeong, Gyeongsangbuk-do"
+   },
+   "ja": {
+    "name": "聞慶（ムンギョン）セジェ 裸足フェスティバル",
+    "summary": "歴史の峠道・聞慶セジェを裸足で歩く。",
+    "placeName": "慶尚北道 聞慶"
+   },
+   "th": {
+    "name": "เทศกาลเดินเท้าเปล่ามุนกยองแซแจ",
+    "summary": "เดินเท้าเปล่าบนดินนุ่มของเส้นทางประวัติศาสตร์มุนกยองแซแจ",
+    "placeName": "มุนกยอง คยองซังเหนือ"
+   }
+  },
+  {
+   "festivalName": "2026 제5회 제주비엔날레 허끄곡 모닥치곡 이야홍 : 변용의 기술",
+   "en": {
+    "name": "Jeju Biennale 2026 (5th): The Art of Transformation",
+    "summary": "Island-wide contemporary art biennale across Jeju.",
+    "placeName": "Jeju City"
+   },
+   "ja": {
+    "name": "2026 第5回 済州ビエンナーレ：変容の技術",
+    "summary": "済州島全域で開かれる現代美術ビエンナーレ。",
+    "placeName": "済州市"
+   },
+   "th": {
+    "name": "เชจูเบียนนาเล่ 2026 ครั้งที่ 5: ศิลปะแห่งการแปรเปลี่ยน",
+    "summary": "งานศิลปะร่วมสมัยทั่วเกาะเชจู",
+    "placeName": "เมืองเชจู"
+   }
+  },
+  {
+   "festivalName": "영동포도축제",
+   "en": {
+    "name": "Yeongdong Grape Festival",
+    "summary": "Grape harvest festival in Korea's top grape county — tastings and wine.",
+    "placeName": "Yeongdong, Chungcheongbuk-do"
+   },
+   "ja": {
+    "name": "永同（ヨンドン）ぶどう祭り",
+    "summary": "韓国一のぶどうの郷で収穫祭。試食とワイン。",
+    "placeName": "忠清北道 永同"
+   },
+   "th": {
+    "name": "เทศกาลองุ่นยองดง",
+    "summary": "เทศกาลเก็บเกี่ยวองุ่นในแหล่งปลูกองุ่นอันดับหนึ่งของเกาหลี",
+    "placeName": "ยองดง ชุงชองเหนือ"
+   }
+  },
+  {
+   "festivalName": "영양고추 H.O.T 페스티벌",
+   "en": {
+    "name": "Yeongyang Chili Pepper H.O.T Festival",
+    "summary": "Spicy festival for Yeongyang's famous chili peppers.",
+    "placeName": "Yeongyang, Gyeongsangbuk-do"
+   },
+   "ja": {
+    "name": "英陽（ヨンヤン）唐辛子 H.O.T フェスティバル",
+    "summary": "名産・英陽唐辛子の激辛フェスティバル。",
+    "placeName": "慶尚北道 英陽"
+   },
+   "th": {
+    "name": "เทศกาลพริกยองยาง H.O.T",
+    "summary": "เทศกาลพริกขึ้นชื่อของยองยาง",
+    "placeName": "ยองยาง คยองซังเหนือ"
+   }
+  },
+  {
+   "festivalName": "강진하맥축제",
+   "en": {
+    "name": "Gangjin Summer Beer Festival",
+    "summary": "Summer nights with beer and music in Gangjin.",
+    "placeName": "Gangjin, Jeollanam-do"
+   },
+   "ja": {
+    "name": "康津（カンジン）夏ビール祭り",
+    "summary": "康津の夏の夜、ビールと音楽。",
+    "placeName": "全羅南道 康津"
+   },
+   "th": {
+    "name": "เทศกาลเบียร์ฤดูร้อนคังจิน",
+    "summary": "ค่ำคืนฤดูร้อนกับเบียร์และดนตรีในคังจิน",
+    "placeName": "คังจิน ชอลลาใต้"
+   }
+  },
+  {
+   "festivalName": "세계유산축전",
+   "en": {
+    "name": "World Heritage Festival, Andong",
+    "summary": "Festival across Andong's UNESCO World Heritage sites.",
+    "placeName": "Andong, Gyeongsangbuk-do"
+   },
+   "ja": {
+    "name": "世界遺産祝典（安東）",
+    "summary": "安東の世界遺産を舞台にした祝祭。",
+    "placeName": "慶尚北道 安東"
+   },
+   "th": {
+    "name": "เทศกาลมรดกโลก อันดง",
+    "summary": "เทศกาล ณ แหล่งมรดกโลกยูเนสโกในอันดง",
+    "placeName": "อันดง คยองซังเหนือ"
+   }
+  },
+  {
+   "festivalName": "국토정중앙 청춘양구 배꼽축제",
+   "en": {
+    "name": "Yanggu Navel Festival",
+    "summary": "Playful festival at the geographic centre of the Korean Peninsula.",
+    "placeName": "Yanggu, Gangwon"
+   },
+   "ja": {
+    "name": "楊口（ヤング）へそ祭り",
+    "summary": "朝鮮半島の真ん中・楊口のユニークな祭り。",
+    "placeName": "江原 楊口"
+   },
+   "th": {
+    "name": "เทศกาลสะดือยางกู",
+    "summary": "เทศกาลสนุกๆ ณ จุดกึ่งกลางคาบสมุทรเกาหลี",
+    "placeName": "ยางกู คังวอน"
+   }
+  },
+  {
+   "festivalName": "동대문구 맥주축제",
+   "en": {
+    "name": "Dongdaemun-gu Beer Festival",
+    "summary": "Neighbourhood beer festival in eastern Seoul.",
+    "placeName": "Dongdaemun-gu, Seoul"
+   },
+   "ja": {
+    "name": "東大門区ビール祭り",
+    "summary": "ソウル東部の地元ビール祭り。",
+    "placeName": "ソウル 東大門区"
+   },
+   "th": {
+    "name": "เทศกาลเบียร์ทงแดมุนกู",
+    "summary": "เทศกาลเบียร์ย่านตะวันออกของโซล",
+    "placeName": "ทงแดมุนกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "생생우리음악축제",
+   "en": {
+    "name": "Saengsaeng Korean Music Festival",
+    "summary": "Live gugak (Korean traditional music) festival in Hwaseong.",
+    "placeName": "Hwaseong, Gyeonggi"
+   },
+   "ja": {
+    "name": "生き生き国楽祭り",
+    "summary": "華城で開かれる国楽（韓国伝統音楽）ライブ祭。",
+    "placeName": "京畿 華城"
+   },
+   "th": {
+    "name": "เทศกาลดนตรีเกาหลีแซงแซง",
+    "summary": "เทศกาลดนตรีกุกักดั้งเดิมของเกาหลี ในฮวาซอง",
+    "placeName": "ฮวาซอง คยองกี"
+   }
+  },
+  {
+   "festivalName": "장항 맥문동 꽃 축제",
+   "en": {
+    "name": "Janghang Liriope Flower Festival",
+    "summary": "Purple liriope blooms under the pine forest by the sea.",
+    "placeName": "Seocheon, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "長項（チャンハン）ヤブラン花祭り",
+    "summary": "海辺の松林に広がる紫のヤブランの花。",
+    "placeName": "忠清南道 舒川"
+   },
+   "th": {
+    "name": "เทศกาลดอกลิริโอเป้จังฮัง",
+    "summary": "ดอกลิริโอเป้สีม่วงบานใต้ป่าสนริมทะเล",
+    "placeName": "ซอชอน ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "무안 황토 갯벌축제",
+   "en": {
+    "name": "Muan Mudflat Festival",
+    "summary": "Play in the red-clay tidal flats — a UNESCO-listed coastal wetland.",
+    "placeName": "Muan, Jeollanam-do"
+   },
+   "ja": {
+    "name": "務安（ムアン）黄土干潟祭り",
+    "summary": "黄土の干潟で泥遊び。ユネスコ登録の海岸湿地。",
+    "placeName": "全羅南道 務安"
+   },
+   "th": {
+    "name": "เทศกาลหาดโคลนมูอัน",
+    "summary": "เล่นโคลนบนหาดเลนดินแดง พื้นที่ชุ่มน้ำมรดกยูเนสโก",
+    "placeName": "มูอัน ชอลลาใต้"
+   }
+  },
+  {
+   "festivalName": "2026 부산나이트워크42K with dsec",
+   "en": {
+    "name": "Busan Night Walk 42K 2026",
+    "summary": "All-night 42km walking challenge along Busan's coast.",
+    "placeName": "Haeundae-gu, Busan"
+   },
+   "ja": {
+    "name": "2026 釜山ナイトウォーク42K",
+    "summary": "釜山の海岸線を夜通し歩く42kmチャレンジ。",
+    "placeName": "釜山 海雲台区"
+   },
+   "th": {
+    "name": "ปูซานไนต์วอล์ก 42K 2026",
+    "summary": "ชาเลนจ์เดิน 42 กม. ตลอดคืนเลียบชายฝั่งปูซาน",
+    "placeName": "แฮอุนแดกู ปูซาน"
+   }
+  },
+  {
+   "festivalName": "2026 안산 e스포츠 페스티벌",
+   "en": {
+    "name": "Ansan Esports Festival 2026",
+    "summary": "Esports tournaments and gaming culture in Ansan.",
+    "placeName": "Ansan, Gyeonggi"
+   },
+   "ja": {
+    "name": "2026 安山eスポーツフェスティバル",
+    "summary": "安山のeスポーツ大会とゲーム文化イベント。",
+    "placeName": "京畿 安山"
+   },
+   "th": {
+    "name": "เทศกาลอีสปอร์ตอันซัน 2026",
+    "summary": "การแข่งขันอีสปอร์ตและวัฒนธรรมเกมในอันซัน",
+    "placeName": "อันซัน คยองกี"
+   }
+  },
+  {
+   "festivalName": "서초뮤직앤아트페스티벌(SMAF)",
+   "en": {
+    "name": "Seocho Music & Art Festival (SMAF)",
+    "summary": "Classical and arts festival in southern Seoul.",
+    "placeName": "Seocho-gu, Seoul"
+   },
+   "ja": {
+    "name": "瑞草ミュージック＆アートフェスティバル（SMAF）",
+    "summary": "ソウル南部のクラシック＆アート祭。",
+    "placeName": "ソウル 瑞草区"
+   },
+   "th": {
+    "name": "เทศกาลดนตรีและศิลปะซอโช (SMAF)",
+    "summary": "เทศกาลดนตรีคลาสสิกและศิลปะทางใต้ของโซล",
+    "placeName": "ซอโชกู กรุงโซล"
+   }
+  },
+  {
+   "festivalName": "2026 천안 K-컬처박람회",
+   "en": {
+    "name": "Cheonan K-Culture Expo 2026",
+    "summary": "K-pop, K-food and Korean culture expo in Cheonan.",
+    "placeName": "Cheonan, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "2026 天安K-カルチャー博覧会",
+    "summary": "K-POP・K-フードなど韓国文化の博覧会。",
+    "placeName": "忠清南道 天安"
+   },
+   "th": {
+    "name": "งานเคคัลเจอร์เอ็กซ์โปชอนอัน 2026",
+    "summary": "งานแสดงเคป็อป อาหารเกาหลี และวัฒนธรรมเกาหลี",
+    "placeName": "ชอนอัน ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "괴산고추축제",
+   "en": {
+    "name": "Goesan Chili Pepper Festival",
+    "summary": "Harvest festival for Goesan's famous chili peppers.",
+    "placeName": "Goesan, Chungcheongbuk-do"
+   },
+   "ja": {
+    "name": "槐山（クェサン）唐辛子祭り",
+    "summary": "名産・槐山唐辛子の収穫祭。",
+    "placeName": "忠清北道 槐山"
+   },
+   "th": {
+    "name": "เทศกาลพริกเควซัน",
+    "summary": "เทศกาลเก็บเกี่ยวพริกขึ้นชื่อของเควซัน",
+    "placeName": "เควซัน ชุงชองเหนือ"
+   }
+  },
+  {
+   "festivalName": "평창효석문화제",
+   "en": {
+    "name": "Pyeongchang Hyoseok Buckwheat Festival",
+    "summary": "White buckwheat fields from the novel 'When Buckwheat Flowers Bloom'.",
+    "placeName": "Pyeongchang, Gangwon"
+   },
+   "ja": {
+    "name": "平昌（ピョンチャン）孝石文化祭",
+    "summary": "小説『そばの花咲く頃』の舞台、白いそば畑の祭り。",
+    "placeName": "江原 平昌"
+   },
+   "th": {
+    "name": "เทศกาลฮโยซอกพยองชัง",
+    "summary": "ทุ่งดอกบัควีตสีขาวจากนวนิยายชื่อดังของเกาหลี",
+    "placeName": "พยองชัง คังวอน"
+   }
+  },
+  {
+   "festivalName": "직지문화축제",
+   "en": {
+    "name": "Jikji Culture Festival",
+    "summary": "Celebrating Jikji, the world's oldest movable metal type book.",
+    "placeName": "Cheongju, Chungcheongbuk-do"
+   },
+   "ja": {
+    "name": "直指（チクチ）文化祭",
+    "summary": "世界最古の金属活字本「直指」を祝う祭り。",
+    "placeName": "忠清北道 清州"
+   },
+   "th": {
+    "name": "เทศกาลวัฒนธรรมจิกจี",
+    "summary": "ฉลองจิกจี หนังสือตัวพิมพ์โลหะเก่าแก่ที่สุดในโลก",
+    "placeName": "ชองจู ชุงชองเหนือ"
+   }
+  },
+  {
+   "festivalName": "무주반딧불축제",
+   "en": {
+    "name": "Muju Firefly Festival",
+    "summary": "See real fireflies in one of Korea's cleanest natural areas.",
+    "placeName": "Muju, Jeollabuk-do"
+   },
+   "ja": {
+    "name": "茂朱（ムジュ）ホタル祭り",
+    "summary": "清流の里・茂朱で本物のホタル観賞。",
+    "placeName": "全北 茂朱"
+   },
+   "th": {
+    "name": "เทศกาลหิ่งห้อยมูจู",
+    "summary": "ชมหิ่งห้อยจริงในธรรมชาติบริสุทธิ์ของมูจู",
+    "placeName": "มูจู ชอลลาเหนือ"
+   }
+  },
+  {
+   "festivalName": "고령 국가유산 야행",
+   "en": {
+    "name": "Goryeong Heritage Night",
+    "summary": "Night tour of the ancient Daegaya kingdom's heritage.",
+    "placeName": "Goryeong, Gyeongsangbuk-do"
+   },
+   "ja": {
+    "name": "高霊（コリョン）国家遺産夜行",
+    "summary": "古代・大伽倻の遺産を巡るナイトツアー。",
+    "placeName": "慶尚北道 高霊"
+   },
+   "th": {
+    "name": "โครยองเฮอริเทจไนต์",
+    "summary": "ทัวร์มรดกอาณาจักรแทคายาโบราณยามค่ำ",
+    "placeName": "โครยอง คยองซังเหนือ"
+   }
+  },
+  {
+   "festivalName": "공주 국가유산 야행",
+   "en": {
+    "name": "Gongju Heritage Night",
+    "summary": "Night opening of the ancient Baekje capital's heritage sites.",
+    "placeName": "Gongju, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "公州（コンジュ）国家遺産夜行",
+    "summary": "百済の古都・公州の文化財を夜間開放。",
+    "placeName": "忠清南道 公州"
+   },
+   "th": {
+    "name": "คงจูเฮอริเทจไนต์",
+    "summary": "เปิดโบราณสถานเมืองหลวงแพกเจโบราณยามค่ำ",
+    "placeName": "คงจู ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "왜관 홀리 페스티벌",
+   "en": {
+    "name": "Waegwan Holi Festival",
+    "summary": "Colour-powder festival in Chilgok's Waegwan.",
+    "placeName": "Chilgok, Gyeongsangbuk-do"
+   },
+   "ja": {
+    "name": "倭館（ウェグァン）ホーリーフェスティバル",
+    "summary": "色粉を掛け合うホーリー祭り。",
+    "placeName": "慶尚北道 漆谷"
+   },
+   "th": {
+    "name": "เทศกาลโฮลีแวกวัน",
+    "summary": "เทศกาลสาดผงสีในแวกวัน ชิลก็อก",
+    "placeName": "ชิลก็อก คยองซังเหนือ"
+   }
+  },
+  {
+   "festivalName": "한여름 밤의 신정호 별빛축제",
+   "en": {
+    "name": "Sinjeongho Lake Starlight Festival",
+    "summary": "Midsummer-night lights by Sinjeongho Lake in Asan.",
+    "placeName": "Asan, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "真夏の夜の神井湖 星あかり祭り",
+    "summary": "牙山・神井湖畔の真夏の夜のライトアップ。",
+    "placeName": "忠清南道 牙山"
+   },
+   "th": {
+    "name": "เทศกาลแสงดาวทะเลสาบชินจองโฮ",
+    "summary": "แสงไฟยามค่ำคืนกลางฤดูร้อนริมทะเลสาบชินจองโฮ",
+    "placeName": "อาซัน ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "예산황새축제",
+   "en": {
+    "name": "Yesan Stork Festival",
+    "summary": "Meet Korea's restored wild storks at Yesan's stork park.",
+    "placeName": "Yesan, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "礼山（イェサン）コウノトリ祭り",
+    "summary": "復元された野生コウノトリに会える礼山の祭り。",
+    "placeName": "忠清南道 礼山"
+   },
+   "th": {
+    "name": "เทศกาลนกกระสาเยซัน",
+    "summary": "พบนกกระสาป่าที่ฟื้นฟูพันธุ์สำเร็จของเกาหลี",
+    "placeName": "เยซัน ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "2026 서가콘서트 : 셜록홈즈",
+   "en": {
+    "name": "Seoga Concert 2026: Sherlock Holmes",
+    "summary": "Library concert themed on Sherlock Holmes.",
+    "placeName": "Suwon, Gyeonggi"
+   },
+   "ja": {
+    "name": "2026 書架コンサート：シャーロック・ホームズ",
+    "summary": "シャーロック・ホームズをテーマにした図書館コンサート。",
+    "placeName": "京畿 水原"
+   },
+   "th": {
+    "name": "ซอกาคอนเสิร์ต 2026: เชอร์ล็อก โฮมส์",
+    "summary": "คอนเสิร์ตในห้องสมุดธีมเชอร์ล็อก โฮมส์",
+    "placeName": "ซูวอน คยองกี"
+   }
+  },
+  {
+   "festivalName": "2026 전국 장애학생 e페스티벌",
+   "en": {
+    "name": "National e-Festival for Students with Disabilities",
+    "summary": "National esports and IT festival for students with disabilities.",
+    "placeName": "Hongcheon, Gangwon"
+   },
+   "ja": {
+    "name": "2026 全国障害学生eフェスティバル",
+    "summary": "障害のある学生の全国eスポーツ・IT祭典。",
+    "placeName": "江原 洪川"
+   },
+   "th": {
+    "name": "อีเฟสติวัลนักเรียนพิการแห่งชาติ 2026",
+    "summary": "เทศกาลอีสปอร์ตและไอทีระดับชาติสำหรับนักเรียนพิการ",
+    "placeName": "ฮงชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "2026 구미 로컬푸드 페스타",
+   "en": {
+    "name": "Gumi Local Food Festa 2026",
+    "summary": "Local food market and tasting festival in Gumi.",
+    "placeName": "Gumi, Gyeongsangbuk-do"
+   },
+   "ja": {
+    "name": "2026 亀尾（クミ）ローカルフードフェスタ",
+    "summary": "亀尾の地元食材マーケット＆試食祭。",
+    "placeName": "慶尚北道 亀尾"
+   },
+   "th": {
+    "name": "คูมีโลคัลฟู้ดเฟสตา 2026",
+    "summary": "ตลาดอาหารท้องถิ่นและเทศกาลชิมอาหารในคูมี",
+    "placeName": "คูมี คยองซังเหนือ"
+   }
+  },
+  {
+   "festivalName": "2026 광주 ACE Fair",
+   "en": {
+    "name": "Gwangju ACE Fair 2026",
+    "summary": "Asia content & entertainment fair — broadcasting, games, animation.",
+    "placeName": "Seo-gu, Gwangju"
+   },
+   "ja": {
+    "name": "2026 光州ACEフェア",
+    "summary": "放送・ゲーム・アニメのアジアコンテンツ見本市。",
+    "placeName": "光州 西区"
+   },
+   "th": {
+    "name": "ควังจู ACE แฟร์ 2026",
+    "summary": "งานแสดงคอนเทนต์เอเชีย ทีวี เกม แอนิเมชัน",
+    "placeName": "ซอกู ควังจู"
+   }
+  },
+  {
+   "festivalName": "장수한우랑사과랑축제",
+   "en": {
+    "name": "Jangsu Hanwoo Beef & Apple Festival",
+    "summary": "Taste premium hanwoo beef and crisp highland apples.",
+    "placeName": "Jangsu, Jeollabuk-do"
+   },
+   "ja": {
+    "name": "長水（チャンス）韓牛＆りんご祭り",
+    "summary": "極上の韓牛と高原りんごを味わう祭り。",
+    "placeName": "全北 長水"
+   },
+   "th": {
+    "name": "เทศกาลเนื้อฮันอูและแอปเปิลจังซู",
+    "summary": "ลิ้มรสเนื้อฮันอูพรีเมียมและแอปเปิลไฮแลนด์",
+    "placeName": "จังซู ชอลลาเหนือ"
+   }
+  }
+ ]
 }

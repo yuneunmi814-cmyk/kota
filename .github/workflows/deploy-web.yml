@@ -35,6 +35,10 @@ jobs:
         working-directory: web
         env:
           VITE_API_BASE: https://kota-api-109d.onrender.com/api/v1
+          # 레포 변수(Settings→Secrets and variables→Actions→Variables)에서 주입 — 미설정 시 빈 값(추적/검증 비활성)
+          VITE_GA_ID: ${{ vars.GA_MEASUREMENT_ID }}
+          VITE_GSC_VERIFICATION: ${{ vars.GSC_VERIFICATION }}
+          VITE_NAVER_VERIFICATION: ${{ vars.NAVER_VERIFICATION }}
       # SPA 딥링크(/search 등) 새로고침 대응 — Pages는 404.html로 폴백
       - run: cp dist/index.html dist/404.html
         working-directory: web

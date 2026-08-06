@@ -3,16 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KOTA — 한국 지역축제 여행팩 · Korea Festa</title>
-    <meta name="description" content="외국인 여행자를 위한 한국 지역축제 + 교통 + 맛집 큐레이션. 공공데이터 기반 여행팩, KOTA(Korea Tiger)." />
-    <!-- OG 썸네일 (회의록 액션 아이템) — 배포 시 절대 URL로 교체 -->
+    <title>KOTA — Korea Festa · 한국 지역축제 여행팩</title>
+    <meta name="description" content="내 위치 기반 한국 지역축제 여행팩 — 전국 400여 개 축제의 일정·장소·길찾기·주변 관광지를 영어·일본어·태국어로. Discover Korean local festivals near you." />
+    <meta name="keywords" content="한국 축제, 지역축제, Korea festival, Korean local festivals, 韓国 祭り, เทศกาลเกาหลี" />
+    <!-- 구글 서치 콘솔 소유 확인 — 레포 변수 GSC_VERIFICATION 설정 시 배포에 주입(미설정이면 빈 값, 무해) -->
+    <meta name="google-site-verification" content="%VITE_GSC_VERIFICATION%" />
+    <meta name="naver-site-verification" content="%VITE_NAVER_VERIFICATION%" />
+    <!-- OG/트위터 — 링크 공유 카드. og:image는 절대 URL이어야 스크레이퍼가 읽는다 -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="KOTA — Korea Festa" />
-    <meta property="og:description" content="Local festivals, food & transit in Korea — curated travel packs for foreign travelers." />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:site_name" content="KOTA — Korea Festa" />
+    <meta property="og:title" content="KOTA — Korea Festa · 한국 지역축제 여행팩" />
+    <meta property="og:description" content="Local festivals across Korea — dates, directions & nearby spots, in English, 日本語, ไทย." />
+    <meta property="og:image" content="https://yuneunmi814-cmyk.github.io/kota/og-image.png" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:locale:alternate" content="th_TH" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Pretendard (디자인 시안2: 딥그린·산세리프) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+    <!-- GEO(AI 검색 최적화): 사이트 정체를 구조화 — WebSite + 검색 액션 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "KOTA — Korea Festa",
+        "alternateName": "코타",
+        "url": "https://yuneunmi814-cmyk.github.io/kota/",
+        "description": "Location-based Korean local festival travel packs for foreign travelers — festival dates, venues, directions and nearby attractions in Korean, English, Japanese and Thai.",
+        "inLanguage": ["ko", "en", "ja", "th"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://yuneunmi814-cmyk.github.io/kota/search?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

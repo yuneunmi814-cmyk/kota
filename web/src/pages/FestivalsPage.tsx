@@ -1,6 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
+import { setPageMeta } from '../seo'
 import RegionBanner from '../components/RegionBanner'
 import FestivalRail, { type FestivalSort } from '../components/FestivalRail'
 import { useT } from '../i18n'
@@ -8,6 +9,9 @@ import { useT } from '../i18n'
 // 축제 목록 — 상단은 홈과 같은 '내 위치' 버튼(기본값처럼 재클릭 가능), 아래 정렬 필터(거리순·인기순)
 // ?sido=충청남도 & lat/lng & sort=date|distance|popularity & geo=denied(권한 안내)
 export default function FestivalsPage() {
+  useEffect(() => {
+    setPageMeta('전국 지역축제', '지금 진행 중이거나 곧 열리는 한국 지역축제를 시·도별로 찾아보세요. Find local festivals across Korea by region and date.')
+  }, [])
   const t = useT()
   const [params, setParams] = useSearchParams()
   const sido = params.get('sido')

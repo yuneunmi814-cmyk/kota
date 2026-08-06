@@ -1,0 +1,25 @@
+# KOTA — Korea Festa
+
+> Location-based Korean local festival travel packs for foreign travelers. 407 ongoing/upcoming festivals across Korea with dates, venues, directions and nearby attractions, in Korean, English, Japanese and Thai.
+
+## What this site offers
+- Festival list with region filter: https://yuneunmi814-cmyk.github.io/kota/festivals
+- Festival detail (dates, venue, phone, directions, nearby spots within 3km): https://yuneunmi814-cmyk.github.io/kota/festivals/{id}
+- Unified search (festival/region/attraction names): https://yuneunmi814-cmyk.github.io/kota/search?q=...
+- UI and festival content localized in ko/en/ja/th (language switch in header)
+
+## Data sources
+- Korea Tourism Organization TourAPI (searchFestival2, areaBasedList2)
+- Korea nationwide culture festival standard open data (data.go.kr)
+- Manually curated local festivals not present in any public API (verified on site)
+- Updated weekly via automated sync (2026-08-06)
+
+## Current coverage by region (festival count)
+- 경기도: 70
+- 서울특별시: 56
+- 경상북도: 37
+- 충청남도: 36
+- 경상남도: 34
+- 전라남도: 29
+- 부산광역시: 27
+- 강원특별자치도: 22

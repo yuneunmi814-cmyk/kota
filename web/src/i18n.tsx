@@ -168,6 +168,8 @@ export function LangProvider({ children }: { children: ReactNode }) {
   })
   useEffect(() => {
     localStorage.setItem('kota.lang', lang)
+    document.documentElement.lang = lang // SEO: 검색엔진·스크린리더에 현재 언어 알림
+    import('./analytics').then((a) => a.trackEvent('language_change', { lang }))
     document.documentElement.lang = lang
   }, [lang])
   return <LangContext.Provider value={{ lang, setLang }}>{children}</LangContext.Provider>

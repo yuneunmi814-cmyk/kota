@@ -1,5 +1,5 @@
 {
- "exportedAt": "2026-08-05",
+ "exportedAt": "2026-08-06",
  "items": [
   {
    "externalId": "tourapi:3481597",
@@ -19,16 +19,16 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "PAINTERS: Comedy Art Performance",
-     "summary": "Non-verbal show where artists paint giant artworks live on stage.",
-     "placeName": "Jung-gu, Seoul"
-    },
-    {
      "langCode": "ja",
      "name": "ペインターズ（PAINTERS）",
      "summary": "舞台上で巨大な絵を描き上げるノンバーバル・パフォーマンス。",
      "placeName": "ソウル 中区"
+    },
+    {
+     "langCode": "en",
+     "name": "PAINTERS: Comedy Art Performance",
+     "summary": "Non-verbal show where artists paint giant artworks live on stage.",
+     "placeName": "Jung-gu, Seoul"
     },
     {
      "langCode": "th",
@@ -404,7 +404,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4054469_image2_1.jpg",
    "tel": "031-687-0548",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "APAP Public Art Tour, Anyang",
+     "summary": "Walking tour of Anyang Public Art Project's outdoor artworks.",
+     "placeName": "Anyang, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "APAP作品ツアー（安養公共芸術プロジェクト）",
+     "summary": "安養（アニャン）の野外パブリックアートを巡るツアー。",
+     "placeName": "京畿 安養"
+    },
+    {
+     "langCode": "th",
+     "name": "ทัวร์ศิลปะสาธารณะ APAP อันยาง",
+     "summary": "ทัวร์เดินชมงานศิลปะกลางแจ้งของโครงการ APAP",
+     "placeName": "อันยาง คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3488655",
@@ -422,7 +441,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/85/4039885_image2_1.jpg",
    "tel": "062-412-1197",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Youth Mic: Culture Day Busking 2026",
+     "summary": "Young artists' busking stages on national Culture Day.",
+     "placeName": "Buk-gu, Gwangju"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 文化がある日 青春マイク",
+     "summary": "若手アーティストによる路上ライブステージ。",
+     "placeName": "光州 北区"
+    },
+    {
+     "langCode": "th",
+     "name": "ยูธไมค์ 2026: เวทีบัสกิ้งวันวัฒนธรรม",
+     "summary": "เวทีดนตรีเปิดหมวกของศิลปินรุ่นใหม่",
+     "placeName": "บุกกู ควังจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3488421",
@@ -440,7 +478,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/15/4093315_image2_1.jpg",
    "tel": "031-870-9110",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "National Theater Kids Festival 2026",
+     "summary": "Family performing-arts festival by the National Theater of Korea.",
+     "placeName": "Paju, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 国立劇場 子どもフェスティバル",
+     "summary": "国立劇場によるファミリー向け舞台芸術祭。",
+     "placeName": "京畿 坡州"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลละครเด็ก โรงละครแห่งชาติ 2026",
+     "summary": "เทศกาลศิลปะการแสดงสำหรับครอบครัว",
+     "placeName": "พาจู คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4062064",
@@ -495,7 +552,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/82/4055582_image2_1.png",
    "tel": "032-575-2526, 070-5001-0265",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Culture Day 2026, Incheon",
+     "summary": "Monthly culture-day discounts and pop-up performances.",
+     "placeName": "Incheon"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 文化がある日（仁川）",
+     "summary": "毎月の文化の日の割引とポップアップ公演。",
+     "placeName": "仁川"
+    },
+    {
+     "langCode": "th",
+     "name": "วันวัฒนธรรม 2026 อินชอน",
+     "summary": "ส่วนลดและการแสดงพิเศษประจำเดือนวันวัฒนธรรม",
+     "placeName": "อินชอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3377038",
@@ -513,7 +589,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4054090_image2_1.jpg",
    "tel": "010-8441-2371",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "International Seon Meditation Conference 2026",
+     "summary": "Korean Seon (Zen) meditation gathering open to visitors.",
+     "placeName": "Gangnam-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 国際禅瞑想大会",
+     "summary": "誰でも参加できる韓国禅（ソン）瞑想の集い。",
+     "placeName": "ソウル 江南区"
+    },
+    {
+     "langCode": "th",
+     "name": "งานสมาธิซอนนานาชาติ 2026",
+     "summary": "งานรวมผู้ปฏิบัติสมาธิแบบซอน (เซน) ของเกาหลี",
+     "placeName": "คังนัมกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2865136",
@@ -531,7 +626,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/01/4067301_image2_1.jpg",
    "tel": "062-413-1274",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Raon Festa 2026",
+     "summary": "Youth culture festival in Daegu.",
+     "placeName": "Dong-gu, Daegu"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 ラオンフェスタ",
+     "summary": "大邱（テグ）の若者文化フェスティバル。",
+     "placeName": "大邱 東区"
+    },
+    {
+     "langCode": "th",
+     "name": "ราอนเฟสตา 2026",
+     "summary": "เทศกาลวัฒนธรรมเยาวชนในแทกู",
+     "placeName": "ทงกู แทกู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3478890",
@@ -549,7 +663,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/37/4040737_image2_1.jpg",
    "tel": "062-413-2535",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Geumnam-ro Car-Free Street 'Geotjaing'",
+     "summary": "Gwangju's main avenue goes car-free with markets and stages.",
+     "placeName": "Dong-gu, Gwangju"
+    },
+    {
+     "langCode": "ja",
+     "name": "錦南路 歩行者天国「コッチャイン」",
+     "summary": "光州のメインストリートが歩行者天国に。市場とステージ。",
+     "placeName": "光州 東区"
+    },
+    {
+     "langCode": "th",
+     "name": "ถนนปลอดรถคึมนัมโร 'คอดจาอิง'",
+     "summary": "ถนนสายหลักของควังจูปิดให้เดิน มีตลาดและเวทีการแสดง",
+     "placeName": "ทงกู ควังจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:293030",
@@ -567,7 +700,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4039532_image2_1.jpg",
    "tel": "031-678-2518",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Anseong Namsadang Baudeogi Troupe Show",
+     "summary": "Traditional itinerant performers — tightrope, spinning dishes, pungmul drums.",
+     "placeName": "Anseong, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "安城 男寺党（ナムサダン）バウドギ風物団 常設公演",
+     "summary": "綱渡り・皿回し・農楽——朝鮮伝統の旅芸人の公演。",
+     "placeName": "京畿 安城"
+    },
+    {
+     "langCode": "th",
+     "name": "การแสดงคณะนัมซาดัง บาอูด็อกกี อันซอง",
+     "summary": "คณะละครเร่ดั้งเดิม ไต่เชือก หมุนจาน กลองพุงมุล",
+     "placeName": "อันซอง คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2987489",
@@ -677,7 +829,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4056513_image2_1.jpg",
    "tel": "02-737-6444",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Uijeongbu-ji Site Traditional Culture Program",
+     "summary": "Regular traditional performances at the historic Uijeongbu government site.",
+     "placeName": "Jongno-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "議政府址 常設伝統文化行事",
+     "summary": "史跡・議政府址での定期伝統公演。",
+     "placeName": "ソウル 鍾路区"
+    },
+    {
+     "langCode": "th",
+     "name": "งานวัฒนธรรมดั้งเดิม ณ โบราณสถานอึยจองบู",
+     "summary": "การแสดงดั้งเดิมประจำ ณ โบราณสถานอึยจองบู",
+     "placeName": "ชงโนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2547013",
@@ -732,7 +903,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4058721_image2_1.png",
    "tel": "031-259-4724",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Culture Lounge Gyeonggi: Jang",
+     "summary": "Open cultural lounge and market program in Suwon.",
+     "placeName": "Suwon, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "カルチャーラウンジ京畿、場（ジャン）",
+     "summary": "水原のオープンな文化ラウンジ＆マーケット。",
+     "placeName": "京畿 水原"
+    },
+    {
+     "langCode": "th",
+     "name": "คัลเจอร์เลานจ์คยองกี: จัง",
+     "summary": "เลานจ์วัฒนธรรมและตลาดเปิดในซูวอน",
+     "placeName": "ซูวอน คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3111722",
@@ -750,7 +940,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/49/4058449_image2_1.png",
    "tel": "02-6953-9239",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Hangang River History Walk",
+     "summary": "Guided history walk along the Han River.",
+     "placeName": "Yeongdeungpo-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "漢江歴史探訪",
+     "summary": "漢江沿いを歩くガイド付き歴史ツアー。",
+     "placeName": "ソウル 永登浦区"
+    },
+    {
+     "langCode": "th",
+     "name": "เดินชมประวัติศาสตร์แม่น้ำฮัน",
+     "summary": "ทัวร์เดินชมประวัติศาสตร์ริมแม่น้ำฮันพร้อมไกด์",
+     "placeName": "ยองดึงโพกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2434545",
@@ -768,7 +977,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/4051822_image2_1.png",
    "tel": "064-760-2654",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Saeyeongyo Bridge Weekend Show",
+     "summary": "Weekend performances at Seogwipo's Saeyeongyo Bridge.",
+     "placeName": "Seogwipo, Jeju"
+    },
+    {
+     "langCode": "ja",
+     "name": "セヨン橋 週末文化公演「セヨンショー」",
+     "summary": "西帰浦・セヨン橋の週末パフォーマンス。",
+     "placeName": "済州 西帰浦"
+    },
+    {
+     "langCode": "th",
+     "name": "โชว์สุดสัปดาห์สะพานแซยอนกโย",
+     "summary": "การแสดงสุดสัปดาห์ที่สะพานแซยอนกโย ซอกวีโพ",
+     "placeName": "ซอกวีโพ เชจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2766000",
@@ -860,7 +1088,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/74/4060474_image2_1.png",
    "tel": "02-2088-7218",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seoul Street Live 2026",
+     "summary": "Busking and street performances across Seoul.",
+     "placeName": "Jongno-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 ソウル街角公演 すみずみライブ",
+     "summary": "ソウル各地のストリートパフォーマンス。",
+     "placeName": "ソウル 鍾路区"
+    },
+    {
+     "langCode": "th",
+     "name": "โซลสตรีทไลฟ์ 2026",
+     "summary": "การแสดงข้างถนนทั่วกรุงโซล",
+     "placeName": "ชงโนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3116066",
@@ -952,7 +1199,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/68/4059668_image2_1.jpg",
    "tel": "02-2133-2543",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Culture Flows at Seoul Plaza",
+     "summary": "Free concerts and shows at Seoul Plaza.",
+     "placeName": "Jung-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "文化が流れるソウル広場",
+     "summary": "ソウル広場での無料コンサートと公演。",
+     "placeName": "ソウル 中区"
+    },
+    {
+     "langCode": "th",
+     "name": "วัฒนธรรมไหลริน ณ โซลพลาซา",
+     "summary": "คอนเสิร์ตและการแสดงฟรีที่จัตุรัสโซล",
+     "placeName": "จุงกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2774275",
@@ -1025,7 +1291,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/70/4082670_image2_1.png",
    "tel": "02-723-0300",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Palsaek Chanlan: Eight Colors of Splendor",
+     "summary": "Traditional arts program at Gyeongbokgung area.",
+     "placeName": "Jongno-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "八色燦爛（パルセクチャンラン）",
+     "summary": "景福宮一帯の伝統芸術プログラム。",
+     "placeName": "ソウル 鍾路区"
+    },
+    {
+     "langCode": "th",
+     "name": "พัลแซกชันลัน: แปดสีแห่งความงาม",
+     "summary": "โปรแกรมศิลปะดั้งเดิมย่านพระราชวังคยองบก",
+     "placeName": "ชงโนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "stdfest:4181000-2026춘천연극제-20260611",
@@ -1079,7 +1364,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/93/4080593_image2_1.jpg",
    "tel": "033-253-7111",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Culture Delivery 2026, Yeoncheon",
+     "summary": "Culture programs delivered to rural neighbourhoods.",
+     "placeName": "Yeoncheon, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 文化配達（漣川）",
+     "summary": "農村地域へ文化プログラムをお届け。",
+     "placeName": "京畿 漣川"
+    },
+    {
+     "langCode": "th",
+     "name": "คัลเจอร์เดลิเวอรี 2026 ยอนชอน",
+     "summary": "ส่งโปรแกรมวัฒนธรรมถึงชุมชนชนบท",
+     "placeName": "ยอนชอน คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2550263",
@@ -1171,7 +1475,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/83/4094783_image2_1.png",
    "tel": "02-580-1655",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Contemporary Artist Project: Lee Wan — I Write",
+     "summary": "Solo exhibition by contemporary artist Lee Wan.",
+     "placeName": "Seocho-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "コンテンポラリーアーティスト・プロジェクト《イ・ワン——私は書く》",
+     "summary": "現代美術家イ・ワンの個展。",
+     "placeName": "ソウル 瑞草区"
+    },
+    {
+     "langCode": "th",
+     "name": "โปรเจกต์ศิลปินร่วมสมัย: อี วาน — ฉันเขียน",
+     "summary": "นิทรรศการเดี่ยวของศิลปินร่วมสมัยอี วาน",
+     "placeName": "ซอโชกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:142228",
@@ -1447,7 +1770,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/78/4084478_image2_1.jpg",
    "tel": "055-835-6436",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Sacheon Saturday Stage & Rock Festival",
+     "summary": "Weekly Saturday stage plus a summer rock festival by the sea.",
+     "placeName": "Sacheon, Gyeongsangnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "泗川 土曜常設ステージ＆ロックフェスティバル",
+     "summary": "毎週土曜のステージと海辺のロックフェス。",
+     "placeName": "慶尚南道 泗川"
+    },
+    {
+     "langCode": "th",
+     "name": "เวทีวันเสาร์และร็อกเฟสติวัลซาชอน",
+     "summary": "เวทีประจำวันเสาร์และเทศกาลร็อกริมทะเล",
+     "placeName": "ซาชอน คยองซังใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4090201",
@@ -1465,7 +1807,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/02/4090202_image2_1.jpg",
    "tel": "052-255-1823",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Garden Night Market",
+     "summary": "Evening garden market with food and crafts.",
+     "placeName": "Nam-gu, Ulsan"
+    },
+    {
+     "langCode": "ja",
+     "name": "ガーデン・ナイトマーケット",
+     "summary": "フードとクラフトの夜の庭園マーケット。",
+     "placeName": "蔚山 南区"
+    },
+    {
+     "langCode": "th",
+     "name": "การ์เดนไนต์มาร์เก็ต",
+     "summary": "ตลาดกลางคืนในสวน อาหารและงานฝีมือ",
+     "placeName": "นัมกู อุลซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4089090",
@@ -1483,7 +1844,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/92/4089092_image2_1.jpg",
    "tel": "062-570-7809",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Earthenware: Vessels That Hold Us",
+     "summary": "Pottery exhibition on Korean earthenware traditions.",
+     "placeName": "Buk-gu, Daegu"
+    },
+    {
+     "langCode": "ja",
+     "name": "〈陶器、私たちを盛る器〉",
+     "summary": "韓国の土器・陶器の伝統をたどる展示。",
+     "placeName": "大邱 北区"
+    },
+    {
+     "langCode": "th",
+     "name": "เครื่องปั้นดินเผา: ภาชนะที่บรรจุเรา",
+     "summary": "นิทรรศการเครื่องปั้นดินเผาดั้งเดิมของเกาหลี",
+     "placeName": "บุกกู แทกู"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5470000-거창국제연극제-20260731",
@@ -1650,12 +2030,6 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "Busan International Buddhism Expo 2026",
-     "summary": "Buddhist culture expo — temple food, crafts and meditation programs.",
-     "placeName": "Haeundae-gu, Busan"
-    },
-    {
      "langCode": "ja",
      "name": "2026 釜山国際仏教博覧会",
      "summary": "精進料理・工芸・瞑想プログラムなど仏教文化の博覧会。",
@@ -1666,6 +2040,12 @@
      "name": "งานแสดงพุทธศาสนานานาชาติปูซาน 2026",
      "summary": "งานแสดงวัฒนธรรมพุทธ อาหารวัด งานฝีมือ และการทำสมาธิ",
      "placeName": "แฮอุนแดกู ปูซาน"
+    },
+    {
+     "langCode": "en",
+     "name": "Busan International Buddhism Expo 2026",
+     "summary": "Buddhist culture expo — temple food, crafts and meditation programs.",
+     "placeName": "Haeundae-gu, Busan"
     }
    ]
   },
@@ -1796,7 +2176,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/25/4091125_image2_1.jpg",
    "tel": "070-4266-7078",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Neighbourhood Culture Hideout, Sejong",
+     "summary": "Community culture events at the LH housing gallery.",
+     "placeName": "Sejong"
+    },
+    {
+     "langCode": "ja",
+     "name": "うちの町の文化アジト（世宗）",
+     "summary": "LH住宅展示館での複合文化イベント。",
+     "placeName": "世宗（セジョン）"
+    },
+    {
+     "langCode": "th",
+     "name": "แหล่งวัฒนธรรมชุมชน เซจง",
+     "summary": "งานวัฒนธรรมชุมชนที่หอนิทรรศการ LH",
+     "placeName": "เซจง"
+    }
+   ]
   },
   {
    "externalId": "tourapi:142080",
@@ -2072,7 +2471,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/55/4087155_image2_1.jpg",
    "tel": "070-8855-5058",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Busan Indie Connect Festival 2026",
+     "summary": "Asia's leading indie game festival — play unreleased games first.",
+     "placeName": "Haeundae-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "釜山インディコネクトフェスティバル 2026",
+     "summary": "アジア最大級のインディーゲーム祭。未発売作を先行プレイ。",
+     "placeName": "釜山 海雲台区"
+    },
+    {
+     "langCode": "th",
+     "name": "ปูซานอินดี้คอนเน็กต์เฟสติวัล 2026",
+     "summary": "เทศกาลเกมอินดี้ชั้นนำของเอเชีย เล่นเกมก่อนวางจำหน่าย",
+     "placeName": "แฮอุนแดกู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2541883",
@@ -2090,7 +2508,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/3317777_image2_1.jpg",
    "tel": "033-823-3206",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gangneung Heritage Night",
+     "summary": "Night opening of Gangneung's heritage sites with lanterns and shows.",
+     "placeName": "Gangneung, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "江陵（カンヌン）国家遺産夜行",
+     "summary": "江陵の文化財を夜間開放。灯りと公演。",
+     "placeName": "江原 江陵"
+    },
+    {
+     "langCode": "th",
+     "name": "คังนึงเฮอริเทจไนต์",
+     "summary": "เปิดโบราณสถานคังนึงยามค่ำ พร้อมโคมไฟและการแสดง",
+     "placeName": "คังนึง คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3485078",
@@ -2108,7 +2545,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/40/4055040_image2_1.jpg",
    "tel": "02-3011-7781",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Heritage Media Art, Ganghwa",
+     "summary": "Media-art projections on Ganghwa's heritage sites.",
+     "placeName": "Ganghwa, Incheon"
+    },
+    {
+     "langCode": "ja",
+     "name": "国家遺産メディアアート（江華）",
+     "summary": "江華島の文化財を彩るメディアアート。",
+     "placeName": "仁川 江華"
+    },
+    {
+     "langCode": "th",
+     "name": "มีเดียอาร์ตมรดกวัฒนธรรม คังฮวา",
+     "summary": "ฉายมีเดียอาร์ตบนโบราณสถานเกาะคังฮวา",
+     "placeName": "คังฮวา อินชอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2724153",
@@ -2126,7 +2582,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/03/4089203_image2_1.jpg",
    "tel": "063-453-2447",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gunsan Heritage Night",
+     "summary": "Night walk through Gunsan's modern-history streetscape.",
+     "placeName": "Gunsan, Jeollabuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "群山（クンサン）国家遺産夜行",
+     "summary": "近代史の街並みが残る群山のナイトウォーク。",
+     "placeName": "全北 群山"
+    },
+    {
+     "langCode": "th",
+     "name": "คุนซันเฮอริเทจไนต์",
+     "summary": "เดินชมย่านประวัติศาสตร์สมัยใหม่ของคุนซันยามค่ำ",
+     "placeName": "คุนซัน ชอลลาเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:1539730",
@@ -2144,7 +2619,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/87/4090187_image2_1.jpg",
    "tel": "02-332-5545",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Youth Concert with Commentary 2026",
+     "summary": "Classical concerts for young audiences, with friendly commentary.",
+     "placeName": "Jongno-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 解説つき青少年音楽会",
+     "summary": "わかりやすい解説つきのユースクラシックコンサート。",
+     "placeName": "ソウル 鍾路区"
+    },
+    {
+     "langCode": "th",
+     "name": "คอนเสิร์ตเยาวชนพร้อมคำบรรยาย 2026",
+     "summary": "คอนเสิร์ตคลาสสิกสำหรับผู้ชมรุ่นเยาว์ พร้อมคำอธิบาย",
+     "placeName": "ชงโนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3383748",
@@ -2162,7 +2656,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4089821_image2_1.jpg",
    "tel": "051-461-4297",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Dadaepo Sunset Film Festival (4th)",
+     "summary": "Open-air cinema on Dadaepo Beach at sunset.",
+     "placeName": "Saha-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "第4回 多大浦（タデポ）サンセット映画祭",
+     "summary": "多大浦ビーチの夕日と野外シネマ。",
+     "placeName": "釜山 沙下区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลหนังยามอาทิตย์ตกทาแดโพ ครั้งที่ 4",
+     "summary": "หนังกลางแปลงริมหาดทาแดโพยามอาทิตย์ตก",
+     "placeName": "ซาฮากู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4093783",
@@ -2180,7 +2693,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/02/4093802_image2_1.JPG",
    "tel": "041-634-8707",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Hongseong Heritage Night",
+     "summary": "Night tour of Hongseong's historic sites.",
+     "placeName": "Hongseong, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "洪城（ホンソン）国家遺産夜行",
+     "summary": "洪城の史跡を巡るナイトツアー。",
+     "placeName": "忠清南道 洪城"
+    },
+    {
+     "langCode": "th",
+     "name": "ฮงซองเฮอริเทจไนต์",
+     "summary": "ทัวร์โบราณสถานฮงซองยามค่ำคืน",
+     "placeName": "ฮงซอง ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5060000-2026김천포도축제-20260814",
@@ -2253,7 +2785,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/91/4087291_image2_1.jpg",
    "tel": "054-776-5956",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gyeongju Esports Festival 2026",
+     "summary": "Esports tournaments and gaming events in Gyeongju.",
+     "placeName": "Gyeongju"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 慶州eスポーツフェスティバル",
+     "summary": "慶州で開かれるeスポーツ大会。",
+     "placeName": "慶州（キョンジュ）"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลอีสปอร์ตคยองจู 2026",
+     "summary": "การแข่งขันอีสปอร์ตและงานเกมมิ่งในคยองจู",
+     "placeName": "คยองจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:1847202",
@@ -2271,7 +2822,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/12/4089612_image2_1.JPG",
    "tel": "02-330-1410",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seodaemun Independence & Democracy Festival",
+     "summary": "History festival at Seodaemun Prison History Hall.",
+     "placeName": "Seodaemun-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "西大門独立民主祭り",
+     "summary": "西大門刑務所歴史館で開かれる歴史フェスティバル。",
+     "placeName": "ソウル 西大門区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลอิสรภาพและประชาธิปไตยซอแดมุน",
+     "summary": "เทศกาลประวัติศาสตร์ ณ หอประวัติศาสตร์เรือนจำซอแดมุน",
+     "placeName": "ซอแดมุนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5710000-힙한청주페스티벌in제조창-20260815",
@@ -2307,7 +2877,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/75/4059475_image2_1.jpg",
    "tel": "02-761-2512",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "K-Illustration Fair Magok 2026",
+     "summary": "Illustration art fair — hundreds of Korean artists' booths.",
+     "placeName": "Gangseo-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "K-イラストレーションフェア麻谷 2026",
+     "summary": "韓国イラストレーター数百組が集うアートフェア。",
+     "placeName": "ソウル 江西区"
+    },
+    {
+     "langCode": "th",
+     "name": "เคอิลลัสเตรชันแฟร์ มาก็อก 2026",
+     "summary": "แฟร์ศิลปะภาพประกอบ บูธศิลปินเกาหลีหลายร้อยราย",
+     "placeName": "คังซอกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:1840830",
@@ -2325,7 +2914,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/24/4093324_image2_1.jpg",
    "tel": "051-916-8828",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Busan International Comedy Festival (14th)",
+     "summary": "Asia's biggest comedy festival — stand-up, nonverbal and street shows.",
+     "placeName": "Haeundae-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "第14回 釜山国際コメディフェスティバル",
+     "summary": "アジア最大のコメディ祭。スタンドアップから大道芸まで。",
+     "placeName": "釜山 海雲台区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลคอมเมดี้นานาชาติปูซาน ครั้งที่ 14",
+     "summary": "เทศกาลตลกที่ใหญ่ที่สุดในเอเชีย สแตนด์อัพและโชว์ข้างถนน",
+     "placeName": "แฮอุนแดกู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2846353",
@@ -2343,7 +2951,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/68/4089268_image2_1.jpg",
    "tel": "054-730-5852",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Yeongdeok Heritage Night",
+     "summary": "Night opening of Yeongdeok's heritage village.",
+     "placeName": "Yeongdeok, Gyeongsangbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "盈徳（ヨンドク）国家遺産夜行",
+     "summary": "盈徳の歴史村を夜間開放。",
+     "placeName": "慶尚北道 盈徳"
+    },
+    {
+     "langCode": "th",
+     "name": "ยองด็อกเฮอริเทจไนต์",
+     "summary": "เปิดหมู่บ้านโบราณยองด็อกยามค่ำ",
+     "placeName": "ยองด็อก คยองซังเหนือ"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5710000-한여름밤의오싹호러페스티벌-20260821",
@@ -2397,7 +3024,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4078831_image2_1.jpg",
    "tel": "053-755-5881",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Mungyeong Saejae Barefoot Festival",
+     "summary": "Walk the historic Mungyeong Saejae pass barefoot on soft clay.",
+     "placeName": "Mungyeong, Gyeongsangbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "聞慶（ムンギョン）セジェ 裸足フェスティバル",
+     "summary": "歴史の峠道・聞慶セジェを裸足で歩く。",
+     "placeName": "慶尚北道 聞慶"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลเดินเท้าเปล่ามุนกยองแซแจ",
+     "summary": "เดินเท้าเปล่าบนดินนุ่มของเส้นทางประวัติศาสตร์มุนกยองแซแจ",
+     "placeName": "มุนกยอง คยองซังเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:141268",
@@ -2470,7 +3116,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/77/4073777_image2_1.jpg",
    "tel": "064-710-4300",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Jeju Biennale 2026 (5th): The Art of Transformation",
+     "summary": "Island-wide contemporary art biennale across Jeju.",
+     "placeName": "Jeju City"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 第5回 済州ビエンナーレ：変容の技術",
+     "summary": "済州島全域で開かれる現代美術ビエンナーレ。",
+     "placeName": "済州市"
+    },
+    {
+     "langCode": "th",
+     "name": "เชจูเบียนนาเล่ 2026 ครั้งที่ 5: ศิลปะแห่งการแปรเปลี่ยน",
+     "summary": "งานศิลปะร่วมสมัยทั่วเกาะเชจู",
+     "placeName": "เมืองเชจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:1073801",
@@ -2488,7 +3153,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/15/4091815_image2_1.jpg",
    "tel": "054-680-6381",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "ja",
+     "name": "英陽（ヨンヤン）唐辛子 H.O.T フェスティバル",
+     "summary": "名産・英陽唐辛子の激辛フェスティバル。",
+     "placeName": "慶尚北道 英陽"
+    },
+    {
+     "langCode": "en",
+     "name": "Yeongyang Chili Pepper H.O.T Festival",
+     "summary": "Spicy festival for Yeongyang's famous chili peppers.",
+     "placeName": "Yeongyang, Gyeongsangbuk-do"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลพริกยองยาง H.O.T",
+     "summary": "เทศกาลพริกขึ้นชื่อของยองยาง",
+     "placeName": "ยองยาง คยองซังเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:142191",
@@ -2506,7 +3190,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/99/4093999_image2_1.jpg",
    "tel": "043-745-8924",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Yeongdong Grape Festival",
+     "summary": "Grape harvest festival in Korea's top grape county — tastings and wine.",
+     "placeName": "Yeongdong, Chungcheongbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "永同（ヨンドン）ぶどう祭り",
+     "summary": "韓国一のぶどうの郷で収穫祭。試食とワイン。",
+     "placeName": "忠清北道 永同"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลองุ่นยองดง",
+     "summary": "เทศกาลเก็บเกี่ยวองุ่นในแหล่งปลูกองุ่นอันดับหนึ่งของเกาหลี",
+     "placeName": "ยองดง ชุงชองเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3335616",
@@ -2524,7 +3227,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/29/4092929_image2_1.jpg",
    "tel": "061-430-3357",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gangjin Summer Beer Festival",
+     "summary": "Summer nights with beer and music in Gangjin.",
+     "placeName": "Gangjin, Jeollanam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "康津（カンジン）夏ビール祭り",
+     "summary": "康津の夏の夜、ビールと音楽。",
+     "placeName": "全羅南道 康津"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลเบียร์ฤดูร้อนคังจิน",
+     "summary": "ค่ำคืนฤดูร้อนกับเบียร์และดนตรีในคังจิน",
+     "placeName": "คังจิน ชอลลาใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2651042",
@@ -2542,7 +3264,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/34/4055834_image2_1.jpg",
    "tel": "02-3011-7783",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "World Heritage Festival, Andong",
+     "summary": "Festival across Andong's UNESCO World Heritage sites.",
+     "placeName": "Andong, Gyeongsangbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "世界遺産祝典（安東）",
+     "summary": "安東の世界遺産を舞台にした祝祭。",
+     "placeName": "慶尚北道 安東"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลมรดกโลก อันดง",
+     "summary": "เทศกาล ณ แหล่งมรดกโลกยูเนสโกในอันดง",
+     "placeName": "อันดง คยองซังเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3351268",
@@ -2560,7 +3301,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/21/4090921_image2_1.jpg",
    "tel": "02-3291-5506",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Dongdaemun-gu Beer Festival",
+     "summary": "Neighbourhood beer festival in eastern Seoul.",
+     "placeName": "Dongdaemun-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "東大門区ビール祭り",
+     "summary": "ソウル東部の地元ビール祭り。",
+     "placeName": "ソウル 東大門区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลเบียร์ทงแดมุนกู",
+     "summary": "เทศกาลเบียร์ย่านตะวันออกของโซล",
+     "placeName": "ทงแดมุนกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2853756",
@@ -2578,7 +3338,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/05/4078805_image2_1.jpg",
    "tel": "031-236-7103",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Saengsaeng Korean Music Festival",
+     "summary": "Live gugak (Korean traditional music) festival in Hwaseong.",
+     "placeName": "Hwaseong, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "生き生き国楽祭り",
+     "summary": "華城で開かれる国楽（韓国伝統音楽）ライブ祭。",
+     "placeName": "京畿 華城"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลดนตรีเกาหลีแซงแซง",
+     "summary": "เทศกาลดนตรีกุกักดั้งเดิมของเกาหลี ในฮวาซอง",
+     "placeName": "ฮวาซอง คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3302552",
@@ -2596,7 +3375,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/31/4091431_image2_1.jpg",
    "tel": "041-950-4256",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Janghang Liriope Flower Festival",
+     "summary": "Purple liriope blooms under the pine forest by the sea.",
+     "placeName": "Seocheon, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "長項（チャンハン）ヤブラン花祭り",
+     "summary": "海辺の松林に広がる紫のヤブランの花。",
+     "placeName": "忠清南道 舒川"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลดอกลิริโอเป้จังฮัง",
+     "summary": "ดอกลิริโอเป้สีม่วงบานใต้ป่าสนริมทะเล",
+     "placeName": "ซอชอน ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:1018971",
@@ -2614,7 +3412,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/54/4095354_image2_1.jpg",
    "tel": "033-482-9174",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Yanggu Navel Festival",
+     "summary": "Playful festival at the geographic centre of the Korean Peninsula.",
+     "placeName": "Yanggu, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "楊口（ヤング）へそ祭り",
+     "summary": "朝鮮半島の真ん中・楊口のユニークな祭り。",
+     "placeName": "江原 楊口"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลสะดือยางกู",
+     "summary": "เทศกาลสนุกๆ ณ จุดกึ่งกลางคาบสมุทรเกาหลี",
+     "placeName": "ยางกู คังวอน"
+    }
+   ]
   },
   {
    "externalId": "stdfest:4540000-2026강경국가유산야행-20260828",
@@ -2650,7 +3467,26 @@
    "imageUrl": null,
    "tel": "043-201-2436",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Heritage Media Art, Ganghwa",
+     "summary": "Media-art projections on Ganghwa's heritage sites.",
+     "placeName": "Ganghwa, Incheon"
+    },
+    {
+     "langCode": "ja",
+     "name": "国家遺産メディアアート（江華）",
+     "summary": "江華島の文化財を彩るメディアアート。",
+     "placeName": "仁川 江華"
+    },
+    {
+     "langCode": "th",
+     "name": "มีเดียอาร์ตมรดกวัฒนธรรม คังฮวา",
+     "summary": "ฉายมีเดียอาร์ตบนโบราณสถานเกาะคังฮวา",
+     "placeName": "คังฮวา อินชอน"
+    }
+   ]
   },
   {
    "externalId": "stdfest:3050000-맥주축제-20260828",
@@ -2686,7 +3522,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/37/4069137_image2_1.jpg",
    "tel": "070-4705-2008",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Busan Night Walk 42K 2026",
+     "summary": "All-night 42km walking challenge along Busan's coast.",
+     "placeName": "Haeundae-gu, Busan"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 釜山ナイトウォーク42K",
+     "summary": "釜山の海岸線を夜通し歩く42kmチャレンジ。",
+     "placeName": "釜山 海雲台区"
+    },
+    {
+     "langCode": "th",
+     "name": "ปูซานไนต์วอล์ก 42K 2026",
+     "summary": "ชาเลนจ์เดิน 42 กม. ตลอดคืนเลียบชายฝั่งปูซาน",
+     "placeName": "แฮอุนแดกู ปูซาน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2989981",
@@ -2704,7 +3559,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/29/4094029_image2_1.jpg",
    "tel": "02-3477-2808",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seocho Music & Art Festival (SMAF)",
+     "summary": "Classical and arts festival in southern Seoul.",
+     "placeName": "Seocho-gu, Seoul"
+    },
+    {
+     "langCode": "ja",
+     "name": "瑞草ミュージック＆アートフェスティバル（SMAF）",
+     "summary": "ソウル南部のクラシック＆アート祭。",
+     "placeName": "ソウル 瑞草区"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลดนตรีและศิลปะซอโช (SMAF)",
+     "summary": "เทศกาลดนตรีคลาสสิกและศิลปะทางใต้ของโซล",
+     "placeName": "ซอโชกู กรุงโซล"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4090802",
@@ -2722,7 +3596,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/07/4090807_image2_1.jpg",
    "tel": "031-369-1787",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Ansan Esports Festival 2026",
+     "summary": "Esports tournaments and gaming culture in Ansan.",
+     "placeName": "Ansan, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 安山eスポーツフェスティバル",
+     "summary": "安山のeスポーツ大会とゲーム文化イベント。",
+     "placeName": "京畿 安山"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลอีสปอร์ตอันซัน 2026",
+     "summary": "การแข่งขันอีสปอร์ตและวัฒนธรรมเกมในอันซัน",
+     "placeName": "อันซัน คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:1953493",
@@ -2740,7 +3633,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/62/4095062_image2_1.JPG",
    "tel": "061-450-5473",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Muan Mudflat Festival",
+     "summary": "Play in the red-clay tidal flats — a UNESCO-listed coastal wetland.",
+     "placeName": "Muan, Jeollanam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "務安（ムアン）黄土干潟祭り",
+     "summary": "黄土の干潟で泥遊び。ユネスコ登録の海岸湿地。",
+     "placeName": "全羅南道 務安"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลหาดโคลนมูอัน",
+     "summary": "เล่นโคลนบนหาดเลนดินแดง พื้นที่ชุ่มน้ำมรดกยูเนสโก",
+     "placeName": "มูอัน ชอลลาใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5710000-원도심골목길축제-20260829",
@@ -2812,7 +3724,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/10/4020710_image2_1.jpg",
    "tel": "041-521-3411041-521-3405",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Cheonan K-Culture Expo 2026",
+     "summary": "K-pop, K-food and Korean culture expo in Cheonan.",
+     "placeName": "Cheonan, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 天安K-カルチャー博覧会",
+     "summary": "K-POP・K-フードなど韓国文化の博覧会。",
+     "placeName": "忠清南道 天安"
+    },
+    {
+     "langCode": "th",
+     "name": "งานเคคัลเจอร์เอ็กซ์โปชอนอัน 2026",
+     "summary": "งานแสดงเคป็อป อาหารเกาหลี และวัฒนธรรมเกาหลี",
+     "placeName": "ชอนอัน ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:141234",
@@ -2830,7 +3761,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/34/4091734_image2_1.jpg",
    "tel": "043-830-3463",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Goesan Chili Pepper Festival",
+     "summary": "Harvest festival for Goesan's famous chili peppers.",
+     "placeName": "Goesan, Chungcheongbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "槐山（クェサン）唐辛子祭り",
+     "summary": "名産・槐山唐辛子の収穫祭。",
+     "placeName": "忠清北道 槐山"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลพริกเควซัน",
+     "summary": "เทศกาลเก็บเกี่ยวพริกขึ้นชื่อของเควซัน",
+     "placeName": "เควซัน ชุงชองเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3305165",
@@ -2848,7 +3798,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/80/4083180_image2_1.JPG",
    "tel": "043-201-3666",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Jikji Culture Festival",
+     "summary": "Celebrating Jikji, the world's oldest movable metal type book.",
+     "placeName": "Cheongju, Chungcheongbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "直指（チクチ）文化祭",
+     "summary": "世界最古の金属活字本「直指」を祝う祭り。",
+     "placeName": "忠清北道 清州"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลวัฒนธรรมจิกจี",
+     "summary": "ฉลองจิกจี หนังสือตัวพิมพ์โลหะเก่าแก่ที่สุดในโลก",
+     "placeName": "ชองจู ชุงชองเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2614763",
@@ -2866,7 +3835,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/4091769_image2_1.jpg",
    "tel": "041-852-8063",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gongju Heritage Night",
+     "summary": "Night opening of the ancient Baekje capital's heritage sites.",
+     "placeName": "Gongju, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "公州（コンジュ）国家遺産夜行",
+     "summary": "百済の古都・公州の文化財を夜間開放。",
+     "placeName": "忠清南道 公州"
+    },
+    {
+     "langCode": "th",
+     "name": "คงจูเฮอริเทจไนต์",
+     "summary": "เปิดโบราณสถานเมืองหลวงแพกเจโบราณยามค่ำ",
+     "placeName": "คงจู ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3486887",
@@ -2884,7 +3872,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4092590_image2_1.jpg",
    "tel": "054-979-6087",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Waegwan Holi Festival",
+     "summary": "Colour-powder festival in Chilgok's Waegwan.",
+     "placeName": "Chilgok, Gyeongsangbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "倭館（ウェグァン）ホーリーフェスティバル",
+     "summary": "色粉を掛け合うホーリー祭り。",
+     "placeName": "慶尚北道 漆谷"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลโฮลีแวกวัน",
+     "summary": "เทศกาลสาดผงสีในแวกวัน ชิลก็อก",
+     "placeName": "ชิลก็อก คยองซังเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4091713",
@@ -2902,7 +3909,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/19/4091719_image2_1.jpg",
    "tel": "054-955-0808",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Goryeong Heritage Night",
+     "summary": "Night tour of the ancient Daegaya kingdom's heritage.",
+     "placeName": "Goryeong, Gyeongsangbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "高霊（コリョン）国家遺産夜行",
+     "summary": "古代・大伽倻の遺産を巡るナイトツアー。",
+     "placeName": "慶尚北道 高霊"
+    },
+    {
+     "langCode": "th",
+     "name": "โครยองเฮอริเทจไนต์",
+     "summary": "ทัวร์มรดกอาณาจักรแทคายาโบราณยามค่ำ",
+     "placeName": "โครยอง คยองซังเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:507635",
@@ -2920,7 +3946,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/28/3523028_image2_1.jpg",
    "tel": "033-335-2323",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Pyeongchang Hyoseok Buckwheat Festival",
+     "summary": "White buckwheat fields from the novel 'When Buckwheat Flowers Bloom'.",
+     "placeName": "Pyeongchang, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "平昌（ピョンチャン）孝石文化祭",
+     "summary": "小説『そばの花咲く頃』の舞台、白いそば畑の祭り。",
+     "placeName": "江原 平昌"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลฮโยซอกพยองชัง",
+     "summary": "ทุ่งดอกบัควีตสีขาวจากนวนิยายชื่อดังของเกาหลี",
+     "placeName": "พยองชัง คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:506523",
@@ -2938,7 +3983,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/69/3520569_image2_1.jpg",
    "tel": "063-324-2440",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Muju Firefly Festival",
+     "summary": "See real fireflies in one of Korea's cleanest natural areas.",
+     "placeName": "Muju, Jeollabuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "茂朱（ムジュ）ホタル祭り",
+     "summary": "清流の里・茂朱で本物のホタル観賞。",
+     "placeName": "全北 茂朱"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลหิ่งห้อยมูจู",
+     "summary": "ชมหิ่งห้อยจริงในธรรมชาติบริสุทธิ์ของมูจู",
+     "placeName": "มูจู ชอลลาเหนือ"
+    }
+   ]
   },
   {
    "externalId": "stdfest:3250000-유라리건맥축제-20260904",
@@ -3046,7 +4110,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4094932_image2_1.png",
    "tel": "041-339-8367",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Yesan Stork Festival",
+     "summary": "Meet Korea's restored wild storks at Yesan's stork park.",
+     "placeName": "Yesan, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "礼山（イェサン）コウノトリ祭り",
+     "summary": "復元された野生コウノトリに会える礼山の祭り。",
+     "placeName": "忠清南道 礼山"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลนกกระสาเยซัน",
+     "summary": "พบนกกระสาป่าที่ฟื้นฟูพันธุ์สำเร็จของเกาหลี",
+     "placeName": "เยซัน ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:1689321",
@@ -3064,7 +4147,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4092213_image2_1.jpg",
    "tel": "041-534-2634",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Sinjeongho Lake Starlight Festival",
+     "summary": "Midsummer-night lights by Sinjeongho Lake in Asan.",
+     "placeName": "Asan, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "真夏の夜の神井湖 星あかり祭り",
+     "summary": "牙山・神井湖畔の真夏の夜のライトアップ。",
+     "placeName": "忠清南道 牙山"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลแสงดาวทะเลสาบชินจองโฮ",
+     "summary": "แสงไฟยามค่ำคืนกลางฤดูร้อนริมทะเลสาบชินจองโฮ",
+     "placeName": "อาซัน ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:4060000-2026년파주포크페스티벌-20260905",
@@ -3190,7 +4292,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/88/4075188_image2_1.jpg",
    "tel": "010-2751-1082",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "National e-Festival for Students with Disabilities",
+     "summary": "National esports and IT festival for students with disabilities.",
+     "placeName": "Hongcheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 全国障害学生eフェスティバル",
+     "summary": "障害のある学生の全国eスポーツ・IT祭典。",
+     "placeName": "江原 洪川"
+    },
+    {
+     "langCode": "th",
+     "name": "อีเฟสติวัลนักเรียนพิการแห่งชาติ 2026",
+     "summary": "เทศกาลอีสปอร์ตและไอทีระดับชาติสำหรับนักเรียนพิการ",
+     "placeName": "ฮงชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4095402",
@@ -3208,7 +4329,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/58/4095458_image2_1.jpg",
    "tel": "031-230-3268",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Seoga Concert 2026: Sherlock Holmes",
+     "summary": "Library concert themed on Sherlock Holmes.",
+     "placeName": "Suwon, Gyeonggi"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 書架コンサート：シャーロック・ホームズ",
+     "summary": "シャーロック・ホームズをテーマにした図書館コンサート。",
+     "placeName": "京畿 水原"
+    },
+    {
+     "langCode": "th",
+     "name": "ซอกาคอนเสิร์ต 2026: เชอร์ล็อก โฮมส์",
+     "summary": "คอนเสิร์ตในห้องสมุดธีมเชอร์ล็อก โฮมส์",
+     "placeName": "ซูวอน คยองกี"
+    }
+   ]
   },
   {
    "externalId": "tourapi:4093222",
@@ -3226,7 +4366,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/30/4093830_image2_1.png",
    "tel": "054-480-6762",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gumi Local Food Festa 2026",
+     "summary": "Local food market and tasting festival in Gumi.",
+     "placeName": "Gumi, Gyeongsangbuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 亀尾（クミ）ローカルフードフェスタ",
+     "summary": "亀尾の地元食材マーケット＆試食祭。",
+     "placeName": "慶尚北道 亀尾"
+    },
+    {
+     "langCode": "th",
+     "name": "คูมีโลคัลฟู้ดเฟสตา 2026",
+     "summary": "ตลาดอาหารท้องถิ่นและเทศกาลชิมอาหารในคูมี",
+     "placeName": "คูมี คยองซังเหนือ"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2614198",
@@ -3244,7 +4403,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/4001646_image2_1.jpg",
    "tel": "062-611-2242",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gwangju ACE Fair 2026",
+     "summary": "Asia content & entertainment fair — broadcasting, games, animation.",
+     "placeName": "Seo-gu, Gwangju"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 光州ACEフェア",
+     "summary": "放送・ゲーム・アニメのアジアコンテンツ見本市。",
+     "placeName": "光州 西区"
+    },
+    {
+     "langCode": "th",
+     "name": "ควังจู ACE แฟร์ 2026",
+     "summary": "งานแสดงคอนเทนต์เอเชีย ทีวี เกม แอนิเมชัน",
+     "placeName": "ซอกู ควังจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:573459",
@@ -3280,7 +4458,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/4095779_image2_1.jpg",
    "tel": "063-350-2356",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Jangsu Hanwoo Beef & Apple Festival",
+     "summary": "Taste premium hanwoo beef and crisp highland apples.",
+     "placeName": "Jangsu, Jeollabuk-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "長水（チャンス）韓牛＆りんご祭り",
+     "summary": "極上の韓牛と高原りんごを味わう祭り。",
+     "placeName": "全北 長水"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลเนื้อฮันอูและแอปเปิลจังซู",
+     "summary": "ลิ้มรสเนื้อฮันอูพรีเมียมและแอปเปิลไฮแลนด์",
+     "placeName": "จังซู ชอลลาเหนือ"
+    }
+   ]
   },
   {
    "externalId": "stdfest:4060000-dmz국제다큐멘터리영화제-20260910",

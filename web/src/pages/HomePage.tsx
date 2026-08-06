@@ -1,6 +1,7 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
+import { setPageMeta } from '../seo'
 import RegionBanner from '../components/RegionBanner'
 import PromoBanner from '../components/PromoBanner'
 import { useT } from '../i18n'
@@ -9,6 +10,9 @@ import { FEATURES } from '../features'
 // 메인 페이지 — 디자인 시안2: 타이틀 + 내 위치 + 지역 배너 + 티켓형 프로모 배너
 // 축제 그리드는 /festivals 로 이동 (지역·내 위치 선택 시 그 페이지로 넘어감)
 export default function HomePage() {
+  useEffect(() => {
+    setPageMeta('KOTA — Korea Festa', '내 위치 기반 한국 지역축제 여행팩 — 축제·교통·주변 관광지를 한 번에. Discover Korean local festivals near you with dates, directions and nearby spots, in English, 日本語, ไทย.')
+  }, [])
   const t = useT()
   const navigate = useNavigate()
   const [q, setQ] = useState('')

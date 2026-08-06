@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Header from '../components/Header'
+import { trackEvent } from '../analytics'
 import { apiGet, type Festival } from '../api'
+import { removeJsonLd, setFestivalJsonLd, setPageMeta } from '../seo'
 import { staticFestivals } from '../staticData'
 import { useLang, useT } from '../i18n'
 
@@ -40,6 +42,16 @@ export default function FestivalDetailPage() {
           .catch(() => setState('notfound')),
       )
   }, [id, lang])
+
+  // SEO: 축제별 title·description·JSON-LD(Event) — 검색·AI 검색이 축제 단위로 색인하게
+  useEffect(() => {
+    if (!festival) return
+    const dates = `${festival.startDate} ~ ${festival.endDate}`
+    setPageMeta(festival.name, festival.summary ?? `${festival.placeName ?? festival.region.name} · ${dates}`)
+    setFestivalJsonLd(festival)
+    trackEvent('view_festival', { festival_id: festival.id, festival_name: festival.nameKo ?? festival.name })
+    return removeJsonLd
+  }, [festival])
 
   const fmt = (d: string) => d.replace(/-/g, '.').slice(2) // 2026-08-22 → 26.08.22
 
@@ -141,6 +153,7 @@ export default function FestivalDetailPage() {
               href={`https://map.kakao.com/link/to/${encodeURIComponent(festival.name)},${festival.lat},${festival.lng}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('directions_click', { festival_id: festival.id, festival_name: festival.nameKo ?? festival.name })}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green text-white font-bold text-[15px] hover:opacity-90 transition mb-10"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
