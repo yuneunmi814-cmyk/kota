@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { apiGet, type Sido } from '../api'
 import { staticSidos } from '../staticData'
-import { useT } from '../i18n'
+import { useLang, useT } from '../i18n'
+import { sidoLabel } from '../sidoI18n'
 
 // 시·도 선택 배너 — 데이터(축제의 sido)에서 목록을 만들어 하드코딩 불일치를 없앤다.
 // 이전에는 웹이 지역 slug를 하드코딩해 백엔드에 없는 지역(goyang·jeonbuk·gyeongbuk)을 누르면 결과가 0건이었다.
 // 지역 사진은 쓰지 않는다 — 시·도를 대표하는 실제 사진이 없어 랜덤 이미지가 들어가던 문제(2026-08 QA)를 없앰.
 export default function RegionBanner({ selected, onSelect }: { selected: string | null; onSelect: (sido: string | null) => void }) {
   const t = useT()
+  const { lang } = useLang()
   const [sidos, setSidos] = useState<Sido[]>([])
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -50,7 +52,7 @@ export default function RegionBanner({ selected, onSelect }: { selected: string 
 
         <div ref={scrollRef} className="flex items-center gap-2.5 overflow-x-auto px-2 py-1 scroll-smooth">
           {chip('all', t('region.all'), null, selected === null, () => onSelect(null))}
-          {sidos.map((s) => chip(s.name, s.name, s.count, selected === s.name, () => onSelect(s.name)))}
+          {sidos.map((s) => chip(s.name, sidoLabel(s.name, lang), s.count, selected === s.name, () => onSelect(s.name)))}
         </div>
 
         <button

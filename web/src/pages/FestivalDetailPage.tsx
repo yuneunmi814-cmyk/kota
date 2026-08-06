@@ -6,6 +6,7 @@ import { apiGet, type Festival } from '../api'
 import { removeJsonLd, setFestivalJsonLd, setPageMeta } from '../seo'
 import { staticFestivals } from '../staticData'
 import { useLang, useT } from '../i18n'
+import { sidoLabel } from '../sidoI18n'
 
 type NearbySpot = { id: string; name: string; category: string; distanceM: number }
 type FestivalDetail = Festival & { nearbySpots?: NearbySpot[] }
@@ -99,7 +100,7 @@ export default function FestivalDetailPage() {
               {festival.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
             </span>
             <span className="text-[14px] font-semibold text-gray-500">
-              {festival.placeName ?? ([festival.sido, festival.sigungu].filter(Boolean).join(' ') || festival.region.name)}
+              {festival.placeName ?? (festival.sido ? `${sidoLabel(festival.sido, lang)}${lang === 'ko' && festival.sigungu ? ` ${festival.sigungu}` : ''}` : festival.region.name)}
             </span>
           </div>
 

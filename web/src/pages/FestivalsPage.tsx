@@ -80,21 +80,8 @@ export default function FestivalsPage() {
     <div className="min-h-screen bg-white text-green pb-20">
       <Header />
       <main className="w-full max-w-5xl mx-auto pt-12 px-4 text-center">
-        {/* 홈과 동일한 내 위치 알약 버튼 — 좌표 보유 시 딥그린 활성 */}
-        <div className="flex justify-center mb-5">
-          <button
-            onClick={onMyLocation}
-            className={`inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full border shadow-sm hover:shadow-md transition-all cursor-pointer ${
-              coords ? 'bg-green border-green text-white' : 'bg-white border-gray-300 hover:border-green text-green'
-            }`}
-          >
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#D32F2F" stroke={coords ? '#FFFFFF' : '#004027'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" fill="#FFFFFF" stroke={coords ? '#FFFFFF' : '#004027'} strokeWidth="2" />
-            </svg>
-            <span className="text-[17px] font-bold tracking-tight">{locating ? '…' : t('home.myLocation')}</span>
-          </button>
-        </div>
+        {/* B-1: 페이지 제목 일관성 — 홈 밖에서도 어느 화면인지 보이게 */}
+        <h1 className="text-[26px] md:text-[30px] font-black mb-6">{t('festivals.title')}</h1>
 
         {geoDenied && (
           <p className="mb-5 text-[13px] font-medium text-pin bg-red-50 border border-red-100 rounded-xl px-4 py-3 max-w-xl mx-auto">
@@ -105,7 +92,7 @@ export default function FestivalsPage() {
         {/* 정렬 필터 — 내 위치를 누르면 거리순 자동, 필터는 독립 동작 */}
         <div className="flex justify-center gap-2.5 mb-8">
           {chip('date', t('filter.date'))}
-          {chip('distance', t('filter.distance'))}
+          {chip('distance', locating ? '…' : coords ? `📍 ${t('filter.distance')}` : t('filter.distance'))}
           {chip('popularity', t('filter.popularity'))}
         </div>
       </main>

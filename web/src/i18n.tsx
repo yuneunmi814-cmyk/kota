@@ -12,6 +12,11 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'festivals.title': '내 위치 기반 지역 축제',
+    'footer.privacy': '개인정보처리방침',
+    'footer.terms': '이용약관',
+    'footer.disclaimer': '축제 일정·장소는 주최 측 사정으로 변경될 수 있습니다. 방문 전 공식 채널로 확인해 주세요.',
+    'footer.source': '데이터: 한국관광공사 TourAPI · 공공데이터포털 · 각 지자체',
     'detail.back': '뒤로',
     'detail.period': '기간',
     'detail.place': '장소',
@@ -48,6 +53,11 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'festivals.title': 'Festivals Near You',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Terms of Service',
+    'footer.disclaimer': 'Festival dates and venues may change. Please confirm via official channels before visiting.',
+    'footer.source': 'Data: Korea Tourism Organization TourAPI · data.go.kr · local governments',
     'detail.back': 'Back',
     'detail.period': 'Dates',
     'detail.place': 'Venue',
@@ -84,6 +94,11 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'festivals.title': 'เทศกาลใกล้ตัวคุณ',
+    'footer.privacy': 'นโยบายความเป็นส่วนตัว',
+    'footer.terms': 'ข้อกำหนดการใช้งาน',
+    'footer.disclaimer': 'กำหนดการและสถานที่จัดงานอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบช่องทางทางการก่อนเดินทาง',
+    'footer.source': 'ข้อมูล: การท่องเที่ยวเกาหลี TourAPI · data.go.kr · หน่วยงานท้องถิ่น',
     'detail.back': 'กลับ',
     'detail.period': 'วันที่จัด',
     'detail.place': 'สถานที่',
@@ -120,6 +135,11 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'festivals.title': 'あなたの近くの地域祭り',
+    'footer.privacy': 'プライバシーポリシー',
+    'footer.terms': '利用規約',
+    'footer.disclaimer': '祭りの日程・会場は主催者の都合により変更される場合があります。訪問前に公式チャンネルでご確認ください。',
+    'footer.source': 'データ：韓国観光公社 TourAPI · data.go.kr · 各自治体',
     'detail.back': '戻る',
     'detail.period': '開催期間',
     'detail.place': '会場',

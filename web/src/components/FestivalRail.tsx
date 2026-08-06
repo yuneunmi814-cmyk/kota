@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { apiGet, type Festival } from '../api'
 import { staticFestivals } from '../staticData'
 import { useLang, useT } from '../i18n'
+import { sidoLabel } from '../sidoI18n'
 
 type Coords = { lat: number; lng: number }
 
@@ -65,11 +66,6 @@ export default function FestivalRail({
           {coords && <span className="text-[12px] font-bold bg-green text-white px-2.5 py-1 rounded-full">{t('home.nearMe')}</span>}
         </h2>
       )}
-      {hideTitle && coords && (
-        <div className="mb-5 -mt-2 text-center">
-          <span className="text-[12px] font-bold bg-green text-white px-3 py-1.5 rounded-full">{t('home.nearMe')}</span>
-        </div>
-      )}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {list.slice(0, 12).map((f) => (
           <Link
@@ -105,7 +101,9 @@ export default function FestivalRail({
                 >
                   {f.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
                 </span>
-                <span className="text-[12px] font-semibold text-gray-500">{f.placeName ?? f.region.name}</span>
+                <span className="text-[12px] font-semibold text-gray-500">
+                  {f.placeName ?? (f.region.name === '전국' ? t('region.all') : f.sido ? sidoLabel(f.sido, lang) : f.region.name)}
+                </span>
                 {f.distanceKm != null && (
                   <span className="text-[12px] font-bold text-pin">{f.distanceKm < 10 ? f.distanceKm.toFixed(1) : Math.round(f.distanceKm)}km</span>
                 )}
