@@ -68,6 +68,13 @@ jobs:
           TOURAPI_SERVICE_KEY: ${{ secrets.TOURAPI_SERVICE_KEY }}
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/kota_sync
         run: npm run sync:festivals -- --area
+      # 좌표 없는 축제(문체부 소스 등) 지오코딩 — 멱등·쿼터 감지 내장, 매주 조금씩 누적
+      - name: Geocode festivals
+        working-directory: backend
+        env:
+          TOURAPI_SERVICE_KEY: ${{ secrets.TOURAPI_SERVICE_KEY }}
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/kota_sync
+        run: npm run geocode:festivals
 
       - name: 지역 재분류·중복 정리
         working-directory: backend

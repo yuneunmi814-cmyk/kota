@@ -165,6 +165,14 @@ export interface FestivalIntro {
   sponsor1?: string
 }
 
+// 키워드 → 장소 후보(좌표 포함) — 축제 지오코딩 배치용
+export interface KeywordPlace { title?: string; addr1?: string; mapx?: string; mapy?: string }
+
+export async function searchKeywordPlaces(keyword: string, numOfRows = 5): Promise<KeywordPlace[]> {
+  const url = buildUrl('searchKeyword2', { keyword, numOfRows, arrange: 'A' })
+  return unwrap<KeywordPlace>(await transport(url)).items
+}
+
 export async function fetchFestivalIntro(contentId: string): Promise<FestivalIntro | null> {
   const url = buildUrl('detailIntro2', { contentId, contentTypeId: 15 })
   const { items } = unwrap<FestivalIntro>(await transport(url))

@@ -192,8 +192,9 @@ export async function syncFestivalsByArea(opts: AreaSyncOptions = {}): Promise<F
             startYmd = intro?.eventstartdate
             endYmd = intro?.eventenddate
             place = intro?.eventplace?.trim() || null
-            // 실패(기간 없음)도 캐시 — 같은 콘텐츠를 매주 재조회하지 않게
-            introCache[raw.contentid] = { s: startYmd, e: endYmd, p: place }
+            // 기간이 있을 때만 캐시 — 쿼터 소진 시 TourAPI가 '정상 모양의 빈 응답'을 주므로
+            // (2026-08-06 실측) 빈 결과를 캐시하면 그 축제는 영영 기간을 못 얻는다
+            if (startYmd) introCache[raw.contentid] = { s: startYmd, e: endYmd, p: place }
           } catch (e) {
             if (e instanceof Error && /429|Too Many/i.test(e.message)) {
               introBlocked = true
