@@ -8,6 +8,7 @@ import FestivalsPage from './pages/FestivalsPage'
 import FestivalDetailPage from './pages/FestivalDetailPage'
 import LegalPage from './pages/LegalPage'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 initAnalytics()
 
@@ -25,6 +26,7 @@ export default function App() {
     <LangProvider>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <PageTracker />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />

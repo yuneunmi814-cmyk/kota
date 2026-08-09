@@ -50,7 +50,7 @@ export default function RegionBanner({ selected, onChange }: { selected: RegionS
       <div className="max-w-3xl mx-auto px-4 flex flex-col items-center gap-3">
         {/* 1단 — 전국 + 권역 6개 (한 줄, 모바일에서도 줄바꿈만) */}
         <div className="flex flex-wrap justify-center gap-2">
-          {chip(t('region.all'), total || null, selected.type === 'all', () => onChange({ type: 'all' }))}
+          {chip(t('region.entire'), total || null, selected.type === 'all', () => onChange({ type: 'all' }))}
           {REGION_GROUPS.map((g) =>
             chip(
               groupLabel(g, lang),
@@ -65,7 +65,7 @@ export default function RegionBanner({ selected, onChange }: { selected: RegionS
         {expanded && expanded.sidos.length > 1 && (
           <div className="flex flex-wrap justify-center gap-2 pt-1">
             {chip(
-              `${groupLabel(expanded, lang)} · ${t('region.allGroup')}`,
+              t('region.allGroup'),
               null,
               selected.type === 'group',
               () => onChange({ type: 'group', key: expanded.key }),

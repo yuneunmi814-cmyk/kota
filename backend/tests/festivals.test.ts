@@ -195,6 +195,20 @@ describe('지역축제 (코타 웹 핵심 축)', () => {
     expect((ended.body.data.festivals as { name: string }[]).some((f) => f.name === '지난 축제')).toBe(false)
   })
 
+  it('externalId 상세: 환경 무관 안정 식별자로 같은 축제를 돌려준다', async () => {
+    const f = await prisma.festival.findUniqueOrThrow({ where: { externalId: 'tourapi:9001' }, select: { id: true, name: true } })
+    const byExt = await api.get(`/api/v1/festivals/external/${encodeURIComponent('tourapi:9001')}`)
+    expect(byExt.status).toBe(200)
+    expect(byExt.body.data.name).toBe(f.name)
+    expect(byExt.body.data.id).toBe(String(f.id))
+    expect(Array.isArray(byExt.body.data.nearbySpots)).toBe(true)
+    // 숫자 id 상세와 동일 결과 (두 경로 정합성)
+    const byId = await api.get(`/api/v1/festivals/${f.id}`)
+    expect(byId.body.data.name).toBe(byExt.body.data.name)
+    const missing = await api.get('/api/v1/festivals/external/tourapi%3A999999')
+    expect(missing.status).toBe(404)
+  })
+
   it('다국어: ?lang=으로 축제명이 번역되고, 번역 없으면 한국어로 폴백', async () => {
     const f = await prisma.festival.findUniqueOrThrow({ where: { externalId: 'tourapi:9001' } })
     await prisma.festivalTranslation.createMany({

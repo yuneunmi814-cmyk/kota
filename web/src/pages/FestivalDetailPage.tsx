@@ -21,27 +21,31 @@ export default function FestivalDetailPage() {
   const [festival, setFestival] = useState<FestivalDetail | null>(null)
   const [state, setState] = useState<'loading' | 'idle' | 'notfound'>('loading')
 
+  // 8/9 회의 P0: 목록(정적 데이터)과 상세(API)의 숫자 id 체계가 환경마다 달라
+  // '숭례문 클릭 → 송도해변축제'가 떴다. 이제 목록과 같은 정적 데이터에서 먼저 해석해
+  // 항상 일치시키고, 주변 관광지·최신값은 환경 불변 externalId로 API에서 보강한다.
   useEffect(() => {
     if (!id) return
+    let alive = true
     setState('loading')
-    apiGet<FestivalDetail>(`/festivals/${id}`, lang)
-      .then((d) => {
-        setFestival(d)
+    staticFestivals(9999, lang)
+      .then((all) => {
+        if (!alive) return
+        const hit = all.find((f) => String(f.id) === id)
+        if (!hit) {
+          setState('notfound')
+          return
+        }
+        setFestival(hit)
         setState('idle')
+        if (hit.externalId) {
+          apiGet<FestivalDetail>(`/festivals/external/${encodeURIComponent(hit.externalId)}`, lang)
+            .then((d) => { if (alive) setFestival({ ...d, id: hit.id }) }) // URL의 id 유지
+            .catch(() => {}) // API 콜드 스타트 등은 무시 — 정적 정보만으로 완결
+        }
       })
-      .catch(() =>
-        staticFestivals(500, lang)
-          .then((all) => {
-            const hit = all.find((f) => String(f.id) === id)
-            if (!hit) {
-              setState('notfound')
-              return
-            }
-            setFestival(hit)
-            setState('idle')
-          })
-          .catch(() => setState('notfound')),
-      )
+      .catch(() => setState('notfound'))
+    return () => { alive = false }
   }, [id, lang])
 
   // SEO: 축제별 title·description·JSON-LD(Event) — 검색·AI 검색이 축제 단위로 색인하게

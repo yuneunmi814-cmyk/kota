@@ -20,28 +20,30 @@ function distanceKm(a: Coords, f: Festival & { lat?: number | null; lng?: number
 
 export type FestivalSort = 'date' | 'distance' | 'popularity'
 
-const PAGE = 12 // 한 번에 노출/추가하는 카드 수
+export const PAGE_SIZE = 12 // 페이지당 카드 수
 
-// 축제 카드 그리드 — 디자인 시안2(화이트+딥그린).
-// BUG-03/04(2026-08-06): 예전엔 API로 24건만 받아 12건만 노출 → 거리순도 그 12건 안에서만 정렬돼
-// 전국에서 가까운 축제가 안 나왔다. 이제 정적 데이터(전국 731건 전체)를 받아 필터·정렬·더보기까지
-// 클라이언트에서 처리한다(콜드 스타트와 무관해 반응도 빠름). filterSidos=null이면 전국.
+// 축제 카드 그리드 — 정적 데이터(전국 전체)를 클라이언트에서 필터·정렬.
+// 8/9 회의: '더 보기'는 상세 다녀오면 리셋돼 피로 — **번호 페이지네이션**으로 교체,
+// 페이지 번호는 부모가 URL(?page=)로 관리해 뒤로가기 시 그대로 유지된다.
 export default function FestivalRail({
   coords,
   filterSidos,
   sort = 'date',
   hideTitle,
+  page = 1,
+  onPageChange,
 }: {
   coords: Coords | null
   /** 필터할 시·도명 배열(권역=여러 개, 단일 시·도=1개). null이면 전국 전체 */
   filterSidos: string[] | null
   sort?: FestivalSort
   hideTitle?: boolean
+  page?: number
+  onPageChange?: (p: number) => void
 }) {
   const t = useT()
   const { lang } = useLang()
   const [all, setAll] = useState<Festival[]>([])
-  const [visible, setVisible] = useState(PAGE)
 
   // 목록 데이터는 정적 베이크(전국 전체)를 사용 — 거리순 전국 정렬을 위해 전체가 필요하고,
   // 주간 자동 동기화로 최신이며 API 콜드 스타트에 영향받지 않는다.
@@ -57,9 +59,6 @@ export default function FestivalRail({
       )
     return () => { alive = false }
   }, [lang])
-
-  const key = filterSidos ? filterSidos.join(',') : 'all'
-  useEffect(() => { setVisible(PAGE) }, [key, sort, coords]) // 필터·정렬 바뀌면 처음부터
 
   const list = useMemo(() => {
     const filtered = filterSidos ? all.filter((f) => f.sido && filterSidos.includes(f.sido)) : all
@@ -78,8 +77,14 @@ export default function FestivalRail({
     return <p className="max-w-5xl mx-auto px-4 text-center text-gray-500 mb-16">{t('list.empty')}</p>
   }
 
-  const shown = list.slice(0, visible)
-  const remaining = list.length - shown.length
+  const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE))
+  const cur = Math.min(Math.max(1, page), totalPages)
+  const shown = list.slice((cur - 1) * PAGE_SIZE, cur * PAGE_SIZE)
+  // 페이지 번호 창(최대 7개) — 1 … n-1 n n+1 … last
+  const nums: number[] = []
+  for (let i = 1; i <= totalPages; i += 1) {
+    if (i === 1 || i === totalPages || Math.abs(i - cur) <= 2) nums.push(i)
+  }
 
   return (
     <section className="max-w-5xl mx-auto mb-16 px-4 text-left">
@@ -142,15 +147,37 @@ export default function FestivalRail({
         ))}
       </div>
 
-      {remaining > 0 && (
-        <div className="text-center mt-10">
+      {totalPages > 1 && (
+        <nav className="flex justify-center items-center gap-1.5 mt-10 flex-wrap" aria-label="pagination">
           <button
-            onClick={() => setVisible((v) => v + PAGE)}
-            className="px-8 py-3 rounded-full border-2 border-green text-green font-bold text-[15px] hover:bg-green hover:text-white transition"
+            disabled={cur === 1}
+            onClick={() => onPageChange?.(cur - 1)}
+            className="px-3 py-2 rounded-lg text-[14px] font-bold text-green disabled:opacity-30 hover:bg-green/5 transition"
           >
-            {t('list.more').replace('{n}', String(remaining))}
+            ←
           </button>
-        </div>
+          {nums.map((n, i) => (
+            <span key={n} className="flex items-center gap-1.5">
+              {i > 0 && nums[i - 1] !== n - 1 && <span className="text-gray-300 px-1">…</span>}
+              <button
+                onClick={() => onPageChange?.(n)}
+                aria-current={n === cur ? 'page' : undefined}
+                className={`min-w-[38px] px-2 py-2 rounded-lg text-[14px] font-bold transition ${
+                  n === cur ? 'bg-green text-white' : 'text-green hover:bg-green/5'
+                }`}
+              >
+                {n}
+              </button>
+            </span>
+          ))}
+          <button
+            disabled={cur === totalPages}
+            onClick={() => onPageChange?.(cur + 1)}
+            className="px-3 py-2 rounded-lg text-[14px] font-bold text-green disabled:opacity-30 hover:bg-green/5 transition"
+          >
+            →
+          </button>
+        </nav>
       )}
     </section>
   )

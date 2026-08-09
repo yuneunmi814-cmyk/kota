@@ -21,6 +21,8 @@ export type Sido = { name: string; count: number }
 
 export type Festival = {
   id: string
+  /** 환경 불변 안정 식별자(tourapi:/stdfest:/mcst:/manual:) — 상세 조회는 이걸 쓴다 */
+  externalId?: string
   name: string
   /** 번역이 적용됐을 때의 한국어 원문 — 현지 안내판·문의용 */
   nameKo?: string

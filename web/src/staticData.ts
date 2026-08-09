@@ -38,6 +38,23 @@ export async function staticFestivals(limit: number, lang?: string): Promise<Fes
     .map((f) => ({ ...f, status: f.startDate <= today ? 'ongoing' : 'upcoming' }))
 }
 
+// 여행지(도시) 검색용 — 시군구/시도별 축제 좌표 평균(중심점). 외국인이 한국 오기 전
+// 목적지 기준으로 축제를 찾을 수 있게(8/9 회의: '내 위치'는 해외에서 수천 km가 떠 무의미).
+export async function destinationCentroids(): Promise<{ name: string; sido: string; lat: number; lng: number }[]> {
+  const d = await loadJson<{ items: StaticFestival[] }>('festivals.json')
+  const acc = new Map<string, { sido: string; lat: number; lng: number; n: number }>()
+  for (const f of d.items) {
+    if (f.lat == null || f.lng == null) continue
+    for (const key of [f.sigungu, f.sido]) {
+      if (!key) continue
+      const cur = acc.get(key) ?? { sido: f.sido ?? '', lat: 0, lng: 0, n: 0 }
+      cur.lat += f.lat; cur.lng += f.lng; cur.n += 1
+      acc.set(key, cur)
+    }
+  }
+  return [...acc.entries()].map(([name, v]) => ({ name, sido: v.sido, lat: v.lat / v.n, lng: v.lng / v.n }))
+}
+
 // GET /festivals/sidos 재현 — 베이크 데이터에서 시·도별 축제 수 집계(축제 많은 순)
 export async function staticSidos(): Promise<Sido[]> {
   const d = await loadJson<{ items: StaticFestival[] }>('festivals.json')

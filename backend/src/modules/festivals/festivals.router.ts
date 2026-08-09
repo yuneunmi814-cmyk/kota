@@ -177,6 +177,35 @@ festivalsRouter.get(
   }),
 )
 
+// 반경 3km 주변 관광지(PostGIS) — id/externalId 상세가 공유
+async function findNearbySpots(lat: number, lng: number) {
+  const rows = await prisma.$queryRaw<{ id: bigint; name: string; category: string; distance_m: number }[]>`
+    SELECT id, name, category,
+           ST_Distance(location, ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography) AS distance_m
+    FROM spots
+    WHERE status = 'ACTIVE' AND location IS NOT NULL
+      AND ST_DWithin(location, ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography, 3000)
+    ORDER BY distance_m ASC
+    LIMIT 8`
+  return rows.map((r) => ({ id: r.id, name: r.name, category: r.category, distanceM: Math.round(r.distance_m) }))
+}
+
+// 축제 상세(externalId 기준) — 웹의 안정 식별자 조회용.
+// 정적 베이크의 숫자 id는 배포 환경(로컬/Render)마다 달라 '숭례문 클릭→송도해변축제'류
+// 불일치를 만들었다(2026-08-09 회의 실측). externalId는 소스 기반이라 환경 불변.
+festivalsRouter.get(
+  '/festivals/external/:externalId',
+  h(async (req, res) => {
+    const externalId = decodeURIComponent(req.params.externalId ?? '')
+    if (!externalId) throw Errors.validation('externalId를 지정하세요')
+    const lang = parseLang(req.query.lang)
+    const festival = await prisma.festival.findUnique({ where: { externalId }, select: festivalSelect })
+    if (!festival) throw Errors.notFound('축제')
+    const nearbySpots = festival.lat != null && festival.lng != null ? await findNearbySpots(festival.lat, festival.lng) : []
+    ok(res, { ...toCard(festival, todayKst(), lang), nearbySpots })
+  }),
+)
+
 // 축제 상세 — 좌표 있으면 주변 관광지·맛집(반경 3km, 가까운 순 8곳)까지
 festivalsRouter.get(
   '/festivals/:festivalId',
@@ -186,19 +215,7 @@ festivalsRouter.get(
     const festival = await prisma.festival.findUnique({ where: { id }, select: festivalSelect })
     if (!festival) throw Errors.notFound('축제')
 
-    let nearbySpots: { id: bigint; name: string; category: string; distanceM: number }[] = []
-    if (festival.lat != null && festival.lng != null) {
-      const rows = await prisma.$queryRaw<{ id: bigint; name: string; category: string; distance_m: number }[]>`
-        SELECT id, name, category,
-               ST_Distance(location, ST_SetSRID(ST_MakePoint(${festival.lng}, ${festival.lat}), 4326)::geography) AS distance_m
-        FROM spots
-        WHERE status = 'ACTIVE' AND location IS NOT NULL
-          AND ST_DWithin(location, ST_SetSRID(ST_MakePoint(${festival.lng}, ${festival.lat}), 4326)::geography, 3000)
-        ORDER BY distance_m ASC
-        LIMIT 8`
-      nearbySpots = rows.map((r) => ({ id: r.id, name: r.name, category: r.category, distanceM: Math.round(r.distance_m) }))
-    }
-
+    const nearbySpots = festival.lat != null && festival.lng != null ? await findNearbySpots(festival.lat, festival.lng) : []
     ok(res, { ...toCard(festival, todayKst(), lang), nearbySpots })
   }),
 )

@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { setPageMeta } from '../seo'
 import RegionBanner, { type RegionSel } from '../components/RegionBanner'
 import FestivalRail, { type FestivalSort } from '../components/FestivalRail'
+import { FEATURES } from '../features'
 import { REGION_GROUPS } from '../regionGroups'
 import { useT } from '../i18n'
 
@@ -14,9 +15,13 @@ export default function FestivalsPage() {
     setPageMeta('전국 지역축제', '지금 진행 중이거나 곧 열리는 한국 지역축제를 권역·시·도별로 찾아보세요. Find local festivals across Korea by region and date.')
   }, [])
   const t = useT()
+  const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const sido = params.get('sido')
   const group = params.get('group')
+  const destName = params.get('dest')
+  const page = Math.max(1, Number(params.get('page')) || 1)
+  const [q, setQ] = useState('')
   const [locating, setLocating] = useState(false)
   const [geoDenied, setGeoDenied] = useState(params.get('geo') === 'denied')
 
@@ -49,9 +54,15 @@ export default function FestivalsPage() {
     update((next) => {
       next.delete('sido')
       next.delete('group')
+      next.delete('page') // 필터 바뀌면 1페이지부터
       if (s.type === 'sido') next.set('sido', s.name)
       else if (s.type === 'group') next.set('group', s.key)
     })
+  }
+
+  const onSearch = (e: FormEvent) => {
+    e.preventDefault()
+    if (q.trim()) navigate(`/search?q=${encodeURIComponent(q.trim())}`)
   }
 
   const onMyLocation = () => {
@@ -101,6 +112,29 @@ export default function FestivalsPage() {
       <main className="w-full max-w-5xl mx-auto pt-12 px-4 text-center">
         <h1 className="text-[26px] md:text-[30px] font-black mb-6">{t('festivals.title')}</h1>
 
+        {/* 통합 검색 — 홈과 동일한 위치·모양 (8/9 회의: 화면 넘어가도 검색창이 같은 자리에) */}
+        {FEATURES.search && (
+          <form onSubmit={onSearch} className="relative w-full max-w-xl mx-auto shadow-sm rounded-full border border-gray-300 mb-6 focus-within:border-green transition-colors">
+            <input
+              type="text"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder={t('home.searchPlaceholder')}
+              className="w-full pl-6 pr-28 py-3.5 focus:outline-none text-[15px] bg-transparent text-green placeholder-gray-400 rounded-full"
+            />
+            <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 bg-green text-white px-6 rounded-full font-bold hover:opacity-90 transition">
+              {t('home.searchButton')}
+            </button>
+          </form>
+        )}
+
+        {/* 여행지 기준 안내 칩 (헤더 '내 위치→여행지 입력'으로 설정됨) */}
+        {destName && coords && (
+          <p className="mb-4 text-[13px] font-bold text-green">
+            📍 {t('dest.label')}: {destName}
+          </p>
+        )}
+
         {geoDenied && (
           <p className="mb-5 text-[13px] font-medium text-pin bg-red-50 border border-red-100 rounded-xl px-4 py-3 max-w-xl mx-auto">
             {t('geo.denied')}
@@ -115,7 +149,17 @@ export default function FestivalsPage() {
         </div>
       </main>
       <RegionBanner selected={selected} onChange={onRegion} />
-      <FestivalRail coords={coords} filterSidos={filterSidos} sort={sort} hideTitle />
+      <FestivalRail
+        coords={coords}
+        filterSidos={filterSidos}
+        sort={sort}
+        hideTitle
+        page={page}
+        onPageChange={(p) => {
+          update((next) => next.set('page', String(p)))
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }}
+      />
     </div>
   )
 }
