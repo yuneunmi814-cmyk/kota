@@ -1,14 +1,12 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { LANGS, useLang, useT } from '../i18n'
-import { FEATURES } from '../features'
+import { Link } from 'react-router-dom'
+import { LANGS, useLang } from '../i18n'
 
-// 상단 헤더 — 디자인 시안2: 화이트 + 딥그린. 축제 단일 서비스라 메뉴 없이 로고·검색·언어만
+// 상단 헤더 — 디자인 시안2: 화이트 + 딥그린. 축제 단일 서비스라 메뉴 없이 로고·언어만.
+// (A-1/B-1 2026-08-06: 헤더 검색 돋보기 제거 — 검색 진입점은 홈 검색창 하나로 통일)
 export default function Header() {
-  const t = useT()
   const { lang, setLang } = useLang()
   const [langOpen, setLangOpen] = useState(false)
-  const navigate = useNavigate()
 
   return (
     <header className="w-full flex justify-center bg-white h-[72px] z-50 border-b border-gray-100 sticky top-0">
@@ -18,18 +16,6 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-4">
-          {FEATURES.search && (
-            <button
-              aria-label={t('home.searchButton')}
-              onClick={() => navigate('/search')}
-              className="w-9 h-9 rounded-full bg-green flex items-center justify-center text-white hover:opacity-90 transition"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-          )}
-
           <div className="relative">
             <button
               onClick={() => setLangOpen((v) => !v)}

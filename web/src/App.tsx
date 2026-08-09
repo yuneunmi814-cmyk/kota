@@ -32,6 +32,7 @@ export default function App() {
           <Route path="/festivals/:id" element={<FestivalDetailPage />} />
           <Route path="/privacy" element={<LegalPage kind="privacy" />} />
           <Route path="/terms" element={<LegalPage kind="terms" />} />
+          <Route path="/disclaimer" element={<LegalPage kind="disclaimer" />} />
         </Routes>
         <Footer />
       </BrowserRouter>

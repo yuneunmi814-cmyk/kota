@@ -1887,6 +1887,240 @@
     "summary": "ลิ้มรสเนื้อฮันอูพรีเมียมและแอปเปิลไฮแลนด์",
     "placeName": "จังซู ชอลลาเหนือ"
    }
+  },
+  {
+   "festivalName": "영월 별일있는 밤",
+   "en": {
+    "name": "Yeongwol Starry Night",
+    "summary": "Night market and cultural program at Gwanpungheon, Yeongwol.",
+    "placeName": "Yeongwol, Gangwon"
+   },
+   "ja": {
+    "name": "寧越（ヨンウォル）星降る夜",
+    "summary": "寧越・観風軒一帯の夜市・公演・体験。",
+    "placeName": "寧越、江原"
+   },
+   "th": {
+    "name": "คืนดาวยองวอล",
+    "summary": "ตลาดกลางคืนและกิจกรรมวัฒนธรรมที่ควันพุงฮอน ยองวอล",
+    "placeName": "ยองวอล คังวอน"
+   }
+  },
+  {
+   "festivalName": "2026 삼척동해왕이사부축제",
+   "en": {
+    "name": "Samcheok Isabu Festival",
+    "summary": "Festival honoring General Isabu who claimed Usan-guk (Ulleungdo).",
+    "placeName": "Samcheok, Gangwon"
+   },
+   "ja": {
+    "name": "2026 三陟（サムチョク）東海王 異斯夫祭り",
+    "summary": "于山国を服属させた異斯夫将軍を称える祭り。",
+    "placeName": "三陟、江原"
+   },
+   "th": {
+    "name": "เทศกาลอีซาบู ซัมชอก 2026",
+    "summary": "เทศกาลเชิดชูแม่ทัพอีซาบูผู้พิชิตอุลลึงโด",
+    "placeName": "ซัมชอก คังวอน"
+   }
+  },
+  {
+   "festivalName": "춘천호수 드론라이트쇼",
+   "en": {
+    "name": "Chuncheon Lake Drone Light Show",
+    "summary": "Drone light show over Uiam Lake in the lake city of Chuncheon.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "春川（チュンチョン）湖 ドローンライトショー",
+    "summary": "湖の街・春川、衣岩湖上のドローンショー。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "โดรนไลต์โชว์ทะเลสาบชุนชอน",
+    "summary": "โชว์โดรนเหนือทะเลสาบอึยอัม เมืองทะเลสาบชุนชอน",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "2026 춘천연극제",
+   "en": {
+    "name": "Chuncheon Theatre Festival",
+    "summary": "Long-running theatre festival across venues in Chuncheon.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "2026 春川演劇祭",
+    "summary": "春川各地の劇場で開かれる歴史ある演劇祭。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลละครชุนชอน 2026",
+    "summary": "เทศกาลละครเวทีที่จัดต่อเนื่องยาวนานในชุนชอน",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "제38회 춘천인형극제",
+   "en": {
+    "name": "Chuncheon Puppet Festival (38th)",
+    "summary": "Korea's leading puppet-theatre festival for all ages.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "第38回 春川人形劇祭",
+    "summary": "老若男女で楽しめる韓国有数の人形劇祭。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลหุ่นเชิดชุนชอน ครั้งที่ 38",
+    "summary": "เทศกาลละครหุ่นชั้นนำของเกาหลีสำหรับทุกวัย",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "춘천막국수닭갈비축제",
+   "en": {
+    "name": "Chuncheon Makguksu & Dakgalbi Festival",
+    "summary": "Chuncheon's two signature dishes: buckwheat noodles and spicy chicken.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "春川マッククス・タッカルビ祭り",
+    "summary": "春川名物、そば麺マッククスとタッカルビ。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลมักกุกซูและทักคาลบีชุนชอน",
+    "summary": "สองเมนูเด่นของชุนชอน เส้นบักวีตและไก่ผัดเผ็ด",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "춘천커피축제",
+   "en": {
+    "name": "Chuncheon Coffee Festival",
+    "summary": "Coffee festival along the Gongjicheon stream, a Korean coffee hub.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "春川コーヒー祭り",
+    "summary": "韓国コーヒーの街・春川、公之川沿いの祭り。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลกาแฟชุนชอน",
+    "summary": "เทศกาลกาแฟริมลำธารกงจีชอน ศูนย์กลางกาแฟของเกาหลี",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "춘천 오페라 페스티벌",
+   "en": {
+    "name": "Chuncheon Opera Festival",
+    "summary": "Outdoor opera festival in Chuncheon.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "春川オペラフェスティバル",
+    "summary": "春川で開かれる野外オペラ祭。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลโอเปร่าชุนชอน",
+    "summary": "เทศกาลโอเปร่ากลางแจ้งในชุนชอน",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "제12회 곰배령별밤음악축제",
+   "en": {
+    "name": "Gombaeryeong Starry Night Music Festival",
+    "summary": "Stargazing music festival at Gombaeryeong highland ridge.",
+    "placeName": "Inje, Gangwon"
+   },
+   "ja": {
+    "name": "第12回 コンベリョン星夜音楽祭",
+    "summary": "稜線・コンベリョンでの星空音楽祭。",
+    "placeName": "麟蹄（インジェ）、江原"
+   },
+   "th": {
+    "name": "เทศกาลดนตรีใต้ดาวกมแบรยอง ครั้งที่ 12",
+    "summary": "เทศกาลดนตรีชมดาวบนสันเขากมแบรยอง",
+    "placeName": "อินเจ คังวอน"
+   }
+  },
+  {
+   "festivalName": "춘천 애니토이페스티벌",
+   "en": {
+    "name": "Chuncheon Ani-Toy Festival",
+    "summary": "Animation and toy festival at Chuncheon's animation town.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "春川アニトイフェスティバル",
+    "summary": "春川アニメタウンのアニメ・トイ祭り。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลแอนิเมชันและของเล่นชุนชอน",
+    "summary": "เทศกาลแอนิเมชันและของเล่นในเมืองแอนิเมชันชุนชอน",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "2026 춘천 반려동물 페스티벌",
+   "en": {
+    "name": "Chuncheon Pet Festival",
+    "summary": "Pet-friendly festival near Chuncheon's animation museum.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "2026 春川ペットフェスティバル",
+    "summary": "春川・アニメ博物館そばのペット同伴フェス。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลสัตว์เลี้ยงชุนชอน 2026",
+    "summary": "เทศกาลเป็นมิตรกับสัตว์เลี้ยงใกล้พิพิธภัณฑ์แอนิเมชันชุนชอน",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "제6회 춘천 술 페스타",
+   "en": {
+    "name": "Chuncheon Sul (Liquor) Festa (6th)",
+    "summary": "Traditional and craft liquor festival at KT&G Sangsangmadang.",
+    "placeName": "Chuncheon, Gangwon"
+   },
+   "ja": {
+    "name": "第6回 春川 酒フェスタ",
+    "summary": "KT&G想像マダンでの伝統・クラフト酒祭り。",
+    "placeName": "春川、江原"
+   },
+   "th": {
+    "name": "เทศกาลสุราชุนชอน ครั้งที่ 6",
+    "summary": "เทศกาลสุราดั้งเดิมและคราฟต์ที่ KT&G ซังซังมาดัง",
+    "placeName": "ชุนชอน คังวอน"
+   }
+  },
+  {
+   "festivalName": "강화별밤야행",
+   "en": {
+    "name": "Ganghwa Starry Night Tour",
+    "summary": "Night heritage tour at Yongheunggung Park, Ganghwa Island.",
+    "placeName": "Ganghwa, Incheon"
+   },
+   "ja": {
+    "name": "江華（カンファ）星夜夜行",
+    "summary": "江華島・龍興宮公園の夜間歴史ツアー。",
+    "placeName": "仁川 江華"
+   },
+   "th": {
+    "name": "ทัวร์คืนดาวคังฮวา",
+    "summary": "ทัวร์มรดกยามค่ำที่สวนยงฮึงกุง เกาะคังฮวา",
+    "placeName": "คังฮวา อินชอน"
+   }
   }
  ]
 }

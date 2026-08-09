@@ -1,5 +1,5 @@
 {
- "exportedAt": "2026-08-06",
+ "exportedAt": "2026-08-08",
  "items": [
   {
    "externalId": "tourapi:3481597",
@@ -359,7 +359,7 @@
    "sigungu": "여수시",
    "name": "2026 섬 방문의 해",
    "summary": null,
-   "address": "전남광주통합특별시 여수시 선어시장길 6 (중앙동)",
+   "address": "전라남도 여수시 선어시장길 6 (중앙동)",
    "lat": 34.7395781561546,
    "lng": 127.736371787128,
    "startDate": "2026-03-01",
@@ -404,7 +404,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Lake Drone Light Show",
+     "summary": "Drone light show over Uiam Lake in the lake city of Chuncheon.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "春川（チュンチョン）湖 ドローンライトショー",
+     "summary": "湖の街・春川、衣岩湖上のドローンショー。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "โดรนไลต์โชว์ทะเลสาบชุนชอน",
+     "summary": "โชว์โดรนเหนือทะเลสาบอึยอัม เมืองทะเลสาบชุนชอน",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3113265",
@@ -451,7 +470,7 @@
    "sigungu": "북구",
    "name": "2026 문화가 있는 날 청춘마이크",
    "summary": null,
-   "address": "전남광주통합특별시 북구 하서로 50 (운암동)",
+   "address": "광주광역시 북구 하서로 50 (운암동)",
    "lat": 35.1814560887758,
    "lng": 126.884278856104,
    "startDate": "2026-03-12",
@@ -654,7 +673,7 @@
    "sigungu": "동구",
    "name": "2026 라온페스타",
    "summary": null,
-   "address": "전남광주통합특별시 동구 충장로 94 (충장로2가)",
+   "address": "광주광역시 동구 충장로 94 (충장로2가)",
    "lat": 35.1474235264676,
    "lng": 126.91694835998,
    "startDate": "2026-04-04",
@@ -691,7 +710,7 @@
    "sigungu": "동구",
    "name": "2026 금남로 차 없는 거리 ‘걷자잉’",
    "summary": null,
-   "address": "전남광주통합특별시 동구 금남로 245 (금남로1가)",
+   "address": "광주광역시 동구 금남로 245 (금남로1가)",
    "lat": 35.14836487617714,
    "lng": 126.9187315573319,
    "startDate": "2026-04-04",
@@ -765,7 +784,7 @@
    "sigungu": "고흥군",
    "name": "2026 고흥 녹동항 드론쇼",
    "summary": null,
-   "address": "전남광주통합특별시 고흥군 도양읍 봉암리 3953",
+   "address": "전라남도 고흥군 도양읍 봉암리 3953",
    "lat": 34.5256,
    "lng": 127.1341,
    "startDate": "2026-04-04",
@@ -910,16 +929,16 @@
      "placeName": "Jeonju"
     },
     {
-     "langCode": "ja",
-     "name": "全州韓屋村 伝統演戯パレード",
-     "summary": "韓屋村を練り歩く韓国伝統芸能のストリートパレード。",
-     "placeName": "全州（チョンジュ）"
-    },
-    {
      "langCode": "th",
      "name": "ขบวนพาเหรดศิลปะพื้นบ้าน หมู่บ้านฮันอกชอนจู",
      "summary": "ขบวนพาเหรดศิลปะการแสดงพื้นบ้านในหมู่บ้านฮันอก",
      "placeName": "ชอนจู"
+    },
+    {
+     "langCode": "ja",
+     "name": "全州韓屋村 伝統演戯パレード",
+     "summary": "韓屋村を練り歩く韓国伝統芸能のストリートパレード。",
+     "placeName": "全州（チョンジュ）"
     }
    ]
   },
@@ -1354,7 +1373,7 @@
    "sigungu": "목포시",
    "name": "2026 목포해상W쇼",
    "summary": null,
-   "address": "전남광주통합특별시 목포시 평화로 82 (상동)",
+   "address": "전라남도 목포시 평화로 82 (상동)",
    "lat": 34.79666213605975,
    "lng": 126.4337908876116,
    "startDate": "2026-05-09",
@@ -1472,7 +1491,26 @@
    "imageUrl": null,
    "tel": "033-241-4345",
    "homepage": "http://citf.or.kr/",
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Theatre Festival",
+     "summary": "Long-running theatre festival across venues in Chuncheon.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 春川演劇祭",
+     "summary": "春川各地の劇場で開かれる歴史ある演劇祭。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลละครชุนชอน 2026",
+     "summary": "เทศกาลละครเวทีที่จัดต่อเนื่องยาวนานในชุนชอน",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5020000-포항흥해국가유산야행-20260612",
@@ -1822,12 +1860,6 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "Seoul Summer Beach",
-     "summary": "Pop-up urban beach in central Seoul.",
-     "placeName": "Jongno-gu, Seoul"
-    },
-    {
      "langCode": "ja",
      "name": "ソウル・サマービーチ",
      "summary": "都心に現れる期間限定のアーバンビーチ。",
@@ -1838,6 +1870,12 @@
      "name": "โซลซัมเมอร์บีช",
      "summary": "ชายหาดจำลองกลางกรุงโซล เปิดเฉพาะฤดูร้อน",
      "placeName": "ชงโนกู กรุงโซล"
+    },
+    {
+     "langCode": "en",
+     "name": "Seoul Summer Beach",
+     "summary": "Pop-up urban beach in central Seoul.",
+     "placeName": "Jongno-gu, Seoul"
     }
    ]
   },
@@ -2070,7 +2108,7 @@
    "sigungu": "북구",
    "name": "〈도기陶器, 우리를 담은 질그릇〉",
    "summary": null,
-   "address": "전남광주통합특별시 북구 하서로 110 (매곡동)",
+   "address": "광주광역시 북구 하서로 110 (매곡동)",
    "lat": 35.1896608044,
    "lng": 126.8839435426,
    "startDate": "2026-07-29",
@@ -2133,7 +2171,26 @@
    "imageUrl": null,
    "tel": "033-242-8452",
    "homepage": "www.cocobau.com",
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Puppet Festival (38th)",
+     "summary": "Korea's leading puppet-theatre festival for all ages.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "第38回 春川人形劇祭",
+     "summary": "老若男女で楽しめる韓国有数の人形劇祭。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลหุ่นเชิดชุนชอน ครั้งที่ 38",
+     "summary": "เทศกาลละครหุ่นชั้นนำของเกาหลีสำหรับทุกวัย",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:b7529c419fd8",
@@ -2324,16 +2381,16 @@
      "placeName": "釜山 海雲台区"
     },
     {
-     "langCode": "th",
-     "name": "งานแสดงพุทธศาสนานานาชาติปูซาน 2026",
-     "summary": "งานแสดงวัฒนธรรมพุทธ อาหารวัด งานฝีมือ และการทำสมาธิ",
-     "placeName": "แฮอุนแดกู ปูซาน"
-    },
-    {
      "langCode": "en",
      "name": "Busan International Buddhism Expo 2026",
      "summary": "Buddhist culture expo — temple food, crafts and meditation programs.",
      "placeName": "Haeundae-gu, Busan"
+    },
+    {
+     "langCode": "th",
+     "name": "งานแสดงพุทธศาสนานานาชาติปูซาน 2026",
+     "summary": "งานแสดงวัฒนธรรมพุทธ อาหารวัด งานฝีมือ และการทำสมาธิ",
+     "placeName": "แฮอุนแดกู ปูซาน"
     }
    ]
   },
@@ -2345,7 +2402,7 @@
    "sigungu": "여수시",
    "name": "제7회 섬의 날",
    "summary": null,
-   "address": "전남광주통합특별시 여수시 박람회길 1 (덕충동)",
+   "address": "전라남도 여수시 박람회길 1 (덕충동)",
    "lat": 34.7509493146,
    "lng": 127.7470910959,
    "startDate": "2026-08-06",
@@ -2371,43 +2428,6 @@
      "name": "วันเกาะแห่งชาติ ครั้งที่ 7",
      "summary": "งานฉลองวันเกาะแห่งชาติ จัดที่ยอซู",
      "placeName": "ยอซู ชอลลาใต้"
-    }
-   ]
-  },
-  {
-   "externalId": "tourapi:2557842",
-   "source": "TOURAPI",
-   "regionSlug": "jeonju",
-   "sido": "전북특별자치도",
-   "sigungu": "전주시",
-   "name": "전주 가맥축제",
-   "summary": null,
-   "address": "전북특별자치도 전주시 덕진구 권삼득로 308 (덕진동1가)",
-   "lat": 35.8442101179,
-   "lng": 127.1292609884,
-   "startDate": "2026-08-06",
-   "endDate": "2026-08-08",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/43/4086143_image2_1.jpg",
-   "tel": "070-8870-6870",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "en",
-     "name": "Jeonju Gamaek Beer Festival",
-     "summary": "Beer-and-snack festival born from Jeonju's corner-store drinking culture.",
-     "placeName": "Jeonju"
-    },
-    {
-     "langCode": "ja",
-     "name": "全州（チョンジュ）カメクビール祭り",
-     "summary": "街の酒屋で飲む全州独特の文化から生まれたビール祭り。",
-     "placeName": "全州（チョンジュ）"
-    },
-    {
-     "langCode": "th",
-     "name": "เทศกาลเบียร์คาแมค ชอนจู",
-     "summary": "เทศกาลเบียร์จากวัฒนธรรมดื่มหน้าร้านชำของชอนจู",
-     "placeName": "ชอนจู"
     }
    ]
   },
@@ -2596,96 +2616,6 @@
    "translations": []
   },
   {
-   "externalId": "stdfest:5310000-진주m2페스티벌-20260807",
-   "source": "STDFEST",
-   "regionSlug": null,
-   "sido": "경상남도",
-   "sigungu": "진주시",
-   "name": "진주 M2(뮤직&미디어)페스티벌",
-   "summary": "수상무대공연+푸드존 등 부대행사",
-   "address": "경상남도 진주시 강남로 320 아래 둔치",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-08",
-   "imageUrl": null,
-   "tel": "055-795-3216",
-   "homepage": "http://www.jinjumusic.com/",
-   "translations": []
-  },
-  {
-   "externalId": "manual:seocheon-marine-leisure-festa-2026",
-   "source": "MANUAL",
-   "regionSlug": null,
-   "sido": "충청남도",
-   "sigungu": "서천군",
-   "name": "서천 해양레저페스타",
-   "summary": "춘장대해수욕장 해양레저 체험 행사. 주최 서천군, 주관 세한대학교 충남앵커사업단",
-   "address": "충청남도 서천군 춘장대해수욕장 일원",
-   "lat": 36.1631866373,
-   "lng": 126.5243259179,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-08",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "tourapi:3537267",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "강북구",
-   "name": "백년나이트 야시장 (메기의 귀환)",
-   "summary": null,
-   "address": "서울특별시 강북구 한천로144길 16 (수유동)",
-   "lat": 37.641720888,
-   "lng": 127.0259140093,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-08",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4096313_image2_1.jpg",
-   "tel": "02-903-9110",
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "mcst:81b8f4dff803",
-   "source": "MCST",
-   "regionSlug": null,
-   "sido": "강원특별자치도",
-   "sigungu": "태백시",
-   "name": "제3회 탄광문화고기축제",
-   "summary": "철암 쇠바우골 탄광문화 장터 · 지역특산물",
-   "address": "강원특별자치도 태백시 철암 쇠바우골 탄광문화 장터",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-08",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "mcst:498455b5b7a1",
-   "source": "MCST",
-   "regionSlug": "pohang",
-   "sido": "경상북도",
-   "sigungu": "포항시",
-   "name": "치맥 페스티벌",
-   "summary": "주민화합",
-   "address": "경상북도 포항시",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-08",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
    "externalId": "mcst:4a5b35affb72",
    "source": "MCST",
    "regionSlug": "daejeon",
@@ -2865,25 +2795,26 @@
    "imageUrl": null,
    "tel": "033-375-6353",
    "homepage": "https://www.ywcf.or.kr/cultural-events/211",
-   "translations": []
-  },
-  {
-   "externalId": "manual:yeongwol-jindallaejang-aug-2026",
-   "source": "MANUAL",
-   "regionSlug": null,
-   "sido": "강원특별자치도",
-   "sigungu": "영월군",
-   "name": "진달래장 문화놀이터(8월)",
-   "summary": "영월문화도시센터가 매월 여는 마을장터형 문화놀이터. 주최·주관 (재)영월문화관광재단 문화도시센터, 11:00~16:00",
-   "address": "강원특별자치도 영월군 영월로 2113 문화도시센터(진달래장)",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-08",
-   "endDate": "2026-08-08",
-   "imageUrl": null,
-   "tel": "033-375-6378",
-   "homepage": "https://www.ywcf.or.kr/cultural-events/212",
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Yeongwol Starry Night",
+     "summary": "Night market and cultural program at Gwanpungheon, Yeongwol.",
+     "placeName": "Yeongwol, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "寧越（ヨンウォル）星降る夜",
+     "summary": "寧越・観風軒一帯の夜市・公演・体験。",
+     "placeName": "寧越、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "คืนดาวยองวอล",
+     "summary": "ตลาดกลางคืนและกิจกรรมวัฒนธรรมที่ควันพุงฮอน ยองวอล",
+     "placeName": "ยองวอล คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:d3e13854a8b1",
@@ -3361,7 +3292,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Gombaeryeong Starry Night Music Festival",
+     "summary": "Stargazing music festival at Gombaeryeong highland ridge.",
+     "placeName": "Inje, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "第12回 コンベリョン星夜音楽祭",
+     "summary": "稜線・コンベリョンでの星空音楽祭。",
+     "placeName": "麟蹄（インジェ）、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลดนตรีใต้ดาวกมแบรยอง ครั้งที่ 12",
+     "summary": "เทศกาลดนตรีชมดาวบนสันเขากมแบรยอง",
+     "placeName": "อินเจ คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:9856e2670e1d",
@@ -4101,7 +4051,7 @@
    "sigungu": "강진군",
    "name": "강진하맥축제",
    "summary": null,
-   "address": "전남광주통합특별시 강진군 군동면 종합운동장길 60",
+   "address": "전라남도 강진군 군동면 종합운동장길 60",
    "lat": 34.6453339659,
    "lng": 126.7810951622,
    "startDate": "2026-08-27",
@@ -4422,7 +4372,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Opera Festival",
+     "summary": "Outdoor opera festival in Chuncheon.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "春川オペラフェスティバル",
+     "summary": "春川で開かれる野外オペラ祭。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลโอเปร่าชุนชอน",
+     "summary": "เทศกาลโอเปร่ากลางแจ้งในชุนชอน",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:fa86ec65e3a8",
@@ -4597,7 +4566,7 @@
    "sigungu": "무안군",
    "name": "무안 황토 갯벌축제",
    "summary": null,
-   "address": "전남광주통합특별시 무안군 해제면 황토갯벌길 88",
+   "address": "전라남도 무안군 해제면 황토갯벌길 88",
    "lat": 35.1022012699,
    "lng": 126.3336418836,
    "startDate": "2026-08-29",
@@ -5154,7 +5123,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Samcheok Isabu Festival",
+     "summary": "Festival honoring General Isabu who claimed Usan-guk (Ulleungdo).",
+     "placeName": "Samcheok, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 三陟（サムチョク）東海王 異斯夫祭り",
+     "summary": "于山国を服属させた異斯夫将軍を称える祭り。",
+     "placeName": "三陟、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลอีซาบู ซัมชอก 2026",
+     "summary": "เทศกาลเชิดชูแม่ทัพอีซาบูผู้พิชิตอุลลึงโด",
+     "placeName": "ซัมชอก คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:63f976950519",
@@ -5262,7 +5250,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Ganghwa Starry Night Tour",
+     "summary": "Night heritage tour at Yongheunggung Park, Ganghwa Island.",
+     "placeName": "Ganghwa, Incheon"
+    },
+    {
+     "langCode": "ja",
+     "name": "江華（カンファ）星夜夜行",
+     "summary": "江華島・龍興宮公園の夜間歴史ツアー。",
+     "placeName": "仁川 江華"
+    },
+    {
+     "langCode": "th",
+     "name": "ทัวร์คืนดาวคังฮวา",
+     "summary": "ทัวร์มรดกยามค่ำที่สวนยงฮึงกุง เกาะคังฮวา",
+     "placeName": "คังฮวา อินชอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:6a5d840c9793",
@@ -5655,7 +5662,7 @@
    "sigungu": "서구",
    "name": "2026 광주 ACE Fair",
    "summary": null,
-   "address": "전남광주통합특별시 서구 상무누리로 30",
+   "address": "광주광역시 서구 상무누리로 30",
    "lat": 35.1468884464,
    "lng": 126.8405217823,
    "startDate": "2026-09-10",
@@ -5700,7 +5707,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4087113_image2_1.png",
    "tel": "033-242-8452",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Puppet Festival (38th)",
+     "summary": "Korea's leading puppet-theatre festival for all ages.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "第38回 春川人形劇祭",
+     "summary": "老若男女で楽しめる韓国有数の人形劇祭。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลหุ่นเชิดชุนชอน ครั้งที่ 38",
+     "summary": "เทศกาลละครหุ่นชั้นนำของเกาหลีสำหรับทุกวัย",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:763974",
@@ -6097,7 +6123,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Sul (Liquor) Festa (6th)",
+     "summary": "Traditional and craft liquor festival at KT&G Sangsangmadang.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "第6回 春川 酒フェスタ",
+     "summary": "KT&G想像マダンでの伝統・クラフト酒祭り。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลสุราชุนชอน ครั้งที่ 6",
+     "summary": "เทศกาลสุราดั้งเดิมและคราฟต์ที่ KT&G ซังซังมาดัง",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:ae1c0c8e164a",
@@ -7151,7 +7196,7 @@
    "sigungu": "영광군",
    "name": "영광불갑산상사화축제",
    "summary": null,
-   "address": "전남광주통합특별시 영광군 불갑면 불갑사로 450 영광군 불갑사관광지 일원",
+   "address": "전라남도 영광군 불갑면 불갑사로 450 영광군 불갑사관광지 일원",
    "lat": 35.2001494518,
    "lng": 126.5506284863,
    "startDate": "2026-09-18",
@@ -8923,7 +8968,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Pet Festival",
+     "summary": "Pet-friendly festival near Chuncheon's animation museum.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "2026 春川ペットフェスティバル",
+     "summary": "春川・アニメ博物館そばのペット同伴フェス。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลสัตว์เลี้ยงชุนชอน 2026",
+     "summary": "เทศกาลเป็นมิตรกับสัตว์เลี้ยงใกล้พิพิธภัณฑ์แอนิเมชันชุนชอน",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:ed8db7486a98",
@@ -8941,7 +9005,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Ani-Toy Festival",
+     "summary": "Animation and toy festival at Chuncheon's animation town.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "春川アニトイフェスティバル",
+     "summary": "春川アニメタウンのアニメ・トイ祭り。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลแอนิเมชันและของเล่นชุนชอน",
+     "summary": "เทศกาลแอนิเมชันและของเล่นในเมืองแอนิเมชันชุนชอน",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:0fcdd1bf504f",
@@ -9365,7 +9448,7 @@
    "sigungu": "동구",
    "name": "광주 추억의 충장축제",
    "summary": null,
-   "address": "전남광주통합특별시 동구 금남로3가",
+   "address": "광주광역시 동구 금남로3가",
    "lat": 35.150241,
    "lng": 126.91587,
    "startDate": "2026-10-07",
@@ -9383,7 +9466,7 @@
    "sigungu": "동구",
    "name": "광주버스킹월드컵",
    "summary": null,
-   "address": "전남광주통합특별시 동구 금남로1가 41 금남지하상가 5·18 민주광장",
+   "address": "광주광역시 동구 금남로1가 41 금남지하상가 5·18 민주광장",
    "lat": 35.1474913381,
    "lng": 126.9198016528,
    "startDate": "2026-10-07",
@@ -9949,7 +10032,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Coffee Festival",
+     "summary": "Coffee festival along the Gongjicheon stream, a Korean coffee hub.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "春川コーヒー祭り",
+     "summary": "韓国コーヒーの街・春川、公之川沿いの祭り。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลกาแฟชุนชอน",
+     "summary": "เทศกาลกาแฟริมลำธารกงจีชอน ศูนย์กลางกาแฟของเกาหลี",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "mcst:bba1a3090139",
@@ -10453,7 +10555,26 @@
    "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/73/4095373_image2_1.jpg",
    "tel": "070-7576-1657",
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Chuncheon Makguksu & Dakgalbi Festival",
+     "summary": "Chuncheon's two signature dishes: buckwheat noodles and spicy chicken.",
+     "placeName": "Chuncheon, Gangwon"
+    },
+    {
+     "langCode": "ja",
+     "name": "春川マッククス・タッカルビ祭り",
+     "summary": "春川名物、そば麺マッククスとタッカルビ。",
+     "placeName": "春川、江原"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลมักกุกซูและทักคาลบีชุนชอน",
+     "summary": "สองเมนูเด่นของชุนชอน เส้นบักวีตและไก่ผัดเผ็ด",
+     "placeName": "ชุนชอน คังวอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:293084",
@@ -10769,7 +10890,7 @@
    "sigungu": "목포시",
    "name": "목포항구축제",
    "summary": null,
-   "address": "전남광주통합특별시 목포시 삼학로92번길 6 (산정동)",
+   "address": "전라남도 목포시 삼학로92번길 6 (산정동)",
    "lat": 34.7865334008,
    "lng": 126.3936724331,
    "startDate": "2026-10-16",
@@ -12101,7 +12222,7 @@
    "sigungu": "서구",
    "name": "광주김치축제",
    "summary": null,
-   "address": "전남광주통합특별시 서구 내방로 111 (치평동)",
+   "address": "광주광역시 서구 내방로 111 (치평동)",
    "lat": 35.1590033102,
    "lng": 126.8530264839,
    "startDate": "2026-10-23",

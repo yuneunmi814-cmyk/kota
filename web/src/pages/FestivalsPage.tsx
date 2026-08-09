@@ -2,19 +2,21 @@ import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { setPageMeta } from '../seo'
-import RegionBanner from '../components/RegionBanner'
+import RegionBanner, { type RegionSel } from '../components/RegionBanner'
 import FestivalRail, { type FestivalSort } from '../components/FestivalRail'
+import { REGION_GROUPS } from '../regionGroups'
 import { useT } from '../i18n'
 
-// 축제 목록 — 상단은 홈과 같은 '내 위치' 버튼(기본값처럼 재클릭 가능), 아래 정렬 필터(거리순·인기순)
-// ?sido=충청남도 & lat/lng & sort=date|distance|popularity & geo=denied(권한 안내)
+// 축제 목록 — 정렬 필터(시작일·거리·인기) + 권역/시·도 배너.
+// ?sido=충청남도(단일) | ?group=chungcheong(권역) & lat/lng & sort= & geo=denied
 export default function FestivalsPage() {
   useEffect(() => {
-    setPageMeta('전국 지역축제', '지금 진행 중이거나 곧 열리는 한국 지역축제를 시·도별로 찾아보세요. Find local festivals across Korea by region and date.')
+    setPageMeta('전국 지역축제', '지금 진행 중이거나 곧 열리는 한국 지역축제를 권역·시·도별로 찾아보세요. Find local festivals across Korea by region and date.')
   }, [])
   const t = useT()
   const [params, setParams] = useSearchParams()
   const sido = params.get('sido')
+  const group = params.get('group')
   const [locating, setLocating] = useState(false)
   const [geoDenied, setGeoDenied] = useState(params.get('geo') === 'denied')
 
@@ -23,6 +25,15 @@ export default function FestivalsPage() {
     const lng = Number(params.get('lng'))
     return params.get('lat') !== null && Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null
   }, [params])
+
+  const selected: RegionSel = sido ? { type: 'sido', name: sido } : group ? { type: 'group', key: group } : { type: 'all' }
+
+  // 선택 → 필터할 시·도 배열 (전국이면 null)
+  const filterSidos = useMemo(() => {
+    if (sido) return [sido]
+    if (group) return REGION_GROUPS.find((g) => g.key === group)?.sidos ?? null
+    return null
+  }, [sido, group])
 
   const rawSort = params.get('sort')
   const sort: FestivalSort = rawSort === 'distance' && coords ? 'distance' : rawSort === 'popularity' ? 'popularity' : 'date'
@@ -34,7 +45,15 @@ export default function FestivalsPage() {
     setParams(next, { replace: true })
   }
 
-  // 내 위치 — 성공 시 좌표 저장 + 거리순 자동. 차단 상태면 브라우저가 묻지 않고 즉시 실패 → 안내 표시
+  const onRegion = (s: RegionSel) => {
+    update((next) => {
+      next.delete('sido')
+      next.delete('group')
+      if (s.type === 'sido') next.set('sido', s.name)
+      else if (s.type === 'group') next.set('group', s.key)
+    })
+  }
+
   const onMyLocation = () => {
     if (!navigator.geolocation || locating) return
     setLocating(true)
@@ -80,7 +99,6 @@ export default function FestivalsPage() {
     <div className="min-h-screen bg-white text-green pb-20">
       <Header />
       <main className="w-full max-w-5xl mx-auto pt-12 px-4 text-center">
-        {/* B-1: 페이지 제목 일관성 — 홈 밖에서도 어느 화면인지 보이게 */}
         <h1 className="text-[26px] md:text-[30px] font-black mb-6">{t('festivals.title')}</h1>
 
         {geoDenied && (
@@ -89,15 +107,15 @@ export default function FestivalsPage() {
           </p>
         )}
 
-        {/* 정렬 필터 — 내 위치를 누르면 거리순 자동, 필터는 독립 동작 */}
+        {/* 정렬 필터 — 거리순을 누르면 위치 요청, 성공 시 거리순 자동 */}
         <div className="flex justify-center gap-2.5 mb-8">
           {chip('date', t('filter.date'))}
           {chip('distance', locating ? '…' : coords ? `📍 ${t('filter.distance')}` : t('filter.distance'))}
           {chip('popularity', t('filter.popularity'))}
         </div>
       </main>
-      <RegionBanner selected={sido} onSelect={(name) => update((next) => { if (name) next.set('sido', name); else next.delete('sido') })} />
-      <FestivalRail coords={coords} sido={sido} sort={sort} hideTitle />
+      <RegionBanner selected={selected} onChange={onRegion} />
+      <FestivalRail coords={coords} filterSidos={filterSidos} sort={sort} hideTitle />
     </div>
   )
 }

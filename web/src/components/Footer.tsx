@@ -10,6 +10,7 @@ export default function Footer() {
         <div className="flex justify-center gap-5 text-[13px] font-bold text-green">
           <Link to="/privacy" className="hover:underline">{t('footer.privacy')}</Link>
           <Link to="/terms" className="hover:underline">{t('footer.terms')}</Link>
+          <Link to="/disclaimer" className="hover:underline">{t('footer.disclaimerLink')}</Link>
         </div>
         <p className="text-[12px] text-gray-400 leading-relaxed max-w-2xl mx-auto">{t('footer.disclaimer')}</p>
         <p className="text-[12px] text-gray-400">{t('footer.source')} · © 2026 KOTA</p>

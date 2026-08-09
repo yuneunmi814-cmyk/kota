@@ -12,6 +12,12 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'footer.disclaimerLink': '면책조항',
+    'region.allGroup': '전체',
+    'list.total': '총 {n}개 축제',
+    'list.more': '더 보기 ({n})',
+    'list.empty': '이 지역에는 예정된 축제가 없어요.',
+    'detail.nearbyEmpty': '주변 관광지 정보를 준비 중이에요.',
     'festivals.title': '내 위치 기반 지역 축제',
     'footer.privacy': '개인정보처리방침',
     'footer.terms': '이용약관',
@@ -53,6 +59,12 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'footer.disclaimerLink': 'Disclaimer',
+    'region.allGroup': 'All',
+    'list.total': '{n} festivals',
+    'list.more': 'Show more ({n})',
+    'list.empty': 'No upcoming festivals in this area.',
+    'detail.nearbyEmpty': 'Nearby places are being prepared.',
     'festivals.title': 'Festivals Near You',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
@@ -94,6 +106,12 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'footer.disclaimerLink': 'ข้อจำกัดความรับผิด',
+    'region.allGroup': 'ทั้งหมด',
+    'list.total': '{n} เทศกาล',
+    'list.more': 'ดูเพิ่ม ({n})',
+    'list.empty': 'ไม่มีเทศกาลในพื้นที่นี้',
+    'detail.nearbyEmpty': 'กำลังเตรียมข้อมูลสถานที่ใกล้เคียง',
     'festivals.title': 'เทศกาลใกล้ตัวคุณ',
     'footer.privacy': 'นโยบายความเป็นส่วนตัว',
     'footer.terms': 'ข้อกำหนดการใช้งาน',
@@ -135,6 +153,12 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'footer.disclaimerLink': '免責事項',
+    'region.allGroup': '全体',
+    'list.total': '全{n}件の祭り',
+    'list.more': 'もっと見る ({n})',
+    'list.empty': 'この地域に予定の祭りはありません。',
+    'detail.nearbyEmpty': '周辺情報は準備中です。',
     'festivals.title': 'あなたの近くの地域祭り',
     'footer.privacy': 'プライバシーポリシー',
     'footer.terms': '利用規約',

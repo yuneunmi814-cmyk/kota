@@ -1,67 +1,85 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { apiGet, type Sido } from '../api'
 import { staticSidos } from '../staticData'
 import { useLang, useT } from '../i18n'
 import { sidoLabel } from '../sidoI18n'
+import { REGION_GROUPS, groupLabel, groupOfSido, type RegionGroup } from '../regionGroups'
 
-// 시·도 선택 배너 — 데이터(축제의 sido)에서 목록을 만들어 하드코딩 불일치를 없앤다.
-// 이전에는 웹이 지역 slug를 하드코딩해 백엔드에 없는 지역(goyang·jeonbuk·gyeongbuk)을 누르면 결과가 0건이었다.
-// 지역 사진은 쓰지 않는다 — 시·도를 대표하는 실제 사진이 없어 랜덤 이미지가 들어가던 문제(2026-08 QA)를 없앰.
-export default function RegionBanner({ selected, onSelect }: { selected: string | null; onSelect: (sido: string | null) => void }) {
+// 선택 상태 — 전국 / 권역 / 단일 시·도
+export type RegionSel = { type: 'all' } | { type: 'group'; key: string } | { type: 'sido'; name: string }
+
+// 지역 배너 — QA A-3(2026-08-06): 시·도 17개 가로 스크롤을 **권역 7개(1단) + 하위 시·도(2단)** 로 축소.
+// 1단은 한 줄에 들어가 모바일에서도 스크롤·화살표가 불필요(A-5도 함께 해소).
+export default function RegionBanner({ selected, onChange }: { selected: RegionSel; onChange: (s: RegionSel) => void }) {
   const t = useT()
   const { lang } = useLang()
-  const [sidos, setSidos] = useState<Sido[]>([])
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const [counts, setCounts] = useState<Map<string, number>>(new Map())
 
   useEffect(() => {
+    const toMap = (sidos: Sido[]) => new Map(sidos.map((s) => [s.name, s.count]))
     apiGet<{ sidos: Sido[] }>('/festivals/sidos')
-      .then((d) => setSidos(d.sidos))
-      .catch(() => staticSidos().then(setSidos).catch(() => setSidos([])))
+      .then((d) => setCounts(toMap(d.sidos)))
+      .catch(() => staticSidos().then((s) => setCounts(toMap(s))).catch(() => setCounts(new Map())))
   }, [])
 
-  const scrollBy = (dir: -1 | 1) => scrollRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' })
+  const total = useMemo(() => [...counts.values()].reduce((a, b) => a + b, 0), [counts])
+  const groupCount = (g: RegionGroup) => g.sidos.reduce((a, s) => a + (counts.get(s) ?? 0), 0)
 
-  const chip = (key: string, label: string, count: number | null, isActive: boolean, onClick: () => void) => (
+  // 펼칠 권역: 선택이 권역이면 그것, 단일 시·도면 그 시·도가 속한 권역
+  const expandedKey =
+    selected.type === 'group' ? selected.key : selected.type === 'sido' ? groupOfSido(selected.name)?.key ?? null : null
+  const expanded = REGION_GROUPS.find((g) => g.key === expandedKey) ?? null
+
+  const chip = (label: string, count: number | null, active: boolean, onClick: () => void) => (
     <button
-      key={key}
       onClick={onClick}
-      aria-pressed={isActive}
-      className={`shrink-0 px-5 py-2.5 rounded-full border text-[15px] font-bold transition flex items-center gap-2 ${
-        isActive
-          ? 'bg-green border-green text-white shadow-sm'
-          : 'bg-white border-gray-300 text-green hover:border-green'
+      aria-pressed={active}
+      className={`shrink-0 px-4 py-2 rounded-full border text-[14px] font-bold transition flex items-center gap-1.5 ${
+        active ? 'bg-green border-green text-white shadow-sm' : 'bg-white border-gray-300 text-green hover:border-green'
       }`}
     >
       {label}
-      {count !== null && (
-        <span className={`text-[12px] font-semibold tabular-nums ${isActive ? 'text-white/70' : 'text-gray-400'}`}>{count}</span>
+      {count !== null && count > 0 && (
+        <span className={`text-[11px] font-semibold tabular-nums ${active ? 'text-white/70' : 'text-gray-400'}`}>{count}</span>
       )}
     </button>
   )
 
   return (
-    <section className="w-full bg-white py-4 flex justify-center mb-4">
-      <div className="w-full max-w-[900px] relative flex items-center justify-center px-10">
-        <button
-          aria-label="이전 지역"
-          onClick={() => scrollBy(-1)}
-          className="absolute left-0 w-9 h-9 border border-gray-300 rounded-full flex items-center justify-center bg-white text-green hover:bg-gray-100 transition shadow-sm z-10"
-        >
-          <span className="text-sm font-bold">&lt;</span>
-        </button>
-
-        <div ref={scrollRef} className="flex items-center gap-2.5 overflow-x-auto px-2 py-1 scroll-smooth">
-          {chip('all', t('region.all'), null, selected === null, () => onSelect(null))}
-          {sidos.map((s) => chip(s.name, sidoLabel(s.name, lang), s.count, selected === s.name, () => onSelect(s.name)))}
+    <section className="w-full bg-white pt-4 pb-2 mb-4">
+      <div className="max-w-3xl mx-auto px-4 flex flex-col items-center gap-3">
+        {/* 1단 — 전국 + 권역 6개 (한 줄, 모바일에서도 줄바꿈만) */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {chip(t('region.all'), total || null, selected.type === 'all', () => onChange({ type: 'all' }))}
+          {REGION_GROUPS.map((g) =>
+            chip(
+              groupLabel(g, lang),
+              groupCount(g) || null,
+              expandedKey === g.key,
+              () => onChange({ type: 'group', key: g.key }),
+            ),
+          )}
         </div>
 
-        <button
-          aria-label="다음 지역"
-          onClick={() => scrollBy(1)}
-          className="absolute right-0 w-9 h-9 border border-gray-300 rounded-full flex items-center justify-center bg-white text-green hover:bg-gray-100 transition shadow-sm z-10"
-        >
-          <span className="text-sm font-bold">&gt;</span>
-        </button>
+        {/* 2단 — 선택한 권역의 하위 시·도 (권역에 시·도가 2개 이상일 때만) */}
+        {expanded && expanded.sidos.length > 1 && (
+          <div className="flex flex-wrap justify-center gap-2 pt-1">
+            {chip(
+              `${groupLabel(expanded, lang)} · ${t('region.allGroup')}`,
+              null,
+              selected.type === 'group',
+              () => onChange({ type: 'group', key: expanded.key }),
+            )}
+            {expanded.sidos.map((s) =>
+              chip(
+                sidoLabel(s, lang),
+                counts.get(s) ?? null,
+                selected.type === 'sido' && selected.name === s,
+                () => onChange({ type: 'sido', name: s }),
+              ),
+            )}
+          </div>
+        )}
       </div>
     </section>
   )

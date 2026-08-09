@@ -56,6 +56,11 @@ export default function FestivalDetailPage() {
 
   const fmt = (d: string) => d.replace(/-/g, '.').slice(2) // 2026-08-22 → 26.08.22
 
+  // BUG-01 잔존(2026-08-06): 일부 축제 주소 원문에 폐지된 '전남광주통합특별시'가 남아 있다.
+  // sido는 이미 정규화됐으니 주소의 통합 표기를 정규 시·도명으로 치환해 표시한다.
+  const cleanAddress = (addr: string, sido?: string | null) =>
+    addr.replace(/전남광주통합특별시/g, sido && sido !== '전남광주통합특별시' ? sido : '광주·전남')
+
   return (
     <div className="min-h-screen bg-white text-green pb-24">
       <Header />
@@ -121,7 +126,7 @@ export default function FestivalDetailPage() {
             {festival.address && (
               <>
                 <dt className="font-bold text-green/70">{t('detail.place')}</dt>
-                <dd>{festival.address}</dd>
+                <dd>{cleanAddress(festival.address, festival.sido)}</dd>
               </>
             )}
 
@@ -165,10 +170,16 @@ export default function FestivalDetailPage() {
             </a>
           )}
 
-          {/* 주변 관광지 — 축제만 보고 끝나지 않게, 근처에서 뭘 더 할지 이어준다 */}
-          {festival.nearbySpots && festival.nearbySpots.length > 0 && (
+          {/* 주변 관광지 — 서버(PostGIS)가 계산한 반경 3km 결과.
+              F-1(2026-08-06): nearbySpots가 있는데(=서버가 계산함) 0건이면 섹션이 사라져 축제마다 들쭉날쭉해 보였다.
+              계산 결과가 있으면(빈 배열 포함) 섹션을 항상 그리고, 0건이면 안내 문구를 보여 일관성을 유지한다.
+              (좌표가 없어 서버가 계산하지 않은 경우엔 nearbySpots 자체가 undefined → 섹션 생략) */}
+          {festival.nearbySpots && (
             <section>
               <h2 className="text-[18px] font-black mb-4 border-b border-gray-200 pb-3">{t('detail.nearby')}</h2>
+              {festival.nearbySpots.length === 0 ? (
+                <p className="text-[14px] text-gray-400 py-2">{t('detail.nearbyEmpty')}</p>
+              ) : (
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {festival.nearbySpots.map((s) => (
                   <li key={s.id} className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm flex justify-between items-center gap-3">
@@ -182,6 +193,7 @@ export default function FestivalDetailPage() {
                   </li>
                 ))}
               </ul>
+              )}
             </section>
           )}
 
