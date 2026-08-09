@@ -12,7 +12,7 @@
 - Korea Tourism Organization TourAPI (searchFestival2, areaBasedList2)
 - Korea nationwide culture festival standard open data (data.go.kr)
 - Manually curated local festivals not present in any public API (verified on site)
-- Updated weekly via automated sync (2026-08-08)
+- Updated weekly via automated sync (2026-08-09)
 
 ## Current coverage by region (festival count)
 - 경기도: 120

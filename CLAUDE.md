@@ -29,6 +29,7 @@ npm run fix:festival-regions [-- --dry-run]   # 적재된 축제의 시·도 재
 npm run sync:manual [-- --dry-run]            # 수기 축제(prisma/manual-festivals.json) → DB. 공공데이터에 없는 지역 행사용
 npm run sync:mcst [-- --dry-run]              # 문체부 연간 지역축제 개최계획(prisma/mcst-festivals-2026.json) → DB. 이름 기준 타소스 중복 스킵
 npm run sync:translations [-- --dry-run]      # 축제 다국어(prisma/festival-translations.json) → festival_translations. 축제명으로 매칭, 커버리지 출력
+npm run sync:images [-- --dry-run]            # 이미지 없는 축제 보강 — KCISA(B553457, PageNo 대문자 주의) + TourAPI 과거 회차 포스터(이름+지역 이중 검증)
 npm run sync:audioguide -- --region=jeju [--langs=ko,en] [--radius=1000] [--dry-run]          # 오디오 가이드(오디·좌표 매칭)
 npm run sync:photos -- --region=jeju [--all] [--dry-run]    # 관광사진(스팟명 키워드 매칭→spot_images)
 npm run sync:i18n -- --region=jeju [--all] [--dry-run]      # 영문(EngService2, title 괄호 한글명 매칭→spot_translations)

@@ -1,5 +1,5 @@
 {
- "exportedAt": "2026-08-08",
+ "exportedAt": "2026-08-09",
  "items": [
   {
    "externalId": "tourapi:3481597",
@@ -2150,7 +2150,7 @@
    "lng": 127.8336769,
    "startDate": "2026-07-31",
    "endDate": "2026-08-09",
-   "imageUrl": null,
+   "imageUrl": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/c2a5d26af3bc4296932c58ca4f6af410.png",
    "tel": "055-940-8455",
    "homepage": "https://www.kift.or.kr/",
    "translations": []
@@ -2168,7 +2168,7 @@
    "lng": 127.7201045,
    "startDate": "2026-07-31",
    "endDate": "2026-12-26",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4087113_image2_1.png",
    "tel": "033-242-8452",
    "homepage": "www.cocobau.com",
    "translations": [
@@ -3855,7 +3855,7 @@
    "lng": 128.726047,
    "startDate": "2026-08-23",
    "endDate": "2026-08-24",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/38/4096738_image2_1.jpg",
    "tel": "055-639-8192",
    "homepage": null,
    "translations": []
@@ -5048,7 +5048,7 @@
    "lng": 126.7903141158,
    "startDate": "2026-09-04",
    "endDate": "2026-09-04",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/83/3541083_image2_1.jpg",
    "tel": "031-950-8431",
    "homepage": "https://www.pajucf.or.kr/main/main.php",
    "translations": []
@@ -5120,7 +5120,7 @@
    "lng": 129.179659742,
    "startDate": "2026-09-04",
    "endDate": "2026-09-06",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/08/3523608_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": [
@@ -5193,7 +5193,7 @@
    "lng": 128.754327209,
    "startDate": "2026-09-04",
    "endDate": "2026-09-06",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/13/4044413_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -5376,7 +5376,7 @@
    "lng": 126.7447929,
    "startDate": "2026-09-05",
    "endDate": "2026-09-05",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/83/3541083_image2_1.jpg",
    "tel": "031-950-8431",
    "homepage": "https://www.pajucf.or.kr/main/main.php",
    "translations": []
@@ -6211,7 +6211,7 @@
    "lng": null,
    "startDate": "2026-09-11",
    "endDate": "2026-09-13",
-   "imageUrl": null,
+   "imageUrl": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202607/c7f9b3c3023143f79f132020a32d1395.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -6265,7 +6265,7 @@
    "lng": 127.0931061506,
    "startDate": "2026-09-11",
    "endDate": "2026-09-12",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/10/3520610_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -6391,7 +6391,7 @@
    "lng": 127.106412,
    "startDate": "2026-09-12",
    "endDate": "2026-09-13",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/41/3530741_image2_1.jpg",
    "tel": "041-980-3500",
    "homepage": "https://www.ikcc.or.kr/ko/index",
    "translations": []
@@ -6783,11 +6783,11 @@
    "name": "2026 서리풀뮤직페스티벌",
    "summary": "반포대로(서초3동사거리~서초역) · 문화예술",
    "address": "서울특별시 서초구 반포대로(서초3동사거리~서초역)",
-   "lat": null,
-   "lng": null,
+   "lat": 37.4918773303,
+   "lng": 127.0076093702,
    "startDate": "2026-09-14",
    "endDate": "2026-09-20",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/08/3354108_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -7363,7 +7363,7 @@
    "lng": 128.4029793291637,
    "startDate": "2026-09-18",
    "endDate": "2026-09-20",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/03/3530803_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -7417,7 +7417,7 @@
    "lng": 128.6177257792,
    "startDate": "2026-09-18",
    "endDate": "2026-09-20",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/90/3527690_image2_1.JPG",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -7989,11 +7989,11 @@
    "name": "2026경남고성공룡세계엑스포",
    "summary": "전시+판매+공연",
    "address": "경상남도 고성군 회화면 당항만로 1116",
-   "lat": null,
-   "lng": null,
+   "lat": 35.0533072967,
+   "lng": 128.3915143393,
    "startDate": "2026-09-23",
    "endDate": "2026-11-01",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/32/4084832_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -8029,7 +8029,7 @@
    "lng": 128.732934,
    "startDate": "2026-09-25",
    "endDate": "2026-10-04",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/06/4025906_image2_1.JPG",
    "tel": "054-840-3400",
    "homepage": "www.maskdance.com",
    "translations": []
@@ -8443,7 +8443,7 @@
    "lng": 128.7186823,
    "startDate": "2026-10-01",
    "endDate": "2026-10-31",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/26/3544326_image2_1.jpg",
    "tel": "054-370-2211",
    "homepage": "http://www.청도반시축제.kr",
    "translations": []
@@ -8461,7 +8461,7 @@
    "lng": 128.7186823,
    "startDate": "2026-10-01",
    "endDate": "2026-10-31",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/52/2852352_image2_1.jpg",
    "tel": "054-370-2211",
    "homepage": "http://www.청도코아페.kr",
    "translations": []
@@ -8893,7 +8893,7 @@
    "lng": 126.6383928249,
    "startDate": "2026-10-02",
    "endDate": "2026-10-04",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/93/3562793_image2_1.JPG",
    "tel": null,
    "homepage": "https://djsangnok.org",
    "translations": []
@@ -9395,11 +9395,11 @@
    "name": "제57회 익산 마한문화대전",
    "summary": "영등시민공원 일원 · 문화예술",
    "address": "전북특별자치도 익산시 영등시민공원 일원",
-   "lat": null,
-   "lng": null,
+   "lat": 36.0006415547,
+   "lng": 127.0609146595,
    "startDate": "2026-10-03",
    "endDate": "2026-10-05",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/13/3546713_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -9683,11 +9683,11 @@
    "name": "제26회 곡성심청어린이대축제",
    "summary": "곡성섬진강기차마을 · 문화예술",
    "address": "전라남도 곡성군 곡성섬진강기차마을",
-   "lat": null,
-   "lng": null,
+   "lat": 35.2773776987,
+   "lng": 127.3080154885,
    "startDate": "2026-10-08",
    "endDate": "2026-10-11",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/94/2757194_image2_1.JPG",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -9705,7 +9705,7 @@
    "lng": 127.1480103009513,
    "startDate": "2026-10-08",
    "endDate": "2026-10-10",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/87/4009287_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -9903,7 +9903,7 @@
    "lng": 128.0926947349,
    "startDate": "2026-10-09",
    "endDate": "2026-10-18",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/72/3536872_image2_1.jpg",
    "tel": "055-755-2363",
    "homepage": "http://www.kdfo.org",
    "translations": []
@@ -9957,7 +9957,7 @@
    "lng": 128.3507141,
    "startDate": "2026-10-09",
    "endDate": "2026-10-10",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/50/4063650_image2_1.JPG",
    "tel": "054-480-5593",
    "homepage": null,
    "translations": []
@@ -10264,7 +10264,7 @@
    "lng": 126.5503811,
    "startDate": "2026-10-10",
    "endDate": "2026-10-11",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/47/3550747_image2_1.jpg",
    "tel": "041-660-2696",
    "homepage": "http://www.haemifest.com/",
    "translations": []
@@ -10372,7 +10372,7 @@
    "lng": 128.9728277,
    "startDate": "2026-10-10",
    "endDate": "2026-10-11",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/40/3539740_image2_1.png",
    "tel": "051-310-4062",
    "homepage": "http://www.sasangculture.or.kr/",
    "translations": []
@@ -10390,7 +10390,7 @@
    "lng": 126.8328428,
    "startDate": "2026-10-10",
    "endDate": "2026-10-11",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/63/3557963_image2_1.jpg",
    "tel": "02-2600-6455",
    "homepage": null,
    "translations": []
@@ -10661,7 +10661,7 @@
    "lng": 129.3807929,
    "startDate": "2026-10-15",
    "endDate": "2026-10-18",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/98/3572398_image2_1.jpg",
    "tel": "052-226-1992",
    "homepage": "http://www.ulsanwhale.com/index.jsp",
    "translations": []
@@ -10679,7 +10679,7 @@
    "lng": 126.8287602,
    "startDate": "2026-10-15",
    "endDate": "2026-10-18",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/22/3546722_image2_1.jpg",
    "tel": "062-350-4792",
    "homepage": "seogu.gwangju.kr",
    "translations": []
@@ -10697,7 +10697,7 @@
    "lng": 128.7379707,
    "startDate": "2026-10-15",
    "endDate": "2026-10-18",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/92/2620592_image2_1.jpg",
    "tel": "054-674-3053",
    "homepage": "https:/bhftf.or.kr",
    "translations": []
@@ -10733,7 +10733,7 @@
    "lng": 128.897418452855,
    "startDate": "2026-10-15",
    "endDate": "2026-10-18",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/11/3556811_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -10931,7 +10931,7 @@
    "lng": 128.1598684,
    "startDate": "2026-10-16",
    "endDate": "2026-10-18",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/18/3544918_image2_1.jpg",
    "tel": "055-930-3573",
    "homepage": "https://www.hc.go.kr/06573/06623/10013.web",
    "translations": []
@@ -11291,7 +11291,7 @@
    "lng": 127.0900535156,
    "startDate": "2026-10-16",
    "endDate": "2026-10-17",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/95/3540195_image2_1.JPG",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -11543,7 +11543,7 @@
    "lng": 126.8960369,
    "startDate": "2026-10-17",
    "endDate": "2026-10-18",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/92/3483192_image2_1.jpg",
    "tel": "02-2627-1442",
    "homepage": "https://gcfac.or.kr/content?gcfac_menu_cd=U0107",
    "translations": []
@@ -11813,7 +11813,7 @@
    "lng": 127.3577063021,
    "startDate": "2026-10-17",
    "endDate": "2026-11-01",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/05/3546705_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -11867,7 +11867,7 @@
    "lng": 126.8984371352927,
    "startDate": "2026-10-17",
    "endDate": "2026-10-23",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/81/3544281_image2_1.JPG",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -12115,11 +12115,11 @@
    "name": "2026 강경젓갈축제",
    "summary": "지역 먹거리(강경젓갈,상월고구마) 및 관광자원을 활용한 특산물축제 개최",
    "address": "충청남도 논산시 강경읍 금백로 45",
-   "lat": null,
-   "lng": null,
+   "lat": 36.1575977477,
+   "lng": 127.0098123087,
    "startDate": "2026-10-22",
    "endDate": "2026-10-25",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/99/3538099_image2_1.jpg",
    "tel": "041-746-5664",
    "homepage": null,
    "translations": []
@@ -12299,7 +12299,7 @@
    "lng": 128.1365362,
    "startDate": "2026-10-23",
    "endDate": "2026-11-01",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/75/3559875_image2_1.JPG",
    "tel": "055-930-4696",
    "homepage": "https://www.hc.go.kr/06573/08250.web",
    "translations": []
@@ -12569,7 +12569,7 @@
    "lng": 126.9024275677002,
    "startDate": "2026-10-23",
    "endDate": "2026-10-25",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/25/3552525_image2_1.JPG",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -12803,7 +12803,7 @@
    "lng": 129.3684428,
    "startDate": "2026-10-24",
    "endDate": "2026-11-15",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/03/3547903_image2_1.jpg",
    "tel": "054-289-7854",
    "homepage": "http://www.phcf.or.kr",
    "translations": []
@@ -12979,11 +12979,11 @@
    "name": "2026 부산종합민속예술제",
    "summary": "부산시민공원 다솜광장 · 전통역사",
    "address": "부산광역시 부산진구 부산시민공원 다솜광장",
-   "lat": null,
-   "lng": null,
+   "lat": 35.1654495102,
+   "lng": 129.0572361352,
    "startDate": "2026-10-24",
    "endDate": "2026-10-25",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/47/3359047_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -13051,11 +13051,11 @@
    "name": "제37회 정읍사문화제",
    "summary": "정읍사문화공원 · 문화예술",
    "address": "전북특별자치도 정읍시 정읍사문화공원",
-   "lat": null,
-   "lng": null,
+   "lat": 35.5517697693,
+   "lng": 126.8625439495,
    "startDate": "2026-10-24",
    "endDate": "2026-10-25",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/03/3551903_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -13145,7 +13145,7 @@
    "lng": 126.6613892,
    "startDate": "2026-10-29",
    "endDate": "2026-11-01",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/70/3544670_image2_1.jpg",
    "tel": "041-634-8705",
    "homepage": "https://hongju.or.kr/home/main.do",
    "translations": []
@@ -13181,7 +13181,7 @@
    "lng": 129.0180502,
    "startDate": "2026-10-30",
    "endDate": "2026-11-01",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/36/3547136_image2_1.jpg",
    "tel": "051-240-4062",
    "homepage": "http://culture.bsseogu.go.kr",
    "translations": []
@@ -13199,7 +13199,7 @@
    "lng": 129.0820078,
    "startDate": "2026-10-30",
    "endDate": "2026-11-01",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/90/3561790_image2_1.jpg",
    "tel": "051-419-4062",
    "homepage": "http://www.yeongdo.go.kr/ydfestival.web",
    "translations": []
@@ -13289,7 +13289,7 @@
    "lng": 126.7997267378,
    "startDate": "2026-10-30",
    "endDate": "2026-10-31",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/09/4096209_image2_1.jpg",
    "tel": "041-339-7316",
    "homepage": "https://www.instagram.com/yesan_apple1923",
    "translations": []
@@ -13537,11 +13537,11 @@
    "name": "제23회 백제고도 부여국화축제",
    "summary": "서동공원 궁남지 일원 · 자연생태",
    "address": "충청남도 부여군 서동공원 궁남지 일원",
-   "lat": null,
-   "lng": null,
+   "lat": 36.269786,
+   "lng": 126.912293,
    "startDate": "2026-10-30",
    "endDate": "2026-11-08",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/46/3539846_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -13789,11 +13789,11 @@
    "name": "2026 여수동동북축제",
    "summary": "용기공원 및 선소 일원 · 주민화합",
    "address": "전라남도 여수시 용기공원 및 선소 일원",
-   "lat": null,
-   "lng": null,
+   "lat": 34.7559020737,
+   "lng": 127.6572796767,
    "startDate": "2026-10-31",
    "endDate": "2026-11-01",
-   "imageUrl": null,
+   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/02/3406002_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -13987,11 +13987,11 @@
    "name": "제31회 김해분청도자기축제",
    "summary": "롯데가든파크(장유롯데아울렛)(예정) · 문화예술",
    "address": "경상남도 김해시 롯데가든파크(장유롯데아울렛)(예정)",
-   "lat": null,
-   "lng": null,
+   "lat": 35.2517674455,
+   "lng": 128.7459053654,
    "startDate": "2026-11-05",
    "endDate": "2026-11-08",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/49/3546549_image2_1.jpg",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -14671,11 +14671,11 @@
    "name": "제24회 논산양촌곶감축제",
    "summary": "양촌리 체육공원 일원 · 지역특산물",
    "address": "충청남도 논산시 양촌리 체육공원 일원",
-   "lat": null,
-   "lng": null,
+   "lat": 36.129182914,
+   "lng": 127.24692243,
    "startDate": "2026-12-11",
    "endDate": "2026-12-13",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/87/3574987_image2_1.JPG",
    "tel": null,
    "homepage": null,
    "translations": []
@@ -14909,7 +14909,7 @@
    "lng": 128.6177257792,
    "startDate": "2026-12-24",
    "endDate": "2027-01-03",
-   "imageUrl": null,
+   "imageUrl": "http://tong.visitkorea.or.kr/cms/resource/12/3578312_image2_1.JPG",
    "tel": null,
    "homepage": null,
    "translations": []
