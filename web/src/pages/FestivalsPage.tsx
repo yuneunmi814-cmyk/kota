@@ -76,6 +76,7 @@ export default function FestivalsPage() {
           next.set('lat', pos.coords.latitude.toFixed(5))
           next.set('lng', pos.coords.longitude.toFixed(5))
           next.set('sort', 'distance')
+          next.delete('page')
         })
       },
       () => {
@@ -91,7 +92,10 @@ export default function FestivalsPage() {
       onMyLocation() // 좌표가 없으면 먼저 위치부터 (성공 시 거리순 자동)
       return
     }
-    update((next) => next.set('sort', s))
+    update((next) => {
+      next.set('sort', s)
+      next.delete('page') // BUG-10(8/10): 정렬이 바뀌면 새 목록의 1페이지부터
+    })
   }
 
   const chip = (s: FestivalSort, label: string) => (
@@ -147,6 +151,11 @@ export default function FestivalsPage() {
           {chip('distance', locating ? '…' : coords ? `📍 ${t('filter.distance')}` : t('filter.distance'))}
           {chip('popularity', t('filter.popularity'))}
         </div>
+
+        {/* F-3(8/10): 인기순 산정 기준 안내 — 기준이 화면에 없다는 QA 지적 반영 */}
+        {sort === 'popularity' && (
+          <p className="-mt-4 mb-6 text-[12px] text-gray-400">{t('sort.popularityHint')}</p>
+        )}
       </main>
       <RegionBanner selected={selected} onChange={onRegion} />
       <FestivalRail

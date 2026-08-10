@@ -44,22 +44,24 @@ async function main() {
   let missStreak = 0
 
   for (const f of targets.slice(0, Number.isFinite(MAX) ? MAX : undefined)) {
-    // 후보 키워드: ① 첫 시설명("A광장 및 B공원"→"A광장") ② 시군구+시설명 ③ 축제명
+    // 후보 키워드: 복수 장소("한강공원(뚝섬, 잠실, 여의도)"·"서울숲 일대, 매헌시민의숲")를
+    // 쉼표·괄호 단위로 분해해 시설명 후보 최대 3개 + 시군구 접두 변형 + 축제명 (8/10 QA F-2 보완)
     const rawPlace = f.summary?.split('·')[0]?.trim()
-    const firstVenue = rawPlace
-      ?.split(/[,及및~()]|\s및\s/)[0]
-      ?.trim()
-      .replace(/\s*(일원|일대|일읍|등|내)$/g, '')
-      .trim()
-    const withCity = firstVenue && f.sigungu ? `${coreName(f.sigungu)} ${firstVenue}` : undefined
-    const cityWords = new Set([f.sigungu, f.sido, coreName(f.sigungu ?? ''), coreName(f.sido ?? '')])
-    const candidates = [...new Set([firstVenue, withCity, f.name].filter(
+    const venueSegs = (rawPlace ?? '')
+      .split(/[,及및~()]|\s및\s/)
+      .map((v) => v.trim().replace(/\s*(일원|일대|일읍|등|내)$/g, '').trim())
+      .filter((v) => v.length >= 3)
+      .slice(0, 3)
+    const firstSigungu = (f.sigungu ?? '').split(',')[0]?.trim() ?? ''
+    const withCity = venueSegs[0] && firstSigungu ? `${coreName(firstSigungu)} ${venueSegs[0]}` : undefined
+    const cityWords = new Set([f.sigungu, f.sido, coreName(firstSigungu), coreName(f.sido ?? '')])
+    const candidates = [...new Set([...venueSegs, withCity, f.name].filter(
       (k): k is string => Boolean(k && k.length >= 3 && k !== '미정' && !cityWords.has(k)), // 시군구명 자체는 검색 안 함(아무 장소나 걸림)
     ))]
     // 오매칭 방지 이중 검증: 시도가 맞아야 하고, 시군구는 온전한 이름으로 대조
     // ("중구"→"중" 축약은 부산 중구/울산 중구/대전 중구를 구분 못 해 사고가 난다 — 실측)
     const sidoCore = coreName(f.sido ?? '')
-    const sigunguFull = f.sigungu ?? null
+    const sigunguList = (f.sigungu ?? '').split(',').map((v) => v.trim()).filter(Boolean) // 복수 시군구 대응
 
     let found: { lat: number; lng: number; via: string } | null = null
     for (const kw of candidates) {
@@ -78,7 +80,7 @@ async function main() {
       const hit = items.find(
         (it) =>
           it.mapx && it.mapy && it.addr1 && sidoCore && it.addr1.includes(sidoCore) &&
-          (!sigunguFull || it.addr1.includes(sigunguFull) || it.addr1.includes(coreName(sigunguFull) + '시') || it.addr1.includes(coreName(sigunguFull) + '군')),
+          (sigunguList.length === 0 || sigunguList.some((g) => it.addr1!.includes(g) || it.addr1!.includes(coreName(g) + '시') || it.addr1!.includes(coreName(g) + '군'))),
       )
       if (hit) {
         found = { lat: Number(hit.mapy), lng: Number(hit.mapx), via: `${kw} → ${hit.title}` }

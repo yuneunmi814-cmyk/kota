@@ -60,16 +60,25 @@ export default function FestivalRail({
     return () => { alive = false }
   }, [lang])
 
+  // 상시축제(기간 1년 이상) 판정 — F-4(8/10): 시작일순 첫 화면을 상시축제가 점령하는 문제
+  const DAY = 86_400_000
+  const isAlwaysOn = (f: Festival) => new Date(f.endDate).getTime() - new Date(f.startDate).getTime() >= 365 * DAY
+
   const list = useMemo(() => {
     const filtered = filterSidos ? all.filter((f) => f.sido && filterSidos.includes(f.sido)) : all
-    const withDistance = coords ? filtered.map((f) => ({ ...f, distanceKm: distanceKm(coords, f) })) : filtered.map((f) => ({ ...f, distanceKm: null as number | null }))
+    // BUG-09(8/10): 거리 표시는 거리순일 때만 — 다른 정렬로 돌아오면 최초 화면과 동일해야 한다
+    const withDistance =
+      sort === 'distance' && coords
+        ? filtered.map((f) => ({ ...f, distanceKm: distanceKm(coords, f) }))
+        : filtered.map((f) => ({ ...f, distanceKm: null as number | null }))
     if (sort === 'distance' && coords) {
       return [...withDistance].sort((a, b) => (a.distanceKm ?? Infinity) - (b.distanceKm ?? Infinity))
     }
     if (sort === 'popularity') {
       return [...withDistance].sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0))
     }
-    return withDistance // 시작일순 (정적 데이터 기본 정렬)
+    // 시작일순: 기간제 축제 먼저(시작일순), 상시축제(1년 이상)는 뒤로 — F-4 가안
+    return [...withDistance].sort((a, b) => Number(isAlwaysOn(a)) - Number(isAlwaysOn(b)))
   }, [all, filterSidos, coords, sort])
 
   if (all.length === 0) return null
@@ -127,7 +136,7 @@ export default function FestivalRail({
                       : 'text-[11px] font-bold border border-green/40 text-green/80 px-2 py-0.5 rounded-full'
                   }
                 >
-                  {f.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
+                  {isAlwaysOn(f) ? t('festival.always') : f.status === 'ongoing' ? t('festival.ongoing') : t('festival.upcoming')}
                 </span>
                 <span className="text-[12px] font-semibold text-gray-500">
                   {f.placeName ?? (f.region.name === '전국' ? t('region.all') : f.sido ? sidoLabel(f.sido, lang) : f.region.name)}

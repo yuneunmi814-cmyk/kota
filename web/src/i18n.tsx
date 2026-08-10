@@ -12,6 +12,8 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'festival.always': '상시',
+    'sort.popularityHint': 'ⓘ 인기순은 한국관광공사 지역 방문자 빅데이터 기준입니다',
     'region.entire': '전체',
     'dest.placeholder': '여행지 입력 (예: 경주, 서귀포)',
     'dest.label': '여행지',
@@ -64,6 +66,8 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'festival.always': 'Year-round',
+    'sort.popularityHint': 'ⓘ Popularity is based on KTO regional visitor big data',
     'region.entire': 'All',
     'dest.placeholder': 'Enter destination (e.g. Gyeongju, Seogwipo)',
     'dest.label': 'Destination',
@@ -116,6 +120,8 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'festival.always': 'ตลอดปี',
+    'sort.popularityHint': 'ⓘ ความนิยมอ้างอิงข้อมูลผู้เยี่ยมชมภูมิภาคของ KTO',
     'region.entire': 'ทั้งหมด',
     'dest.placeholder': 'ใส่จุดหมาย (เช่น คยองจู, ซอกวีโพ)',
     'dest.label': 'จุดหมาย',
@@ -168,6 +174,8 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'festival.always': '常時',
+    'sort.popularityHint': 'ⓘ 人気順は韓国観光公社の地域訪問者ビッグデータ基準です',
     'region.entire': '全体',
     'dest.placeholder': '旅行先を入力（例：慶州、西帰浦）',
     'dest.label': '旅行先',
