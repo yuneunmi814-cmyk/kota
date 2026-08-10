@@ -1,5 +1,5 @@
 {
- "exportedAt": "2026-08-09",
+ "exportedAt": "2026-08-10",
  "items": [
   {
    "externalId": "tourapi:3481597",
@@ -54,7 +54,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Incheon Urban History Museum: Children's Special Exhibition",
+     "summary": "Hands-on exhibition about how tidal flats became a city.",
+     "placeName": "Yeonsu-gu, Incheon"
+    },
+    {
+     "langCode": "ja",
+     "name": "仁川都市歴史館 こども特別展",
+     "summary": "干潟が都市になるまでを学ぶ体験型展示。",
+     "placeName": "仁川 延寿区"
+    },
+    {
+     "langCode": "th",
+     "name": "นิทรรศการพิเศษสำหรับเด็ก พิพิธภัณฑ์ประวัติศาสตร์เมืองอินชอน",
+     "summary": "นิทรรศการเรียนรู้ว่าหาดโคลนกลายเป็นเมืองได้อย่างไร",
+     "placeName": "ยอนซูกู อินชอน"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2786391",
@@ -111,12 +130,6 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "DDP Architecture Tour",
-     "summary": "Guided tour of Dongdaemun Design Plaza, Zaha Hadid's landmark.",
-     "placeName": "Jung-gu, Seoul"
-    },
-    {
      "langCode": "ja",
      "name": "DDP 建築ツアー",
      "summary": "ザハ・ハディド設計の東大門デザインプラザを巡るガイドツアー。",
@@ -127,6 +140,12 @@
      "name": "ทัวร์สถาปัตยกรรม DDP",
      "summary": "ทัวร์ชมทงแดมุนดีไซน์พลาซา ผลงานของซาฮา ฮาดิด",
      "placeName": "จุงกู กรุงโซล"
+    },
+    {
+     "langCode": "en",
+     "name": "DDP Architecture Tour",
+     "summary": "Guided tour of Dongdaemun Design Plaza, Zaha Hadid's landmark.",
+     "placeName": "Jung-gu, Seoul"
     }
    ]
   },
@@ -294,7 +313,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Dangjin Dance Festival",
+     "summary": "Street dance festival with performances and workshops.",
+     "placeName": "Dangjin, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "唐津（タンジン）ダンスフェスティバル",
+     "summary": "公演とワークショップのストリートダンス祭り。",
+     "placeName": "忠清南道 唐津"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลเต้นทังจิน",
+     "summary": "เทศกาลสตรีทแดนซ์ พร้อมการแสดงและเวิร์กช็อป",
+     "placeName": "ทังจิน ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "stdfest:5680000-당진면천읍성축제-20260101",
@@ -312,7 +350,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Dangjin Myeoncheon Eupseong Fortress Festival",
+     "summary": "Traditional festival at the Joseon-era Myeoncheon walled town.",
+     "placeName": "Dangjin, Chungcheongnam-do"
+    },
+    {
+     "langCode": "ja",
+     "name": "唐津 沔川邑城祭り",
+     "summary": "朝鮮時代の邑城・沔川で開かれる伝統祭り。",
+     "placeName": "忠清南道 唐津"
+    },
+    {
+     "langCode": "th",
+     "name": "เทศกาลป้อมมยอนชอนอึบซอง ทังจิน",
+     "summary": "เทศกาลดั้งเดิม ณ เมืองกำแพงสมัยโชซอน",
+     "placeName": "ทังจิน ชุงชองใต้"
+    }
+   ]
   },
   {
    "externalId": "tourapi:2433596",
@@ -480,12 +537,6 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "Youth Mic: Culture Day Busking 2026",
-     "summary": "Young artists' busking stages on national Culture Day.",
-     "placeName": "Buk-gu, Gwangju"
-    },
-    {
      "langCode": "ja",
      "name": "2026 文化がある日 青春マイク",
      "summary": "若手アーティストによる路上ライブステージ。",
@@ -496,6 +547,12 @@
      "name": "ยูธไมค์ 2026: เวทีบัสกิ้งวันวัฒนธรรม",
      "summary": "เวทีดนตรีเปิดหมวกของศิลปินรุ่นใหม่",
      "placeName": "บุกกู ควังจู"
+    },
+    {
+     "langCode": "en",
+     "name": "Youth Mic: Culture Day Busking 2026",
+     "summary": "Young artists' busking stages on national Culture Day.",
+     "placeName": "Buk-gu, Gwangju"
     }
    ]
   },
@@ -626,7 +683,26 @@
    "imageUrl": null,
    "tel": null,
    "homepage": null,
-   "translations": []
+   "translations": [
+    {
+     "langCode": "en",
+     "name": "Jeju Seongeup Village: Magistrate Procession & Folk Song Festival",
+     "summary": "Reenactment of the Joseon magistrate's procession with Jeju folk songs at Seongeup Folk Village.",
+     "placeName": "Seogwipo, Jeju"
+    },
+    {
+     "langCode": "ja",
+     "name": "済州 城邑村 県監行列再現・伝統民謡祭り",
+     "summary": "城邑民俗村で朝鮮時代の県監行列を再現し、済州民謡を公演。",
+     "placeName": "済州 西帰浦"
+    },
+    {
+     "langCode": "th",
+     "name": "หมู่บ้านซองอึบเชจู: ขบวนแห่ผู้ว่าและเพลงพื้นบ้าน",
+     "summary": "จำลองขบวนแห่ขุนนางโชซอนพร้อมเพลงพื้นบ้านเชจู ณ หมู่บ้านซองอึบ",
+     "placeName": "ซอกวีโพ เชจู"
+    }
+   ]
   },
   {
    "externalId": "tourapi:3377038",
@@ -929,16 +1005,16 @@
      "placeName": "Jeonju"
     },
     {
-     "langCode": "th",
-     "name": "ขบวนพาเหรดศิลปะพื้นบ้าน หมู่บ้านฮันอกชอนจู",
-     "summary": "ขบวนพาเหรดศิลปะการแสดงพื้นบ้านในหมู่บ้านฮันอก",
-     "placeName": "ชอนจู"
-    },
-    {
      "langCode": "ja",
      "name": "全州韓屋村 伝統演戯パレード",
      "summary": "韓屋村を練り歩く韓国伝統芸能のストリートパレード。",
      "placeName": "全州（チョンジュ）"
+    },
+    {
+     "langCode": "th",
+     "name": "ขบวนพาเหรดศิลปะพื้นบ้าน หมู่บ้านฮันอกชอนจู",
+     "summary": "ขบวนพาเหรดศิลปะการแสดงพื้นบ้านในหมู่บ้านฮันอก",
+     "placeName": "ชอนจู"
     }
    ]
   },
@@ -1162,6 +1238,12 @@
    "homepage": null,
    "translations": [
     {
+     "langCode": "th",
+     "name": "เมืองอวกาศเควซัน: นักสำรวจดวงดาว",
+     "summary": "โปรแกรมดูดาวและวิทยาศาสตร์อวกาศในชนบทเควซัน",
+     "placeName": "เควซัน ชุงชองเหนือ"
+    },
+    {
      "langCode": "en",
      "name": "Goesan Space City: Star Explorers",
      "summary": "Stargazing and space-science program in rural Goesan.",
@@ -1172,12 +1254,6 @@
      "name": "忠北 槐山（クェサン）宇宙特別市：星々探査隊",
      "summary": "槐山の夜空を舞台にした星空観察・宇宙科学プログラム。",
      "placeName": "忠清北道 槐山"
-    },
-    {
-     "langCode": "th",
-     "name": "เมืองอวกาศเควซัน: นักสำรวจดวงดาว",
-     "summary": "โปรแกรมดูดาวและวิทยาศาสตร์อวกาศในชนบทเควซัน",
-     "placeName": "เควซัน ชุงชองเหนือ"
     }
    ]
   },
@@ -1456,12 +1532,6 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "Palsaek Chanlan: Eight Colors of Splendor",
-     "summary": "Traditional arts program at Gyeongbokgung area.",
-     "placeName": "Jongno-gu, Seoul"
-    },
-    {
      "langCode": "ja",
      "name": "八色燦爛（パルセクチャンラン）",
      "summary": "景福宮一帯の伝統芸術プログラム。",
@@ -1472,6 +1542,12 @@
      "name": "พัลแซกชันลัน: แปดสีแห่งความงาม",
      "summary": "โปรแกรมศิลปะดั้งเดิมย่านพระราชวังคยองบก",
      "placeName": "ชงโนกู กรุงโซล"
+    },
+    {
+     "langCode": "en",
+     "name": "Palsaek Chanlan: Eight Colors of Splendor",
+     "summary": "Traditional arts program at Gyeongbokgung area.",
+     "placeName": "Jongno-gu, Seoul"
     }
    ]
   },
@@ -1825,61 +1901,6 @@
    "translations": []
   },
   {
-   "externalId": "mcst:0fad2d4e3921",
-   "source": "MCST",
-   "regionSlug": null,
-   "sido": "강원특별자치도",
-   "sigungu": "철원군",
-   "name": "2026년 용화천 물놀이장",
-   "summary": "용화천 명성어린이공원 일원 · 자연생태",
-   "address": "강원특별자치도 철원군 용화천 명성어린이공원 일원",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-07-18",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "tourapi:3509884",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "종로구",
-   "name": "서울썸머비치",
-   "summary": null,
-   "address": "서울특별시 종로구 세종대로 175 (세종로)",
-   "lat": 37.5718478585,
-   "lng": 126.9761682759,
-   "startDate": "2026-07-20",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/04/4079504_image2_1.png",
-   "tel": "02-6941-0645",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "ja",
-     "name": "ソウル・サマービーチ",
-     "summary": "都心に現れる期間限定のアーバンビーチ。",
-     "placeName": "ソウル 鍾路区"
-    },
-    {
-     "langCode": "th",
-     "name": "โซลซัมเมอร์บีช",
-     "summary": "ชายหาดจำลองกลางกรุงโซล เปิดเฉพาะฤดูร้อน",
-     "placeName": "ชงโนกู กรุงโซล"
-    },
-    {
-     "langCode": "en",
-     "name": "Seoul Summer Beach",
-     "summary": "Pop-up urban beach in central Seoul.",
-     "placeName": "Jongno-gu, Seoul"
-    }
-   ]
-  },
-  {
    "externalId": "tourapi:2728613",
    "source": "TOURAPI",
    "regionSlug": "jeju",
@@ -1917,43 +1938,6 @@
    ]
   },
   {
-   "externalId": "tourapi:506534",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "충청남도",
-   "sigungu": "보령시",
-   "name": "보령머드축제",
-   "summary": null,
-   "address": "충청남도 보령시 신흑동 2282",
-   "lat": 36.314822,
-   "lng": 126.515029,
-   "startDate": "2026-07-24",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/79/3534979_image2_1.jpg",
-   "tel": "041-930-0891",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "en",
-     "name": "Boryeong Mud Festival",
-     "summary": "Korea's best-known summer festival — mud baths, slides and beach parties.",
-     "placeName": "Boryeong, Chungcheongnam-do"
-    },
-    {
-     "langCode": "ja",
-     "name": "保寧（ポリョン）マッド（泥）フェスティバル",
-     "summary": "韓国を代表する夏祭り。泥風呂・泥すべり・ビーチパーティー。",
-     "placeName": "忠清南道 保寧"
-    },
-    {
-     "langCode": "th",
-     "name": "เทศกาลโคลนโพรยอง",
-     "summary": "เทศกาลฤดูร้อนชื่อดังที่สุดของเกาหลี เล่นโคลน สไลเดอร์ และปาร์ตี้ริมหาด",
-     "placeName": "โพรยอง ชุงชองใต้"
-    }
-   ]
-  },
-  {
    "externalId": "stdfest:4791000-2026년변산비치펍시즌2-20260724",
    "source": "STDFEST",
    "regionSlug": null,
@@ -1970,43 +1954,6 @@
    "tel": "063-580-4395",
    "homepage": "www.buan.go.kr/tour/index.buan",
    "translations": []
-  },
-  {
-   "externalId": "tourapi:2499947",
-   "source": "TOURAPI",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "성북구",
-   "name": "성북문화바캉스",
-   "summary": null,
-   "address": "서울특별시 성북구 정릉로 279 (정릉동)",
-   "lat": 37.6038254756,
-   "lng": 127.0132924339,
-   "startDate": "2026-07-25",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/88/4087988_image2_1.JPG",
-   "tel": "02-2038-4901",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "en",
-     "name": "Seongbuk Culture Vacance",
-     "summary": "Neighbourhood summer culture program in Seongbuk.",
-     "placeName": "Seongbuk-gu, Seoul"
-    },
-    {
-     "langCode": "ja",
-     "name": "城北（ソンブク）文化バカンス",
-     "summary": "城北区の夏の地域文化プログラム。",
-     "placeName": "ソウル 城北区"
-    },
-    {
-     "langCode": "th",
-     "name": "ซองบุกคัลเจอร์วาคานซ์",
-     "summary": "โปรแกรมวัฒนธรรมฤดูร้อนของย่านซองบุก",
-     "placeName": "ซองบุกกู กรุงโซล"
-    }
-   ]
   },
   {
    "externalId": "tourapi:2372235",
@@ -2044,24 +1991,6 @@
      "placeName": "ซาชอน คยองซังใต้"
     }
    ]
-  },
-  {
-   "externalId": "mcst:780d7ed9f216",
-   "source": "MCST",
-   "regionSlug": null,
-   "sido": "경상북도",
-   "sigungu": "영양군",
-   "name": "제3회 선바위퐁당퐁당물놀이축제",
-   "summary": "입암 선바위 관광지 일원 · 주민화합",
-   "address": "경상북도 영양군 입암 선바위 관광지 일원",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-07-25",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
   },
   {
    "externalId": "tourapi:4090201",
@@ -2138,24 +2067,6 @@
    ]
   },
   {
-   "externalId": "stdfest:5470000-거창국제연극제-20260731",
-   "source": "STDFEST",
-   "regionSlug": null,
-   "sido": "경상남도",
-   "sigungu": "거창군",
-   "name": "거창국제연극제",
-   "summary": "국내외 연극공연 등",
-   "address": "경상남도 거창군 은하리길 2",
-   "lat": 35.76092327,
-   "lng": 127.8336769,
-   "startDate": "2026-07-31",
-   "endDate": "2026-08-09",
-   "imageUrl": "http://www.culture.go.kr/upload/ucms/oneCltInfo/2026/202605/c2a5d26af3bc4296932c58ca4f6af410.png",
-   "tel": "055-940-8455",
-   "homepage": "https://www.kift.or.kr/",
-   "translations": []
-  },
-  {
    "externalId": "stdfest:4181000-춘천인형극제-20260731",
    "source": "STDFEST",
    "regionSlug": "chuncheon",
@@ -2191,24 +2102,6 @@
      "placeName": "ชุนชอน คังวอน"
     }
    ]
-  },
-  {
-   "externalId": "mcst:b7529c419fd8",
-   "source": "MCST",
-   "regionSlug": "andong",
-   "sido": "경상북도",
-   "sigungu": "안동시",
-   "name": "2026 안동국가유산 야행사업(월영야행)",
-   "summary": "월영교 일원 · 전통역사",
-   "address": "경상북도 안동시 월영교 일원",
-   "lat": 36.5767,
-   "lng": 128.7609,
-   "startDate": "2026-07-31",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
   },
   {
    "externalId": "tourapi:2828431",
@@ -2303,135 +2196,6 @@
    "translations": []
   },
   {
-   "externalId": "mcst:1de0530095ad",
-   "source": "MCST",
-   "regionSlug": null,
-   "sido": "충청남도",
-   "sigungu": "보령시",
-   "name": "용두솔밭어울림 축제",
-   "summary": "남포면 월전리 일원 · 주민화합",
-   "address": "충청남도 보령시 남포면 월전리 일원",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-01",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "tourapi:2539802",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "강원특별자치도",
-   "sigungu": "홍천군",
-   "name": "홍천강 별빛음악 맥주축제",
-   "summary": null,
-   "address": "강원특별자치도 홍천군 홍천읍 갈마곡리 501 도시산림공원 토리숲",
-   "lat": 37.689158,
-   "lng": 127.893014,
-   "startDate": "2026-08-05",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/16/4075616_image2_1.jpg",
-   "tel": "033-439-5800",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "en",
-     "name": "Hongcheon River Starlight Music & Beer Festival",
-     "summary": "Riverside beer festival with live music under the stars.",
-     "placeName": "Hongcheon, Gangwon"
-    },
-    {
-     "langCode": "ja",
-     "name": "洪川江 星あかり音楽ビール祭り",
-     "summary": "星空の下、川辺でライブ音楽とビールを楽しむ祭り。",
-     "placeName": "江原 洪川（ホンチョン）"
-    },
-    {
-     "langCode": "th",
-     "name": "เทศกาลเบียร์และดนตรีใต้แสงดาว ริมแม่น้ำฮงชอน",
-     "summary": "เทศกาลเบียร์ริมแม่น้ำ พร้อมดนตรีสดใต้แสงดาว",
-     "placeName": "ฮงชอน คังวอน"
-    }
-   ]
-  },
-  {
-   "externalId": "tourapi:2644679",
-   "source": "TOURAPI",
-   "regionSlug": "busan",
-   "sido": "부산광역시",
-   "sigungu": "해운대구",
-   "name": "2026 부산국제불교박람회",
-   "summary": null,
-   "address": "부산광역시 해운대구 APEC로 55 (우동)",
-   "lat": 35.1687048508,
-   "lng": 129.1354937071,
-   "startDate": "2026-08-06",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/92/4077792_image2_1.jpg",
-   "tel": "02-2231-2011",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "ja",
-     "name": "2026 釜山国際仏教博覧会",
-     "summary": "精進料理・工芸・瞑想プログラムなど仏教文化の博覧会。",
-     "placeName": "釜山 海雲台区"
-    },
-    {
-     "langCode": "en",
-     "name": "Busan International Buddhism Expo 2026",
-     "summary": "Buddhist culture expo — temple food, crafts and meditation programs.",
-     "placeName": "Haeundae-gu, Busan"
-    },
-    {
-     "langCode": "th",
-     "name": "งานแสดงพุทธศาสนานานาชาติปูซาน 2026",
-     "summary": "งานแสดงวัฒนธรรมพุทธ อาหารวัด งานฝีมือ และการทำสมาธิ",
-     "placeName": "แฮอุนแดกู ปูซาน"
-    }
-   ]
-  },
-  {
-   "externalId": "tourapi:2728529",
-   "source": "TOURAPI",
-   "regionSlug": "yeosu",
-   "sido": "전라남도",
-   "sigungu": "여수시",
-   "name": "제7회 섬의 날",
-   "summary": null,
-   "address": "전라남도 여수시 박람회길 1 (덕충동)",
-   "lat": 34.7509493146,
-   "lng": 127.7470910959,
-   "startDate": "2026-08-06",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/90/4081290_image2_1.jpg",
-   "tel": "02-2058-1070",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "en",
-     "name": "7th Island Day",
-     "summary": "National Island Day celebration hosted in Yeosu.",
-     "placeName": "Yeosu, Jeollanam-do"
-    },
-    {
-     "langCode": "ja",
-     "name": "第7回 島の日",
-     "summary": "麗水（ヨス）で開かれる国の記念日「島の日」の祝祭。",
-     "placeName": "全羅南道 麗水"
-    },
-    {
-     "langCode": "th",
-     "name": "วันเกาะแห่งชาติ ครั้งที่ 7",
-     "summary": "งานฉลองวันเกาะแห่งชาติ จัดที่ยอซู",
-     "placeName": "ยอซู ชอลลาใต้"
-    }
-   ]
-  },
-  {
    "externalId": "tourapi:142193",
    "source": "TOURAPI",
    "regionSlug": "seoul",
@@ -2506,24 +2270,6 @@
    ]
   },
   {
-   "externalId": "mcst:c3592cb4d4e8",
-   "source": "MCST",
-   "regionSlug": null,
-   "sido": "강원특별자치도",
-   "sigungu": "화천군",
-   "name": "제22회 화천토마토축제",
-   "summary": "사내면 문화마을 일원 · 지역특산물",
-   "address": "강원특별자치도 화천군 사내면 문화마을 일원",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-06",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
    "externalId": "tourapi:142080",
    "source": "TOURAPI",
    "regionSlug": "busan",
@@ -2561,43 +2307,6 @@
    ]
   },
   {
-   "externalId": "tourapi:4070865",
-   "source": "TOURAPI",
-   "regionSlug": null,
-   "sido": "경상남도",
-   "sigungu": "밀양시",
-   "name": "밀양 수퍼 페스티벌",
-   "summary": null,
-   "address": "경상남도 밀양시 삼문동 1-1번지 일원",
-   "lat": 35.489859,
-   "lng": 128.757295,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-09",
-   "imageUrl": "https://tong.visitkorea.or.kr/cms/resource/67/4070867_image2_1.JPG",
-   "tel": "055-359-5790",
-   "homepage": null,
-   "translations": [
-    {
-     "langCode": "en",
-     "name": "Miryang Super Festival",
-     "summary": "Summer music festival in Miryang.",
-     "placeName": "Miryang, Gyeongsangnam-do"
-    },
-    {
-     "langCode": "ja",
-     "name": "密陽（ミリャン）スーパーフェスティバル",
-     "summary": "密陽で開かれる夏の音楽フェス。",
-     "placeName": "慶尚南道 密陽"
-    },
-    {
-     "langCode": "th",
-     "name": "มิลยางซูเปอร์เฟสติวัล",
-     "summary": "เทศกาลดนตรีฤดูร้อนในเมืองมิลยาง",
-     "placeName": "มิลยาง คยองซังใต้"
-    }
-   ]
-  },
-  {
    "externalId": "stdfest:5480000-고스트파크축제-20260807",
    "source": "STDFEST",
    "regionSlug": null,
@@ -2612,24 +2321,6 @@
    "endDate": "2026-08-16",
    "imageUrl": null,
    "tel": "055-930-4697",
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "mcst:4a5b35affb72",
-   "source": "MCST",
-   "regionSlug": "daejeon",
-   "sido": "대전광역시",
-   "sigungu": "서구",
-   "name": "0시 축제와 함께하는 갑천썸머뮤직페스티벌(가칭)",
-   "summary": "갑천생태호수공원 · 주민화합",
-   "address": "대전광역시 서구 갑천생태호수공원",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
    "homepage": null,
    "translations": []
   },
@@ -2664,42 +2355,6 @@
    "lng": null,
    "startDate": "2026-08-07",
    "endDate": "2026-10-31",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "mcst:3f2e1b6a3c67",
-   "source": "MCST",
-   "regionSlug": "seoul",
-   "sido": "서울특별시",
-   "sigungu": "영등포구",
-   "name": "제3회 영등포구 여름축제 대피서",
-   "summary": "영등포공원 · 문화예술",
-   "address": "서울특별시 영등포구 영등포공원",
-   "lat": 37.515186,
-   "lng": 126.910807,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
-  },
-  {
-   "externalId": "mcst:3f7dae7aa889",
-   "source": "MCST",
-   "regionSlug": null,
-   "sido": "전북특별자치도",
-   "sigungu": "정읍시",
-   "name": "정읍 물빛축제",
-   "summary": "정읍 어린이 축구장 · 주민화합",
-   "address": "전북특별자치도 정읍시 정읍 어린이 축구장",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-07",
-   "endDate": "2026-08-09",
    "imageUrl": null,
    "tel": null,
    "homepage": null,
@@ -2815,24 +2470,6 @@
      "placeName": "ยองวอล คังวอน"
     }
    ]
-  },
-  {
-   "externalId": "mcst:d3e13854a8b1",
-   "source": "MCST",
-   "regionSlug": null,
-   "sido": "전북특별자치도",
-   "sigungu": "익산시",
-   "name": "제2회 익산 고구마(순) 축제",
-   "summary": "삼기면 로컬하나로마트 일원(예정) · 지역특산물",
-   "address": "전북특별자치도 익산시 삼기면 로컬하나로마트 일원(예정)",
-   "lat": null,
-   "lng": null,
-   "startDate": "2026-08-08",
-   "endDate": "2026-08-09",
-   "imageUrl": null,
-   "tel": null,
-   "homepage": null,
-   "translations": []
   },
   {
    "externalId": "mcst:f5d8a9d62692",
@@ -3036,12 +2673,6 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "Heritage Media Art, Ganghwa",
-     "summary": "Media-art projections on Ganghwa's heritage sites.",
-     "placeName": "Ganghwa, Incheon"
-    },
-    {
      "langCode": "ja",
      "name": "国家遺産メディアアート（江華）",
      "summary": "江華島の文化財を彩るメディアアート。",
@@ -3052,6 +2683,12 @@
      "name": "มีเดียอาร์ตมรดกวัฒนธรรม คังฮวา",
      "summary": "ฉายมีเดียอาร์ตบนโบราณสถานเกาะคังฮวา",
      "placeName": "คังฮวา อินชอน"
+    },
+    {
+     "langCode": "en",
+     "name": "Heritage Media Art, Ganghwa",
+     "summary": "Media-art projections on Ganghwa's heritage sites.",
+     "placeName": "Ganghwa, Incheon"
     }
    ]
   },
@@ -4061,16 +3698,16 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "Gangjin Summer Beer Festival",
-     "summary": "Summer nights with beer and music in Gangjin.",
-     "placeName": "Gangjin, Jeollanam-do"
-    },
-    {
      "langCode": "ja",
      "name": "康津（カンジン）夏ビール祭り",
      "summary": "康津の夏の夜、ビールと音楽。",
      "placeName": "全羅南道 康津"
+    },
+    {
+     "langCode": "en",
+     "name": "Gangjin Summer Beer Festival",
+     "summary": "Summer nights with beer and music in Gangjin.",
+     "placeName": "Gangjin, Jeollanam-do"
     },
     {
      "langCode": "th",
@@ -4813,12 +4450,6 @@
    "homepage": null,
    "translations": [
     {
-     "langCode": "en",
-     "name": "Jikji Culture Festival",
-     "summary": "Celebrating Jikji, the world's oldest movable metal type book.",
-     "placeName": "Cheongju, Chungcheongbuk-do"
-    },
-    {
      "langCode": "ja",
      "name": "直指（チクチ）文化祭",
      "summary": "世界最古の金属活字本「直指」を祝う祭り。",
@@ -4829,6 +4460,12 @@
      "name": "เทศกาลวัฒนธรรมจิกจี",
      "summary": "ฉลองจิกจี หนังสือตัวพิมพ์โลหะเก่าแก่ที่สุดในโลก",
      "placeName": "ชองจู ชุงชองเหนือ"
+    },
+    {
+     "langCode": "en",
+     "name": "Jikji Culture Festival",
+     "summary": "Celebrating Jikji, the world's oldest movable metal type book.",
+     "placeName": "Cheongju, Chungcheongbuk-do"
     }
    ]
   },

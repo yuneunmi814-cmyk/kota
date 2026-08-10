@@ -51,10 +51,10 @@ async function main() {
   const pubDir = resolve(import.meta.dirname, '../../web/public')
 
   // sitemap.xml — 축제 상세까지 전부 노출해야 축제명 검색으로 유입된다
-  const staticUrls = ['', '/festivals', '/search']
+  const staticUrls = ['', '/festivals/', '/search']
   const urls = [
     ...staticUrls.map((u) => ({ loc: `${site}${u}`, priority: u === '' ? '1.0' : '0.8' })),
-    ...festivals.map((f) => ({ loc: `${site}/festivals/${f.id}`, priority: '0.6' })),
+    ...festivals.map((f) => ({ loc: `${site}/festivals/${f.id}/`, priority: '0.6' })), // 트레일링 슬래시 = 프리렌더 실파일 경로
   ]
   const lastmod = new Date().toISOString().slice(0, 10)
   writeFileSync(

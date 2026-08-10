@@ -177,17 +177,23 @@ festivalsRouter.get(
   }),
 )
 
-// 반경 3km 주변 관광지(PostGIS) — id/externalId 상세가 공유
+// 주변 관광지(PostGIS) — id/externalId 상세가 공유.
+// 적응형 반경(QA F-2, 8/9): 3km에서 4곳 미만이면 10km로 확장 — 스팟 밀도가 지역마다
+// 달라 고정 3km로는 축제마다 0~8곳이 들쭉날쭉했다. 축제 여행 동선에서 10km는 차로 15분권.
 async function findNearbySpots(lat: number, lng: number) {
-  const rows = await prisma.$queryRaw<{ id: bigint; name: string; category: string; distance_m: number }[]>`
-    SELECT id, name, category,
-           ST_Distance(location, ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography) AS distance_m
-    FROM spots
-    WHERE status = 'ACTIVE' AND location IS NOT NULL
-      AND ST_DWithin(location, ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography, 3000)
-    ORDER BY distance_m ASC
-    LIMIT 8`
-  return rows.map((r) => ({ id: r.id, name: r.name, category: r.category, distanceM: Math.round(r.distance_m) }))
+  const query = async (radiusM: number) => {
+    const rows = await prisma.$queryRaw<{ id: bigint; name: string; category: string; distance_m: number }[]>`
+      SELECT id, name, category,
+             ST_Distance(location, ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography) AS distance_m
+      FROM spots
+      WHERE status = 'ACTIVE' AND location IS NOT NULL
+        AND ST_DWithin(location, ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography, ${radiusM})
+      ORDER BY distance_m ASC
+      LIMIT 8`
+    return rows.map((r) => ({ id: r.id, name: r.name, category: r.category, distanceM: Math.round(r.distance_m) }))
+  }
+  const near = await query(3000)
+  return near.length >= 4 ? near : query(10_000)
 }
 
 // 축제 상세(externalId 기준) — 웹의 안정 식별자 조회용.

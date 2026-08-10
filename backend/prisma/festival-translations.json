@@ -2121,6 +2121,78 @@
     "summary": "ทัวร์มรดกยามค่ำที่สวนยงฮึงกุง เกาะคังฮวา",
     "placeName": "คังฮวา อินชอน"
    }
+  },
+  {
+   "festivalName": "2025년 인천도시역사관 어린이 특별전",
+   "en": {
+    "name": "Incheon Urban History Museum: Children's Special Exhibition",
+    "summary": "Hands-on exhibition about how tidal flats became a city.",
+    "placeName": "Yeonsu-gu, Incheon"
+   },
+   "ja": {
+    "name": "仁川都市歴史館 こども特別展",
+    "summary": "干潟が都市になるまでを学ぶ体験型展示。",
+    "placeName": "仁川 延寿区"
+   },
+   "th": {
+    "name": "นิทรรศการพิเศษสำหรับเด็ก พิพิธภัณฑ์ประวัติศาสตร์เมืองอินชอน",
+    "summary": "นิทรรศการเรียนรู้ว่าหาดโคลนกลายเป็นเมืองได้อย่างไร",
+    "placeName": "ยอนซูกู อินชอน"
+   }
+  },
+  {
+   "festivalName": "당진 댄스 페스티벌",
+   "en": {
+    "name": "Dangjin Dance Festival",
+    "summary": "Street dance festival with performances and workshops.",
+    "placeName": "Dangjin, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "唐津（タンジン）ダンスフェスティバル",
+    "summary": "公演とワークショップのストリートダンス祭り。",
+    "placeName": "忠清南道 唐津"
+   },
+   "th": {
+    "name": "เทศกาลเต้นทังจิน",
+    "summary": "เทศกาลสตรีทแดนซ์ พร้อมการแสดงและเวิร์กช็อป",
+    "placeName": "ทังจิน ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "당진면천읍성축제",
+   "en": {
+    "name": "Dangjin Myeoncheon Eupseong Fortress Festival",
+    "summary": "Traditional festival at the Joseon-era Myeoncheon walled town.",
+    "placeName": "Dangjin, Chungcheongnam-do"
+   },
+   "ja": {
+    "name": "唐津 沔川邑城祭り",
+    "summary": "朝鮮時代の邑城・沔川で開かれる伝統祭り。",
+    "placeName": "忠清南道 唐津"
+   },
+   "th": {
+    "name": "เทศกาลป้อมมยอนชอนอึบซอง ทังจิน",
+    "summary": "เทศกาลดั้งเดิม ณ เมืองกำแพงสมัยโชซอน",
+    "placeName": "ทังจิน ชุงชองใต้"
+   }
+  },
+  {
+   "festivalName": "제주 성읍마을 정의현감 행차재현 및 전통민요공연 축제",
+   "en": {
+    "name": "Jeju Seongeup Village: Magistrate Procession & Folk Song Festival",
+    "summary": "Reenactment of the Joseon magistrate's procession with Jeju folk songs at Seongeup Folk Village.",
+    "placeName": "Seogwipo, Jeju"
+   },
+   "ja": {
+    "name": "済州 城邑村 県監行列再現・伝統民謡祭り",
+    "summary": "城邑民俗村で朝鮮時代の県監行列を再現し、済州民謡を公演。",
+    "placeName": "済州 西帰浦"
+   },
+   "th": {
+    "name": "หมู่บ้านซองอึบเชจู: ขบวนแห่ผู้ว่าและเพลงพื้นบ้าน",
+    "summary": "จำลองขบวนแห่ขุนนางโชซอนพร้อมเพลงพื้นบ้านเชจู ณ หมู่บ้านซองอึบ",
+    "placeName": "ซอกวีโพ เชจู"
+   }
   }
  ]
 }
