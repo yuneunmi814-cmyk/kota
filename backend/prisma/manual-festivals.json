@@ -263,6 +263,20 @@
    "tel": "041-943-5959",
    "homepage": "https://www.cheongyang.go.kr/",
    "note": "2026-08-06 시군구청·재단 사이트 수집(웹 조사). 공공 API 미등록 확인"
+  },
+  {
+   "externalId": "manual:gongju-yugu-hydrangea-2026",
+   "name": "유구색동수국정원꽃축제",
+   "summary": "중부권 최대 수국 정원(1만 6천 본)에서 열리는 공주시 여름 대표 꽃 축제 — 수국가요제·야간 달빛정원·색동아트마켓. 주최 공주시·유구읍",
+   "address": "충청남도 공주시 유구읍 창말길 44 일원 (유구색동수국정원·전통시장 주변)",
+   "lat": 36.5555,
+   "lng": 126.9544,
+   "startDate": "2026-06-26",
+   "endDate": "2026-06-28",
+   "tel": "041-840-2406",
+   "homepage": "https://www.gongju.go.kr/prog/tursmCn/tour/sub03_01_07/view.do?cntno=66",
+   "imageUrl": null,
+   "note": "2026-08-11 등록(TV 방영분 확인). 공사 구석구석(kfes)에는 있으나 TourAPI 축제 0건·문체부 예정분 미포함 — kfes 소스 탐사 계기. 매년 6월 말 개최, 2027 일정 공고 시 갱신"
   }
  ]
 }
