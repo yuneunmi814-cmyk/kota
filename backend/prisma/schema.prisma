@@ -350,6 +350,10 @@ model Festival {
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
 
+  /// 여행 목적 테마(food·nature·heritage·music·family·night) — 실제 여행 계획이
+  /// '목적 → 어디로' 순서라 지역 축과 별개의 탐색축이 필요(2026-08-12 팀 인사이트)
+  themes       String[]              @default([])
+
   region       Region?               @relation(fields: [regionId], references: [id])
   translations FestivalTranslation[]
 

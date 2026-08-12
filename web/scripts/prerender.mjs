@@ -119,6 +119,43 @@ for (const f of items) {
   written += 1
 }
 
+// ── 목적별 테마 랜딩 6개 ─────────────────────────────
+// "가족과 갈 만한 축제"·"먹거리 축제" 같은 검색어의 착지점(SEO) + AI 검색이 목적별로
+// 인용할 수 있는 구조(GEO). 8/12 팀 인사이트: 여행은 '목적'에서 시작한다.
+const THEME_META = {
+  food: { emoji: '🍽️', ko: '먹거리', desc: '지역 특산물과 먹거리를 즐기는 축제' },
+  nature: { emoji: '🌸', ko: '꽃·자연', desc: '꽃·바다·숲 등 자연을 즐기는 축제' },
+  heritage: { emoji: '🏯', ko: '역사·전통', desc: '문화유산과 전통을 만나는 축제' },
+  music: { emoji: '🎵', ko: '음악·공연', desc: '음악·공연·예술을 즐기는 축제' },
+  family: { emoji: '👨‍👩‍👧', ko: '가족·체험', desc: '아이와 함께 체험하기 좋은 축제' },
+  night: { emoji: '✨', ko: '야경·불빛', desc: '밤에 빛나는 야경·불빛 축제' },
+}
+for (const [key, meta] of Object.entries(THEME_META)) {
+  const list = items.filter((f) => (f.themes ?? []).includes(key))
+  const links = list
+    .slice(0, 60)
+    .map((f) => `        <li><a href="${SITE}/festivals/${f.id}/">${esc(f.name)}</a> — ${esc(f.sido ?? '')} ${esc(f.startDate)}~${esc(f.endDate)}</li>`)
+    .join('\n')
+  const title = `${meta.ko} 축제 ${list.length}건 · KOTA — Korea Festa`
+  const html = renderPage({
+    title,
+    description: `${meta.desc} — 전국 ${list.length}건의 일정·장소·길찾기를 4개 언어로.`,
+    url: `${SITE}/themes/${key}/`,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: `${meta.ko} 축제`,
+      description: meta.desc,
+      url: `${SITE}/themes/${key}/`,
+      isPartOf: { '@type': 'WebSite', name: 'KOTA — Korea Festa', url: SITE },
+    },
+    noscriptHtml: `      <h1>${meta.emoji} ${esc(meta.ko)} 축제 ${list.length}건</h1>\n      <p>${esc(meta.desc)}</p>\n      <ul>\n${links}\n      </ul>`,
+  })
+  mkdirSync(resolve(root, `dist/themes/${key}`), { recursive: true })
+  writeFileSync(resolve(root, `dist/themes/${key}/index.html`), html)
+  written += 1
+}
+
 // ── 홈 — 서비스 소개 + 상위 축제 링크 주입(기존 index.html 덮어쓰기) ─────────
 {
   const top = items.slice(0, 30)
@@ -127,7 +164,11 @@ for (const f of items) {
       <ul>
 ${top.map((f) => `        <li><a href="${SITE}/festivals/${f.id}/">${esc(f.name)}</a> (${esc(f.startDate)}~${esc(f.endDate)})</li>`).join('\n')}
       </ul>
-      <p><a href="${SITE}/festivals/">전체 축제 보기</a></p>`
+      <p><a href="${SITE}/festivals/">전체 축제 보기</a></p>
+      <h2>목적별로 찾기</h2>
+      <ul>
+${Object.entries(THEME_META).map(([k, m]) => `        <li><a href="${SITE}/themes/${k}/">${m.ko} 축제</a> — ${m.desc}</li>`).join('\n')}
+      </ul>`
   const html = renderPage({
     title: 'KOTA — Korea Festa · 내 여행지 주변 축제',
     description: `내 여행지 주변 한국 지역축제 ${items.length}건 — 일정·장소·길찾기·주변 관광지를 4개 언어로. Discover Korean local festivals near your destination.`,

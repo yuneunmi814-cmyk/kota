@@ -13,7 +13,7 @@ async function main() {
     orderBy: [{ startDate: 'asc' }, { id: 'asc' }],
     select: {
       externalId: true, source: true, sido: true, sigungu: true, name: true, summary: true, address: true,
-      lat: true, lng: true, startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true,
+      lat: true, lng: true, startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, themes: true,
       region: { select: { slug: true } },
       translations: { select: { langCode: true, name: true, summary: true, placeName: true } },
     },
@@ -22,7 +22,7 @@ async function main() {
     externalId: f.externalId, source: f.source, regionSlug: f.region?.slug ?? null, sido: f.sido, sigungu: f.sigungu,
     name: f.name, summary: f.summary, address: f.address, lat: f.lat, lng: f.lng,
     startDate: f.startDate.toISOString().slice(0, 10), endDate: f.endDate.toISOString().slice(0, 10),
-    imageUrl: f.imageUrl, tel: f.tel, homepage: f.homepage,
+    imageUrl: f.imageUrl, tel: f.tel, homepage: f.homepage, themes: f.themes,
     translations: f.translations.map((t) => ({ langCode: t.langCode, name: t.name, summary: t.summary, placeName: t.placeName })),
   }))
   writeFileSync('prisma/seed-festivals.json', JSON.stringify({ exportedAt: new Date().toISOString().slice(0, 10), items }, null, 1))

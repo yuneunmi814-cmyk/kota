@@ -2,8 +2,18 @@
 
 > Location-based Korean local festival travel packs for foreign travelers. 718 ongoing/upcoming festivals across Korea with dates, venues, directions and nearby attractions, in Korean, English, Japanese and Thai.
 
+## Browse by travel purpose (theme)
+Travelers usually start from *purpose* ("who with, what to do") before choosing a region.
+Each theme page lists every matching festival nationwide:
+- Food (먹거리) — 146 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/food
+- Flowers & Nature (꽃·자연) — 306 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/nature
+- Heritage (역사·전통) — 123 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/heritage
+- Music & Shows (음악·공연) — 349 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/music
+- Family (가족·체험) — 172 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/family
+- Night Lights (야경·불빛) — 100 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/night
+
 ## What this site offers
-- Festival list with region filter: https://yuneunmi814-cmyk.github.io/kota/festivals
+- Festival list with region + theme filter: https://yuneunmi814-cmyk.github.io/kota/festivals
 - Festival detail (dates, venue, phone, directions, nearby spots within 3km): https://yuneunmi814-cmyk.github.io/kota/festivals/{id}
 - Unified search (festival/region/attraction names): https://yuneunmi814-cmyk.github.io/kota/search?q=...
 - UI and festival content localized in ko/en/ja/th (language switch in header)
@@ -11,6 +21,8 @@
 ## Data sources
 - Korea Tourism Organization TourAPI (searchFestival2, areaBasedList2)
 - Korea nationwide culture festival standard open data (data.go.kr)
+- Ministry of Culture, Sports and Tourism annual regional festival plan
+- KTO 'Korea Tourism' (visitkorea) curated festival catalogue
 - Manually curated local festivals not present in any public API (verified on site)
 - Updated weekly via automated sync (2026-08-12)
 

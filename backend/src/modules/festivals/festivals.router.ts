@@ -11,6 +11,7 @@ export const festivalsRouter = Router()
 export const festivalSelect = {
   id: true, name: true, summary: true, address: true, lat: true, lng: true,
   startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true,
+  themes: true,
   region: { select: { id: true, name: true, slug: true, visitorScore: true } },
   translations: { select: { langCode: true, name: true, summary: true, placeName: true } },
 } satisfies Prisma.FestivalSelect
@@ -53,6 +54,7 @@ export function toCard(f: FestivalForCard, today: Date, lang: FestivalLang = 'ko
     homepage: f.homepage,
     sido: f.sido,
     sigungu: f.sigungu,
+    themes: f.themes,
     region: regionCard,
     popularity: f.region?.visitorScore ?? 0, // 지역 방문자수(관광 빅데이터) 기반 인기 프록시(미매칭=0)
     // 진행중(ongoing) / 예정(upcoming) / 종료(ended) — KST 오늘 기준
@@ -87,6 +89,8 @@ festivalsRouter.get(
     const cursor = parseFestivalCursor(req.query.cursor)
     const regionSlug = typeof req.query.region === 'string' && req.query.region !== '' ? req.query.region : undefined
     const sido = typeof req.query.sido === 'string' && req.query.sido !== '' ? req.query.sido : undefined
+    // 여행 목적 테마 필터 (?theme=food) — 지역과 별개의 탐색축(8/12 팀 인사이트)
+    const theme = typeof req.query.theme === 'string' && req.query.theme !== '' ? req.query.theme : undefined
     const from = parseDateParam(req.query.from, 'from')
     const to = parseDateParam(req.query.to, 'to')
     const includeEnded = req.query.includeEnded === '1' || req.query.includeEnded === 'true'
@@ -95,6 +99,7 @@ festivalsRouter.get(
 
     const where: Prisma.FestivalWhereInput = {
       ...(sido ? { sido } : {}),
+      ...(theme ? { themes: { has: theme } } : {}),
       ...(regionSlug ? { region: { slug: regionSlug } } : {}),
       // from~to 기간과 겹치는 축제 (시작 ≤ to && 종료 ≥ from)
       ...(from ? { endDate: { gte: from } } : includeEnded ? {} : { endDate: { gte: today } }),

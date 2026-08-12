@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { prisma } from '../src/lib/prisma.js'
+import { THEMES, THEME_META } from '../src/modules/festivals/themes.js'
 
 // 코타 웹 정적 데이터 베이크 — API 서버 없이도(GitHub Pages 등) 지역·축제가 보이도록
 // DB 현재 상태를 web/public/data/*.json 으로 내보낸다. (유튜브 seed-videos.json 베이크와 같은 패턴)
@@ -22,7 +23,7 @@ async function main() {
     orderBy: [{ startDate: 'asc' }, { id: 'asc' }],
     select: {
       id: true, externalId: true, name: true, summary: true, address: true, lat: true, lng: true,
-      startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true,
+      startDate: true, endDate: true, imageUrl: true, tel: true, homepage: true, sido: true, sigungu: true, themes: true,
       region: { select: { id: true, name: true, slug: true, visitorScore: true } },
       translations: { select: { langCode: true, name: true, summary: true, placeName: true } },
     },
@@ -51,7 +52,7 @@ async function main() {
   const pubDir = resolve(import.meta.dirname, '../../web/public')
 
   // sitemap.xml — 축제 상세까지 전부 노출해야 축제명 검색으로 유입된다
-  const staticUrls = ['', '/festivals/', '/search']
+  const staticUrls = ['', '/festivals/', '/search', ...THEMES.map((t) => `/themes/${t}/`)] // 테마 = 목적 기반 검색어 착지점
   const urls = [
     ...staticUrls.map((u) => ({ loc: `${site}${u}`, priority: u === '' ? '1.0' : '0.8' })),
     ...festivals.map((f) => ({ loc: `${site}/festivals/${f.id}/`, priority: '0.6' })), // 트레일링 슬래시 = 프리렌더 실파일 경로
@@ -71,6 +72,8 @@ async function main() {
   )
 
   // llms.txt — AI 검색·어시스턴트용 사이트 요약(GEO 표준 제안 형식)
+  const themeCounts = new Map<string, number>()
+  for (const f of festivals) for (const t of f.themes) themeCounts.set(t, (themeCounts.get(t) ?? 0) + 1)
   const sidoCounts = new Map<string, number>()
   for (const f of festivals) if (f.sido) sidoCounts.set(f.sido, (sidoCounts.get(f.sido) ?? 0) + 1)
   const topSidos = [...sidoCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8)
@@ -80,8 +83,13 @@ async function main() {
 
 > Location-based Korean local festival travel packs for foreign travelers. ${festivals.length} ongoing/upcoming festivals across Korea with dates, venues, directions and nearby attractions, in Korean, English, Japanese and Thai.
 
+## Browse by travel purpose (theme)
+Travelers usually start from *purpose* ("who with, what to do") before choosing a region.
+Each theme page lists every matching festival nationwide:
+${THEMES.map((t) => `- ${THEME_META[t].en} (${THEME_META[t].ko}) — ${themeCounts.get(t) ?? 0} festivals: ${site}/themes/${t}`).join('\n')}
+
 ## What this site offers
-- Festival list with region filter: ${site}/festivals
+- Festival list with region + theme filter: ${site}/festivals
 - Festival detail (dates, venue, phone, directions, nearby spots within 3km): ${site}/festivals/{id}
 - Unified search (festival/region/attraction names): ${site}/search?q=...
 - UI and festival content localized in ko/en/ja/th (language switch in header)
@@ -89,6 +97,8 @@ async function main() {
 ## Data sources
 - Korea Tourism Organization TourAPI (searchFestival2, areaBasedList2)
 - Korea nationwide culture festival standard open data (data.go.kr)
+- Ministry of Culture, Sports and Tourism annual regional festival plan
+- KTO 'Korea Tourism' (visitkorea) curated festival catalogue
 - Manually curated local festivals not present in any public API (verified on site)
 - Updated weekly via automated sync (${lastmod})
 

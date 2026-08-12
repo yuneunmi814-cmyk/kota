@@ -41,6 +41,8 @@ export type Festival = {
   homepage?: string | null
   sido?: string | null
   sigungu?: string | null
+  /** 여행 목적 테마(food·nature·heritage·music·family·night) */
+  themes?: string[]
   // 큐레이션 지역 매칭 시 id·slug 존재, 미매칭(전국) 축제는 null (name은 시·군·구 표시)
   region: { id: string | null; name: string; slug: string | null }
   popularity: number // 지역 방문자수(관광 빅데이터) 기반 인기 프록시

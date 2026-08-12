@@ -34,6 +34,7 @@ export default function FestivalRail({
   page = 1,
   onPageChange,
   wishOnly = false,
+  theme,
 }: {
   coords: Coords | null
   /** 필터할 시·도명 배열(권역=여러 개, 단일 시·도=1개). null이면 전국 전체 */
@@ -44,6 +45,8 @@ export default function FestivalRail({
   onPageChange?: (p: number) => void
   /** 찜한 축제만 (8/12 팀 결정 — 찜 1단계) */
   wishOnly?: boolean
+  /** 여행 목적 테마 필터 (food·nature…) */
+  theme?: string | null
 }) {
   const t = useT()
   const { lang } = useLang()
@@ -76,6 +79,7 @@ export default function FestivalRail({
       const keys = wishedKeys()
       filtered = filtered.filter((f) => keys.has(wishKey(f)))
     }
+    if (theme) filtered = filtered.filter((f) => f.themes?.includes(theme))
     // BUG-09(8/10): 거리 표시는 거리순일 때만 — 다른 정렬로 돌아오면 최초 화면과 동일해야 한다
     const withDistance =
       sort === 'distance' && coords
@@ -89,7 +93,7 @@ export default function FestivalRail({
     }
     // 시작일순: 기간제 축제 먼저(시작일순), 상시축제(1년 이상)는 뒤로 — F-4 가안
     return [...withDistance].sort((a, b) => Number(isAlwaysOn(a)) - Number(isAlwaysOn(b)))
-  }, [all, filterSidos, coords, sort, wishOnly, wishVer])
+  }, [all, filterSidos, coords, sort, wishOnly, wishVer, theme])
 
   if (all.length === 0) return null
   if (list.length === 0) {

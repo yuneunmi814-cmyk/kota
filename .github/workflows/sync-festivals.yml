@@ -89,6 +89,12 @@ jobs:
           TOURAPI_SERVICE_KEY: ${{ secrets.TOURAPI_SERVICE_KEY }}
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/kota_sync
         run: npm run sync:images
+      # 여행 목적 테마 분류(먹거리·꽃자연·역사·음악·가족·야경) — 목적 기반 탐색·SEO 랜딩용
+      - name: Classify themes
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/kota_sync
+        run: npm run classify:themes
 
       - name: 지역 재분류·중복 정리
         working-directory: backend

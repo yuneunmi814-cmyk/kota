@@ -30,6 +30,7 @@ interface BakedFestival {
   imageUrl: string | null
   tel: string | null
   homepage: string | null
+  themes?: string[]
   translations?: { langCode: string; name: string; summary: string | null; placeName: string | null }[]
 }
 

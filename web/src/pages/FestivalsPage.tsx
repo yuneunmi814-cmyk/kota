@@ -5,6 +5,8 @@ import { setPageMeta } from '../seo'
 import RegionBanner, { type RegionSel } from '../components/RegionBanner'
 import FestivalRail, { type FestivalSort } from '../components/FestivalRail'
 import { FEATURES } from '../features'
+import { THEMES, THEME_META, themeLabel } from '../themes'
+import { useLang } from '../i18n'
 import { REGION_GROUPS } from '../regionGroups'
 import { useT } from '../i18n'
 
@@ -15,12 +17,14 @@ export default function FestivalsPage() {
     setPageMeta('전국 지역축제', '지금 진행 중이거나 곧 열리는 한국 지역축제를 권역·시·도별로 찾아보세요. Find local festivals across Korea by region and date.')
   }, [])
   const t = useT()
+  const { lang } = useLang()
   const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const sido = params.get('sido')
   const group = params.get('group')
   const destName = params.get('dest')
   const wishOnly = params.get('wish') === '1'
+  const theme = params.get('theme')
   const page = Math.max(1, Number(params.get('page')) || 1)
   const [q, setQ] = useState('')
   const [locating, setLocating] = useState(false)
@@ -162,6 +166,21 @@ export default function FestivalsPage() {
           </button>
         </div>
 
+        {/* 목적(테마) 필터 — 8/12 팀 인사이트: 여행은 '목적'에서 시작한다 */}
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
+          {THEMES.map((k) => (
+            <button
+              key={k}
+              onClick={() => update((next) => { if (theme === k) next.delete('theme'); else next.set('theme', k); next.delete('page') })}
+              className={`px-4 py-1.5 rounded-full border text-[13px] font-bold transition ${
+                theme === k ? 'bg-green border-green text-white' : 'bg-white border-gray-300 text-green hover:border-green'
+              }`}
+            >
+              {THEME_META[k].emoji} {themeLabel(k, lang)}
+            </button>
+          ))}
+        </div>
+
         {/* F-3(8/10): 인기순 산정 기준 안내 — 기준이 화면에 없다는 QA 지적 반영 */}
         {sort === 'popularity' && (
           <p className="-mt-4 mb-6 text-[12px] text-gray-400">{t('sort.popularityHint')}</p>
@@ -174,6 +193,7 @@ export default function FestivalsPage() {
         sort={sort}
         hideTitle
         wishOnly={wishOnly}
+        theme={theme}
         page={page}
         onPageChange={(p) => {
           update((next) => next.set('page', String(p)))

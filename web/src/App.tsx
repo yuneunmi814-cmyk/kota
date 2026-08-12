@@ -7,6 +7,7 @@ import SearchPage from './pages/SearchPage'
 import FestivalsPage from './pages/FestivalsPage'
 import FestivalDetailPage from './pages/FestivalDetailPage'
 import LegalPage from './pages/LegalPage'
+import ThemePage from './pages/ThemePage'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/festivals" element={<FestivalsPage />} />
           <Route path="/festivals/:id" element={<FestivalDetailPage />} />
+          <Route path="/themes/:key" element={<ThemePage />} />
           <Route path="/privacy" element={<LegalPage kind="privacy" />} />
           <Route path="/terms" element={<LegalPage kind="terms" />} />
           <Route path="/disclaimer" element={<LegalPage kind="disclaimer" />} />
