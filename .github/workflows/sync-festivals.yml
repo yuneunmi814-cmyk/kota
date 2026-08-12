@@ -100,6 +100,16 @@ jobs:
         working-directory: backend
         run: npm run fix:festival-regions
 
+      # 다국어(en/ja/th) — 손번역을 먼저 얹고, 남은 축제는 사전+음역 엔진이 전량 채운다.
+      # 이 단계가 없으면 매주 새로 들어온 축제가 계속 미번역으로 남는다.
+      - name: 축제 다국어 번역
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/kota_sync
+        run: |
+          npm run sync:translations
+          npm run translate:festivals
+
       # 종료된 축제는 베이크·정적 데이터에서 제외(용량·신선도)
       - name: 베이크 + 웹 정적 데이터 내보내기
         working-directory: backend

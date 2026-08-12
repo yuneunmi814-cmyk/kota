@@ -96,7 +96,10 @@ export default function FestivalDetailPage() {
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-green/5">
                 <span className="text-[40px]" aria-hidden="true">🎪</span>
-                <span className="text-[13px] font-bold text-green/50">{festival.sigungu ?? festival.sido ?? 'KOTA'}</span>
+                {/* 번역된 지명 우선 — 원문 sigungu는 외국어 화면에 한국어를 노출시킨다 */}
+                <span className="text-[13px] font-bold text-green/50">
+                  {festival.placeName ?? (festival.sido ? sidoLabel(festival.sido, lang) : 'KOTA')}
+                </span>
               </div>
             )}
           </div>

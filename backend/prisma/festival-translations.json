@@ -2193,6 +2193,450 @@
     "summary": "จำลองขบวนแห่ขุนนางโชซอนพร้อมเพลงพื้นบ้านเชจู ณ หมู่บ้านซองอึบ",
     "placeName": "ซอกวีโพ เชจู"
    }
+  },
+  {
+   "festivalName": "바람 불어 좋은 날, 판교에서",
+   "en": {
+    "name": "A Fine Windy Day in Pangyo"
+   },
+   "ja": {
+    "name": "風薫る日、板橋（パンギョ）で"
+   },
+   "th": {
+    "name": "วันลมสดใส ที่พันกโย"
+   }
+  },
+  {
+   "festivalName": "제4회 중앙시장 주말축제 야시장 동구夜놀자",
+   "en": {
+    "name": "4th Jungang Market Weekend Night Market — Dong-gu Night Play"
+   },
+   "ja": {
+    "name": "第4回 中央市場 週末夜市 — 東区・夜遊び"
+   },
+   "th": {
+    "name": "ตลาดกลางคืนสุดสัปดาห์ ตลาดจุงอัง ครั้งที่ 4"
+   }
+  },
+  {
+   "festivalName": "제11회 백암 백중문화제",
+   "en": {
+    "name": "11th Baegam Baekjung Festival (Midsummer Farmers' Day)"
+   },
+   "ja": {
+    "name": "第11回 白岩 百中文化祭"
+   },
+   "th": {
+    "name": "เทศกาลแพ็กจุง แพ็กอัม ครั้งที่ 11"
+   }
+  },
+  {
+   "festivalName": "유라리 건맥축제",
+   "en": {
+    "name": "Yurari Dried Seafood & Beer Festival"
+   },
+   "ja": {
+    "name": "ユラリ 干物＆ビール祭り"
+   },
+   "th": {
+    "name": "เทศกาลอาหารทะเลแห้งและเบียร์ ยูรารี"
+   }
+  },
+  {
+   "festivalName": "제4회 가능야식해",
+   "en": {
+    "name": "4th Ganeung Late-Night Food Festival"
+   },
+   "ja": {
+    "name": "第4回 可能洞 夜食フェス"
+   },
+   "th": {
+    "name": "เทศกาลอาหารดึก คานึง ครั้งที่ 4"
+   }
+  },
+  {
+   "festivalName": "제3회 허준인트로 축제",
+   "en": {
+    "name": "3rd Heo Jun Intro Festival"
+   },
+   "ja": {
+    "name": "第3回 許浚（ホジュン）イントロ祭り"
+   },
+   "th": {
+    "name": "เทศกาลฮอจุน ครั้งที่ 3"
+   }
+  },
+  {
+   "festivalName": "동해무릉제",
+   "en": {
+    "name": "Donghae Mureung Valley Festival"
+   },
+   "ja": {
+    "name": "東海 武陵祭"
+   },
+   "th": {
+    "name": "เทศกาลมูรึง ทงแฮ"
+   }
+  },
+  {
+   "festivalName": "제8회 묵호등대 논골담길 축제",
+   "en": {
+    "name": "8th Mukho Lighthouse Nongoldam-gil Mural Alley Festival"
+   },
+   "ja": {
+    "name": "第8回 墨湖灯台 ノンゴルダム通り祭り"
+   },
+   "th": {
+    "name": "เทศกาลตรอกภาพวาดนงกลดัม ประภาคารมุกโฮ ครั้งที่ 8"
+   }
+  },
+  {
+   "festivalName": "제5회 정자동 놀터축제 및 작품발표회",
+   "en": {
+    "name": "5th Jeongja-dong Playground Festival & Showcase"
+   },
+   "ja": {
+    "name": "第5回 亭子洞 遊び場祭り・作品発表会"
+   },
+   "th": {
+    "name": "เทศกาลลานเล่นชองจาดง ครั้งที่ 5"
+   }
+  },
+  {
+   "festivalName": "태봉제",
+   "en": {
+    "name": "Taebong Festival"
+   },
+   "ja": {
+    "name": "泰封祭"
+   },
+   "th": {
+    "name": "เทศกาลแทบง"
+   }
+  },
+  {
+   "festivalName": "2026 모두모여모란",
+   "en": {
+    "name": "2026 Gather at Moran"
+   },
+   "ja": {
+    "name": "2026 みんな集まれ牡丹（モラン）"
+   },
+   "th": {
+    "name": "2026 รวมพลที่โมรัน"
+   }
+  },
+  {
+   "festivalName": "식품제조 홍보 및 판매관",
+   "en": {
+    "name": "Food Manufacturing Promotion & Sales Hall"
+   },
+   "ja": {
+    "name": "食品製造 広報・販売館"
+   },
+   "th": {
+    "name": "ศูนย์ประชาสัมพันธ์และจำหน่ายอาหาร"
+   }
+  },
+  {
+   "festivalName": "심훈상록문화제",
+   "en": {
+    "name": "Sim Hun Sangnoksu Cultural Festival"
+   },
+   "ja": {
+    "name": "沈熏 常緑文化祭"
+   },
+   "th": {
+    "name": "เทศกาลวัฒนธรรมชิมฮุน ซังนก"
+   }
+  },
+  {
+   "festivalName": "제2회 북내 삼색별미축제",
+   "en": {
+    "name": "2nd Buknae Three-Flavor Delicacy Festival"
+   },
+   "ja": {
+    "name": "第2回 北内 三色珍味祭り"
+   },
+   "th": {
+    "name": "เทศกาลอาหารเลิศรสสามสี พุกแน ครั้งที่ 2"
+   }
+  },
+  {
+   "festivalName": "제34회 흥부제",
+   "en": {
+    "name": "34th Heungbu Festival"
+   },
+   "ja": {
+    "name": "第34回 興夫祭"
+   },
+   "th": {
+    "name": "เทศกาลฮึงบู ครั้งที่ 34"
+   }
+  },
+  {
+   "festivalName": "2026 행주가 예술이야",
+   "en": {
+    "name": "2026 Haengju is Art"
+   },
+   "ja": {
+    "name": "2026 幸州はアート"
+   },
+   "th": {
+    "name": "2026 แฮงจูคือศิลปะ"
+   }
+  },
+  {
+   "festivalName": "웰컴투신관동",
+   "en": {
+    "name": "Welcome to Singwan-dong"
+   },
+   "ja": {
+    "name": "ウェルカム・トゥ 新官洞"
+   },
+   "th": {
+    "name": "ยินดีต้อนรับสู่ ชินกวันดง"
+   }
+  },
+  {
+   "festivalName": "달구벌목민관축제",
+   "en": {
+    "name": "Dalgubeol Magistrate Festival"
+   },
+   "ja": {
+    "name": "達句伐 牧民官祭り"
+   },
+   "th": {
+    "name": "เทศกาลผู้ว่าราชการทัลกูบอล"
+   }
+  },
+  {
+   "festivalName": "추사추모전국휘호대회",
+   "en": {
+    "name": "Chusa Kim Jeong-hui Memorial National Calligraphy Competition"
+   },
+   "ja": {
+    "name": "秋史追慕 全国揮毫大会"
+   },
+   "th": {
+    "name": "การแข่งขันอักษรวิจิตรระดับชาติ รำลึกชูซา"
+   }
+  },
+  {
+   "festivalName": "광주 펫크닉",
+   "en": {
+    "name": "Gwangju Petnic — Pet Picnic"
+   },
+   "ja": {
+    "name": "光州 ペットピクニック"
+   },
+   "th": {
+    "name": "ควังจู เพ็ตนิค ปิกนิกสัตว์เลี้ยง"
+   }
+  },
+  {
+   "festivalName": "미소&행복 구민축제",
+   "en": {
+    "name": "Smile & Happiness District Festival"
+   },
+   "ja": {
+    "name": "笑顔＆幸せ 区民祭り"
+   },
+   "th": {
+    "name": "เทศกาลรอยยิ้มและความสุขของชาวเขต"
+   }
+  },
+  {
+   "festivalName": "고창모양성제",
+   "en": {
+    "name": "Gochang Moyangseong Fortress Festival"
+   },
+   "ja": {
+    "name": "高敞 牟陽城祭"
+   },
+   "th": {
+    "name": "เทศกาลป้อมโมยังซอง โคชัง"
+   }
+  },
+  {
+   "festivalName": "제41회 양록제",
+   "en": {
+    "name": "41st Yangnok Festival"
+   },
+   "ja": {
+    "name": "第41回 ヤンノク祭"
+   },
+   "th": {
+    "name": "เทศกาลยังนก ครั้งที่ 41"
+   }
+  },
+  {
+   "festivalName": "제37회 화도진축제",
+   "en": {
+    "name": "37th Hwadojin Fortress Festival"
+   },
+   "ja": {
+    "name": "第37回 花島鎮祭り"
+   },
+   "th": {
+    "name": "เทศกาลป้อมฮวาโดจิน ครั้งที่ 37"
+   }
+  },
+  {
+   "festivalName": "제16회 혼인지 축제",
+   "en": {
+    "name": "16th Honinji Pond Festival"
+   },
+   "ja": {
+    "name": "第16回 婚姻址祭り"
+   },
+   "th": {
+    "name": "เทศกาลสระโฮนินจี ครั้งที่ 16"
+   }
+  },
+  {
+   "festivalName": "연오랑세오녀 축제",
+   "en": {
+    "name": "Yeono-rang & Seo-nyeo Legend Festival"
+   },
+   "ja": {
+    "name": "延烏郎・細烏女祭り"
+   },
+   "th": {
+    "name": "เทศกาลตำนานยอนโอรัง เซโอนยอ"
+   }
+  },
+  {
+   "festivalName": "달구벌목민관 부임마을축제",
+   "en": {
+    "name": "Dalgubeol Magistrate Arrival Village Festival"
+   },
+   "ja": {
+    "name": "達句伐 牧民官 赴任村祭り"
+   },
+   "th": {
+    "name": "เทศกาลหมู่บ้านต้อนรับผู้ว่าฯ ทัลกูบอล"
+   }
+  },
+  {
+   "festivalName": "제7회 김홍도축제",
+   "en": {
+    "name": "7th Kim Hong-do Festival"
+   },
+   "ja": {
+    "name": "第7回 金弘道祭り"
+   },
+   "th": {
+    "name": "เทศกาลคิมฮงโด ครั้งที่ 7"
+   }
+  },
+  {
+   "festivalName": "놀궁리축제",
+   "en": {
+    "name": "Nolgungri Play Festival"
+   },
+   "ja": {
+    "name": "ノルグンリ 遊び祭り"
+   },
+   "th": {
+    "name": "เทศกาลการละเล่นนลกุงรี"
+   }
+  },
+  {
+   "festivalName": "하추리도리깨축제",
+   "en": {
+    "name": "Hachuri Flail Threshing Festival"
+   },
+   "ja": {
+    "name": "ハチュリ 唐棹（からさお）祭り"
+   },
+   "th": {
+    "name": "เทศกาลนวดข้าวฮาชูรี"
+   }
+  },
+  {
+   "festivalName": "백양사 고불매 선매향 축제",
+   "en": {
+    "name": "Baegyangsa Gobulmae Ancient Plum Blossom Festival"
+   },
+   "ja": {
+    "name": "白羊寺 古仏梅 梅香祭り"
+   },
+   "th": {
+    "name": "เทศกาลดอกบ๊วยโบราณโคบุลแม วัดแพ็กยังซา"
+   }
+  },
+  {
+   "festivalName": "황룡면 뱃나드리 축제",
+   "en": {
+    "name": "Hwangnyong Boat Outing Festival"
+   },
+   "ja": {
+    "name": "黄龍面 舟遊び祭り"
+   },
+   "th": {
+    "name": "เทศกาลล่องเรือฮวังรยง"
+   }
+  },
+  {
+   "festivalName": "제4회 김제 자원순화 새로보미축제",
+   "en": {
+    "name": "4th Gimje Recycling 'Saerobomi' Festival"
+   },
+   "ja": {
+    "name": "第4回 金堤 資源循環 セロボミ祭り"
+   },
+   "th": {
+    "name": "เทศกาลรีไซเคิลเซโรโบมี คิมเจ ครั้งที่ 4"
+   }
+  },
+  {
+   "festivalName": "2026 아티언스 대전",
+   "en": {
+    "name": "2026 Artience Daejeon — Art meets Science"
+   },
+   "ja": {
+    "name": "2026 アーティエンス大田"
+   },
+   "th": {
+    "name": "2026 อาร์ทเทียนซ์ แทจอน"
+   }
+  },
+  {
+   "festivalName": "마곡위시빌리지",
+   "en": {
+    "name": "Magok Wish Village"
+   },
+   "ja": {
+    "name": "麻谷ウィッシュビレッジ"
+   },
+   "th": {
+    "name": "หมู่บ้านวิช มาก็อก"
+   }
+  },
+  {
+   "festivalName": "햇살마을 구상나무트리 축제",
+   "en": {
+    "name": "Haetsal Village Korean Fir Tree Festival"
+   },
+   "ja": {
+    "name": "ヘッサル村 チョウセンシラベ ツリー祭り"
+   },
+   "th": {
+    "name": "เทศกาลต้นสนเกาหลี หมู่บ้านแฮดซัล"
+   }
+  },
+  {
+   "festivalName": "혁신도시 미리내야행",
+   "en": {
+    "name": "Innovation City Mirinae Milky Way Night Tour"
+   },
+   "ja": {
+    "name": "革新都市 ミリネ（天の川）ナイトツアー"
+   },
+   "th": {
+    "name": "ทัวร์กลางคืนทางช้างเผือกมีรีแน เมืองนวัตกรรม"
+   }
   }
  ]
 }

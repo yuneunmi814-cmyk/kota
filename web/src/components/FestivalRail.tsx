@@ -146,7 +146,10 @@ export default function FestivalRail({
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-green/5 border-b border-green/10">
                   <span className="text-[22px] leading-none" aria-hidden="true">🎪</span>
-                  <span className="text-[11px] font-bold text-green/50">{f.sigungu ?? f.sido ?? 'KOTA'}</span>
+                  {/* 번역된 지명을 우선 쓴다 — 원문 sigungu를 그대로 쓰면 일본어·태국어 화면에 한국어가 샌다 */}
+                  <span className="text-[11px] font-bold text-green/50">
+                    {f.placeName ?? (f.sido ? sidoLabel(f.sido, lang) : 'KOTA')}
+                  </span>
                 </div>
               )}
             </div>

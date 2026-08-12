@@ -35,7 +35,8 @@
     "sync:visitors": "tsx scripts/sync-enrich.ts visitors",
     "sync:tourism": "tsx scripts/sync-tourism.ts",
     "sync:youtube": "tsx scripts/sync-youtube.ts",
-    "purge": "tsx scripts/purge.ts"
+    "purge": "tsx scripts/purge.ts",
+    "translate:festivals": "tsx scripts/translate-festivals.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
