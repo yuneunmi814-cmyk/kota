@@ -24,6 +24,7 @@
     "sync:manual": "tsx scripts/sync-manual-festivals.ts",
     "sync:translations": "tsx scripts/sync-translations.ts",
     "sync:mcst": "tsx scripts/sync-mcst-festivals.ts",
+    "sync:kfes": "tsx scripts/sync-kfes-festivals.ts",
     "geocode:festivals": "tsx scripts/geocode-festivals.ts",
     "sync:images": "tsx scripts/sync-kcisa-images.ts",
     "export:web": "tsx scripts/export-web-data.ts",
