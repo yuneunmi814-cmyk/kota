@@ -20,6 +20,7 @@ export default function FestivalsPage() {
   const sido = params.get('sido')
   const group = params.get('group')
   const destName = params.get('dest')
+  const wishOnly = params.get('wish') === '1'
   const page = Math.max(1, Number(params.get('page')) || 1)
   const [q, setQ] = useState('')
   const [locating, setLocating] = useState(false)
@@ -150,6 +151,15 @@ export default function FestivalsPage() {
           {chip('date', t('filter.date'))}
           {chip('distance', locating ? '…' : coords ? `📍 ${t('filter.distance')}` : t('filter.distance'))}
           {chip('popularity', t('filter.popularity'))}
+          {/* 찜 필터 (8/12 팀 결정 — 찜한 축제 모아보기) */}
+          <button
+            onClick={() => update((next) => { if (wishOnly) next.delete('wish'); else next.set('wish', '1'); next.delete('page') })}
+            className={`px-5 py-2 rounded-full text-[14px] font-bold border transition ${
+              wishOnly ? 'bg-pin border-pin text-white' : 'bg-white border-gray-300 text-pin hover:border-pin'
+            }`}
+          >
+            {t('wish.filter')}
+          </button>
         </div>
 
         {/* F-3(8/10): 인기순 산정 기준 안내 — 기준이 화면에 없다는 QA 지적 반영 */}
@@ -163,6 +173,7 @@ export default function FestivalsPage() {
         filterSidos={filterSidos}
         sort={sort}
         hideTitle
+        wishOnly={wishOnly}
         page={page}
         onPageChange={(p) => {
           update((next) => next.set('page', String(p)))

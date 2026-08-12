@@ -4,6 +4,7 @@ import { apiGet, type Festival } from '../api'
 import { staticFestivals } from '../staticData'
 import { useLang, useT } from '../i18n'
 import { sidoLabel } from '../sidoI18n'
+import { isWished, onWishChange, toggleWish, wishKey, wishedKeys } from '../wishlist'
 
 type Coords = { lat: number; lng: number }
 
@@ -32,6 +33,7 @@ export default function FestivalRail({
   hideTitle,
   page = 1,
   onPageChange,
+  wishOnly = false,
 }: {
   coords: Coords | null
   /** 필터할 시·도명 배열(권역=여러 개, 단일 시·도=1개). null이면 전국 전체 */
@@ -40,10 +42,14 @@ export default function FestivalRail({
   hideTitle?: boolean
   page?: number
   onPageChange?: (p: number) => void
+  /** 찜한 축제만 (8/12 팀 결정 — 찜 1단계) */
+  wishOnly?: boolean
 }) {
   const t = useT()
   const { lang } = useLang()
   const [all, setAll] = useState<Festival[]>([])
+  const [wishVer, setWishVer] = useState(0) // 찜 변경 시 리렌더
+  useEffect(() => onWishChange(() => setWishVer((v) => v + 1)), [])
 
   // 목록 데이터는 정적 베이크(전국 전체)를 사용 — 거리순 전국 정렬을 위해 전체가 필요하고,
   // 주간 자동 동기화로 최신이며 API 콜드 스타트에 영향받지 않는다.
@@ -65,7 +71,11 @@ export default function FestivalRail({
   const isAlwaysOn = (f: Festival) => new Date(f.endDate).getTime() - new Date(f.startDate).getTime() >= 365 * DAY
 
   const list = useMemo(() => {
-    const filtered = filterSidos ? all.filter((f) => f.sido && filterSidos.includes(f.sido)) : all
+    let filtered = filterSidos ? all.filter((f) => f.sido && filterSidos.includes(f.sido)) : all
+    if (wishOnly) {
+      const keys = wishedKeys()
+      filtered = filtered.filter((f) => keys.has(wishKey(f)))
+    }
     // BUG-09(8/10): 거리 표시는 거리순일 때만 — 다른 정렬로 돌아오면 최초 화면과 동일해야 한다
     const withDistance =
       sort === 'distance' && coords
@@ -79,11 +89,11 @@ export default function FestivalRail({
     }
     // 시작일순: 기간제 축제 먼저(시작일순), 상시축제(1년 이상)는 뒤로 — F-4 가안
     return [...withDistance].sort((a, b) => Number(isAlwaysOn(a)) - Number(isAlwaysOn(b)))
-  }, [all, filterSidos, coords, sort])
+  }, [all, filterSidos, coords, sort, wishOnly, wishVer])
 
   if (all.length === 0) return null
   if (list.length === 0) {
-    return <p className="max-w-5xl mx-auto px-4 text-center text-gray-500 mb-16">{t('list.empty')}</p>
+    return <p className="max-w-5xl mx-auto px-4 text-center text-gray-500 mb-16">{wishOnly ? t('wish.empty') : t('list.empty')}</p>
   }
 
   const totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE))
@@ -112,7 +122,16 @@ export default function FestivalRail({
             to={`/festivals/${f.id}`}
             className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-green/30 transition-all group block focus:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2"
           >
-            <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+            <div className="aspect-[4/3] overflow-hidden bg-gray-100 relative">
+              <button
+                aria-label={t('wish.label')}
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWish(f) }}
+                className={`absolute top-2 right-2 z-10 w-8 h-8 rounded-full flex items-center justify-center text-[16px] shadow-sm transition ${
+                  isWished(f) ? 'bg-pin text-white' : 'bg-white/90 text-gray-400 hover:text-pin'
+                }`}
+              >
+                {isWished(f) ? '♥' : '♡'}
+              </button>
               {f.imageUrl ? (
                 <img
                   src={f.imageUrl}

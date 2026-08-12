@@ -12,6 +12,12 @@ export const LANGS: { code: Lang; label: string }[] = [
 
 const MESSAGES = {
   ko: {
+    'wish.label': '찜',
+    'wish.filter': '♥ 찜한 축제',
+    'wish.empty': '찜한 축제가 아직 없어요. 카드의 하트를 눌러 보세요.',
+    'detail.addToCalendar': '캘린더에 추가',
+    'detail.googleCal': '구글 캘린더',
+    'detail.icsFile': '캘린더 파일(.ics)',
     'festival.always': '상시',
     'sort.popularityHint': 'ⓘ 인기순은 한국관광공사 지역 방문자 빅데이터 기준입니다',
     'region.entire': '전체',
@@ -66,6 +72,12 @@ const MESSAGES = {
     'search.loading': '검색 중…',
   },
   en: {
+    'wish.label': 'Save',
+    'wish.filter': '♥ Saved',
+    'wish.empty': 'No saved festivals yet. Tap the heart on a card.',
+    'detail.addToCalendar': 'Add to calendar',
+    'detail.googleCal': 'Google Calendar',
+    'detail.icsFile': 'Calendar file (.ics)',
     'festival.always': 'Year-round',
     'sort.popularityHint': 'ⓘ Popularity is based on KTO regional visitor big data',
     'region.entire': 'All',
@@ -120,6 +132,12 @@ const MESSAGES = {
     'search.loading': 'Searching…',
   },
   th: {
+    'wish.label': 'บันทึก',
+    'wish.filter': '♥ ที่บันทึกไว้',
+    'wish.empty': 'ยังไม่มีเทศกาลที่บันทึก แตะหัวใจบนการ์ดได้เลย',
+    'detail.addToCalendar': 'เพิ่มลงปฏิทิน',
+    'detail.googleCal': 'Google Calendar',
+    'detail.icsFile': 'ไฟล์ปฏิทิน (.ics)',
     'festival.always': 'ตลอดปี',
     'sort.popularityHint': 'ⓘ ความนิยมอ้างอิงข้อมูลผู้เยี่ยมชมภูมิภาคของ KTO',
     'region.entire': 'ทั้งหมด',
@@ -174,6 +192,12 @@ const MESSAGES = {
     'search.loading': 'กำลังค้นหา…',
   },
   ja: {
+    'wish.label': '保存',
+    'wish.filter': '♥ 保存した祭り',
+    'wish.empty': '保存した祭りはまだありません。カードのハートを押してみてください。',
+    'detail.addToCalendar': 'カレンダーに追加',
+    'detail.googleCal': 'Googleカレンダー',
+    'detail.icsFile': 'カレンダーファイル(.ics)',
     'festival.always': '常時',
     'sort.popularityHint': 'ⓘ 人気順は韓国観光公社の地域訪問者ビッグデータ基準です',
     'region.entire': '全体',

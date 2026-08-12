@@ -7,6 +7,7 @@ import { removeJsonLd, setFestivalJsonLd, setPageMeta } from '../seo'
 import { staticFestivals } from '../staticData'
 import { useLang, useT } from '../i18n'
 import { sidoLabel } from '../sidoI18n'
+import { downloadIcs, googleCalUrl, isWished, onWishChange, toggleWish } from '../wishlist'
 
 type NearbySpot = { id: string; name: string; category: string; distanceM: number }
 type FestivalDetail = Festival & { nearbySpots?: NearbySpot[] }
@@ -19,6 +20,8 @@ export default function FestivalDetailPage() {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
   const [festival, setFestival] = useState<FestivalDetail | null>(null)
+  const [, setWishVer] = useState(0)
+  useEffect(() => onWishChange(() => setWishVer((v) => v + 1)), [])
   const [state, setState] = useState<'loading' | 'idle' | 'notfound'>('loading')
 
   // 8/9 회의 P0: 목록(정적 데이터)과 상세(API)의 숫자 id 체계가 환경마다 달라
@@ -113,7 +116,19 @@ export default function FestivalDetailPage() {
             </span>
           </div>
 
-          <h1 className="text-[26px] md:text-[32px] font-black leading-tight mb-1 text-green">{festival.name}</h1>
+          <div className="flex items-start justify-between gap-3">
+            <h1 className="text-[26px] md:text-[32px] font-black leading-tight mb-1 text-green">{festival.name}</h1>
+            {/* 찜 — 알림(앱 푸시)의 1단계. 비로그인 localStorage */}
+            <button
+              aria-label={t('wish.label')}
+              onClick={() => toggleWish(festival)}
+              className={`shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-[20px] border transition ${
+                isWished(festival) ? 'bg-pin border-pin text-white' : 'bg-white border-gray-300 text-gray-400 hover:text-pin hover:border-pin'
+              }`}
+            >
+              {isWished(festival) ? '♥' : '♡'}
+            </button>
+          </div>
           {festival.nameKo && festival.nameKo !== festival.name && (
             <p className="text-[14px] text-gray-400 mb-4">{festival.nameKo}</p>
           )}
@@ -173,6 +188,26 @@ export default function FestivalDetailPage() {
               {t('detail.directions')}
             </a>
           )}
+
+          {/* 캘린더 등록 — "날짜 세팅해두면 달력이랑 같이"(8/12 팀 채팅). 서버 없이 동작 */}
+          <div className="flex flex-wrap items-center gap-2 mb-10">
+            <span className="text-[13px] font-bold text-green/60">📅 {t('detail.addToCalendar')}:</span>
+            <a
+              href={googleCalUrl(festival)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('calendar_add', { festival_name: festival.nameKo ?? festival.name, method: 'google' })}
+              className="px-4 py-2 rounded-full border border-green text-green text-[13px] font-bold hover:bg-green hover:text-white transition"
+            >
+              {t('detail.googleCal')}
+            </a>
+            <button
+              onClick={() => { downloadIcs(festival); trackEvent('calendar_add', { festival_name: festival.nameKo ?? festival.name, method: 'ics' }) }}
+              className="px-4 py-2 rounded-full border border-green text-green text-[13px] font-bold hover:bg-green hover:text-white transition"
+            >
+              {t('detail.icsFile')}
+            </button>
+          </div>
 
           {/* 주변 관광지 — 서버(PostGIS)가 계산한 반경 3km 결과.
               F-1(2026-08-06): nearbySpots가 있는데(=서버가 계산함) 0건이면 섹션이 사라져 축제마다 들쭉날쭉해 보였다.
