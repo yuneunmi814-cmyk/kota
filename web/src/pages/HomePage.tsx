@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import { setPageMeta } from '../seo'
 import RegionBanner, { type RegionSel } from '../components/RegionBanner'
 import PromoBanner from '../components/PromoBanner'
+import NearbyBanner from '../components/NearbyBanner'
 import { useT } from '../i18n'
 import { FEATURES } from '../features'
 
@@ -50,9 +51,14 @@ export default function HomePage() {
             </button>
           </form>
         )}
+
+        {/* 검색 바로 아래 — '지역을 정하고 오는' 사용자보다 '지금 여기'인 사용자가 먼저다 */}
+        <div className="mt-6 px-0">
+          <NearbyBanner />
+        </div>
       </main>
 
-      <div className="mt-6">
+      <div className="mt-2">
         <RegionBanner selected={{ type: 'all' }} onChange={onRegion} />
       </div>
       <div className="mt-4">
