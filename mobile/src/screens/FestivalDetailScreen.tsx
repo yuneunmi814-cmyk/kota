@@ -6,6 +6,7 @@ import { Badge, Button, Loading } from '../components/ui'
 import { getFestivals, type Festival } from '../festivals/data'
 import { isWished, toggleWish } from '../festivals/wishlist'
 import { syncGeofences } from '../festivals/geofence'
+import { syncReminders } from '../festivals/reminders'
 
 // 축제 상세 — 웹 상세와 같은 정보(기간·장소·문의) + 길찾기.
 // 찜을 누르면 그 자리에서 지오펜스가 걸린다: "찜 = 근처 가면 알려줌"이 앱의 약속이다.
@@ -30,6 +31,7 @@ export default function FestivalDetailScreen() {
     const now = await toggleWish(externalId)
     setWish(now)
     syncGeofences().catch(() => {})
+    syncReminders().catch(() => {})
   }
 
   const openMap = () => {

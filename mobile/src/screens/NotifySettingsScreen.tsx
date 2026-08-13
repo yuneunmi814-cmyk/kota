@@ -15,6 +15,7 @@ import {
   type PermissionState,
 } from '../festivals/geofence'
 import { onWishChange } from '../festivals/wishlist'
+import { pendingReminderCount, syncReminders } from '../festivals/reminders'
 
 // 알림 설정 — 무엇을 왜 수집하는지 화면에서 그대로 보여준다.
 // 위치 권한은 '켜라'고 조르는 대신, 켜면 무엇이 되는지 먼저 보여주고 사용자가 고르게 한다.
@@ -23,12 +24,14 @@ export default function NotifySettingsScreen() {
   const [perm, setPerm] = useState<PermissionState>({ foreground: false, background: false })
   const [on, setOn] = useState(false)
   const [watching, setWatching] = useState(0)
+  const [reminders, setReminders] = useState(0)
   const [busy, setBusy] = useState(false)
 
   const refresh = useCallback(async () => {
     setPerm(await getPermissions())
     setOn(await isGeofencingOn())
     setWatching((await pickRegions()).length)
+    setReminders(await pendingReminderCount())
   }, [])
 
   useEffect(() => {
@@ -47,6 +50,7 @@ export default function NotifySettingsScreen() {
       }
       await Notifications.requestPermissionsAsync()
       await syncGeofences()
+      await syncReminders()
       await refresh()
     } finally {
       setBusy(false)
@@ -88,6 +92,14 @@ export default function NotifySettingsScreen() {
           </Text>
         </View>
       )}
+
+      <View style={s.card}>
+        <Text style={s.title}>일정 알림</Text>
+        <Text style={s.sub}>
+          찜한 축제가 내일 시작하거나 내일이 마지막 날이면 오전 10시에 알려드려요.
+          {reminders > 0 ? ` 지금 ${reminders}건 예약돼 있어요.` : ''}
+        </Text>
+      </View>
 
       {!perm.background && (
         <View style={s.warn}>

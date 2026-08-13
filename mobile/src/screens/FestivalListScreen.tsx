@@ -7,6 +7,7 @@ import { Badge, EmptyState, Loading } from '../components/ui'
 import { distanceKm, getFestivals, hasCoords, isAlwaysOn, type Festival } from '../festivals/data'
 import { onWishChange, toggleWish, wishedKeys } from '../festivals/wishlist'
 import { syncGeofences } from '../festivals/geofence'
+import { syncReminders } from '../festivals/reminders'
 
 // 축제 목록 — 기본은 '내 주변'. 웹과 달리 앱은 '지금 여기'로 열리는 게 자연스럽다.
 // 위치를 못 얻으면 날짜순으로 조용히 떨어진다(권한을 강요하지 않는다).
@@ -46,6 +47,7 @@ export default function FestivalListScreen() {
     await toggleWish(f.externalId)
     // 찜이 바뀌면 감시 영역도 즉시 따라간다 — 사용자가 설정을 다시 열 이유가 없다
     syncGeofences().catch(() => {})
+    syncReminders().catch(() => {})
   }
 
   if (!items) return <Loading />

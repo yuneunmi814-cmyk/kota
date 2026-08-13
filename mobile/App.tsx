@@ -7,6 +7,7 @@ import { FestivalNavigator } from './src/navigation/FestivalNavigator'
 import { ErrorBoundary } from './src/components/ErrorBoundary'
 import { syncGeofences } from './src/festivals/geofence'
 import { getFestivals } from './src/festivals/data'
+import { syncReminders } from './src/festivals/reminders'
 
 // KOTA — 내 여행지 주변 축제.
 //
@@ -30,7 +31,7 @@ export default function App() {
     // 데이터를 먼저 데워두고(오프라인 대비) 감시 영역을 최신 찜 목록에 맞춘다.
     // 권한이 없으면 syncGeofences가 조용히 아무것도 안 한다.
     getFestivals()
-      .then(() => syncGeofences())
+      .then(() => Promise.all([syncGeofences(), syncReminders()]))
       .catch(() => {})
   }, [])
 
