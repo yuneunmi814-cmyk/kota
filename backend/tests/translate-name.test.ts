@@ -36,6 +36,18 @@ describe('가타카나·태국문자 음역', () => {
     expect(thai('양양')).toBe('ยังยัง')
   })
 
+  it('어중 유성음화 — 평음은 어두에서 무성, 모음 사이에서 유성', () => {
+    // 이 구분이 없으면 일본인이 읽어도 현지 발음과 어긋난다
+    expect(katakana('부산')).toBe('プサン')
+    expect(katakana('제주')).toBe('チェジュ')
+    expect(katakana('안동')).toBe('アンドン')
+    expect(katakana('대구')).toBe('テグ')
+  })
+
+  it('가타카나에서도 ㄹ 비음화를 반영한다', () => {
+    expect(katakana('강릉')).toBe('カンヌン')
+  })
+
   it('받침을 표기한다', () => {
     expect(katakana('부산')).toBe('プサン')
   })
@@ -67,8 +79,20 @@ describe('축제명 번역', () => {
   it('지명 + 소재 + 행사유형을 조합한다', () => {
     const t = translateFestivalName('2026 예산사과축제')
     expect(t.en).toBe('2026 Yesan Apple Festival')
-    expect(t.ja).toBe('2026 礼山りんご祭り')
     expect(t.coverage).toBe(1)
+  })
+
+  it('일본어는 첫 지명에 가타카나 독음을 병기한다', () => {
+    // 한자만 쓰면 일본 한자음으로 읽어(礼山→レイザン) 현지에서 통하지 않는다
+    expect(translateFestivalName('2026 예산사과축제').ja).toBe('2026 礼山（イェサン）りんご祭り')
+    expect(translateFestivalName('부산국제코미디페스티벌').ja).toContain('釜山（プサン）')
+  })
+
+  it('태국어는 핵심어를 앞에, 지명을 뒤에 둔다', () => {
+    // 낱말을 한국어 순서대로 이어붙이면 '축제 예산 사과'가 되어 읽히지 않는다
+    expect(translateFestivalName('2026 예산사과축제').th).toBe('เทศกาลแอปเปิล เยซัน 2026')
+    // 한정어(국제)는 핵심어 뒤로 — เทศกาลตลกนานาชาติ(축제-코미디-국제)
+    expect(translateFestivalName('부산국제코미디페스티벌').th).toBe('เทศกาลตลกนานาชาติ ปูซาน')
   })
 
   it('띄어쓰기 없는 합성어를 분절한다', () => {

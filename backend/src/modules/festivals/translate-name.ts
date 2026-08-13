@@ -6,7 +6,7 @@
 
 import { LEXICON, LEXICON_KEYS, type Term } from './lexicon.js'
 import { SIGUNGU_STEMS, translateSigungu } from './places.js'
-import { isHangul, transliterate } from './romanize.js'
+import { isHangul, katakana, transliterate } from './romanize.js'
 
 export type Lang = 'en' | 'ja' | 'th'
 export const LANGS: Lang[] = ['en', 'ja', 'th']
@@ -18,10 +18,19 @@ const EVENT_WORDS = new Set([
   '대회', '한마당', '마켓', '야시장', '페어', '행사',
 ])
 
+/**
+ * 태국어에서 뒤로 보내는 한정어 — 태국어는 '핵심어 + 수식어' 순서다.
+ * 한국어 '국제코미디페스티벌'을 그대로 이어붙이면 เทศกาลนานาชาติตลก(축제-국제-코미디)가 되는데,
+ * 자연스러운 태국어는 เทศกาลตลกนานาชาติ(축제-코미디-국제)다.
+ */
+const TH_TRAILING = new Set(['국제', '전국', '세계', '대한민국', '한국', '전통'])
+
 interface Seg {
   ko: string
   /** 사전에서 찾은 번역(없으면 음역 대상) */
   hit: Record<Lang, string> | null
+  /** 지명인가 — 태국어 어순 재배치와 일본어 독음 병기에 쓴다 */
+  isPlace?: boolean
 }
 
 /** 사전(지명 + 어휘)에서 최장일치로 분절 */
@@ -54,10 +63,11 @@ function segment(text: string): Seg[] {
         break
       }
     }
+    const isPlace = !!place && (!lex || place.ko.length > lex.ko.length)
     const matched = !lex ? place : !place ? lex : place.ko.length > lex.ko.length ? place : lex
     if (matched) {
       push()
-      segs.push({ ko: matched.ko, hit: matched.hit })
+      segs.push({ ko: matched.ko, hit: matched.hit, isPlace })
       i += matched.ko.length
     } else {
       buf += text[i] as string
@@ -102,7 +112,8 @@ export function translateFestivalName(name: string): NameTranslation {
   })
   rest = rest.replace(/\s+/g, ' ').trim()
 
-  const out: Record<Lang, string[]> = { en: [], ja: [], th: [] }
+  interface Part { ko: string; en: string; ja: string; th: string; isPlace: boolean; isEvent: boolean; isTrailing: boolean }
+  const parts: Part[] = []
   let covered = 0
   let hangulTotal = 0
 
@@ -114,56 +125,76 @@ export function translateFestivalName(name: string): NameTranslation {
     hangulTotal += hangulCount
     if (hangulCount === 0) {
       // 영문·숫자(BPAM, V.7, OST)는 그대로 둔다
-      for (const l of LANGS) out[l].push(chunk)
+      parts.push({ ko: chunk, en: chunk, ja: chunk, th: chunk, isPlace: false, isEvent: false, isTrailing: false })
       continue
     }
     for (const seg of segment(chunk)) {
       if (seg.hit) {
         covered += [...seg.ko].filter(isHangul).length
-        for (const l of LANGS) if (seg.hit[l]) out[l].push(seg.hit[l])
+        parts.push({
+          ko: seg.ko,
+          en: seg.hit.en,
+          ja: seg.hit.ja,
+          th: seg.hit.th,
+          isPlace: !!seg.isPlace,
+          isEvent: EVENT_WORDS.has(seg.ko),
+          isTrailing: TH_TRAILING.has(seg.ko),
+        })
       } else {
-        for (const l of LANGS) out[l].push(transliterate(seg.ko, l))
+        parts.push({
+          ko: seg.ko,
+          en: transliterate(seg.ko, 'en'),
+          ja: transliterate(seg.ko, 'ja'),
+          th: transliterate(seg.ko, 'th'),
+          isPlace: false,
+          isEvent: false,
+          isTrailing: false,
+        })
       }
     }
   }
 
-  // 태국어는 행사유형을 앞으로(เทศกาล…) — 태국어 어순은 핵심어가 앞에 온다
-  const thParts = [...out.th]
-  const evIdx = [...rest.matchAll(/[가-힣]+/g)].length > 0 ? findEventIndex(rest, out.th) : -1
-  if (evIdx > 0) thParts.unshift(...thParts.splice(evIdx, 1))
-
-  const join = (parts: string[], lang: Lang) => {
-    const body = parts.filter(Boolean)
-    if (lang === 'ja') return [year, ordinal ? `第${ordinal}回` : '', body.join('')].filter(Boolean).join(' ').trim()
-    if (lang === 'th') return [ordinal ? `ครั้งที่ ${ordinal}` : '', body.join(' '), year].filter(Boolean).join(' ').trim()
-    const en = body.map(cap).join(' ')
-    return [year, ordinal ? `${ordinal}${ordSuffix(ordinal)}` : '', en].filter(Boolean).join(' ').trim()
-  }
-
-  let en = join(out.en, 'en')
+  const en0 = parts.map((p) => p.en).filter(Boolean).map(cap).join(' ')
+  let en = [year, ordinal ? `${ordinal}${ordSuffix(ordinal)}` : '', en0].filter(Boolean).join(' ').trim()
   // 행사임이 드러나지 않으면 Festival을 붙인다 — 검색·이해 모두에 필요하다
   if (!/festival|festa|expo|market|fair|tour|show|concert|competition|week|night/i.test(en)) {
     en = `${en} Festival`.trim()
   }
 
-  return {
-    en,
-    ja: join(out.ja, 'ja'),
-    th: join(thParts, 'th'),
-    coverage: hangulTotal === 0 ? 1 : covered / hangulTotal,
-  }
+  // 일본어 — 첫 지명에 가타카나 독음을 병기한다.
+  // 한자만 쓰면 일본인은 일본 한자음으로 읽어(礼山→レイザン) 현지에서 통하지 않는다.
+  // 관광 매체 관용대로 「礼山（イェサン）」으로 적어 읽는 법을 같이 준다.
+  let rubyDone = false
+  const jaBody = parts
+    .map((p) => {
+      if (!p.isPlace || rubyDone) return p.ja
+      const kana = katakana(p.ko)
+      if (!kana || kana === p.ja) return p.ja
+      rubyDone = true
+      return `${p.ja}（${kana}）`
+    })
+    .filter(Boolean)
+    .join('')
+  const ja = [year, ordinal ? `第${ordinal}回` : '', jaBody].filter(Boolean).join(' ').trim()
+
+  // 태국어 — 핵심어(행사유형)를 맨 앞에 두고 수식어를 뒤에 붙인 뒤 지명을 띄어 쓴다.
+  // '축제 예산 사과'가 아니라 '사과축제, 예산'이 되어야 읽힌다.
+  const th = (() => {
+    const events = parts.filter((p) => p.isEvent && p.th)
+    const places = parts.filter((p) => p.isPlace && p.th)
+    const trailing = parts.filter((p) => p.isTrailing && p.th)
+    const core = parts.filter((p) => !p.isEvent && !p.isPlace && !p.isTrailing && p.th)
+    // 행사유형이 없으면 원래 순서를 지킨다(조어·시적인 이름)
+    const phrase = events.length
+      ? [...events, ...core, ...trailing].map((p) => p.th).join('')
+      : parts.map((p) => p.th).filter(Boolean).join(' ')
+    const tail = places.map((p) => p.th).join(' ')
+    return [ordinal ? `ครั้งที่ ${ordinal}` : '', phrase, tail, year].filter(Boolean).join(' ').trim()
+  })()
+
+  return { en, ja, th, coverage: hangulTotal === 0 ? 1 : covered / hangulTotal }
 }
 
-function findEventIndex(rest: string, thOut: string[]): number {
-  for (const w of EVENT_WORDS) {
-    if (!rest.includes(w)) continue
-    const t = LEXICON[w]?.th
-    if (!t) continue
-    const idx = thOut.indexOf(t)
-    if (idx >= 0) return idx
-  }
-  return -1
-}
 
 function ordSuffix(n: string): string {
   const v = Number(n)

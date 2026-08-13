@@ -141,19 +141,39 @@ const K_ZERO: Record<number, string> = {
 }
 const K_JONG = ['', 'ク', 'ク', 'ク', 'ン', 'ン', 'ン', 'ッ', 'ル', 'ク', 'ム', 'ル', 'ル', 'ル', 'プ', 'ル', 'ム', 'プ', 'プ', 'ッ', 'ッ', 'ン', 'ッ', 'ッ', 'ク', 'ッ', 'プ', 'ッ']
 
+// 어중 유성음화 — 한국어 평음 ㄱㄷㅂㅈ은 어두에서 무성, 유성음 사이에서 유성으로 소리난다.
+// 부산은 プサン이지만 제주는 チェジュ, 안동은 アンドン이다. 이 구분이 없으면 일본인이 읽어도
+// 현지 발음과 어긋나 길을 물을 수 없다.
+const K_ROW_VOICED: Record<number, [string, string, string, string, string]> = {
+  0: ['ガ', 'ギ', 'グ', 'ゲ', 'ゴ'], // ㄱ
+  3: ['ダ', 'ディ', 'ドゥ', 'デ', 'ド'], // ㄷ
+  7: ['バ', 'ビ', 'ブ', 'ベ', 'ボ'], // ㅂ
+  12: ['ジャ', 'ジ', 'ジュ', 'ジェ', 'ジョ'], // ㅈ
+}
+/** 유성 환경을 만드는 받침 — 없음 · ㄴ · ㄹ · ㅁ · ㅇ */
+const VOICING_JONG = new Set([0, 4, 8, 16, 21])
+
 /** 한글 문자열을 가타카나로 음역 */
 export function katakana(text: string): string {
+  const chars = [...text]
   let out = ''
-  for (const ch of text) {
-    const j = decompose(ch)
+  for (let i = 0; i < chars.length; i += 1) {
+    const j = decompose(chars[i] as string)
     if (!j) {
-      out += ch
+      out += chars[i]
       continue
     }
+    const prev = i > 0 ? decompose(chars[i - 1] as string) : null
+    const voiced = !!prev && VOICING_JONG.has(prev.jong)
+
     if (j.cho === 11 && K_ZERO[j.jung]) out += K_ZERO[j.jung]
     else {
       const [col, small] = K_VOWEL[j.jung] as [number, string]
-      out += (K_ROW[j.cho] as string[])[col] + small
+      let row = K_ROW[j.cho] as string[]
+      // ㄹ 비음화 — 받침 ㅇ·ㅁ 뒤의 ㄹ은 [ㄴ]으로 소리난다 (강릉 カンヌン)
+      if (j.cho === 5 && prev && (prev.jong === 21 || prev.jong === 16)) row = K_ROW[2] as string[]
+      else if (voiced && K_ROW_VOICED[j.cho]) row = K_ROW_VOICED[j.cho] as string[]
+      out += row[col] + small
     }
     out += K_JONG[j.jong]
   }
