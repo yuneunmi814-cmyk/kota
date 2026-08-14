@@ -123,12 +123,12 @@ for (const f of items) {
 // "가족과 갈 만한 축제"·"먹거리 축제" 같은 검색어의 착지점(SEO) + AI 검색이 목적별로
 // 인용할 수 있는 구조(GEO). 8/12 팀 인사이트: 여행은 '목적'에서 시작한다.
 const THEME_META = {
-  food: { emoji: '🍽️', ko: '먹거리', desc: '지역 특산물과 먹거리를 즐기는 축제' },
-  nature: { emoji: '🌸', ko: '꽃·자연', desc: '꽃·바다·숲 등 자연을 즐기는 축제' },
-  heritage: { emoji: '🏯', ko: '역사·전통', desc: '문화유산과 전통을 만나는 축제' },
-  music: { emoji: '🎵', ko: '음악·공연', desc: '음악·공연·예술을 즐기는 축제' },
-  family: { emoji: '👨‍👩‍👧', ko: '가족·체험', desc: '아이와 함께 체험하기 좋은 축제' },
-  night: { emoji: '✨', ko: '야경·불빛', desc: '밤에 빛나는 야경·불빛 축제' },
+  food: { ko: '먹거리', desc: '지역 특산물과 먹거리를 즐기는 축제' },
+  nature: { ko: '꽃·자연', desc: '꽃·바다·숲 등 자연을 즐기는 축제' },
+  heritage: { ko: '역사·전통', desc: '문화유산과 전통을 만나는 축제' },
+  music: { ko: '음악·공연', desc: '음악·공연·예술을 즐기는 축제' },
+  family: { ko: '가족·체험', desc: '아이와 함께 체험하기 좋은 축제' },
+  night: { ko: '야경·불빛', desc: '밤에 빛나는 야경·불빛 축제' },
 }
 for (const [key, meta] of Object.entries(THEME_META)) {
   const list = items.filter((f) => (f.themes ?? []).includes(key))
@@ -149,7 +149,7 @@ for (const [key, meta] of Object.entries(THEME_META)) {
       url: `${SITE}/themes/${key}/`,
       isPartOf: { '@type': 'WebSite', name: 'KOTA — Korea Festa', url: SITE },
     },
-    noscriptHtml: `      <h1>${meta.emoji} ${esc(meta.ko)} 축제 ${list.length}건</h1>\n      <p>${esc(meta.desc)}</p>\n      <ul>\n${links}\n      </ul>`,
+    noscriptHtml: `      <h1>${esc(meta.ko)} 축제 ${list.length}건</h1>\n      <p>${esc(meta.desc)}</p>\n      <ul>\n${links}\n      </ul>`,
   })
   mkdirSync(resolve(root, `dist/themes/${key}`), { recursive: true })
   writeFileSync(resolve(root, `dist/themes/${key}/index.html`), html)

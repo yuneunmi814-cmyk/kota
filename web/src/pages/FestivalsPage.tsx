@@ -177,7 +177,7 @@ export default function FestivalsPage() {
                 theme === k ? 'bg-green border-green text-white' : 'bg-white border-gray-300 text-green hover:border-green'
               }`}
             >
-              {THEME_META[k].emoji} {themeLabel(k, lang)}
+              <span className="inline-flex items-center gap-1.5"><Icon name={THEME_META[k].icon} size={14} /> {themeLabel(k, lang)}</span>
             </button>
           ))}
         </div>

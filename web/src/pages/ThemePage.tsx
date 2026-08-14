@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Header from '../components/Header'
+import Icon from '../components/Icon'
 import FestivalRail from '../components/FestivalRail'
 import { setPageMeta } from '../seo'
 import { useLang, useT } from '../i18n'
@@ -35,7 +36,7 @@ export default function ThemePage() {
     <div className="min-h-screen bg-white text-green pb-20">
       <Header />
       <main className="w-full max-w-5xl mx-auto pt-12 px-4 text-center">
-        <p className="text-[40px] leading-none mb-3" aria-hidden="true">{THEME_META[theme].emoji}</p>
+        <p className="mb-3 text-green flex justify-center"><Icon name={THEME_META[theme].icon} size={40} strokeWidth={1.5} /></p>
         <h1 className="text-[26px] md:text-[32px] font-black mb-3">{themeLabel(theme, lang)}</h1>
         <p className="text-[15px] text-gray-500 mb-8">{themeDesc(theme, lang)}</p>
 
@@ -49,7 +50,7 @@ export default function ThemePage() {
                 k === theme ? 'bg-green border-green text-white' : 'bg-white border-gray-300 text-green hover:border-green'
               }`}
             >
-              {THEME_META[k].emoji} {themeLabel(k, lang)}
+              <span className="inline-flex items-center gap-1.5"><Icon name={THEME_META[k].icon} size={15} /> {themeLabel(k, lang)}</span>
             </Link>
           ))}
         </div>

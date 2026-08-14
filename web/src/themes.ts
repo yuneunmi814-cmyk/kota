@@ -6,9 +6,11 @@ import type { Lang } from './i18n'
 export const THEMES = ['food', 'nature', 'heritage', 'music', 'family', 'night'] as const
 export type Theme = (typeof THEMES)[number]
 
-export const THEME_META: Record<Theme, { emoji: string; label: Record<Lang, string>; desc: Record<Lang, string> }> = {
+// 아이콘은 이모지가 아니라 Icon.tsx의 인라인 SVG를 쓴다 — 기기·OS마다 모양이
+// 달라지지 않고 브랜드 색(currentColor)을 따라간다.
+export const THEME_META: Record<Theme, { icon: Theme; label: Record<Lang, string>; desc: Record<Lang, string> }> = {
   food: {
-    emoji: '🍽️',
+    icon: 'food',
     label: { ko: '먹거리', en: 'Food', ja: 'グルメ', th: 'อาหาร' },
     desc: {
       ko: '지역 특산물과 먹거리를 즐기는 축제',
@@ -18,7 +20,7 @@ export const THEME_META: Record<Theme, { emoji: string; label: Record<Lang, stri
     },
   },
   nature: {
-    emoji: '🌸',
+    icon: 'nature',
     label: { ko: '꽃·자연', en: 'Flowers & Nature', ja: '花・自然', th: 'ดอกไม้ธรรมชาติ' },
     desc: {
       ko: '꽃·바다·숲 등 자연을 즐기는 축제',
@@ -28,7 +30,7 @@ export const THEME_META: Record<Theme, { emoji: string; label: Record<Lang, stri
     },
   },
   heritage: {
-    emoji: '🏯',
+    icon: 'heritage',
     label: { ko: '역사·전통', en: 'Heritage', ja: '歴史・伝統', th: 'ประวัติศาสตร์' },
     desc: {
       ko: '문화유산과 전통을 만나는 축제',
@@ -38,7 +40,7 @@ export const THEME_META: Record<Theme, { emoji: string; label: Record<Lang, stri
     },
   },
   music: {
-    emoji: '🎵',
+    icon: 'music',
     label: { ko: '음악·공연', en: 'Music & Shows', ja: '音楽・公演', th: 'ดนตรีการแสดง' },
     desc: {
       ko: '음악·공연·예술을 즐기는 축제',
@@ -48,7 +50,7 @@ export const THEME_META: Record<Theme, { emoji: string; label: Record<Lang, stri
     },
   },
   family: {
-    emoji: '👨‍👩‍👧',
+    icon: 'family',
     label: { ko: '가족·체험', en: 'Family', ja: '家族・体験', th: 'ครอบครัว' },
     desc: {
       ko: '아이와 함께 체험하기 좋은 축제',
@@ -58,7 +60,7 @@ export const THEME_META: Record<Theme, { emoji: string; label: Record<Lang, stri
     },
   },
   night: {
-    emoji: '✨',
+    icon: 'night',
     label: { ko: '야경·불빛', en: 'Night Lights', ja: '夜景・イルミ', th: 'แสงไฟยามค่ำ' },
     desc: {
       ko: '밤에 빛나는 야경·불빛 축제',
