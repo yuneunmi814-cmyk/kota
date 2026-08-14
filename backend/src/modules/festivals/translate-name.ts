@@ -196,6 +196,60 @@ export function translateFestivalName(name: string): NameTranslation {
 }
 
 
+/**
+ * 축제 요약 번역.
+ *
+ * 요약은 산문이 아니라 정형 조각이다 — 문체부는 '장소 일원 · 유형',
+ * 표준데이터는 '프로그램+프로그램+프로그램'. 그래서 구분자로 쪼갠 뒤
+ * 조각마다 사전을 태우고 못 찾은 고유명사만 음역한다.
+ *
+ * '통도사 일원 · 전통역사' → 'Tongdosa area · History & Tradition'
+ */
+export function translateSummary(text: string): NameTranslation | null {
+  const src = text.replace(/\s+/g, ' ').trim()
+  if (!src) return null
+
+  const out: Record<Lang, string[]> = { en: [], ja: [], th: [] }
+  let covered = 0
+  let hangulTotal = 0
+
+  for (const frag of src.split(/\s*(?:[+·ㆍ,、/()]|및)\s*/)) {
+    const piece = frag.trim()
+    if (!piece) continue
+    const acc: Record<Lang, string[]> = { en: [], ja: [], th: [] }
+
+    for (const chunk of piece.split(/(\s+)/)) {
+      if (!chunk.trim()) continue
+      const hangulCount = [...chunk].filter(isHangul).length
+      hangulTotal += hangulCount
+      if (hangulCount === 0) {
+        for (const l of LANGS) acc[l].push(chunk)
+        continue
+      }
+      for (const seg of segment(chunk)) {
+        if (seg.hit) {
+          covered += [...seg.ko].filter(isHangul).length
+          for (const l of LANGS) if (seg.hit[l]) acc[l].push(seg.hit[l])
+        } else {
+          for (const l of LANGS) acc[l].push(transliterate(seg.ko, l))
+        }
+      }
+    }
+    // 영어는 낱말을 띄우고, 일본어는 붙이고, 태국어는 띄운다
+    if (acc.en.length) out.en.push(acc.en.join(' '))
+    if (acc.ja.length) out.ja.push(acc.ja.join(''))
+    if (acc.th.length) out.th.push(acc.th.join(' '))
+  }
+
+  const join = (parts: string[]) => parts.filter(Boolean).join(' · ')
+  return {
+    en: join(out.en),
+    ja: join(out.ja),
+    th: join(out.th),
+    coverage: hangulTotal === 0 ? 1 : covered / hangulTotal,
+  }
+}
+
 function ordSuffix(n: string): string {
   const v = Number(n)
   if (v % 100 >= 11 && v % 100 <= 13) return 'th'

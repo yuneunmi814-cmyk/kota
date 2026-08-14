@@ -1,14 +1,14 @@
 # KOTA — Korea Festa
 
-> Location-based Korean local festival travel packs for foreign travelers. 718 ongoing/upcoming festivals across Korea with dates, venues, directions and nearby attractions, in Korean, English, Japanese and Thai.
+> Location-based Korean local festival travel packs for foreign travelers. 715 ongoing/upcoming festivals across Korea with dates, venues, directions and nearby attractions, in Korean, English, Japanese and Thai.
 
 ## Browse by travel purpose (theme)
 Travelers usually start from *purpose* ("who with, what to do") before choosing a region.
 Each theme page lists every matching festival nationwide:
 - Food (먹거리) — 146 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/food
-- Flowers & Nature (꽃·자연) — 306 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/nature
+- Flowers & Nature (꽃·자연) — 304 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/nature
 - Heritage (역사·전통) — 123 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/heritage
-- Music & Shows (음악·공연) — 349 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/music
+- Music & Shows (음악·공연) — 348 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/music
 - Family (가족·체험) — 172 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/family
 - Night Lights (야경·불빛) — 100 festivals: https://yuneunmi814-cmyk.github.io/kota/themes/night
 
@@ -24,14 +24,14 @@ Each theme page lists every matching festival nationwide:
 - Ministry of Culture, Sports and Tourism annual regional festival plan
 - KTO 'Korea Tourism' (visitkorea) curated festival catalogue
 - Manually curated local festivals not present in any public API (verified on site)
-- Updated weekly via automated sync (2026-08-13)
+- Updated weekly via automated sync (2026-08-14)
 
 ## Current coverage by region (festival count)
 - 경기도: 120
-- 서울특별시: 81
+- 서울특별시: 80
 - 강원특별자치도: 66
 - 경상북도: 65
 - 충청남도: 62
 - 전라남도: 60
 - 경상남도: 46
-- 부산광역시: 39
+- 전북특별자치도: 39

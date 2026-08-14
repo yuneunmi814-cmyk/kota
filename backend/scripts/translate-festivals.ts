@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { prisma } from '../src/lib/prisma.js'
 import { placeName } from '../src/modules/festivals/places.js'
-import { LANGS, translateFestivalName } from '../src/modules/festivals/translate-name.js'
+import { LANGS, translateFestivalName, translateSummary } from '../src/modules/festivals/translate-name.js'
 
 // 축제 다국어 자동 번역 — 사전+음역 엔진으로 en/ja/th를 채운다.
 //
@@ -24,16 +24,19 @@ const REVIEW_THRESHOLD = 0.5
 
 async function main() {
   const handFile = resolve(import.meta.dirname, '../prisma/festival-translations.json')
-  const { items } = JSON.parse(readFileSync(handFile, 'utf-8')) as { items: { festivalName: string }[] }
-  const handNames = new Set(items.map((i) => i.festivalName))
+  interface HandTr { name?: string; summary?: string | null; placeName?: string | null }
+  interface HandItem { festivalName: string; en?: HandTr; ja?: HandTr; th?: HandTr }
+  const { items } = JSON.parse(readFileSync(handFile, 'utf-8')) as { items: HandItem[] }
+  const hand = new Map(items.map((i) => [i.festivalName, i]))
+  const handNames = new Set(hand.keys())
   console.log(`▶ 손번역 ${handNames.size}건은 보존${refresh ? ' · 엔진 번역은 재생성' : ''}${dryRun ? ' (DRY-RUN)' : ''}`)
 
   const today = new Date(new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10))
   const festivals = await prisma.festival.findMany({
     where: { endDate: { gte: today } },
     select: {
-      id: true, name: true, sido: true, sigungu: true,
-      translations: { select: { langCode: true, placeName: true } },
+      id: true, name: true, summary: true, sido: true, sigungu: true,
+      translations: { select: { langCode: true, placeName: true, summary: true } },
     },
     orderBy: { startDate: 'asc' },
   })
@@ -48,13 +51,19 @@ async function main() {
     // 손번역은 이름만 담고 지명은 비워두는 경우가 많다 — 이름은 그대로 두고 빈 지명만 채운다
     if (handNames.has(f.name)) {
       skippedHand += 1
+      // 손이 쓴 요약은 그대로 두고, 엔진이 채웠던 요약만 사전 개선분으로 다시 만든다.
+      // (손이 요약을 안 쓴 축제는 JSON에 summary가 없다 — 그게 구분 기준이다)
+      const item = hand.get(f.name)
+      const engineSum = f.summary ? translateSummary(f.summary) : null
       for (const t of f.translations) {
-        if (t.placeName) continue
-        const place = placeName(f.sido, f.sigungu, t.langCode as (typeof LANGS)[number])
-        if (!place || dryRun) continue
+        const lang = t.langCode as (typeof LANGS)[number]
+        const handWrote = !!item?.[lang]?.summary
+        const place = t.placeName ? null : placeName(f.sido, f.sigungu, lang)
+        const sum = handWrote ? null : refresh || !t.summary ? engineSum?.[lang] || null : null
+        if ((!place && !sum) || dryRun) continue
         await prisma.festivalTranslation.update({
           where: { festivalId_langCode: { festivalId: f.id, langCode: t.langCode } },
-          data: { placeName: place },
+          data: { ...(place ? { placeName: place } : {}), ...(sum ? { summary: sum } : {}) },
         })
         filledPlace += 1
       }
@@ -72,22 +81,24 @@ async function main() {
       review.push([f.name, tr.en, tr.ja, tr.th, `${Math.round(tr.coverage * 100)}%`].join('\t'))
     }
 
+    const sum = f.summary ? translateSummary(f.summary) : null
     for (const lang of need) {
       const name = tr[lang]
       if (!name) continue
       const place = placeName(f.sido, f.sigungu, lang)
+      const summary = sum?.[lang] || null
       if (dryRun) continue
       await prisma.festivalTranslation.upsert({
         where: { festivalId_langCode: { festivalId: f.id, langCode: lang } },
-        update: { name, placeName: place },
-        create: { festivalId: f.id, langCode: lang, name, placeName: place },
+        update: { name, placeName: place, summary },
+        create: { festivalId: f.id, langCode: lang, name, placeName: place, summary },
       })
     }
     done += 1
   }
 
   console.log(`✔ 엔진 번역 ${done}건 × ${LANGS.length}개 언어${dryRun ? ' (dry-run)' : ''}`)
-  console.log(`   손번역 보존 ${skippedHand}건(빈 지명 ${filledPlace}건 보강) · 이미 번역됨 ${skippedExisting}건`)
+  console.log(`   손번역 보존 ${skippedHand}건(빈 지명·요약 ${filledPlace}건 보강) · 이미 번역됨 ${skippedExisting}건`)
 
   // 사전이 못 덮은 것은 파일로 빼서 손번역 대상으로 넘긴다
   if (review.length) {
