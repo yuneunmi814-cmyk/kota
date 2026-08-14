@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
+import Icon from '../components/Icon'
 import { setPageMeta } from '../seo'
 import RegionBanner, { type RegionSel } from '../components/RegionBanner'
 import FestivalRail, { type FestivalSort } from '../components/FestivalRail'
@@ -140,7 +141,7 @@ export default function FestivalsPage() {
         {/* 여행지 기준 안내 칩 (헤더 '내 위치→여행지 입력'으로 설정됨) */}
         {destName && coords && (
           <p className="mb-4 text-[13px] font-bold text-green">
-            📍 {t('dest.label')}: {destName}
+            <Icon name="pin" size={13} /> {t('dest.label')}: {destName}
           </p>
         )}
 
@@ -153,7 +154,7 @@ export default function FestivalsPage() {
         {/* 정렬 필터 — 거리순을 누르면 위치 요청, 성공 시 거리순 자동 */}
         <div className="flex justify-center gap-2.5 mb-8">
           {chip('date', t('filter.date'))}
-          {chip('distance', locating ? '…' : coords ? `📍 ${t('filter.distance')}` : t('filter.distance'))}
+          {chip('distance', locating ? '…' : coords ? t('filter.distance') : t('filter.distance'))}
           {chip('popularity', t('filter.popularity'))}
           {/* 찜 필터 (8/12 팀 결정 — 찜한 축제 모아보기) */}
           <button

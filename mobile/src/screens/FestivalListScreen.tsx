@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
-import { FlatList, Image, Pressable, RefreshControl, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Pressable, RefreshControl, StyleSheet, Text, View } from 'react-native'
 import * as Location from 'expo-location'
 import { useNavigation } from '@react-navigation/native'
 import { colors, font, radius, space } from '../theme'
 import { Badge, EmptyState, Loading } from '../components/ui'
+import Poster from '../components/Poster'
 import { distanceKm, getFestivals, hasCoords, isAlwaysOn, type Festival } from '../festivals/data'
 import { onWishChange, toggleWish, wishedKeys } from '../festivals/wishlist'
 import { syncGeofences } from '../festivals/geofence'
@@ -97,11 +98,9 @@ export default function FestivalListScreen() {
         contentContainerStyle={{ padding: space(4), paddingBottom: space(12) }}
         renderItem={({ item: f }) => (
           <Pressable style={s.card} onPress={() => nav.navigate('FestivalDetail', { externalId: f.externalId })}>
-            {f.imageUrl ? (
-              <Image source={{ uri: f.imageUrl }} style={s.thumb} />
-            ) : (
-              <View style={[s.thumb, s.thumbEmpty]}><Text style={s.thumbTx}>🎪</Text></View>
-            )}
+            <View style={s.thumb}>
+              <Poster src={f.imageUrl} name={f.name} fontSize={26} />
+            </View>
             <View style={s.body}>
               <View style={s.row}>
                 <Badge label={f.status === 'ongoing' ? '진행중' : '예정'} tone={f.status === 'ongoing' ? 'green' : 'gray'} />
@@ -134,9 +133,7 @@ const s = StyleSheet.create({
   tabTxOn: { color: colors.white },
   hint: { paddingHorizontal: space(4), paddingTop: space(3), color: colors.textHint, fontSize: font.caption },
   card: { flexDirection: 'row', gap: space(3), padding: space(3), marginBottom: space(3), backgroundColor: colors.white, borderRadius: radius.card, borderWidth: 1, borderColor: colors.line },
-  thumb: { width: 78, height: 78, borderRadius: radius.sm, backgroundColor: colors.bg2 },
-  thumbEmpty: { alignItems: 'center', justifyContent: 'center' },
-  thumbTx: { fontSize: 26 },
+  thumb: { width: 78, height: 78, borderRadius: radius.sm, overflow: 'hidden' },
   body: { flex: 1, justifyContent: 'center', gap: space(1) },
   row: { flexDirection: 'row', alignItems: 'center', gap: space(2) },
   km: { fontSize: font.caption, color: colors.primary, fontWeight: '700' },

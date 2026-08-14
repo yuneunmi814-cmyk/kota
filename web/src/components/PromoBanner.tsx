@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import type { Festival } from '../api'
 import { staticFestivals } from '../staticData'
 import { useT } from '../i18n'
+import PosterFallback from './PosterFallback'
+import Icon from './Icon'
 
 // 티켓형 프로모 배너 — 디자인 시안2: 브라이트 그린 50:50 분할(좌 이미지·우 텍스트+CTA)
 // 이미지는 진행중 축제의 실제 포스터를 사용(없으면 플레이스홀더)
@@ -34,7 +36,7 @@ export default function PromoBanner() {
             /* 포스터는 세로형이 많아 cover는 잘린다(8/9 회의) — contain으로 원본 비율 유지 */
             <img src={hot.imageUrl} alt={hot.name} className="w-full h-full object-contain" />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-[56px]" aria-hidden="true">🎪</div>
+            <PosterFallback name={hot?.name ?? 'KOTA'} className="text-[1.6em]" />
           )}
         </div>
         <div className="md:w-1/2 flex flex-col justify-center items-center text-center px-2 md:px-6">
@@ -44,7 +46,11 @@ export default function PromoBanner() {
             {line2}
           </h2>
           <p className="mb-2 text-[14px] font-medium text-green/80">{t('home.bannerBody')}</p>
-          {hot && <p className="mb-6 text-[15px] font-black text-green">🔥 {hot.name}</p>}
+          {hot && (
+            <p className="mb-6 text-[15px] font-black text-green flex items-center justify-center gap-1.5">
+              <Icon name="flame" size={15} /> {hot.name}
+            </p>
+          )}
           <button
             onClick={() => navigate(hot ? `/festivals/${hot.id}` : '/festivals')}
             className="bg-green text-white px-8 py-3.5 rounded-lg font-bold text-[15px] hover:opacity-90 transition shadow-sm"

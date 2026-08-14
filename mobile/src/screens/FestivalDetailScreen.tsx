@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Image, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Linking, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { colors, font, radius, space } from '../theme'
 import { Badge, Button, Loading } from '../components/ui'
+import Poster from '../components/Poster'
 import { getFestivals, type Festival } from '../festivals/data'
 import { isWished, toggleWish } from '../festivals/wishlist'
 import { syncGeofences } from '../festivals/geofence'
@@ -47,11 +48,9 @@ export default function FestivalDetailScreen() {
 
   return (
     <ScrollView style={s.wrap} contentContainerStyle={{ paddingBottom: space(12) }}>
-      {f.imageUrl ? (
-        <Image source={{ uri: f.imageUrl }} style={s.hero} resizeMode="cover" />
-      ) : (
-        <View style={[s.hero, s.heroEmpty]}><Text style={{ fontSize: 44 }}>🎪</Text></View>
-      )}
+      <View style={s.hero}>
+        <Poster src={f.imageUrl} name={f.name} fontSize={56} style={{ borderRadius: 0 }} />
+      </View>
 
       <View style={s.pad}>
         <View style={s.row}>
@@ -88,7 +87,6 @@ export default function FestivalDetailScreen() {
 const s = StyleSheet.create({
   wrap: { flex: 1, backgroundColor: colors.bg },
   hero: { width: '100%', height: 220, backgroundColor: colors.bg2 },
-  heroEmpty: { alignItems: 'center', justifyContent: 'center' },
   pad: { padding: space(4), gap: space(2) },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   name: { fontSize: font.h1, fontWeight: '800', color: colors.text, marginTop: space(1) },

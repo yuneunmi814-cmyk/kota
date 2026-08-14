@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LANGS, useLang, useT } from '../i18n'
 import { destinationCentroids } from '../staticData'
+import Icon from './Icon'
 
 // 상단 헤더 — 로고 · 내 위치/여행지 · 언어. (8/9 회의: 내 위치 버튼을 언어 토글 옆에 상시 배치,
 // 누르면 ① 현재 위치 사용 ② 여행지(도시) 입력 — 외국인은 방한 전에 목적지 기준으로 찾으므로
@@ -91,7 +92,7 @@ export default function Header() {
                   onClick={onMyLocation}
                   className="w-full py-2.5 rounded-lg bg-green text-white text-[14px] font-bold hover:opacity-90 transition"
                 >
-                  {locating ? '…' : `📍 ${t('nav.myLocation')}`}
+                  {locating ? '…' : <><Icon name="pin" size={14} /> {t('nav.myLocation')}</>}
                 </button>
                 <form onSubmit={onDest} className="flex gap-1.5">
                   <input
@@ -115,7 +116,7 @@ export default function Header() {
               onClick={() => setLangOpen((v) => !v)}
               className="flex items-center gap-1 text-[14px] font-semibold text-green hover:opacity-70 transition"
             >
-              🌐 {LANGS.find((l) => l.code === lang)?.label} <span className="text-[10px]">▼</span>
+              <Icon name="globe" size={14} /> {LANGS.find((l) => l.code === lang)?.label} <span className="text-[10px]">▼</span>
             </button>
             {langOpen && (
               <div className="absolute right-0 top-[38px] bg-white border border-gray-200 shadow-lg rounded-xl min-w-[130px] overflow-hidden">

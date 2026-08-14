@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { apiGet, type Festival } from '../api'
 import { staticFestivals } from '../staticData'
+import Poster from './Poster'
+import Icon from './Icon'
 import { useLang, useT } from '../i18n'
 import { sidoLabel } from '../sidoI18n'
 import { isWished, onWishChange, toggleWish, wishKey, wishedKeys } from '../wishlist'
@@ -134,24 +136,13 @@ export default function FestivalRail({
                   isWished(f) ? 'bg-pin text-white' : 'bg-white/90 text-gray-400 hover:text-pin'
                 }`}
               >
-                {isWished(f) ? '♥' : '♡'}
+                <Icon name={isWished(f) ? 'heartFilled' : 'heart'} size={17} />
               </button>
-              {f.imageUrl ? (
-                <img
-                  src={f.imageUrl}
-                  alt={f.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-green/5 border-b border-green/10">
-                  <span className="text-[22px] leading-none" aria-hidden="true">🎪</span>
-                  {/* 번역된 지명을 우선 쓴다 — 원문 sigungu를 그대로 쓰면 일본어·태국어 화면에 한국어가 샌다 */}
-                  <span className="text-[11px] font-bold text-green/50">
-                    {f.placeName ?? (f.sido ? sidoLabel(f.sido, lang) : 'KOTA')}
-                  </span>
-                </div>
-              )}
+              <Poster
+                src={f.imageUrl}
+                name={f.name}
+                imgClassName="group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
             <div className="p-4">
               <div className="flex items-center gap-2 mb-2 flex-wrap">

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Header from '../components/Header'
+import Poster from '../components/Poster'
+import Icon from '../components/Icon'
 import { trackEvent } from '../analytics'
 import { apiGet, type Festival } from '../api'
 import { removeJsonLd, setFestivalJsonLd, setPageMeta } from '../seo'
@@ -91,17 +93,7 @@ export default function FestivalDetailPage() {
 
           {/* 포스터 — 없으면 카드와 같은 브랜드 플레이스홀더 */}
           <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 mb-6">
-            {festival.imageUrl ? (
-              <img src={festival.imageUrl} alt={festival.name} className="w-full h-full object-cover" />
-            ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-green/5">
-                <span className="text-[40px]" aria-hidden="true">🎪</span>
-                {/* 번역된 지명 우선 — 원문 sigungu는 외국어 화면에 한국어를 노출시킨다 */}
-                <span className="text-[13px] font-bold text-green/50">
-                  {festival.placeName ?? (festival.sido ? sidoLabel(festival.sido, lang) : 'KOTA')}
-                </span>
-              </div>
-            )}
+            <Poster src={festival.imageUrl} name={festival.name} className="text-[1.8em]" />
           </div>
 
           <div className="flex items-center gap-2 mb-3 flex-wrap">
@@ -129,7 +121,7 @@ export default function FestivalDetailPage() {
                 isWished(festival) ? 'bg-pin border-pin text-white' : 'bg-white border-gray-300 text-gray-400 hover:text-pin hover:border-pin'
               }`}
             >
-              {isWished(festival) ? '♥' : '♡'}
+              <Icon name={isWished(festival) ? 'heartFilled' : 'heart'} size={22} />
             </button>
           </div>
           {festival.nameKo && festival.nameKo !== festival.name && (
@@ -194,7 +186,7 @@ export default function FestivalDetailPage() {
 
           {/* 캘린더 등록 — "날짜 세팅해두면 달력이랑 같이"(8/12 팀 채팅). 서버 없이 동작 */}
           <div className="flex flex-wrap items-center gap-2 mb-10">
-            <span className="text-[13px] font-bold text-green/60">📅 {t('detail.addToCalendar')}:</span>
+            <span className="text-[13px] font-bold text-green/60 inline-flex items-center gap-1"><Icon name="calendar" size={13} /> {t('detail.addToCalendar')}:</span>
             <a
               href={googleCalUrl(festival)}
               target="_blank"
