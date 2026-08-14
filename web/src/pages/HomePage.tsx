@@ -61,9 +61,11 @@ export default function HomePage() {
       <div className="mt-2">
         <RegionBanner selected={{ type: 'all' }} onChange={onRegion} />
       </div>
-      <div className="mt-4">
-        <PromoBanner />
-      </div>
+      {FEATURES.promoBanner && (
+        <div className="mt-4">
+          <PromoBanner />
+        </div>
+      )}
     </div>
   )
 }
