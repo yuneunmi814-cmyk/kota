@@ -22,7 +22,7 @@ const DAY = 86_400_000
 
 /** 1년 이상 이어지는 상시 운영 행사인가 — '지금 근처' 집계에서는 제외한다 */
 export function isAlwaysOn(f: { startDate: string; endDate: string }): boolean {
-  return new Date(f.endDate).getTime() - new Date(f.startDate).getTime() >= 365 * DAY
+  return new Date(f.endDate).getTime() - new Date(f.startDate).getTime() >= 300 * DAY /* 1/1~12/31은 364일이라 365로 두면 빠진다 */
 }
 
 /** 내 주변 탐색 기본 반경(km) — 차로 30분 남짓, 여행 중 '들를 만한' 거리 */

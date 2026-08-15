@@ -73,7 +73,7 @@ export default function FestivalRail({
 
   // 상시축제(기간 1년 이상) 판정 — F-4(8/10): 시작일순 첫 화면을 상시축제가 점령하는 문제
   const DAY = 86_400_000
-  const isAlwaysOn = (f: Festival) => new Date(f.endDate).getTime() - new Date(f.startDate).getTime() >= 365 * DAY
+  const isAlwaysOn = (f: Festival) => new Date(f.endDate).getTime() - new Date(f.startDate).getTime() >= 300 * DAY /* 1/1~12/31은 364일이라 365로 두면 빠진다 */
 
   const list = useMemo(() => {
     let filtered = filterSidos ? all.filter((f) => f.sido && filterSidos.includes(f.sido)) : all
