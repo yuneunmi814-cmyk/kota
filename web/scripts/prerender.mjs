@@ -18,6 +18,10 @@ import { fileURLToPath } from 'node:url'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const siteArg = process.argv.find((a) => a.startsWith('--site='))
 const SITE = (siteArg ? siteArg.slice(7) : 'https://yuneunmi814-cmyk.github.io/kota').replace(/\/$/, '')
+// 2026-08-15 — 제출 URL이 kota2로 옮겨갔다. 이 사이트는 당분간 유지하되 모든 페이지가
+// 새 사이트의 같은 페이지로 넘긴다(meta refresh + canonical). 사람은 3초 뒤 이동하고,
+// 크롤러는 canonical로 새 사이트를 정본으로 본다. GitHub Pages는 서버 리다이렉트가 없다.
+const NEW_SITE = 'https://yuneunmi814-cmyk.github.io/kota2'
 
 const shell = readFileSync(resolve(root, 'dist/index.html'), 'utf-8')
 const { items } = JSON.parse(readFileSync(resolve(root, 'public/data/festivals.json'), 'utf-8'))
@@ -26,7 +30,7 @@ const esc = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 // 셸의 기본 title·og를 페이지별 값으로 치환하고 head 끝에 메타·본문 주입
-function renderPage({ title, description, url, image, jsonLd, noscriptHtml }) {
+function renderPage({ title, description, url, image, jsonLd, noscriptHtml, redirectTo }) {
   let html = shell
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
   html = html.replace(/(<meta name="description" content=")[^"]*(")/, `$1${esc(description)}$2`)
@@ -38,7 +42,13 @@ function renderPage({ title, description, url, image, jsonLd, noscriptHtml }) {
     `<meta property="og:url" content="${esc(url)}" />`,
     jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : '',
   ].join('\n    ')
-  html = html.replace('</head>', `    ${extra}\n  </head>`)
+  const target = redirectTo ?? `${NEW_SITE}/ko/`
+  const redirect = [
+    `<meta http-equiv="refresh" content="3;url=${target}">`,
+    `<link rel="canonical" href="${target}">`,
+    `<script>setTimeout(function(){location.replace(${JSON.stringify(target)})},2500)</script>`,
+  ].join('\n    ')
+  html = html.replace('</head>', `    ${extra}\n    ${redirect}\n  </head>`)
   if (noscriptHtml) {
     html = html.replace('<div id="root"></div>', `<div id="root"></div>\n    <noscript>\n${noscriptHtml}\n    </noscript>`)
   }
@@ -51,6 +61,7 @@ let written = 0
 // ── 축제 상세 724건 ─────────────────────────────
 for (const f of items) {
   const url = `${SITE}/festivals/${f.id}/`
+  const redirectTo = f.externalId ? `${NEW_SITE}/ko/festivals/${encodeURIComponent(f.externalId)}/` : `${NEW_SITE}/ko/festivals/`
   const place = f.address ?? f.summary ?? ''
   const desc = [f.summary, `${fmtDate(f.startDate)} ~ ${fmtDate(f.endDate)}`, f.address].filter(Boolean).join(' · ').slice(0, 160)
   const jsonLd = {
@@ -86,6 +97,7 @@ for (const f of items) {
     title: `${f.name} · KOTA — Korea Festa`,
     description: desc || `${f.name} — 한국 지역축제 정보`,
     url,
+    redirectTo,
     image: f.imageUrl || undefined,
     jsonLd,
     noscriptHtml: noscript,
@@ -105,11 +117,13 @@ for (const f of items) {
     title: '전국 지역축제 목록 · KOTA — Korea Festa',
     description: `지금 진행 중이거나 예정된 한국 지역축제 ${items.length}건 — 일정·장소·길찾기·주변 관광지를 4개 언어로.`,
     url: `${SITE}/festivals/`,
+    redirectTo: `${NEW_SITE}/ko/festivals/`,
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       name: '전국 지역축제 목록',
       url: `${SITE}/festivals/`,
+    redirectTo: `${NEW_SITE}/ko/festivals/`,
       isPartOf: { '@type': 'WebSite', name: 'KOTA — Korea Festa', url: SITE },
     },
     noscriptHtml: `      <h1>전국 지역축제 ${items.length}건</h1>\n      <ul>\n${links}\n      </ul>`,
@@ -141,12 +155,14 @@ for (const [key, meta] of Object.entries(THEME_META)) {
     title,
     description: `${meta.desc} — 전국 ${list.length}건의 일정·장소·길찾기를 4개 언어로.`,
     url: `${SITE}/themes/${key}/`,
+    redirectTo: `${NEW_SITE}/ko/themes/${key}/`,
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       name: `${meta.ko} 축제`,
       description: meta.desc,
       url: `${SITE}/themes/${key}/`,
+    redirectTo: `${NEW_SITE}/ko/themes/${key}/`,
       isPartOf: { '@type': 'WebSite', name: 'KOTA — Korea Festa', url: SITE },
     },
     noscriptHtml: `      <h1>${esc(meta.ko)} 축제 ${list.length}건</h1>\n      <p>${esc(meta.desc)}</p>\n      <ul>\n${links}\n      </ul>`,
@@ -173,6 +189,7 @@ ${Object.entries(THEME_META).map(([k, m]) => `        <li><a href="${SITE}/theme
     title: 'KOTA — Korea Festa · 내 여행지 주변 축제',
     description: `내 여행지 주변 한국 지역축제 ${items.length}건 — 일정·장소·길찾기·주변 관광지를 4개 언어로. Discover Korean local festivals near your destination.`,
     url: `${SITE}/`,
+    redirectTo: `${NEW_SITE}/ko/`,
     noscriptHtml: noscript,
   })
   writeFileSync(resolve(root, 'dist/index.html'), html)
